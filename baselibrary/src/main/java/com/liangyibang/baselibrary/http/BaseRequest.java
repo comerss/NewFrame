@@ -1,0 +1,252 @@
+package com.liangyibang.baselibrary.http;
+
+import android.text.TextUtils;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.liangyibang.baselibrary.base.LoadingDialog;
+import com.liangyibang.baselibrary.utils.ConstantsPool;
+import com.liangyibang.baselibrary.utils.SharedHelper;
+import com.liangyibang.baselibrary.utils.ToastUtils;
+import com.liangyibang.baselibrary.utils.UIUtils;
+import com.liangyibang.baselibrary.widget.update.UpdateManager;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Request;
+import okhttp3.Response;
+
+/**
+ * Created by Comers on 2017/10/24.
+ */
+
+public class BaseRequest<R extends BaseRequest> {
+    String mURI = "";
+    Map<String, Object> mObjectMaps = new HashMap<>();
+    Gson mGson = new Gson();
+    boolean mShowDialog = true;
+    boolean mShowFirstTime = false;
+    Object mObject = null;
+    LoadingDialog mLoadingDialog;
+
+    public BaseRequest(String url) {
+        mURI = url;
+        if (HttpHelper.mContext != null && mLoadingDialog == null)
+            mLoadingDialog = new LoadingDialog(HttpHelper.mContext);
+        mObjectMaps.clear();
+        mObjectMaps.put("token", SharedHelper.get(ConstantsPool.TOKEN, ""));
+        mObjectMaps.put("app", "android");
+        mObjectMaps.put("version", UIUtils.getVersionCode());
+    }
+
+    public R params(Map<String, Object> params) {
+        if (params == null || params.isEmpty())
+            return (R) this;
+        for (Map.Entry<String, Object> param : params.entrySet()) {
+            if (param.getKey() != null) {
+                if (param.getValue() != null) {
+                    mObjectMaps.put(param.getKey(), param.getValue());
+                } else {
+                    mObjectMaps.put(param.getKey(), "");
+                }
+            }
+        }
+        return (R) this;
+    }
+
+    public R showLoading(boolean showDialog) {
+        mShowDialog = showDialog;
+        return (R) this;
+    }
+
+    public R showFirstTime() {
+        mShowFirstTime = true;
+        return (R) this;
+    }
+
+    //为了方便链式调用
+    public R connectTimeout(long connectTimeout) {
+        HttpHelper.getInstance().connectTimeout(connectTimeout);
+        return (R) this;
+    }
+
+    public R path(String url) {
+        mURI = url;
+        return (R) this;
+    }
+
+    public R writeTimeout(long writeTimeout) {
+        HttpHelper.getInstance().connectTimeout(writeTimeout);
+        return (R) this;
+    }
+
+    public R readTimeout(long readTimeout) {
+        HttpHelper.getInstance().connectTimeout(readTimeout);
+        return (R) this;
+    }
+
+    public R tag(Object tag) {
+        mObject = tag;
+        return (R) this;
+    }
+
+    public <T> void perform(final Request request, final BaseCallBack<T> callBack) {
+        show();
+        HttpHelper.getClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(final Call call, final IOException e) {
+                Platform.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        dismiss();
+                        doError(callBack, e);
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!call.isCanceled()) {
+                    final String json = response.body().string();
+                    Platform.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            doResult(json, callBack);
+                        }
+                    });
+                }
+            }
+
+        });
+    }
+
+    public <T> void performSync(final Request request, final BaseCallBack<T> callBack) {
+        show();
+        Response response = null;
+        try {
+            response = HttpHelper.getClient().newCall(request).execute();
+        } catch (Exception e) {
+            dismiss();
+            e.printStackTrace();
+            doError(callBack, e);
+        }
+        String json = "";
+        if (response != null && response.isSuccessful()) {
+            try {
+                json = response.body().string();
+            } catch (IOException e) {
+                callBack.onError(e.getMessage());
+                dismiss();
+                e.printStackTrace();
+            }
+            doResult(json, callBack);
+        } else {
+            callBack.onError("请求失败，请稍后重试！");
+        }
+        dismiss();
+    }
+
+    private <T> void doResult(String json, BaseCallBack<T> callBack) {
+        HttpResult<T> result = null;
+        try {
+            result = (HttpResult<T>) mGson.fromJson(json, callBack.getType());
+        } catch (Exception e) {
+            callBack.onError("请求失败，请稍后重试！");
+            e.printStackTrace();
+        }
+        if (result != null) {
+            //错误提示的统一处理！个别需要根据错误类型进行一些其他的操作，所以这里给了返回
+            if (result.code != 0) {
+                if (!result.msg.contains("正在处理")) {
+                    ToastUtils.showToast(result.msg);
+                } else {//正在处理的提示过滤掉
+                    result.msg = "";
+                }
+                //强制升级
+                if (result.code == 5201314) {
+                    try {
+                        JSONObject results = new JSONObject(json);
+                        JSONObject data = results.getJSONObject("data");
+                        String download = data.getString("downloadUrl");
+                        UpdateManager.getInstance().setDownloadUrl(download);
+                        if (UpdateManager.getInstance().getUpdateDialog() != null) {
+                            UpdateManager.getInstance().getUpdateDialog().show();
+                        }
+                        return;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                } else {
+                    callBack.onSuccess(result, json);
+                }
+            } else {
+                callBack.onSuccess(result, json);
+            }
+        } else {
+            callBack.onError("请求失败，请稍后重试！");
+        }
+        dismiss();
+    }
+
+    private void show() {
+        if (mLoadingDialog != null) {
+            try {
+                if (mShowDialog)
+                    mLoadingDialog.show();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    private void dismiss() {
+        //防止loading框导致的window leak
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+            try {
+                mLoadingDialog.dismiss();
+            } catch (Exception e1) {
+
+            }
+        }
+    }
+
+    //网络请求失败的情况处理
+    private <T> void doError(BaseCallBack<T> callBack, Exception e) {
+        dismiss();
+        if (e instanceof SocketTimeoutException) {
+            callBack.onError("网络连接超时,请检查网络！");
+        } else if (e instanceof SocketException) {
+            if (e instanceof ConnectException) {
+                callBack.onError("网络未连接，请检查网络！");
+            } else {
+                callBack.onError("网络错误，请检查网络！");
+            }
+        } else {
+            callBack.onError("服务器无响应，请稍后重试！");
+        }
+    }
+    private static Toast mToast;
+
+    public static void showToast(String content) {
+        if (mToast == null) {
+            mToast = Toast.makeText(UIUtils.getContext(), content, Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(content);
+        }
+        if (!TextUtils.isEmpty(content)) {
+            mToast.show();
+        }else{
+            mToast.cancel();
+        }
+    }
+}
