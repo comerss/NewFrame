@@ -32,14 +32,14 @@ public class HttpHelper {
     }
 
     public static FormRequest doForm(@NonNull String url) {
-        return new FormRequest(Constant.Host + url);
+        return new FormRequest(url);
     }
 
     public static PostRequest doPost(@NonNull String url) {
-        return new PostRequest(Constant.Host + url);
+        return new PostRequest(url);
     }
     public static GetRequest doGet(@NonNull String url) {
-        return new GetRequest(Constant.Host + url);
+        return new GetRequest(url);
     }
 
     public static OkHttpClient getClient() {

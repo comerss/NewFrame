@@ -13,7 +13,7 @@ import okhttp3.RequestBody;
  * Created by Comers on 2017/10/28.
  */
 
-public class FindTypeHelper {
+public class ClassTypeHelper {
     /**
      * find the type by interfaces
      *
