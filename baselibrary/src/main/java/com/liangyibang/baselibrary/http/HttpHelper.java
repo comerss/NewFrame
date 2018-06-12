@@ -1,16 +1,11 @@
 package com.liangyibang.baselibrary.http;
 
 import android.app.Activity;
-import android.util.Log;
+import android.support.annotation.NonNull;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 /**
  * Created by Comers on 2017/10/24.
@@ -36,15 +31,14 @@ public class HttpHelper {
         return mSingleton;
     }
 
-    public static FormRequest doForm(String url) {
+    public static FormRequest doForm(@NonNull String url) {
         return new FormRequest(Constant.Host + url);
     }
 
-    public static PostRequest doPost(String url) {
+    public static PostRequest doPost(@NonNull String url) {
         return new PostRequest(Constant.Host + url);
     }
-
-    public static GetRequest doGet(String url) {
+    public static GetRequest doGet(@NonNull String url) {
         return new GetRequest(Constant.Host + url);
     }
 
@@ -77,34 +71,5 @@ public class HttpHelper {
     public HttpHelper readTimeout(long readTimeout) {
         READ_TIME_OUT = readTimeout;
         return this;
-    }
-
-    private static class LoggingInterceptor implements Interceptor {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            //这个chain里面包含了request和response，所以你要什么都可以从这里拿
-            Request request = chain.request();
-
-            StringBuffer reqBuffer = new StringBuffer();
-            reqBuffer.append("-----------------------------------------------------------------------------")
-                    .append("\n")
-                    .append("请求方式：" + request.method())
-                    .append("\n")
-                    .append(request.url())
-                    .append(request.body().toString())
-                    ;
-
-            Response response = chain.proceed(request);
-
-            ResponseBody responseBody = response.peekBody(1024 * 1024);
-            StringBuffer resBuffer = new StringBuffer();
-            resBuffer.append("请求返回：")
-                    .append("\n")
-                    .append(responseBody.string())
-                    .append("\n")
-                    .append("-----------------------------------------------------------------------------------");
-            Log.i("HttpInfo", reqBuffer.toString());
-            return response;
-        }
     }
 }

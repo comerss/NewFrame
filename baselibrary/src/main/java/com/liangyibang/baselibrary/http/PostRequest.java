@@ -1,5 +1,6 @@
 package com.liangyibang.baselibrary.http;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.liangyibang.baselibrary.utils.ConstantsPool;
@@ -17,7 +18,7 @@ import okhttp3.RequestBody;
  */
 
 public class PostRequest extends BaseRequest<PostRequest> {
-    public PostRequest(String url) {
+    public PostRequest(@NonNull String url) {
         super(url);
     }
 
@@ -33,7 +34,7 @@ public class PostRequest extends BaseRequest<PostRequest> {
         return this;
     }
 
-    public <T> void executeByBody(String jsonBody, BaseCallBack<T> callBack) {
+    public <T> void execute(String jsonBody, BaseCallBack<T> callBack) {
         if (TextUtils.isEmpty(mURI)) {
             //提示输入URL
             return;

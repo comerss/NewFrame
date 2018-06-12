@@ -1,5 +1,6 @@
 package com.liangyibang.baselibrary.http;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -9,9 +10,6 @@ import com.liangyibang.baselibrary.utils.ConstantsPool;
 import com.liangyibang.baselibrary.utils.SharedHelper;
 import com.liangyibang.baselibrary.utils.ToastUtils;
 import com.liangyibang.baselibrary.utils.UIUtils;
-import com.liangyibang.baselibrary.widget.update.UpdateManager;
-
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -30,6 +28,7 @@ import okhttp3.Response;
  */
 
 public class BaseRequest<R extends BaseRequest> {
+    @NonNull
     String mURI = "";
     Map<String, Object> mObjectMaps = new HashMap<>();
     Gson mGson = new Gson();
@@ -38,7 +37,7 @@ public class BaseRequest<R extends BaseRequest> {
     Object mObject = null;
     LoadingDialog mLoadingDialog;
 
-    public BaseRequest(String url) {
+    public BaseRequest(@NonNull String url) {
         mURI = url;
         if (HttpHelper.mContext != null && mLoadingDialog == null)
             mLoadingDialog = new LoadingDialog(HttpHelper.mContext);
@@ -143,7 +142,7 @@ public class BaseRequest<R extends BaseRequest> {
         if (response != null && response.isSuccessful()) {
             try {
                 json = response.body().string();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 callBack.onError(e.getMessage());
                 dismiss();
                 e.printStackTrace();
@@ -171,24 +170,7 @@ public class BaseRequest<R extends BaseRequest> {
                 } else {//正在处理的提示过滤掉
                     result.msg = "";
                 }
-                //强制升级
-                if (result.code == 5201314) {
-                    try {
-                        JSONObject results = new JSONObject(json);
-                        JSONObject data = results.getJSONObject("data");
-                        String download = data.getString("downloadUrl");
-                        UpdateManager.getInstance().setDownloadUrl(download);
-                        if (UpdateManager.getInstance().getUpdateDialog() != null) {
-                            UpdateManager.getInstance().getUpdateDialog().show();
-                        }
-                        return;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    return;
-                } else {
-                    callBack.onSuccess(result, json);
-                }
+                callBack.onSuccess(result, json);
             } else {
                 callBack.onSuccess(result, json);
             }
@@ -235,6 +217,7 @@ public class BaseRequest<R extends BaseRequest> {
             callBack.onError("服务器无响应，请稍后重试！");
         }
     }
+
     private static Toast mToast;
 
     public static void showToast(String content) {
@@ -245,7 +228,7 @@ public class BaseRequest<R extends BaseRequest> {
         }
         if (!TextUtils.isEmpty(content)) {
             mToast.show();
-        }else{
+        } else {
             mToast.cancel();
         }
     }

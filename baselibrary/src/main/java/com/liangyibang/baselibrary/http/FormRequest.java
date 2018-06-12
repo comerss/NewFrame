@@ -1,5 +1,6 @@
 package com.liangyibang.baselibrary.http;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.liangyibang.baselibrary.utils.ConstantsPool;
@@ -24,7 +25,7 @@ public class FormRequest extends BaseRequest<FormRequest> {
 
     private final MultipartBody.Builder mBuilder;
 
-    public FormRequest(String url) {
+    public FormRequest(@NonNull String url) {
         super(url);
         //有可能需要同时传递文件，所以选择这个form
         mBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
