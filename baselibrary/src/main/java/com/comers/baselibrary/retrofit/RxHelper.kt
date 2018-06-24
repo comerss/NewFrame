@@ -1,5 +1,7 @@
 package com.comers.baselibrary.retrofit
 
+import com.comers.baselibrary.http.HttpResult
+import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -28,4 +30,17 @@ object RxHelper {
             }
         }*//*
     }*/
+    fun <T>handleResult():ObservableTransformer<HttpResult<T>,T>{
+       return ObservableTransformer {
+           it.let {
+               it.flatMap {
+                   if(it.code==0){
+
+                   }else{
+                      return Observable.error(HttpException(""))
+                   }
+               }
+           }
+       }
+   }
 }
