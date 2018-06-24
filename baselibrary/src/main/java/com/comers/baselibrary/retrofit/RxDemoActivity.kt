@@ -21,6 +21,9 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
         RetrofitHelper.create().getData().compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxHelper.schedulersTransformer())
                 .subscribe(object : HttpSubscriber<HttpResult<Data>>(){
+                    override fun onSuccess(t: HttpResult<Data>) {
+
+                    }
 
                 })
     }
