@@ -1,4 +1,4 @@
-<manifest package="com.liangyibang.baselibrary"
+<manifest package="com.comers.baselibrary"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>

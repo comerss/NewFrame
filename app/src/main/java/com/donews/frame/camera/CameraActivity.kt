@@ -4,8 +4,8 @@ import android.Manifest
 import android.content.Intent
 import com.bumptech.glide.Glide
 import com.donews.frame.R
-import com.liangyibang.baselibrary.base.BaseActivity
-import com.liangyibang.baselibrary.utils.CameraUtils
+import com.comers.baselibrary.base.BaseActivity
+import com.comers.baselibrary.utils.CameraUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_camera.*

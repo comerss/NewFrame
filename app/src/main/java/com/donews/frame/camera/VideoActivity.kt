@@ -4,7 +4,7 @@ import android.hardware.Camera
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import com.donews.frame.R
-import com.liangyibang.baselibrary.base.BaseActivity
+import com.comers.baselibrary.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_video.*
 
 /**
