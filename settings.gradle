@@ -1,1 +1,1 @@
-include ':app', ':AdvertiseSdk', ':AdvertiseSDK','baselibrary'
+include ':app','baselibrary'

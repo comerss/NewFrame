@@ -19,28 +19,26 @@ object RxHelper {
         }
     }
 
-   /* fun <T> handleResult(): ObservableTransformer<HttpResult<T>, T> { //compose判断结果
-       *//* return ObservableTransformer<Any, T> { httpResponseFlowable ->
-            httpResponseFlowable.flatMap { tGankHttpResponse ->
-                if (!tGankHttpResponse.getError()) {
-                    createData(tGankHttpResponse.getResults())
-                } else {
-                    Flowable.error(ApiException("服务器返回error"))
+    fun <T> handleResult(): ObservableTransformer<HttpResult<T>, T> {
+        return ObservableTransformer { upstream ->
+            upstream.flatMap {
+                if(it.success){
+                    createData(it.data)
+                }else{
+                    Observable.error(HttpException(it.msg,it.code))
                 }
             }
-        }*//*
-    }*/
-    fun <T>handleResult():ObservableTransformer<HttpResult<T>,T>{
-       return ObservableTransformer {
-           it.let {
-               it.flatMap {
-                   if(it.code==0){
+        }
+    }
 
-                   }else{
-                      return Observable.error(HttpException(""))
-                   }
-               }
-           }
-       }
-   }
+    private fun <T> createData(t: T): Observable<T> {
+        return Observable.create { subscriber ->
+            try {
+                subscriber.onNext(t)
+                subscriber.onComplete()
+            } catch (e: Exception) {
+                subscriber.onError(e)
+            }
+        }
+    }
 }
