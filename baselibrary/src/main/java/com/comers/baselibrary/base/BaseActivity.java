@@ -9,19 +9,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.comers.baselibrary.R;
-import com.comers.baselibrary.baseAdapter.BaseQuickAdapter;
-import com.comers.baselibrary.baseAdapter.BaseViewHolder;
-import com.comers.baselibrary.http.Constant;
 import com.comers.baselibrary.utils.ToastUtils;
+import com.comers.baselibrary.utils.UIUtils;
 import com.comers.baselibrary.widget.statusbar.StatusBarCompat;
-
-import java.lang.reflect.Method;
-import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
     public Context mContext;
@@ -135,69 +127,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 关闭软键盘
      */
-    public static void closeKeybord(EditText mEditText, Context mContext) {
-        if (mEditText == null || mContext == null)
-            return;
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
-        Class<EditText> cls = EditText.class;
-        try {
-            Method setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
-            setShowSoftInputOnFocus.setAccessible(false);
-            setShowSoftInputOnFocus.invoke(mEditText, false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public  void closeKeybord(EditText mEditText, Context mContext) {
+        UIUtils.closeKeybord(mEditText,mContext);
     }
 
     /**
      * 打卡软键盘
      */
-    public static void openKeybord(EditText mEditText, Context mContext) {
-        InputMethodManager imm = (InputMethodManager) mContext
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
-                InputMethodManager.HIDE_IMPLICIT_ONLY);
+    public  void openKeybord(EditText mEditText, Context mContext) {
+       UIUtils.openKeybord(mEditText,mContext);
     }
 
-    public static void hideKeyboard(Activity activity) {
-        if (activity == null)
-            return;
-        InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (activity.getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
-            if (activity.getCurrentFocus() != null)
-                inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-            Class<EditText> cls = EditText.class;
-            try {
-                Method setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
-                setShowSoftInputOnFocus.setAccessible(false);
-                setShowSoftInputOnFocus.invoke(activity.getCurrentFocus(), false);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    public  void hideKeyboard(Activity activity) {
+        UIUtils.closeKeybord(activity);
     }
 
     //调理方案URL
-    public static String getRecipel() {
-        if (Constant.IS_DEBUG)
-            return "https://wechat2.liangyibang.com/html/app/consult.html?";
-        return "https://wechat.liangyibang.com/html/app/consult.html?";
-    }
 
-    public <T> void setResult(BaseQuickAdapter<T, BaseViewHolder> adapter, List<T> it, int pageNum) {
-        adapter.loadMoreComplete();
-        if (it == null)
-            return;
-        if (pageNum == 1) {
-            adapter.setNewData(it);
-            adapter.setEmptyView(R.layout.empty_view);
-        } else {
-            adapter.addData(it);
-            adapter.setEnableLoadMore(!it.isEmpty());
-        }
-    }
 }

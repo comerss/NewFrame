@@ -65,7 +65,8 @@ dependencies {
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     //    api (name: 'open_ad_sdk', ext: 'aar')
-//    api files('libs/Baidu_MobAds_SDK.jar')
+    //    api files('libs/Baidu_MobAds_SDK.jar')
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 }
 repositories {
     mavenCentral()

@@ -86,6 +86,24 @@ public class UIUtils {
 
         imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
     }
+    public static void closeKeybord(Activity activity){
+        if (activity == null)
+            return;
+        InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (activity.getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
+            if (activity.getCurrentFocus() != null)
+                inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            Class<EditText> cls = EditText.class;
+            try {
+                Method setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+                setShowSoftInputOnFocus.setAccessible(false);
+                setShowSoftInputOnFocus.invoke(activity.getCurrentFocus(), false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     /**
      * 打卡软键盘

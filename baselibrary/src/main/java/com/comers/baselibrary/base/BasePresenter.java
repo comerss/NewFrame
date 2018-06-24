@@ -2,8 +2,6 @@ package com.comers.baselibrary.base;
 
 import android.content.Context;
 
-import com.comers.baselibrary.utils.ConstantsPool;
-import com.comers.baselibrary.utils.SharedHelper;
 import com.comers.baselibrary.utils.ToastUtils;
 
 import java.util.HashMap;
@@ -22,7 +20,6 @@ public class BasePresenter<V extends BaseView> implements Presenter<V> {
     public BasePresenter(V mView, Context context) {
         mContext = context;
         attachView(mView);
-        token = SharedHelper.get(ConstantsPool.TOKEN, "");
     }
 
     @Override
