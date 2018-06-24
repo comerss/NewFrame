@@ -38,7 +38,7 @@ public class BaseRequest<R extends BaseRequest> {
     LoadingDialog mLoadingDialog;
 
     public BaseRequest(@NonNull String url) {
-        mURI = HttpConfig.baseUrl+url;
+        mURI = HttpConfig.baseUrl + url;
         if (HttpHelper.mContext != null && mLoadingDialog == null)
             mLoadingDialog = new LoadingDialog(HttpHelper.mContext);
         mObjectMaps.clear();
@@ -47,9 +47,10 @@ public class BaseRequest<R extends BaseRequest> {
         mObjectMaps.put("version", UIUtils.getVersionCode());
     }
 
-    public R baseUrl(@NonNull String baseUrl){
-        mURI=mURI.replace(HttpConfig.baseUrl,"");
-        mURI+=baseUrl;
+    public R baseUrl(@NonNull String baseUrl) {
+        if (mURI.contains(HttpConfig.baseUrl))
+            mURI = mURI.replace(HttpConfig.baseUrl, "");
+        mURI += baseUrl;
         return (R) this;
     }
 
