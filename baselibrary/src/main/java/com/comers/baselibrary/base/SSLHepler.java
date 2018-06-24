@@ -11,7 +11,9 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
-
+/*
+* 双向认证证书Factory生成器
+* */
 public class SSLHepler {
     private static final String KEY_STORE_TYPE_BKS = "bks";//证书类型  
     private static final String KEY_STORE_TYPE_P12 = "PKCS12";//证书类型
