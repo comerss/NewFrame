@@ -16,4 +16,16 @@ object RxHelper {
                     .observeOn(AndroidSchedulers.mainThread())
         }
     }
+
+   /* fun <T> handleResult(): ObservableTransformer<HttpResult<T>, T> { //compose判断结果
+       *//* return ObservableTransformer<Any, T> { httpResponseFlowable ->
+            httpResponseFlowable.flatMap { tGankHttpResponse ->
+                if (!tGankHttpResponse.getError()) {
+                    createData(tGankHttpResponse.getResults())
+                } else {
+                    Flowable.error(ApiException("服务器返回error"))
+                }
+            }
+        }*//*
+    }*/
 }

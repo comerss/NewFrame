@@ -22,7 +22,7 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
                 .compose(RxHelper.schedulersTransformer())
                 .subscribe(object : HttpSubscriber<HttpResult<Data>>(){
                     override fun onSuccess(t: HttpResult<Data>) {
-
+                        //TODO异常处理
                     }
 
                 })
