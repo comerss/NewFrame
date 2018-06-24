@@ -11,5 +11,5 @@ import retrofit2.http.GET
  */
 interface ApiService {
     @GET("kkk")
-    fun getData(): Observable<HttpResult<Data>>
+    fun getData(): Observable<HttpResult<List<Data>>>
 }

@@ -20,8 +20,8 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
         RetrofitHelper.create().getData().compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxHelper.schedulersTransformer())
                 .compose(RxHelper.handleResult())
-                .subscribe(object : HttpSubscriber<Data>(){
-                    override fun onSuccess(t: Data) {
+                .subscribe(object : HttpSubscriber<List<Data>>(){
+                    override fun onSuccess(t: List<Data>) {
                         //TODO异常处理
                     }
 
