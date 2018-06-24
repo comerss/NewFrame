@@ -1,5 +1,7 @@
 package com.comers.baselibrary.retrofit
 
+import com.comers.baselibrary.http.HttpResult
+import com.comers.market.base.Data
 import com.trello.rxlifecycle2.android.ActivityEvent
 
 /**
@@ -18,9 +20,9 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
     override fun initView() {
         RetrofitHelper.create().getData().compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxHelper.schedulersTransformer())
-                .subscribe{
+                .subscribe(object : HttpSubscriber<HttpResult<Data>>(){
 
-                }
+                })
     }
 
     override fun initListener() {
