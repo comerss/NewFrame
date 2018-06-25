@@ -72,8 +72,8 @@ dependencies {
     //retrofit
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    //    api (name: 'open_ad_sdk', ext: 'aar')
-    //    api files('libs/Baidu_MobAds_SDK.jar')
+//    api files('libs/Baidu_MobAds_SDK.jar')
+//    api(name:'open_ad_sdk' , ext:'aar')
     api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 }
 repositories {
@@ -85,7 +85,7 @@ publish {
     userOrg = 'comerss' //bintray账户下某个组织id
     groupId = 'com.comers' //maven仓库下库的包名，一般为模块包名
     artifactId = 'BaseLibrary' //项目名称
-    publishVersion = '1.0.0' //版本号
+    publishVersion = '1.0.1' //版本号
     desc = 'a utils for android develeper' //项目介绍，可以不写
     website = '' //项目主页，可以不写
 }

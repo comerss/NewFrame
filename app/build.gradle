@@ -17,13 +17,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories {
+        flatDir {
+            dirs 'libs'   // aar目录
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 //    implementation project(':baselibrary')
-    implementation 'com.comers:BaseLibrary:1.0.0'
+//    implementation 'com.comers:BaseLibrary:1.0.1'
+    implementation (name:"BaseLibrary",ext:'aar')
 
 }
