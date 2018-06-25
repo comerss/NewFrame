@@ -1,13 +1,9 @@
 package com.donews.frame.camera
 
-import android.Manifest
 import android.content.Intent
 import com.bumptech.glide.Glide
-import com.donews.frame.R
 import com.comers.baselibrary.base.BaseActivity
-import com.comers.baselibrary.utils.CameraUtils
-import com.tbruyelle.rxpermissions2.RxPermissions
-import io.reactivex.rxkotlin.subscribeBy
+import com.donews.frame.R
 import kotlinx.android.synthetic.main.activity_camera.*
 import java.io.File
 
@@ -25,14 +21,7 @@ class CameraActivity : BaseActivity() {
 
     var cameraFile: File? = null
     override fun initListener() {
-        btnCamera.setOnClickListener {
-            RxPermissions(this@CameraActivity)
-                    .requestEach(Manifest.permission.CAMERA)
-                    .subscribeBy {
-                        if (it.granted)
-                            cameraFile = CameraUtils.openCamera(this, 999)
-                    }
-        }
+
     }
 
     override fun initData() {

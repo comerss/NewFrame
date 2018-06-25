@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
+//apply from: '../bintray.gradle' //用来发布版本的，如果报错可以屏蔽
 android {
     compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 27
@@ -11,6 +12,10 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 
     buildTypes {
@@ -29,8 +34,8 @@ android {
         }
     }
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility 1.7
+        sourceCompatibility 1.7
     }
 }
 // 版本号想要统一管理的去主项目配置ext
@@ -43,10 +48,9 @@ dependencies {
     //Glide
     api 'com.github.bumptech.glide:glide:4.3.0'
     //rxjava
-    api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     api 'io.reactivex.rxjava2:rxjava:2.1.14'
     api 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+//    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     // If you want to use Android Lifecycle for providers
     api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.1'
     // If you want to use Kotlin syntax with Android Lifecycle
@@ -54,13 +58,13 @@ dependencies {
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //support
-    api 'com.android.support:design:27.1.1'
-    api 'com.android.support:recyclerview-v7:27.1.1'
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support:support-v13:27.1.1'
-    api 'com.android.support:cardview-v7:27.1.1'
+    api 'com.android.support:design:27.1.0'
+    api 'com.android.support:recyclerview-v7:27.1.0'
+    api 'com.android.support:appcompat-v7:27.1.0'
+    api 'com.android.support:support-v13:27.1.0'
+    api 'com.android.support:cardview-v7:27.1.0'
     api 'com.android.support:multidex:1.0.1'
-    api 'com.android.support:support-annotations:27.1.1'
+    api 'com.android.support:support-annotations:27.1.0'
     //权限 rxjava2的
     api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
     //tab选择器
@@ -70,8 +74,18 @@ dependencies {
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     //    api (name: 'open_ad_sdk', ext: 'aar')
     //    api files('libs/Baidu_MobAds_SDK.jar')
-    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 }
 repositories {
     mavenCentral()
+}
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'comerss' //bintray账户下某个组织id
+    groupId = 'com.comers' //maven仓库下库的包名，一般为模块包名
+    artifactId = 'BaseLibrary' //项目名称
+    publishVersion = '1.0.0' //版本号
+    desc = 'a utils for android develeper' //项目介绍，可以不写
+    website = '' //项目主页，可以不写
 }

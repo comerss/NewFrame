@@ -12,6 +12,14 @@ public class HttpResult<T> implements Serializable {
     public int code=-1;
     public T data;
 
+    public boolean isSuccess() {
+         if(code==1000){
+             return true;
+         }else{
+             return false;
+         }
+    }
+
     @Override
     public String toString() {
         return "HttpResult{" +

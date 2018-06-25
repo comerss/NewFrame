@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Looper;
 
-import com.comers.baselibrary.http.Constant;
 import com.comers.baselibrary.http.HttpHelper;
 import com.comers.baselibrary.http.HttpResult;
 import com.comers.baselibrary.http.ICallBack;
@@ -119,7 +118,7 @@ public class CrashHelper {
         mObjectMap.put("eparam", buffer.toString());
         mObjectMap.put("estack", exceptionStr.toString());
         LogUtil.i("erroe",buffer.toString());
-        HttpHelper.doForm(Constant.CRASH_LOG)
+        HttpHelper.doForm("")
                 .params(mObjectMap)
                 .showLoading(false)
                 .execute(new ICallBack<Data>() {

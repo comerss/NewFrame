@@ -22,4 +22,8 @@
         android:layout_margin="20dp"
         android:text="视频"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/Img"
+        android:layout_height="match_parent"/>
 </android.support.v7.widget.LinearLayoutCompat>

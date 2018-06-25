@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by 79653 on 2018/6/24.
- * 描述：
+ *Rxjava的工具类 一些功能的抽取
  */
 object RxHelper {
     fun <T> schedulersTransformer(): ObservableTransformer<T, T> {    //compose简化线程

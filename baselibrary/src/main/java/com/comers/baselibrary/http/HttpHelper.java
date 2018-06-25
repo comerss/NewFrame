@@ -34,7 +34,6 @@ public class HttpHelper {
     public static FormRequest doForm(@NonNull String url) {
         return new FormRequest(url);
     }
-
     public static PostRequest doPost(@NonNull String url) {
         return new PostRequest(url);
     }

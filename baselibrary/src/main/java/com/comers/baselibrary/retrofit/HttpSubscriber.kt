@@ -21,6 +21,8 @@ open abstract class HttpSubscriber<T>:Observer<T> {
 
     override fun onComplete() {
 
+
+
     }
 
     abstract fun onSuccess(t:T)
