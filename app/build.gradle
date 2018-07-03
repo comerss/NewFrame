@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
+    buildToolsVersion("27.0.3")
     defaultConfig {
         applicationId "com.donews.frame"
         minSdkVersion 19
@@ -28,7 +29,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
 //    implementation project(':baselibrary')
-//    implementation 'com.comers:BaseLibrary:1.0.1'
-    implementation (name:"BaseLibrary",ext:'aar')
+    implementation 'com.comers:BaseLibrary:1.0.0'
+//    implementation (name:"BaseLibrary",ext:'aar')
 
 }

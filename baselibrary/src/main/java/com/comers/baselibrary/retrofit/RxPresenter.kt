@@ -11,7 +11,7 @@ import io.reactivex.disposables.Disposable
  * 描述：
  */
  open class RxPresenter<T : BaseView>(context: Context,t:T) : Presenter<T> {
-    lateinit var context:Context
+    var context:Context
     var mView: T? = null
     init {
         attachView(t)

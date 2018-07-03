@@ -17,14 +17,14 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
     }
 
     override fun initView() {
-        RetrofitHelper.create().getData().compose(bindUntilEvent(ActivityEvent.DESTROY))
-                .compose(RxHelper.schedulersTransformer())
+        RetrofitHelper.create().getData()
+                .compose(bindUntilEvent(ActivityEvent.DESTROY))
+                .compose(RxHelper.io_main())
                 .compose(RxHelper.handleResult())
                 .subscribe(object : HttpSubscriber<List<Data>>(){
                     override fun onSuccess(t: List<Data>) {
                         //TODO异常处理
                     }
-
                 })
     }
 

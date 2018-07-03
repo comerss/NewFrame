@@ -2,7 +2,6 @@ package com.comers.baselibrary.base;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.Looper;
 
 import com.comers.baselibrary.http.HttpHelper;
 import com.comers.baselibrary.http.HttpResult;
@@ -45,7 +44,7 @@ public class CrashHelper {
 
     private void initData() {
         Thread.setDefaultUncaughtExceptionHandler(new MyUnCaughtExceptionHandler());
-        UIUtils.getMainHandler().post(new Runnable() {
+      /*  UIUtils.getMainHandler().post(new Runnable() {
             @Override
             public void run() {
                 //主线程异常拦截
@@ -63,14 +62,13 @@ public class CrashHelper {
                     }
                 }
             }
-        });
+        });*/
     }
 
     /**
      * 全局捕获异常类
      */
     class MyUnCaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
-
         @Override
         public void uncaughtException(Thread thread, final Throwable ex) {
             ex.printStackTrace();

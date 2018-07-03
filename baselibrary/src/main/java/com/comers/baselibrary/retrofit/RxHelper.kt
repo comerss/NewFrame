@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
  *Rxjava的工具类 一些功能的抽取
  */
 object RxHelper {
-    fun <T> schedulersTransformer(): ObservableTransformer<T, T> {    //compose简化线程
+    fun <T> io_main(): ObservableTransformer<T, T> {    //compose简化线程
         return ObservableTransformer { observable ->
             observable.subscribeOn(Schedulers.io())
                     .unsubscribeOn(Schedulers.io())
