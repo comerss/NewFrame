@@ -46,13 +46,6 @@ class SdkActivity : RxBaseActivity() {
     }
 
     private fun downLoad() {
-       /* HttpHelper.doPost("http://bills.178.com/click/aid/1191")
-                .execute(object :ICallBack<Data>(){
-                    override fun onSuccess(sResult: HttpResult<Data>?, json: String?) {
-
-                    }
-
-                })*/
         UpdateService.Builder.create("https://lf.snssdk.com/api/ad/union/redirect/?req_id=a94454afb8f642cfee91d48f0326199bu8592&use_pb=1&rit=900968743&call_back=n%2FmTWOdTRcvpcUZ2m6%2FyuqAQOs42RnUL4A9L5hSA2gE%3D&extra=ck4f4MfSIVuhuQsax%2FrP%2Byeub5gCm3bnm6TbTmBMZtpmAzkBBtpGW48YGh7M9cWlqxCayY1bmNJzvXyhWDypv3qvhgtyh3Yt0Tc7FZs2%2BzxZvt31UnVgiJCJLLCA01X8bclKRubNNTFNvj1abW7yetztFRziAY3X%2BmGzH6PohaCgRU20FbtrZ46HBd5%2BRBoKuO6l9iCRtaoN1A1i1G03ywMmwX5zgbbi3OgDGB5WueyPkD0E3TKVGhjw3BGmhXuWAbjD5DgUmPZ%2F0d4spMfN18hnRLaPK5%2Bs3YM3LR%2BJs%2Fpquvd29vBV07FgZgNWtbF%2F%2B11adJMH8ZuhXhFOeCDTWhJu7HJHFiH%2B2WI%2FYVn38yoovVb5kwgBWxAtB4wuJaM%2FUI6ydVc9CoqSE9YCckE%2FYAqG%2BxarZDhz3ijgfNHNO3gjwDUswMkiCEul%2BryQasAL3xZDcD1imRtEToQzAMXecDuGpV3jxVWGSfQoR1Sl5%2FadxuYxbPshwv65wAau5Xb8ZSDJxmbBJFysVuoFww0Jmrq2S7GzzAcZJXsBIlOTCRY%3D&source_type=1&pack_time=1528420852.59&active_extra=tPUbpyiQQvHxTvpVqWgcdg9%2BtE2Jdoo1PHJDkEJFi5Cz9dvCwD0YYBG%2BYxH6LHY%2FM2xh4ucDCHu8RPAbh7cFEw%3D%3D")//获取下载路径url
                 .setStoreDir("update/flag")//设置存储路径
                 .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)//设置下载成功的提醒
@@ -63,25 +56,29 @@ class SdkActivity : RxBaseActivity() {
     //获取广告的方法
     private fun getAd() {
         var url = "https://i.snssdk.com/api/ad/union/sdk/get_ads/"
-        HttpHelper.doPost(url)
-                .execute(getParams(2).toString(), object : ICallBack<Data>() {
+        HttpHelper.doPost(url)//这里只存在  3或者 4
+                .execute(getParams(3).toString(), object : ICallBack<Data>() {
                     override fun onSuccess(sResult: HttpResult<Data>?, json: String?) {
                         showToast(json)
                     }
                 })
     }
 
-/*    //配置必要的参数
-    private fun getParams(): String? {
-        var jsonArray: JsonArray = JsonArray()
-        jsonArray
-        return ""
-    }*/
 
     override fun getLayoutId(): Int {
         return R.layout.activity_sdk
     }
 
+    fun getPosition(var0: Int): Int {
+        return when (var0) {
+            1 -> 2
+            2 -> 4
+            3, 4, 7 -> 5
+            5 -> 3
+            6 -> 3
+            else -> 3
+        }
+    }
 
     private fun getParams( var3: Int): JSONObject {
         val var4 = JSONObject()
@@ -136,11 +133,10 @@ class SdkActivity : RxBaseActivity() {
     }
     private fun initParam( var2: Int): JSONObject {
         val var3 = JSONObject()
-
         try {
             var3.put("id", "801622501")
             var3.put("adtype", var2)
-            var3.put("pos", "4")
+            var3.put("pos", getPosition(var2))
 //            this.a(var3, "accepted_size", var1.getImgAcceptedWidth(), var1.getImgAcceptedHeight())
             var3.put("is_support_dpl", true)
             var var4 = 1
@@ -224,7 +220,7 @@ class SdkActivity : RxBaseActivity() {
         val var1 = JSONObject()
         try {
             var1.put("appid", "5001622")
-            var1.put("name", "NGA_android_开屏_1")
+            var1.put("name", "引力资讯-android_android")
             var1.put("package_name",this.packageName)
             var1.put("version",this.packageManager.getPackageInfo(this.packageName,0).versionCode)
             var1.put("is_paid_app", false)

@@ -35,8 +35,8 @@ public class UpdateService extends Service {
     public static boolean DEBUG = true;
 
     //下载大小通知频率
-    public static final int UPDATE_NUMBER_SIZE = 1;
-    public static final int DEFAULT_RES_ID = -1;
+    public static final int UPDATE_NUMBER_SIZE = 100;
+    public static final int DEFAULT_RES_ID = 0;
 
     //params
     private static final String URL = "downloadUrl";
@@ -354,6 +354,9 @@ public class UpdateService extends Service {
             }
             UpdateService service = updateServiceWeakReference.get();
             if (service != null) {
+                if(values[0]<0){
+                    values[0]=0;
+                }
                 service.update(values[0]);
             }
         }
