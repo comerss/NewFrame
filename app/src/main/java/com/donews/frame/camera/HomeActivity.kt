@@ -1,7 +1,8 @@
-package com.donews.frame
+package com.donews.frame.camera
 
 import android.util.Base64
 import com.comers.baselibrary.base.BaseActivity
+import com.donews.frame.R
 import okhttp3.*
 import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
@@ -69,7 +70,7 @@ class HomeActivity : BaseActivity() {
                     .put(body)
                     .build()
             response = client.newCall(request).execute()
-//            Log.i(FragmentActivity.TAG, response!!.code() + ":" + response!!.body().string())
+//            Log.Utils(FragmentActivity.TAG, response!!.code() + ":" + response!!.body().string())
 
         } catch (e: Exception) {
             e.printStackTrace()

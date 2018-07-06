@@ -5,9 +5,9 @@ android {
     compileSdkVersion 27
     buildToolsVersion("27.0.3")
     defaultConfig {
-        applicationId "com.donews.frame"
+        applicationId "com.donews.firsthot"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -28,8 +28,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
-//    implementation project(':baselibrary')
-    implementation 'com.comers:BaseLibrary:1.0.0'
+    implementation project(':baselibrary')
+//    implementation 'com.comers:BaseLibrary:1.0.0'
 //    implementation (name:"BaseLibrary",ext:'aar')
 
 }

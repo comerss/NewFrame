@@ -9,5 +9,6 @@
 
     <application>
         <activity android:name=".retrofit.JavaActivity"/>
+        <service android:name=".base.UpdateService"/>
     </application>
 </manifest>

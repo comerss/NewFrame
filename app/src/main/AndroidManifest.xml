@@ -12,8 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".sdk.DoApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".JavaActivity">
+        <activity android:name=".sdk.SdkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".camera.CameraActivity"/>
+
+        <!--<activity android:name=".sdk.SdkActivity"/>-->
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.donews.frame.fileprovider"

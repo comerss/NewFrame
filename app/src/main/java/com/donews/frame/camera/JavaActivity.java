@@ -1,4 +1,4 @@
-package com.donews.frame;
+package com.donews.frame.camera;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,6 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.comers.baselibrary.base.CrashHelper;
-import com.comers.baselibrary.retrofit.RxHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,8 +15,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPOutputStream;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.functions.Consumer;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
@@ -56,19 +53,7 @@ public class JavaActivity extends AppCompatActivity {
     }
 
     private void sendReport() {
-        Observable.create(new ObservableOnSubscribe<Object>() {
-            @Override
-            public void subscribe(ObservableEmitter<Object> emitter) throws Exception {
-                uploadlog();
-            }
-        }).compose(RxHelper.INSTANCE.schedulersTransformer())
-                .
-                        subscribe(new Consumer<Object>() {
-                            @Override
-                            public void accept(Object o) throws Exception {
 
-                            }
-                        });
     }
 
     public void uploadlog() {

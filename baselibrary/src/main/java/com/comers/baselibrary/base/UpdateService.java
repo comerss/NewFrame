@@ -18,7 +18,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.comers.baselibrary.R;
-import com.comers.baselibrary.http.Constant;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -32,8 +31,8 @@ import java.net.URL;
  * Created by Sun on 2016/6/12.
  */
 public class UpdateService extends Service {
-    public static final String TAG =  "UpdateService";
-    public static boolean DEBUG = Constant.IS_DEBUG;
+    public static final String TAG = "UpdateService";
+    public static boolean DEBUG = true;
 
     //下载大小通知频率
     public static final int UPDATE_NUMBER_SIZE = 1;
@@ -70,18 +69,19 @@ public class UpdateService extends Service {
     /**
      * whether debug
      */
-    public static void debug(){
+    public static void debug() {
         DEBUG = true;
     }
 
-    private static Intent installIntent(String path){
+    private static Intent installIntent(String path) {
         Uri uri = Uri.fromFile(new File(path));
         Intent installIntent = new Intent(Intent.ACTION_VIEW);
         installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
         return installIntent;
     }
-    private static Intent webLauncher(String downloadUrl){
+
+    private static Intent webLauncher(String downloadUrl) {
         Uri download = Uri.parse(downloadUrl);
         Intent intent = new Intent(Intent.ACTION_VIEW, download);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -92,16 +92,21 @@ public class UpdateService extends Service {
         if (downloadUrl == null || TextUtils.isEmpty(downloadUrl)) {
             return "noName.apk";
         }
-        return downloadUrl.substring(downloadUrl.lastIndexOf("/"));
+        String uri=downloadUrl.substring(downloadUrl.lastIndexOf("/"));
+        if(uri.length()>20){
+            return System.currentTimeMillis()+".apk";
+        }else{
+            return downloadUrl.substring(downloadUrl.lastIndexOf("/"));
+        }
     }
 
-    private static File getDownloadDir(UpdateService service){
+    private static File getDownloadDir(UpdateService service) {
         File downloadDir = null;
         if (Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
-            if (service.storeDir != null){
+            if (service.storeDir != null) {
                 downloadDir = new File(Environment.getExternalStorageDirectory(), service.storeDir);
-            }else {
+            } else {
                 downloadDir = new File(service.getExternalCacheDir(), "update");
             }
         } else {
@@ -122,7 +127,7 @@ public class UpdateService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (!startDownload && intent != null){
+        if (!startDownload && intent != null) {
             startDownload = true;
             downloadUrl = intent.getStringExtra(URL);
             icoResId = intent.getIntExtra(ICO_RES_ID, DEFAULT_RES_ID);
@@ -134,7 +139,7 @@ public class UpdateService extends Service {
             downloadSuccessNotificationFlag = intent.getIntExtra(DOWNLOAD_SUCCESS_NOTIFICATION_FLAG, 0);
 
 
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "downloadUrl: " + downloadUrl);
                 Log.d(TAG, "icoResId: " + icoResId);
                 Log.d(TAG, "icoSmallResId: " + icoSmallResId);
@@ -172,7 +177,7 @@ public class UpdateService extends Service {
         return applicationName;
     }
 
-    private void buildNotification(){
+    private void buildNotification() {
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         builder = new Notification.Builder(this);
         builder.setContentTitle(getString(R.string.update_app_model_prepare))
@@ -186,18 +191,17 @@ public class UpdateService extends Service {
         manager.notify(notifyId, builder.build());
     }
 
-    private void start(){
+    private void start() {
         builder.setContentTitle(appName);
         builder.setContentText(getString(R.string.update_app_model_prepare));
         manager.notify(notifyId, builder.build());
     }
 
     /**
-     *
      * @param progress download percent , max 100
      */
-    private void update(int progress){
-        if (progress - lastProgressNumber > updateProgress){
+    private void update(int progress) {
+        if (progress - lastProgressNumber > updateProgress) {
             lastProgressNumber = progress;
             builder.setProgress(100, progress, false);
             builder.setContentText(getString(R.string.update_app_model_progress, progress, "%"));
@@ -219,7 +223,7 @@ public class UpdateService extends Service {
         stopSelf();
     }
 
-    private void error(){
+    private void error() {
         Intent i = webLauncher(downloadUrl);
         PendingIntent intent = PendingIntent.getActivity(this, 0, i,
                 PendingIntent.FLAG_UPDATE_CURRENT);
@@ -233,11 +237,11 @@ public class UpdateService extends Service {
         stopSelf();
     }
 
-    private static class DownloadApk extends AsyncTask<String, Integer, String>{
+    private static class DownloadApk extends AsyncTask<String, Integer, String> {
 
         private WeakReference<UpdateService> updateServiceWeakReference;
 
-        public DownloadApk(UpdateService service){
+        public DownloadApk(UpdateService service) {
             updateServiceWeakReference = new WeakReference<>(service);
         }
 
@@ -245,7 +249,7 @@ public class UpdateService extends Service {
         protected void onPreExecute() {
             super.onPreExecute();
             UpdateService service = updateServiceWeakReference.get();
-            if (service != null){
+            if (service != null) {
                 service.start();
             }
         }
@@ -257,12 +261,12 @@ public class UpdateService extends Service {
 
             final File file = new File(UpdateService.getDownloadDir(updateServiceWeakReference.get()),
                     UpdateService.getSaveFileName(downloadUrl));
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "download url is " + downloadUrl);
                 Log.d(TAG, "download apk cache at " + file.getAbsolutePath());
             }
             File dir = file.getParentFile();
-            if (!dir.exists()){
+            if (!dir.exists()) {
                 dir.mkdirs();
             }
 
@@ -277,8 +281,15 @@ public class UpdateService extends Service {
                 httpConnection.setConnectTimeout(20000);
                 httpConnection.setReadTimeout(20000);
 
-                if (DEBUG){
+                if (DEBUG) {
                     Log.d(TAG, "download status code: " + httpConnection.getResponseCode());
+                }
+
+                if (httpConnection.getResponseCode() == 302) {
+                    //重定向
+                    String realUrl=httpConnection.getHeaderField("Location");
+                    url = new URL(realUrl);
+                    httpConnection = (HttpURLConnection) url.openConnection();
                 }
 
                 if (httpConnection.getResponseCode() != 200) {
@@ -294,8 +305,9 @@ public class UpdateService extends Service {
                     } else {
                         file.delete();
                     }
+                }else{
+                    file.createNewFile();
                 }
-                file.createNewFile();
                 is = httpConnection.getInputStream();
                 fos = new FileOutputStream(file, false);
                 byte buffer[] = new byte[4096];
@@ -337,11 +349,11 @@ public class UpdateService extends Service {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "current progress is " + values[0]);
             }
             UpdateService service = updateServiceWeakReference.get();
-            if (service != null){
+            if (service != null) {
                 service.update(values[0]);
             }
         }
@@ -350,10 +362,10 @@ public class UpdateService extends Service {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             UpdateService service = updateServiceWeakReference.get();
-            if (service != null){
-                if (s != null){
+            if (service != null) {
+                if (s != null) {
                     service.success(s);
-                }else {
+                } else {
                     service.error();
                 }
             }
@@ -364,7 +376,7 @@ public class UpdateService extends Service {
     /**
      * a builder class helper use UpdateService
      */
-    public static class Builder{
+    public static class Builder {
 
         private String downloadUrl;
         private int icoResId = DEFAULT_RES_ID;             //default app ico
@@ -375,11 +387,11 @@ public class UpdateService extends Service {
         private int downloadSuccessNotificationFlag;
         private int downloadErrorNotificationFlag;
 
-        protected Builder(String downloadUrl){
+        protected Builder(String downloadUrl) {
             this.downloadUrl = downloadUrl;
         }
 
-        public static Builder create(String downloadUrl){
+        public static Builder create(String downloadUrl) {
             if (downloadUrl == null) {
                 throw new NullPointerException("downloadUrl == null");
             }
@@ -413,7 +425,7 @@ public class UpdateService extends Service {
         }
 
         public Builder setUpdateProgress(int updateProgress) {
-            if (updateProgress < 1){
+            if (updateProgress < 1) {
                 throw new IllegalArgumentException("updateProgress < 1");
             }
             this.updateProgress = updateProgress;
@@ -456,19 +468,19 @@ public class UpdateService extends Service {
             return this;
         }
 
-        public Builder build(Context context){
-            if (context == null){
+        public Builder build(Context context) {
+            if (context == null) {
                 throw new NullPointerException("context == null");
             }
             Intent intent = new Intent();
             intent.setClass(context, UpdateService.class);
             intent.putExtra(URL, downloadUrl);
 
-            if (icoResId == DEFAULT_RES_ID){
+            if (icoResId == DEFAULT_RES_ID) {
                 icoResId = getIcon(context);
             }
 
-            if (icoSmallResId == DEFAULT_RES_ID){
+            if (icoSmallResId == DEFAULT_RES_ID) {
                 icoSmallResId = icoResId;
             }
             intent.putExtra(ICO_RES_ID, icoResId);
@@ -483,7 +495,7 @@ public class UpdateService extends Service {
             return this;
         }
 
-        private int getIcon(Context context){
+        private int getIcon(Context context) {
 
             final PackageManager packageManager = context.getPackageManager();
             ApplicationInfo appInfo = null;
@@ -492,7 +504,7 @@ public class UpdateService extends Service {
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
-            if (appInfo != null){
+            if (appInfo != null) {
                 return appInfo.icon;
             }
             return 0;

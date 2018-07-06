@@ -1,4 +1,4 @@
-package com.donews.frame
+package com.donews.frame.camera
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
