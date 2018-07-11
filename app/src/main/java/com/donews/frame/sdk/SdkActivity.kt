@@ -1,7 +1,6 @@
 package com.donews.frame.sdk
 
 import android.annotation.SuppressLint
-import android.app.DownloadManager
 import android.app.Notification
 import android.content.Context
 import android.net.ConnectivityManager
@@ -34,7 +33,7 @@ import javax.crypto.spec.SecretKeySpec
  */
 class SdkActivity : RxBaseActivity() {
     override fun initView() {
-
+        var response=""
     }
 
     override fun initListener() {
