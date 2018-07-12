@@ -1,22 +1,39 @@
 /*     */ package com.ss.android.crash.log;
 /*     */ 
 /*     */ import android.content.Context;
-/*     */ import android.content.SharedPreferences;
-/*     */ import android.content.SharedPreferences.Editor;
-/*     */ import android.text.TextUtils;
-/*     */ import java.io.BufferedReader;
-/*     */ import java.io.Closeable;
-/*     */ import java.io.File;
-/*     */ import java.io.FileReader;
-/*     */ import java.io.FilenameFilter;
-/*     */ import java.io.IOException;
-/*     */ import java.util.Arrays;
-/*     */ import java.util.Collections;
-/*     */ import java.util.Iterator;
-/*     */ import java.util.Map;
-/*     */ import java.util.Set;
-/*     */ import org.json.JSONException;
-/*     */ import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -55,9 +72,9 @@
 /*  55 */     if ((this.b.a() != null) && (this.b.a().containsKey("device_id"))) {
 /*  56 */       Map localMap = this.b.a();
 /*  57 */       JSONObject localJSONObject = new JSONObject();
-/*  58 */       for (String str : localMap.keySet()) {
+/*  58 */       for (Object str : localMap.keySet()) {
 /*     */         try {
-/*  60 */           localJSONObject.put(str, localMap.get(str));
+/*  60 */           localJSONObject.put(str.toString(), localMap.get(str));
 /*     */         } catch (JSONException localJSONException) {
 /*  62 */           localJSONException.printStackTrace();
 /*     */         }
@@ -71,8 +88,8 @@
 /*     */     {
 /*     */       public void run() {
 /*     */         try {
-/*  74 */           k.a(k.this);
-/*  75 */           k.b(k.this);
+/*  74 */         d();
+/*  75 */           e();
 /*     */         }
 /*     */         catch (Throwable localThrowable) {}
 /*     */       }
@@ -146,9 +163,9 @@
 /* 146 */             if (this.d != null) {
 /* 147 */               localJSONObject = new JSONObject(this.d);
 /*     */             } else {
-/* 149 */               localObject2 = this.b.a();
-/* 150 */               for (String str4 : ((Map)localObject2).keySet()) {
-/* 151 */                 localJSONObject.put(str4, ((Map)localObject2).get(str4));
+/* 149 */              Map localObject2 = this.b.a();
+/* 150 */               for (Object str4 : ((Map)localObject2).keySet()) {
+/* 151 */                 localJSONObject.put(str4.toString(), ((Map)localObject2).get(str4));
 /*     */               }
 /*     */             }
 /* 154 */             Object localObject2 = new JSONObject();
@@ -163,7 +180,7 @@
 /* 163 */               ((JSONObject)localObject2).put("remote_process", 1);
 /*     */             } else
 /* 165 */               ((JSONObject)localObject2).put("remote_process", 0);
-/* 166 */             l.a(((JSONObject)localObject2).toString(), this.b.a());
+/* 166 */             com.ss.android.crash.log.l.a(((JSONObject)localObject2).toString(), this.b.a());
 /*     */           }
 /*     */           catch (Exception localException1) {}
 /*     */         }
@@ -187,12 +204,12 @@
 /* 187 */         localJSONObject.put(str, localMap.get(str));
 /*     */       }
 /* 189 */       paramJSONObject.put("header", localJSONObject);
-/* 190 */       localObject = a(paramJSONObject.toString(), String.valueOf(System.currentTimeMillis()));
+/* 190 */      final String localObject = a(paramJSONObject.toString(), String.valueOf(System.currentTimeMillis()));
 /* 191 */       p.a().a(new Runnable()
 /*     */       {
 /*     */         public void run() {
-/* 194 */           if (l.a(paramJSONObject.toString(), k.c(k.this).a())) {
-/* 195 */             synchronized (k.b()) {
+/* 194 */           if (l.a(paramJSONObject.toString(),b.a())) {
+/* 195 */             synchronized (k.this) {
 /* 196 */               n.a(localObject);
 /*     */             }
 /*     */           }
@@ -201,7 +218,7 @@
 /*     */     }
 /*     */     catch (Throwable localThrowable) {}
 /*     */   }
-/*     */   
+/*     */
 /*     */   private String a(String paramString1, String paramString2) throws IOException {
 /* 206 */     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
 /* 207 */       return null;
@@ -217,7 +234,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\m.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\LogUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -1,7 +1,7 @@
 /*    */ package com.bytedance.sdk.openadsdk;
 /*    */ 
 /*    */ import android.content.Context;
-/*    */ import com.bytedance.sdk.openadsdk.core.k;
+/*    */ import com.bytedance.sdk.openadsdk.core.X509Helper;
 /*    */ import com.bytedance.sdk.openadsdk.core.t;
 /*    */ 
 /*    */ 
@@ -17,7 +17,7 @@
 /*    */ 
 /*    */   public static TTAdManager getInstance(Context paramContext)
 /*    */   {
-/* 20 */     k.a(paramContext);
+/* 20 */     X509Helper.a(paramContext);
 /* 21 */     return a;
 /*    */   }
 /*    */ }

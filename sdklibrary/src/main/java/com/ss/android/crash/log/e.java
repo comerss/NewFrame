@@ -1,21 +1,39 @@
 /*     */ package com.ss.android.crash.log;
 /*     */ 
-/*     */ import android.app.ActivityManager;
-/*     */ import android.app.ActivityManager.RunningAppProcessInfo;
-/*     */ import android.app.ActivityManager.RunningTaskInfo;
-/*     */ import android.content.ComponentName;
-/*     */ import android.content.Context;
-/*     */ import android.os.Build.VERSION;
-/*     */ import android.os.Looper;
-/*     */ import android.text.TextUtils;
-/*     */ import java.util.Iterator;
-/*     */ import java.util.List;
-/*     */ import java.util.Map;
-/*     */ import java.util.Map.Entry;
-/*     */ import java.util.concurrent.TimeUnit;
-/*     */ import org.json.JSONArray;
-/*     */ import org.json.JSONException;
-/*     */ import org.json.JSONObject;
+/*     */
+
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.os.Build;
+import android.os.Looper;
+import android.text.TextUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ public class e
@@ -33,7 +51,7 @@
 /*     */   
 /*     */   public static JSONObject a() throws JSONException
 /*     */   {
-/*  36 */     Map localMap = Thread.getAllStackTraces();
+/*  36 */     Map<Thread,StackTraceElement []> localMap = Thread.getAllStackTraces();
 /*  37 */     if ((localMap == null) || (localMap.size() <= 0))
 /*  38 */       return null;
 /*  39 */     JSONObject localJSONObject1 = new JSONObject();
@@ -41,7 +59,7 @@
 /*  41 */     int i = 0;
 /*  42 */     JSONArray localJSONArray = new JSONArray();
 /*  43 */     int j = 0;
-/*  44 */     for (Map.Entry localEntry : localMap.entrySet()) {
+/*  44 */     for (Map.Entry<Thread,StackTraceElement []> localEntry : localMap.entrySet()) {
 /*  45 */       j++;
 /*  46 */       if (j > 5L)
 /*     */         break;
@@ -53,16 +71,16 @@
 /*  53 */         localStringBuilder.append(localStackTraceElement.toString()).append("\n");
 /*     */       }
 /*     */       try {
-/*  56 */         if (((Thread)localEntry.getKey()).getName().equalsIgnoreCase("main")) {
-/*  57 */           localJSONObject1.put("mainStackFromTrace", localStringBuilder.toString());
-/*  58 */           i = 1;
-/*     */         }
-/*  60 */         localJSONObject2.put("id", ((Thread)localEntry.getKey()).getId());
-/*  61 */         localJSONObject2.put("name", ((Thread)localEntry.getKey()).getName());
-/*  62 */         localJSONObject2.put("stack", localStringBuilder.toString());
-/*     */       } catch (JSONException localJSONException) {
-/*  64 */         localJSONException.printStackTrace();
-/*     */       }
+         if (((Thread)localEntry.getKey()).getName().equalsIgnoreCase("main")) {
+         localJSONObject1.put("mainStackFromTrace", localStringBuilder.toString());
+          i = 1;
+       }
+        localJSONObject2.put("id", ((Thread)localEntry.getKey()).getId());
+         localJSONObject2.put("name", ((Thread)localEntry.getKey()).getName());
+        localJSONObject2.put("stack", localStringBuilder.toString());
+      } catch (JSONException localJSONException) {
+        localJSONException.printStackTrace();
+       }
 /*  66 */       localJSONArray.put(localJSONObject2);
 /*     */     }
 /*  68 */     if (i == 0) {
@@ -90,7 +108,7 @@
 /*  90 */       return false;
 /*     */     Object localObject;
 /*     */     try {
-/*  93 */       ActivityManager localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
+/*  93 */       @SuppressLint("WrongConstant") ActivityManager localActivityManager = (ActivityManager)paramContext.getSystemService("activity");
 /*  94 */       List localList; if (Build.VERSION.SDK_INT < 21) {
 /*  95 */         localList = localActivityManager.getRunningTasks(1);
 /*  96 */         if (!localList.isEmpty()) {

@@ -20,10 +20,11 @@ import android.widget.Toast;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.n;
 import com.bytedance.sdk.openadsdk.ggg.q;
 import com.bytedance.sdk.openadsdk.ggg.r;
-import com.bytedance.sdk.openadsdk.ggg.t;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
 import java.util.HashMap;
@@ -77,7 +78,7 @@ import java.util.HashMap;
 /*     */ 
 /*     */ 
 /*     */ public class x
-/*     */   implements e, t.a
+/*     */   implements e, MineHandler.OnResult
 /*     */ {
 /*     */   private Context a;
 /*     */   private final com.bytedance.sdk.openadsdk.core.nibuguan.b b;
@@ -89,7 +90,7 @@ import java.util.HashMap;
 /*     */   private b h;
 /*     */   private TTAppDownloadListener i;
 /*     */   private com.bytedance.sdk.openadsdk.eeeee.d j;
-/*  65 */   private final t k = new t(Looper.getMainLooper(), this);
+/*  65 */   private final MineHandler k = new MineHandler(Looper.getMainLooper(), this);
 /*     */
 /*     */   private static HashMap<String, a> l;
 /*     */
@@ -105,7 +106,7 @@ import java.util.HashMap;
 /*  78 */     this.b = paramh.m();
 /*  79 */     this.o = paramString;
 /*  80 */     if (this.b == null) {
-/*  81 */       throw new RuntimeException("not ssl App type Ad !");
+/*  81 */       throw new RuntimeException("not SslHepler App type Ad !");
 /*     */     }
 /*  83 */     this.m = new com.bytedance.sdk.openadsdk.core.nibuguan.e(paramh, paramString);
 /*  84 */     e();
@@ -166,9 +167,9 @@ import java.util.HashMap;
 /*     */     }
 /*     */     else
 /*     */     {
-/* 142 */       /*int i1 = bb(this.bb, this.eee.bee, this.eee.bb, this.bee.c());
+/* 142 */       /*int i1 = bb(this.bb, this.eee.bee, this.eee.bb, this.bee.cc());
 *//* 143 *//*       if ((this.eee != null) && (this.eee.bb >= 0L)) {
-*//* 144 *//*         g.bb(this.bb).bb(Long.valueOf(this.eee.bb), this, this.mM);
+*//* 144 *//*         ApiException.bb(this.bb).bb(Long.valueOf(this.eee.bb), this, this.mM);
 *//*     *//*       }*/
         int i1=0;
 /* 146 */       if (i1 == 4)
@@ -286,12 +287,12 @@ private void i()
 /*     */     {
 /*     */       public void a() {
 /* 233 */         m();
-/* 234 */         com.bytedance.sdk.openadsdk.ggg.m.b("TT_AD_SDK", "dialog onConfirm");
+/* 234 */         LogUtils.b("TT_AD_SDK", "dialog onConfirm");
 /*     */       }
 /*     */
 /*     */       public void b()
 /*     */       {
-/* 239 */        com.bytedance.sdk.openadsdk.ggg.m.b("TT_AD_SDK", "dialog onCancel");
+/* 239 */        LogUtils.b("TT_AD_SDK", "dialog onCancel");
 /*     */       }
 /*     */
 /* 242 */     };
@@ -511,7 +512,7 @@ private boolean k()
 /* 455 */     this.a.startService(localIntent);
 /*     */   }
 /*     */
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 460 */     if ((paramMessage == null) || (!this.d) || (this.i == null)) {
 /* 461 */       return;

@@ -1,26 +1,50 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
-/*     */ import android.annotation.SuppressLint;
-/*     */ import android.content.Context;
-/*     */ import android.net.wifi.WifiInfo;
-/*     */ import android.net.wifi.WifiManager;
 /*     */
-/*     */ import android.os.Environment;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.Settings;
+import android.support.annotation.RequiresPermission;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+
+import com.bytedance.sdk.openadsdk.ggg.r;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.RandomAccessFile;
+import java.math.BigInteger;
+import java.nio.channels.FileLock;
+import java.security.SecureRandom;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /*     */
-/*     */ import android.support.annotation.RequiresPermission;
-/*     */ import android.telephony.TelephonyManager;
-/*     */ import android.text.TextUtils;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ import java.io.BufferedReader;
-/*     */ import java.io.File;
-/*     */ import java.io.FileReader;
-/*     */ import java.io.RandomAccessFile;
-/*     */ import java.math.BigInteger;
 /*     */
-/*     */ import java.nio.channels.FileLock;
-/*     */ import java.security.SecureRandom;
-/*     */ import java.text.SimpleDateFormat;
-/*     */ import java.util.Locale;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -51,13 +75,14 @@
 /*     */   
 /*     */   public static String a(Context paramContext)
 /*     */   {
-/*  54 */     if ((TextUtils.isEmpty(a)) && 
-/*  55 */       (!j)) {
-/*  56 */       synchronized (i.class) {
-/*  57 */         if (!j) {
-/*  58 */           k(paramContext);
-/*     */         }
-/*     */       }
+/*  54 */     if (TextUtils.isEmpty(a) && !j) {
+        Class var1 = i.class;
+        synchronized(i.class) {
+            if (!j) {
+                k(paramContext);
+            }
+        }
+
 /*     */     }
 /*     */     
 /*  63 */     return a;
@@ -175,19 +200,20 @@
 /*     */   public static void a(Context paramContext, String paramString)
 /*     */   {
 /* 177 */     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(a))) {
-/* 178 */       c localc = c.a(paramContext);
+/* 178 */       SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 179 */       localc.a("did", paramString);
 /* 180 */       a = paramString;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   @RequiresPermission(anyOf={"android.permission.ACCESS_WIFI_STATE"})
+/*     */   @SuppressLint("MissingPermission")
+@RequiresPermission(anyOf={"android.permission.ACCESS_WIFI_STATE"})
 /*     */   private static void k(Context paramContext) {
 /* 186 */     if (j) {
 /* 187 */       return;
 /*     */     }
-/* 189 */     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
-/* 190 */     WifiManager localWifiManager = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
+/* 189 */     @SuppressLint("WrongConstant") TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
+/* 190 */     @SuppressLint("WrongConstant") WifiManager localWifiManager = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
 /*     */     try {
 /* 192 */       c = localTelephonyManager.getDeviceId();
 /* 193 */       f = localTelephonyManager.getSubscriberId();
@@ -200,19 +226,20 @@
 /*     */     catch (Throwable localThrowable) {}
 /*     */     
 /* 202 */     b = a(paramContext, true);
-/* 203 */     a = c.a(paramContext).b("did", null);
+/* 203 */     a = SharedHepler.getInstance(paramContext).b("did", null);
 /* 204 */     g = a();
 /* 205 */     h = b();
-/* 206 */     i = c.a(paramContext).b("uuid", null);
+/* 206 */     i = SharedHepler.getInstance(paramContext).b("uuid", null);
 /* 207 */     j = true;
 /*     */   }
 /*     */   
-/*     */   public static void j(Context paramContext)
+/*     */   @SuppressLint("MissingPermission")
+public static void j(Context paramContext)
 /*     */   {
 /* 212 */     if (k) {
 /* 213 */       return;
 /*     */     }
-/* 215 */     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
+/* 215 */     @SuppressLint("WrongConstant") TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getApplicationContext().getSystemService("phone");
 /*     */     try {
 /* 217 */       c = localTelephonyManager.getDeviceId();
 /* 218 */       f = localTelephonyManager.getSubscriberId();
@@ -235,7 +262,7 @@
 /* 235 */       if ((localObject1 == null) || (((String)localObject1).equals("9774d56d682e549c")) || 
 /* 236 */         (((String)localObject1).length() < 13))
 /*     */       {
-/* 238 */         c localc = c.a(paramContext);
+/* 238 */         SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 239 */         Object localObject2 = localc.b("openudid", null);
 /* 240 */         if (!a((String)localObject2)) {
 /* 241 */           SecureRandom localSecureRandom = new SecureRandom();

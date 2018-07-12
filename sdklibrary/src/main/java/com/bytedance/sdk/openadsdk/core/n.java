@@ -2,6 +2,7 @@
 /*    */ 
 /*    */ import android.content.Context;
 /*    */ import com.bytedance.sdk.openadsdk.core.eeee.c;
+import com.bytedance.sdk.openadsdk.dddd.doErrorHelper;
 /*    */
 /*    */
 
@@ -20,7 +21,7 @@
 /*    */ public class n
 /*    */ {
 /*    */   private static volatile com.bytedance.sdk.openadsdk.dddd.b<com.bytedance.sdk.openadsdk.dddd.a> a;
-/*    */   private static volatile o<com.bytedance.sdk.openadsdk.dddd.a> b;
+/*    */   private static volatile AdNativeListener<com.bytedance.sdk.openadsdk.dddd.a> b;
 /*    */   private static volatile com.bytedance.sdk.openadsdk.ff.a c;
 /*    */   private static Context d;
 /*    */   private static volatile c e;
@@ -49,11 +50,11 @@
 /* 48 */     return a;
 /*    */   }
 /*    */   
-/*    */   public static o<com.bytedance.sdk.openadsdk.dddd.a> c() {
+/*    */   public static AdNativeListener<com.bytedance.sdk.openadsdk.dddd.a> c() {
 /* 52 */     if (b == null) {
 /* 53 */       synchronized (n.class) {
 /* 54 */         if (b == null) {
-/* 55 */           b = new p(d);
+/* 55 */           b = new AdNativeListenerImpl(d);
 /*    */         }
 /*    */       }
 /*    */     }
@@ -71,15 +72,15 @@
 /* 70 */     return c;
 /*    */   }
 /*    */   
-/*    */   private static ffff.b f() {
-/* 74 */     return f.b.a();
+/*    */   private static doErrorHelper.b f() {
+/* 74 */     return doErrorHelper.b.a();
 /*    */   }
 /*    */   
-/*    */   private static ffff.a b(Context paramContext) {
-/* 78 */     new ffff.a()
+/*    */   private static doErrorHelper.a b(final Context paramContext) {
+/* 78 */    return new doErrorHelper.a()
 /*    */     {
 /*    */       public boolean a() {
-/* 81 */         return com.bytedance.sdk.openadsdk.ggg.n.a(this.a);
+/* 81 */         return com.bytedance.sdk.openadsdk.ggg.n.a(paramContext);
 /*    */       }
 /*    */     };
 /*    */   }

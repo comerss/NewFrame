@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import com.bytedance.sdk.openadsdk.TTAdDislike;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTBannerAd;
-import com.bytedance.sdk.openadsdk.b.dislike;
+import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.f;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.r;
-import com.bytedance.sdk.openadsdk.ggg.t;
 
 /*     */
 /*     */
@@ -54,17 +54,17 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */ 
 /*     */ 
 /*     */ public class eee
-/*     */   implements TTBannerAd, t.a
+/*     */   implements TTBannerAd, MineHandler.OnResult
 /*     */ {
 /*     */   private d a;
 /*     */   private com.bytedance.sdk.openadsdk.core.bbb.a b;
 /*     */   private Context c;
-/*     */   private t d;
+/*     */   private MineHandler d;
 /*     */   private int e;
 /*     */   private h f;
 /*     */   private TTBannerAd.AdInteractionListener g;
 /*     */   private TTAppDownloadListener h;
-/*     */   private dislike i;
+/*     */   private TTAdDislikeImpl i;
 /*     */   private b j;
 /*     */   private x k;
 /*  53 */   private String l = "banner_ad";
@@ -91,9 +91,9 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */       public void a(boolean paramAnonymousBoolean) {
 /*  75 */         if (paramAnonymousBoolean) {
 /*  76 */           a();
-/*  77 */           m.b("TTBannerAd", "获得焦点，开始计时");
+/*  77 */           LogUtils.b("TTBannerAd", "获得焦点，开始计时");
 /*     */         } else {
-/*  79 */           m.b("TTBannerAd", "失去焦点，停止计时");
+/*  79 */           LogUtils.b("TTBannerAd", "失去焦点，停止计时");
 /*  80 */           b();
 /*     */         }
 /*     */       }
@@ -109,7 +109,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */       public void a(View paramAnonymousView)
 /*     */       {
 /*  94 */         a();
-/*  95 */         m.b("TTBannerAd", "BANNER SHOW");
+/*  95 */         LogUtils.b("TTBannerAd", "BANNER SHOW");
 /*     */       }
 /*  97 */     });
 /*  98 */     localf.setNeedCheckingShow(true);
@@ -176,7 +176,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 159 */       paramInt = 120000;
 /*     */     }
 /* 161 */     this.e = paramInt;
-/* 162 */     this.d = new t(Looper.getMainLooper(), this);
+/* 162 */     this.d = new MineHandler(Looper.getMainLooper(), this);
 /*     */   }
 /*     */   
 /*     */ 
@@ -193,12 +193,12 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */   private void b(TTAdDislike.DislikeInteractionCallback paramDislikeInteractionCallback)
 /*     */   {
 /* 178 */     if (this.i == null) {
-/* 179 */       this.i = new dislike(this.c, this.f);
+/* 179 */       this.i = new TTAdDislikeImpl(this.c, this.f);
 /*     */     }
 /* 181 */     this.i.setDislikeInteractionCallback(paramDislikeInteractionCallback);
 /*     */   }
 /*     */   
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 186 */     if (paramMessage.what == 1) {
 /* 187 */       b();
@@ -260,7 +260,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 243 */     paramc.a(parama.a());
 /* 244 */     final h localh = parama.b();
 /* 245 */     this.f = localh;
-/* 246 */     this.i = new dislike(this.c, this.f);
+/* 246 */     this.i = new TTAdDislikeImpl(this.c, this.f);
 /* 247 */     paramc.a(localh);
 /* 248 */     this.k = a(localh);
 /* 249 */     com.bytedance.sdk.openadsdk.dddd.c.a(localh);
@@ -304,7 +304,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */       }
 /*     */       
 /* 289 */     });
-/* 290 */      com.bytedance.sdk.openadsdk.core.a.a locala = new  com.bytedance.sdk.openadsdk.core.a.a(this.c, localh, this.l, 2);
+/* 290 */      com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.c, localh, this.l, 2);
 /* 291 */     locala.a(paramc);
 /* 292 */     locala.b(this.a.d());
 /* 293 */     locala.a(this.k);

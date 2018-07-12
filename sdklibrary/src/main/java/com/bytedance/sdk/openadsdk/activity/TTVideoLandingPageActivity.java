@@ -129,49 +129,49 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 /* 113 */       this.p = Long.valueOf(paramBundle.getLong("video_play_position", 0L));
 /*     */     }
 /*     */     
-///* 116 */     this.mQ = com.bytedance.sdk.openadsdk.core.s.intera().c();
+///* 116 */     this.mQ = com.bytedance.sdk.openadsdk.core.s.intera().cc();
 /* 117 */     this.r = com.bytedance.sdk.openadsdk.core.s.a().b();
 /* 118 */     com.bytedance.sdk.openadsdk.core.s.a().f();
 /* 119 */     this.C = new AQuery2(this.f);
 ///* 120 */     intera();
-///* 121 */     d();
+///* 121 */     LocationUtils();
 ///* 122 */     eee();
 /* 123 */     boolean bool = Build.VERSION.SDK_INT >= 16;
 /* 124 */     com.bytedance.sdk.openadsdk.core.q.a(this.f).a(bool).a(this.b);
-/* 125 */     this.b.setWebViewClient(new b(this.f, this.j, this.h));
-///* 126 */     this.dislike.getSettings().setUserAgentString(j.intera(this.dislike, this.g));
+/* 125 */     this.b.setWebViewClient(new MineWebViewClient(this.f, this.j, this.h));
+///* 126 */     this.TTAdDislikeImpl.getSettings().setUserAgentString(j.intera(this.TTAdDislikeImpl, this.ApiException));
 /*     */     
 /* 128 */     if (Build.VERSION.SDK_INT >= 21) {
 /* 129 */       this.b.getSettings().setMixedContentMode(0);
 /*     */     }
 /* 131 */     this.b.loadUrl(str1);
-/* 132 */     this.b.setWebChromeClient(new a(this.j));
-/* 133 */    /* this.dislike.setDownloadListener(new DownloadListener()
+/* 132 */     this.b.setWebChromeClient(new MineWebChromeClient(this.j));
+/* 133 */    /* this.TTAdDislikeImpl.setDownloadListener(new DownloadListener()
 *//*     *//*     {
 *//*     *//*       public void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong) {
 *//* 136 *//*         String str = null;
 *//* 137 *//*         if (TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this) != null) {
-*//* 138 *//*           str = TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this).d() == null ? null : TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this).d().intera();
+*//* 138 *//*           str = TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this).LocationUtils() == null ? null : TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this).LocationUtils().intera();
 *//*     *//*         }
-*//* 140 *//*         l.intera(TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this), paramAnonymousString1, null, str);
+*//* 140 *//*         l.intera(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), paramAnonymousString1, null, str);
 *//*     *//*       }
 *//*     *//*     });
 *//* 143 *//*     if (this.eee != null) {
-*//* 144 *//*       this.eee.setText(com.bytedance.sdk.openadsdk.g.mQ.intera(str2) ? getBaseContext().getString(R.string.tt_web_title_default) : str2);
+*//* 144 *//*       this.eee.setText(com.bytedance.sdk.openadsdk.ApiException.mQ.intera(str2) ? getBaseContext().getString(R.string.tt_web_title_default) : str2);
 *//*     *//*     }*/
-///* 146 */     dislike();
+///* 146 */     TTAdDislikeImpl();
 /*     */   }
 /*     */   
 /*     */   /*private void intera() {
-*//* 150 *//*     this.dislike = ((SSWebView)findViewById(R.id.browser_webview));
-*//* 151 *//*     this.c = ((ImageView)findViewById(R.id.titlebar_back));
-*//* 152 *//*     if (this.c != null) {
-*//* 153 *//*       this.c.setOnClickListener(new OnClickListener()
+*//* 150 *//*     this.TTAdDislikeImpl = ((SSWebView)findViewById(R.id.browser_webview));
+*//* 151 *//*     this.cc = ((ImageView)findViewById(R.id.titlebar_back));
+*//* 152 *//*     if (this.cc != null) {
+*//* 153 *//*       this.cc.setOnClickListener(new OnClickListener()
 *//*     *//*       {
 *//*     *//*         public void onClick(View paramAnonymousView) {
-*//* 156 *//*           if (TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this) != null) {
-*//* 157 *//*             if (TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this).canGoBack()) {
-*//* 158 *//*               TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this).goBack();
+*//* 156 *//*           if (TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this) != null) {
+*//* 157 *//*             if (TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this).canGoBack()) {
+*//* 158 *//*               TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this).goBack();
 *//*     *//*             } else {
 *//* 160 *//*               TTVideoLandingPageActivity.this.finish();
 *//*     *//*             }
@@ -179,9 +179,9 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*         }
 *//*     *//*       });
 *//*     *//*     }
-*//* 166 *//*     this.d = ((ImageView)findViewById(R.id.titlebar_close));
-*//* 167 *//*     if (this.d != null) {
-*//* 168 *//*       this.d.setOnClickListener(new OnClickListener()
+*//* 166 *//*     this.LocationUtils = ((ImageView)findViewById(R.id.titlebar_close));
+*//* 167 *//*     if (this.LocationUtils != null) {
+*//* 168 *//*       this.LocationUtils.setOnClickListener(new OnClickListener()
 *//*     *//*       {
 *//*     *//*         public void onClick(View paramAnonymousView) {
 *//* 171 *//*           TTVideoLandingPageActivity.this.finish();
@@ -189,7 +189,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*       });
 *//*     *//*     }
 *//* 175 *//*     this.eee = ((TextView)findViewById(R.id.titlebar_title));
-*//* 176 *//*     this.m = ((FrameLayout)findViewById(R.id.native_video_container));
+*//* 176 *//*     this.LogUtils = ((FrameLayout)findViewById(R.id.native_video_container));
 *//* 177 *//*     this.l = ((RelativeLayout)findViewById(R.id.native_video_titlebar));
 *//* 178 *//*     this.w = ((RelativeLayout)findViewById(R.id.tt_rl_download));
 *//* 179 *//*     this.x = ((TextView)findViewById(R.id.tt_video_btn_ad_image_tv));
@@ -197,28 +197,28 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 181 *//*     this.z = ((TextView)findViewById(R.id.tt_video_ad_name));
 *//* 182 *//*     this.A = ((TextView)findViewById(R.id.tt_video_ad_button));
 *//*     *//*
-*//* 184 *//*     c();
+*//* 184 *//*     cc();
 *//*     *//*   }
 *//*     *//*
-*//*     *//*   private void dislike() {
+*//*     *//*   private void TTAdDislikeImpl() {
 *//* 188 *//*     if (this.mN == 5) {
 *//*     *//*       try {
 *//* 190 *//*         if ((this.mR != null) && (this.mR.j())) {
 *//* 191 *//*           this.mP = Long.valueOf(0L);
 *//*     *//*         }
-*//* 193 *//*         this.mO = new f(this.f, this.mQ);
+*//* 193 *//*         this.mO = new doErrorHelper(this.doErrorHelper, this.mQ);
 *//* 194 *//*         this.mO.setIsInDetail(true);
 *//* 195 *//*         if (this.mO.intera(this.mP.longValue())) {
-*//* 196 *//*           this.m.setVisibility(0);
-*//* 197 *//*           this.m.removeAllViews();
-*//* 198 *//*           this.m.addView(this.mO);
+*//* 196 *//*           this.LogUtils.setVisibility(0);
+*//* 197 *//*           this.LogUtils.removeAllViews();
+*//* 198 *//*           this.LogUtils.addView(this.mO);
 *//*     *//*         }
 *//* 200 *//*         if (this.mO.getNativeVideoController() != null) {
 *//* 201 *//*           this.mO.getNativeVideoController().intera(false);
 *//* 202 *//*           this.mO.getNativeVideoController().intera(this.E);
 *//* 203 *//*           if (this.mR != null) {
-*//* 204 *//*             this.mO.getNativeVideoController().dislike(this.mR.eee());
-*//* 205 *//*             this.mO.getNativeVideoController().dislike(this.mR.i());
+*//* 204 *//*             this.mO.getNativeVideoController().TTAdDislikeImpl(this.mR.eee());
+*//* 205 *//*             this.mO.getNativeVideoController().TTAdDislikeImpl(this.mR.i());
 *//*     *//*           }
 *//*     *//*         }
 *//*     *//*       } catch (Exception localException) {
@@ -227,40 +227,40 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*     }
 *//*     *//*   }
 *//*     *//*
-*//*     *//*   private void c()
+*//*     *//*   private void cc()
 *//*     *//*   {
-*//* 216 *//*     if ((this.mQ == null) || (this.mQ.c() != 4)) {
+*//* 216 *//*     if ((this.mQ == null) || (this.mQ.cc() != 4)) {
 *//* 217 *//*       return;
 *//*     *//*     }
-*//* 219 *//*     com.bytedance.sdk.openadsdk.g.s.intera(this.w, 0);
+*//* 219 *//*     com.bytedance.sdk.openadsdk.ApiException.s.intera(this.w, 0);
 *//* 220 *//*     String str = "";
-*//* 221 *//*     if (!com.bytedance.sdk.openadsdk.g.mQ.intera(this.mQ.j())) {
+*//* 221 *//*     if (!com.bytedance.sdk.openadsdk.ApiException.mQ.intera(this.mQ.j())) {
 *//* 222 *//*       str = this.mQ.j();
-*//* 223 *//*     } else if (!com.bytedance.sdk.openadsdk.g.mQ.intera(this.mQ.m())) {
-*//* 224 *//*       str = this.mQ.m();
-*//* 225 *//*     } else if (!com.bytedance.sdk.openadsdk.g.mQ.intera(this.mQ.dislike())) {
-*//* 226 *//*       str = this.mQ.dislike();
+*//* 223 *//*     } else if (!com.bytedance.sdk.openadsdk.ApiException.mQ.intera(this.mQ.LogUtils())) {
+*//* 224 *//*       str = this.mQ.LogUtils();
+*//* 225 *//*     } else if (!com.bytedance.sdk.openadsdk.ApiException.mQ.intera(this.mQ.TTAdDislikeImpl())) {
+*//* 226 *//*       str = this.mQ.TTAdDislikeImpl();
 *//*     *//*     }
-*//* 228 *//*     if ((this.mQ.d() != null) && (this.mQ.d().intera() != null)) {
-*//* 229 *//*       com.bytedance.sdk.openadsdk.g.s.intera(this.y, 0);
-*//* 230 *//*       com.bytedance.sdk.openadsdk.g.s.intera(this.x, 4);
-*//* 231 *//*       ((AQuery)this.C.id(this.y)).image(this.mQ.d().intera());
-*//* 232 *//*     } else if (!com.bytedance.sdk.openadsdk.g.mQ.intera(str)) {
-*//* 233 *//*       com.bytedance.sdk.openadsdk.g.s.intera(this.y, 4);
-*//* 234 *//*       com.bytedance.sdk.openadsdk.g.s.intera(this.x, 0);
+*//* 228 *//*     if ((this.mQ.LocationUtils() != null) && (this.mQ.LocationUtils().intera() != null)) {
+*//* 229 *//*       com.bytedance.sdk.openadsdk.ApiException.s.intera(this.y, 0);
+*//* 230 *//*       com.bytedance.sdk.openadsdk.ApiException.s.intera(this.x, 4);
+*//* 231 *//*       ((AQuery)this.C.id(this.y)).image(this.mQ.LocationUtils().intera());
+*//* 232 *//*     } else if (!com.bytedance.sdk.openadsdk.ApiException.mQ.intera(str)) {
+*//* 233 *//*       com.bytedance.sdk.openadsdk.ApiException.s.intera(this.y, 4);
+*//* 234 *//*       com.bytedance.sdk.openadsdk.ApiException.s.intera(this.x, 0);
 *//* 235 *//*       this.x.setText(str.substring(0, 1));
 *//*     *//*     }
 *//*     *//*
-*//* 238 *//*     if (!com.bytedance.sdk.openadsdk.g.mQ.intera(str)) {
+*//* 238 *//*     if (!com.bytedance.sdk.openadsdk.ApiException.mQ.intera(str)) {
 *//* 239 *//*       this.z.setText(str);
 *//*     *//*     }
-*//* 241 *//*     com.bytedance.sdk.openadsdk.g.s.intera(this.z, 0);
+*//* 241 *//*     com.bytedance.sdk.openadsdk.ApiException.s.intera(this.z, 0);
 *//*     *//*
-*//* 243 *//*     com.bytedance.sdk.openadsdk.g.s.intera(this.A, 0);
+*//* 243 *//*     com.bytedance.sdk.openadsdk.ApiException.s.intera(this.A, 0);
 *//*     *//*   }
 *//*     *//*
-*//*     *//*   private void d() {
-*//* 247 *//*     if ((this.mQ == null) || (this.mQ.c() != 4)) {
+*//*     *//*   private void LocationUtils() {
+*//* 247 *//*     if ((this.mQ == null) || (this.mQ.cc() != 4)) {
 *//* 248 *//*       return;
 *//*     *//*     }
 *//* 250 *//*     this.B = new x(this, this.mQ, "embeded_ad");
@@ -271,35 +271,35 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 255 *//*     this.A.setOnClickListener(locala);
 *//* 256 *//*     this.A.setOnTouchListener(locala);
 *//* 257 *//*     locala.intera(this.B);
-*//* 258 *//*     this.B.intera(new x.dislike()
+*//* 258 *//*     this.B.intera(new x.TTAdDislikeImpl()
 *//*     *//*     {
 *//*     *//*       public void intera() {
-*//* 261 *//*         com.bytedance.sdk.openadsdk.d.c.intera(TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_start_detail");
+*//* 261 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.intera(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_start_detail");
 *//*     *//*       }
 *//*     *//*
-*//*     *//*       public void dislike()
+*//*     *//*       public void TTAdDislikeImpl()
 *//*     *//*       {
-*//* 266 *//*         com.bytedance.sdk.openadsdk.d.c.dislike(TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_pause");
+*//* 266 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.TTAdDislikeImpl(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_pause");
 *//*     *//*       }
 *//*     *//*
-*//*     *//*       public void c()
+*//*     *//*       public void cc()
 *//*     *//*       {
-*//* 271 *//*         com.bytedance.sdk.openadsdk.d.c.c(TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_continue");
+*//* 271 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.cc(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_continue");
 *//*     *//*       }
 *//*     *//*
-*//*     *//*       public void d()
+*//*     *//*       public void LocationUtils()
 *//*     *//*       {
-*//* 276 *//*         com.bytedance.sdk.openadsdk.d.c.h(TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_open_detail");
+*//* 276 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.h(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_open_detail");
 *//*     *//*       }
 *//*     *//*     });
 *//*     *//*   }
 *//*     *//*
 *//*     *//*   private void eee() {
 *//* 282 *//*     this.j = new v(this);
-*//* 283 *//*     this.j.intera(this.dislike)
+*//* 283 *//*     this.j.intera(this.TTAdDislikeImpl)
 *//* 284 *//*       .intera(this.h)
-*//* 285 *//*       .dislike(this.i)
-*//* 286 *//*       .intera(this.m);
+*//* 285 *//*       .TTAdDislikeImpl(this.i)
+*//* 286 *//*       .intera(this.LogUtils);
 *//*     *//*   }
 *//*     *//*
 *//*     *//*   public void onBackPressed()
@@ -319,14 +319,14 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 303 *//*       if (!TTVideoLandingPageActivity.this.isFinishing()) {
 *//*     *//*         ViewGroup.MarginLayoutParams localMarginLayoutParams;
 *//* 305 *//*         if (paramAnonymousBoolean) {
-*//* 306 *//*           com.bytedance.sdk.openadsdk.g.s.intera(TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this), 8);
-*//* 307 *//*           com.bytedance.sdk.openadsdk.g.s.intera(TTVideoLandingPageActivity.d(TTVideoLandingPageActivity.this), 8);
+*//* 306 *//*           com.bytedance.sdk.openadsdk.ApiException.s.intera(TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this), 8);
+*//* 307 *//*           com.bytedance.sdk.openadsdk.ApiException.s.intera(TTVideoLandingPageActivity.LocationUtils(TTVideoLandingPageActivity.this), 8);
 *//*     *//*
 *//* 309 *//*           localMarginLayoutParams = (ViewGroup.MarginLayoutParams)TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).getLayoutParams();
 *//* 310 *//*           TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this, localMarginLayoutParams.leftMargin);
-*//* 311 *//*           TTVideoLandingPageActivity.dislike(TTVideoLandingPageActivity.this, localMarginLayoutParams.topMargin);
-*//* 312 *//*           TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this, localMarginLayoutParams.width);
-*//* 313 *//*           TTVideoLandingPageActivity.d(TTVideoLandingPageActivity.this, localMarginLayoutParams.height);
+*//* 311 *//*           TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this, localMarginLayoutParams.topMargin);
+*//* 312 *//*           TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this, localMarginLayoutParams.width);
+*//* 313 *//*           TTVideoLandingPageActivity.LocationUtils(TTVideoLandingPageActivity.this, localMarginLayoutParams.height);
 *//* 314 *//*           localMarginLayoutParams.width = -1;
 *//* 315 *//*           localMarginLayoutParams.height = -1;
 *//* 316 *//*           localMarginLayoutParams.topMargin = 0;
@@ -334,11 +334,11 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 318 *//*           TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).setLayoutParams(localMarginLayoutParams);
 *//*     *//*         }
 *//*     *//*         else {
-*//* 321 *//*           com.bytedance.sdk.openadsdk.g.s.intera(TTVideoLandingPageActivity.c(TTVideoLandingPageActivity.this), 0);
-*//* 322 *//*           com.bytedance.sdk.openadsdk.g.s.intera(TTVideoLandingPageActivity.d(TTVideoLandingPageActivity.this), 0);
+*//* 321 *//*           com.bytedance.sdk.openadsdk.ApiException.s.intera(TTVideoLandingPageActivity.cc(TTVideoLandingPageActivity.this), 0);
+*//* 322 *//*           com.bytedance.sdk.openadsdk.ApiException.s.intera(TTVideoLandingPageActivity.LocationUtils(TTVideoLandingPageActivity.this), 0);
 *//* 323 *//*           localMarginLayoutParams = (ViewGroup.MarginLayoutParams)TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).getLayoutParams();
-*//* 324 *//*           localMarginLayoutParams.width = TTVideoLandingPageActivity.f(TTVideoLandingPageActivity.this);
-*//* 325 *//*           localMarginLayoutParams.height = TTVideoLandingPageActivity.g(TTVideoLandingPageActivity.this);
+*//* 324 *//*           localMarginLayoutParams.width = TTVideoLandingPageActivity.doErrorHelper(TTVideoLandingPageActivity.this);
+*//* 325 *//*           localMarginLayoutParams.height = TTVideoLandingPageActivity.ApiException(TTVideoLandingPageActivity.this);
 *//* 326 *//*           localMarginLayoutParams.leftMargin = TTVideoLandingPageActivity.h(TTVideoLandingPageActivity.this);
 *//* 327 *//*           localMarginLayoutParams.topMargin = TTVideoLandingPageActivity.i(TTVideoLandingPageActivity.this);
 *//* 328 *//*           TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).setLayoutParams(localMarginLayoutParams);
@@ -351,7 +351,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*   {
 *//* 336 *//*     super.onSaveInstanceState(paramBundle);
 *//* 337 *//*     if (this.mO != null) {
-*//* 338 *//*       paramBundle.putLong("video_play_position", this.mO.getNativeVideoController().d());
+*//* 338 *//*       paramBundle.putLong("video_play_position", this.mO.getNativeVideoController().LocationUtils());
 *//*     *//*     }
 *//*     *//*   }
 *//*     *//*
@@ -359,7 +359,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*   {
 *//* 344 *//*     super.onResume();
 *//* 345 *//*     if (this.j != null) {
-*//* 346 *//*       this.j.dislike();
+*//* 346 *//*       this.j.TTAdDislikeImpl();
 *//*     *//*     }
 *//* 348 *//*     if (this.B != null) {
 *//* 349 *//*       this.B.eee();
@@ -380,19 +380,19 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*   {
 *//* 365 *//*     super.onPause();
 *//* 366 *//*     if (this.j != null) {
-*//* 367 *//*       this.j.c();
+*//* 367 *//*       this.j.cc();
 *//*     *//*     }
 *//* 369 *//*     if (this.mO != null) {
 *//* 370 *//*       this.mO.getNativeVideoController().intera();
 *//*     *//*     }
 *//* 372 *//*     if (this.B != null) {
-*//* 373 *//*       this.B.f();
+*//* 373 *//*       this.B.doErrorHelper();
 *//*     *//*     }
 *//* 375 *//*     if ((this.mO != null) && (this.mO.getNativeVideoController() != null) && (this.mR != null))
 *//*     *//*     {
-*//* 377 *//*       this.mP = Long.valueOf(this.mO.getNativeVideoController().d());
-*//* 378 *//*       this.mR.dislike(this.mO.getNativeVideoController().eee());
-*//* 379 *//*       this.mR.c(this.mO.getNativeVideoController().f());
+*//* 377 *//*       this.mP = Long.valueOf(this.mO.getNativeVideoController().LocationUtils());
+*//* 378 *//*       this.mR.TTAdDislikeImpl(this.mO.getNativeVideoController().eee());
+*//* 379 *//*       this.mR.cc(this.mO.getNativeVideoController().doErrorHelper());
 *//* 380 *//*       this.mR.intera(this.mP.longValue());
 *//*     *//*     }
 *//*     *//*   }
@@ -400,15 +400,15 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*   protected void onDestroy()
 *//*     *//*   {
 *//* 386 *//*     super.onDestroy();
-*//* 387 *//*     ab.intera(this.f, this.dislike);
-*//* 388 *//*     ab.intera(this.dislike);
-*//* 389 *//*     this.dislike = null;
+*//* 387 *//*     ab.intera(this.doErrorHelper, this.TTAdDislikeImpl);
+*//* 388 *//*     ab.intera(this.TTAdDislikeImpl);
+*//* 389 *//*     this.TTAdDislikeImpl = null;
 *//*     *//*
 *//* 391 *//*     if (this.j != null) {
-*//* 392 *//*       this.j.d();
+*//* 392 *//*       this.j.LocationUtils();
 *//*     *//*     }
 *//* 394 *//*     if ((this.mO != null) && (this.mO.getNativeVideoController() != null)) {
-*//* 395 *//*       this.mO.getNativeVideoController().c();
+*//* 395 *//*       this.mO.getNativeVideoController().cc();
 *//*     *//*     }
 *//* 397 *//*     this.mR = null;
 *//* 398 *//*     this.mO = null;

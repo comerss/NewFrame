@@ -27,7 +27,7 @@ public class a extends b {
 
     public void b(View var1, int var2, int var3, int var4, int var5) {
         if (this.b != null) {
-//            this.h = this.bb(var2, var3, var4, var5, this.mR, this.s, this.f == null ? null : (View)this.f.get(), this.g == null ? null : (View)this.g.get());
+//            this.h = this.bb(var2, var3, var4, var5, this.mR, this.s, this.doErrorHelper == null ? null : (View)this.doErrorHelper.get(), this.ApiException == null ? null : (View)this.ApiException.get());
             int var6 = this.c.c();
             switch(var6) {
                 case 2:
@@ -37,7 +37,7 @@ public class a extends b {
                     }
 
                     aa.a(true);
-//                    boolean var9 = aa.bb(this.bee, this.c, this.eee, this.m, this.j, mR.bb(this.eee), this.mM);
+//                    boolean var9 = aa.bb(this.bee, this.cc, this.eee, this.LogUtils, this.j, mR.bb(this.eee), this.mM);
                     if (this.a) {
                         com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click", this.c, this.h, this.d, true);
                     }
@@ -56,8 +56,8 @@ public class a extends b {
                         com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click_call", this.c, this.h, var7, true);
 //                    }
 
-//                    boolean var8 = mR.eee(var1.getContext(), this.c.g());
-//                    com.bytedance.sdk.openadsdk.dddd.c.bb(this.bee, "click", this.c, this.h, this.d, var8);
+//                    boolean var8 = mR.eee(var1.getContext(), this.cc.ApiException());
+//                    com.bytedance.sdk.openadsdk.dddd.cc.bb(this.bee, "click", this.cc, this.h, this.LocationUtils, var8);
                     break;
                 default:
                     var6 = -1;

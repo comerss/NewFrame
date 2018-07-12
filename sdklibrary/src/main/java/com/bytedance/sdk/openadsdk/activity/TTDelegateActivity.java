@@ -17,14 +17,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.bytedance.sdk.openadsdk.R;
-import com.bytedance.sdk.openadsdk.ccccc.bds.d;
+import com.bytedance.sdk.openadsdk.ccccc.bds.LocationUtils;
 import com.bytedance.sdk.openadsdk.ccccc.bds.e;
 import com.bytedance.sdk.openadsdk.ccccc.f;
 import com.bytedance.sdk.openadsdk.ccccc.g;
 import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.h;
 import com.bytedance.sdk.openadsdk.core.n;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.q;
 
 import java.net.URL;
@@ -209,7 +209,7 @@ import java.net.URL;
 /*     */   private void c() {
 /* 154 */     if (Build.VERSION.SDK_INT >= 23) {
 /*     */       try {
-/* 156 */         d.a().a(this, new String[] { "android.permission.READ_PHONE_STATE", "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, new e()
+/* 156 */         LocationUtils.a().a(this, new String[] { "android.permission.READ_PHONE_STATE", "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, new e()
 /*     */         {
 /*     */
 /*     */           public void a()
@@ -230,7 +230,7 @@ import java.net.URL;
 /* 174 */         finish();
 /*     */       }
 /*     */     } else {
-/* 177 */       m.b("TT_AD_SDK", "已经有Read phone state权限");
+/* 177 */       LogUtils.b("TT_AD_SDK", "已经有Read phone state权限");
 /*     */     }
 /*     */   }
 /*     */
@@ -321,7 +321,7 @@ import java.net.URL;
 /*     */       }
 /*     */     }
 /*     */
-/* 252 */     m.b("TT_AD_SDK", "Missing appName; skipping handle");
+/* 252 */     LogUtils.b("TT_AD_SDK", "Missing appName; skipping handle");
 /*     */
 /* 255 */     String str3 = String.format(getString(R.string.tt_confirm_delete), new Object[] { str1 });
 /*     */
@@ -368,7 +368,7 @@ import java.net.URL;
 /*     */
 /*     */   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
 /*     */   {
-/* 298 */     d.a().a(this, paramArrayOfString, paramArrayOfInt);
+/* 298 */     LocationUtils.a().a(this, paramArrayOfString, paramArrayOfInt);
 /*     */   }
 /*     */ }
 

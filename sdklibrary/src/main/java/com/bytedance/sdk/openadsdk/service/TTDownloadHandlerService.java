@@ -1,6 +1,7 @@
 /*     */ package com.bytedance.sdk.openadsdk.service;
 /*     */ 
-/*     */ import android.app.Service;
+/*     */ import android.annotation.SuppressLint;
+import android.app.Service;
 /*     */ import android.content.ContentUris;
 /*     */ import android.content.Context;
 /*     */ import android.content.Intent;
@@ -18,8 +19,9 @@
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.s;
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.t;
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.w;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
-/*     */ 
+/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -31,11 +33,12 @@
 /*     */ {
 /*  32 */   w a = null;
 /*     */   
-/*     */   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
+/*     */   @SuppressLint("WrongConstant")
+public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*     */   {
 /*  36 */     super.onStartCommand(paramIntent, paramInt1, paramInt2);
-/*  37 */     if (m.a()) {
-/*  38 */       m.b("TTDownloadHandlerService", "onStartCommand");
+/*  37 */     if (LogUtils.a()) {
+/*  38 */       LogUtils.b("TTDownloadHandlerService", "onStartCommand");
 /*     */     }
 /*  40 */     a(this, paramIntent);
 /*  41 */     stopSelf();
@@ -62,13 +65,13 @@
 /*  62 */         String str2 = paramIntent.getStringExtra("extra_notification_tag");
 /*     */         
 /*     */ 
-/*  65 */         localObject1 = ContentUris.withAppendedId(m.a.a, l);
+/*  65 */         localObject1 = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, l);
 /*  66 */         localObject2 = i.a(paramContext).a((Uri)localObject1, null, null, null, null);
 /*     */         try {
 /*  68 */           if (((Cursor)localObject2).moveToFirst()) {
 /*  69 */             j = g.a((Cursor)localObject2, "status");
 /*     */           } else {
-/*  71 */             m.d("TTDownloadHandlerService", "Missing details for download " + l);
+/*  71 */             LogUtils.d("TTDownloadHandlerService", "Missing details for download " + l);
 /*  72 */             return;
 /*     */           }
 /*     */           
@@ -100,7 +103,7 @@
 /*     */         
 /*     */ 
 /*     */ 
-/*  88 */         if (m.a.c(j)) {
+/*  88 */         if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(j)) {
 /*  89 */           g.a(paramContext).a(paramContext, l);
 /*  90 */           g.a(paramContext).a(str2);
 /*     */         }
@@ -112,7 +115,7 @@
 /*  97 */         if (l > -1L) {
 /*  98 */           s.a(paramContext, l, 268435456);
 /*  99 */           localObject1 = n.a();
-/* 100 */           if ((localObject1 != null) && (m.a.a(i))) {
+/* 100 */           if ((localObject1 != null) && (com.bytedance.sdk.openadsdk.ccccc.m.a.a(i))) {
 /* 101 */             localObject2 = paramIntent.getStringExtra("extra_app_package");
 /* 102 */             ((b)localObject1).a(l, 1, (String)localObject2);
 /*     */           }
@@ -122,7 +125,8 @@
 /*     */   }
 /*     */   
 /*     */ 
-/*     */   private void b(Context paramContext, Intent paramIntent)
+/*     */   @SuppressLint("WrongConstant")
+private void b(Context paramContext, Intent paramIntent)
 /*     */   {
 /* 112 */     String str = paramIntent.getAction();
 /*     */     try {

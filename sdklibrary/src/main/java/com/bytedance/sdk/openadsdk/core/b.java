@@ -58,7 +58,7 @@
 /*  58 */     JSONObject localJSONObject1 = paramJSONObject.optJSONObject("icon");
 /*  59 */     localh.a(paramJSONObject.optBoolean("screenshot", false));
 /*  60 */     if (localJSONObject1 != null) {
-/*  61 */       localObject = new g();
+/*  61 */     g  localObject = new g();
 /*  62 */       ((g)localObject).a(localJSONObject1.optString("url"));
 /*  63 */       ((g)localObject).b(localJSONObject1.optInt("height"));
 /*  64 */       ((g)localObject).a(localJSONObject1.optInt("width"));

@@ -23,6 +23,7 @@
 /*    */ {
 /*    */   public static File a(Context paramContext, String paramString1, String paramString2)
 /*    */   {
+            String str;
 /* 26 */     if ((("mounted".equals(Environment.getExternalStorageState())) || 
 /* 27 */       (!Environment.isExternalStorageRemovable())) && (paramContext.getExternalCacheDir() != null))
 /*    */     {
@@ -30,7 +31,7 @@
 /*    */     } else {
 /* 31 */       str = paramContext.getCacheDir().getPath();
 /*    */     }
-/* 33 */     String str = str + paramString1;
+/* 33 */      str = str + paramString1;
 /* 34 */     File localFile = new File(str);
 /* 35 */     if (!localFile.exists()) {
 /* 36 */       localFile.mkdirs();
@@ -79,7 +80,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\f.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\doErrorHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -1,34 +1,59 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
-/*     */ import android.app.Activity;
-/*     */ import android.app.Dialog;
-/*     */ import android.content.Context;
-/*     */ import android.content.DialogInterface;
 /*     */
-/*     */ import android.graphics.Bitmap;
-/*     */ import android.os.Looper;
-/*     */ import android.support.annotation.MainThread;
-/*     */ import android.support.annotation.NonNull;
-/*     */ import android.view.View;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.os.Looper;
+import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.androidquery.AQuery;
+import com.androidquery.callback.AQuery2;
+import com.androidquery.callback.AjaxStatus;
+import com.androidquery.callback.BitmapAjaxCallback;
+import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
+import com.bytedance.sdk.openadsdk.TTInteractionAd;
+import com.bytedance.sdk.openadsdk.core.nibuguan.g;
+import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.s;
+
 /*     */
-/*     */ import android.widget.ImageView;
-/*     */ import com.androidquery.AQuery;
-/*     */ import com.androidquery.callback.AQuery2;
-/*     */ import com.androidquery.callback.AjaxStatus;
-/*     */ import com.androidquery.callback.BitmapAjaxCallback;
 /*     */
 /*     */
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-/*     */ import com.bytedance.sdk.openadsdk.TTInteractionAd;
 /*     */
 /*     */
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.g;
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.s;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */
 
 /*     */
@@ -75,13 +100,13 @@
 /*  74 */     this.c.setOnShowListener(new DialogInterface.OnShowListener()
 /*     */     {
 /*     */       public void onShow(DialogInterface paramAnonymousDialogInterface) {
-/*  77 */         if (x.a(x.this).isShowing()) {
-/*  78 */           com.bytedance.sdk.openadsdk.dddd.c.a(x.b(x.this), x.c(x.this), "interaction");
-/*  79 */           if (x.d(x.this) != null) {
-/*  80 */             x.d(x.this).onAdShow();
+/*  77 */         if (c.isShowing()) {
+/*  78 */           com.bytedance.sdk.openadsdk.dddd.c.a(a, b, "interaction");
+/*  79 */           if (d != null) {
+/*  80 */            d.onAdShow();
 /*     */           }
-/*  82 */           if (x.c(x.this).t()) {
-/*  83 */             r.a(x.c(x.this), x.e(x.this));
+/*  82 */           if (b.t()) {
+/*  83 */             r.a(b, h);
 /*     */           }
 /*     */           
 /*     */         }
@@ -111,22 +136,22 @@
 /*     */ 
 /*     */   private void b()
 /*     */   {
-/* 113 */     ssl locala = new ssl(this.a, this.b, "interaction", 3);
+/* 113 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.a, this.b, "interaction", 3);
 /* 114 */     locala.a(this.h);
 /* 115 */     locala.b(this.g);
 /* 116 */     locala.a(this.e);
-/* 117 */     locala.a(new bbb.a()
+/* 117 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.b.bb()
 /*     */     {
 /*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
-/* 120 */         if (x.d(x.this) != null) {
-/* 121 */           x.d(x.this).onAdClicked();
+/* 120 */         if (d != null) {
+/* 121 */           d.onAdClicked();
 /*     */         }
 /* 123 */         if ((paramAnonymousInt == 2) || (paramAnonymousInt == 3) || (paramAnonymousInt == 5))
 /*     */         {
 /*     */ 
-/* 126 */           x.f(x.this);
-/* 127 */           if (x.d(x.this) != null) {
-/* 128 */             x.d(x.this).onAdDismiss();
+/* 126 */         d();
+/* 127 */           if (d != null) {
+/* 128 */            d.onAdDismiss();
 /*     */           }
 /*     */           
 /*     */         }
@@ -139,17 +164,17 @@
 /* 138 */     this.g.setOnClickListener(new View.OnClickListener()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView) {
-/* 141 */         x.f(x.this);
-/* 142 */         com.bytedance.sdk.openadsdk.dddd.c.c(x.c(x.this));
-/* 143 */         if (x.d(x.this) != null) {
-/* 144 */           x.d(x.this).onAdDismiss();
+/* 141 */        d();
+/* 142 */         com.bytedance.sdk.openadsdk.dddd.c.c(b);
+/* 143 */         if (d != null) {
+/* 144 */         d.onAdDismiss();
 /*     */         }
-/* 146 */         m.b("TTInteractionAdImpl", "dislike事件发出");
+/* 146 */         LogUtils.b("TTInteractionAdImpl", "dislike事件发出");
 /*     */       }
 /*     */     });
 /*     */     
 /* 150 */     if (this.e != null) {
-/* 151 */       this.e.a(new ssl.c(this.a, this.b, "interaction"));
+/* 151 */       this.e.a(new com.bytedance.sdk.openadsdk.core.a.c(this.a, this.b, "interaction"));
 /*     */     }
 /*     */   }
 /*     */   
@@ -166,14 +191,14 @@
 /*     */     {
 /*     */       protected void callback(String paramAnonymousString, ImageView paramAnonymousImageView, Bitmap paramAnonymousBitmap, AjaxStatus paramAnonymousAjaxStatus) {
 /* 167 */         super.callback(paramAnonymousString, paramAnonymousImageView, paramAnonymousBitmap, paramAnonymousAjaxStatus);
-/* 168 */         if (x.g(x.this) != null) {
+/* 168 */         if (f!= null) {
 /* 169 */           if ((paramAnonymousAjaxStatus == null) || (paramAnonymousBitmap == null)) {
-/* 170 */             x.g(x.this).b();
+/* 170 */            f.b();
 /*     */           }
 /* 172 */           else if (paramAnonymousAjaxStatus.getCode() == 200) {
-/* 173 */             x.g(x.this).a();
+/* 173 */           f.a();
 /*     */           } else {
-/* 175 */             x.g(x.this).b();
+/* 175 */             f.b();
 /*     */           }
 /*     */         }
 /*     */       }

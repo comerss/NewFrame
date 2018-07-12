@@ -1,27 +1,50 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
 /*     */ import android.content.Context;
-/*     */ import android.net.Uri;
-/*     */ import android.os.Looper;
-/*     */ import android.os.Message;
-/*     */ import android.support.annotation.NonNull;
-/*     */ import android.util.Base64;
-/*     */ import android.util.Log;
-/*     */ import android.webkit.WebView;
-/*     */ import com.bytedance.sdk.openadsdk.eeeee.b;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.l;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.q;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.t;
-import com.bytedance.sdk.openadsdk.hhh;
+import android.net.Uri;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.util.Base64;
+import android.util.Log;
+import android.webkit.WebView;
+
+import com.bytedance.sdk.openadsdk.a.UIUtils;
+import com.bytedance.sdk.openadsdk.eeeee.b;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.l;
+import com.bytedance.sdk.openadsdk.ggg.q;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /*     */
-/*     */ import java.lang.ref.WeakReference;
-/*     */ import java.util.Arrays;
-/*     */ import java.util.List;
-/*     */ import java.util.Map;
-/*     */ import java.util.concurrent.ConcurrentHashMap;
-/*     */ import org.json.JSONArray;
-/*     */ import org.json.JSONObject;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -39,10 +62,10 @@ import com.bytedance.sdk.openadsdk.hhh;
 /*     */ 
 /*     */ 
 /*     */ public class v
-/*     */   implements b, t.a
+/*     */   implements b, MineHandler.OnResult
 /*     */ {
 /*     */   private WeakReference<WebView> a;
-/*     */   private t b;
+/*     */   private MineHandler b;
 /*  45 */   private static Map<String, Boolean> c = new ConcurrentHashMap();
 /*     */   
 /*     */   private WeakReference<Context> d;
@@ -63,7 +86,7 @@ import com.bytedance.sdk.openadsdk.hhh;
 /*     */   
 /*     */   public v(Context paramContext) {
 /*  64 */     this.d = new WeakReference(paramContext);
-/*  65 */     this.b = new t(Looper.getMainLooper(), this);
+/*  65 */     this.b = new MineHandler(Looper.getMainLooper(), this);
 /*     */   }
 /*     */   
 /*     */   public WebView a() {
@@ -100,18 +123,18 @@ import com.bytedance.sdk.openadsdk.hhh;
 /*     */     throws Exception
 /*     */   {
 /* 101 */     JSONArray localJSONArray = new JSONArray();
-/* 102 */     List localList = e();
+/* 102 */     List<String> localList = e();
 /* 103 */     for (String str : localList) {
 /* 104 */       localJSONArray.put(str);
 /*     */     }
-/* 106 */     paramJSONObject.put("appName", hhh.a.a());
-/* 107 */     paramJSONObject.put("innerAppName", hhh.a.e());
-/* 108 */     paramJSONObject.put("aid", hhh.a.b());
-/* 109 */     paramJSONObject.put("sdkEdition", hhh.a.c());
-/* 110 */     paramJSONObject.put("appVersion", hhh.a.d());
-/* 111 */     paramJSONObject.put("netType", hhh.a.f());
+/* 106 */     paramJSONObject.put("appName", UIUtils.a());
+/* 107 */     paramJSONObject.put("innerAppName", UIUtils.e());
+/* 108 */     paramJSONObject.put("aid", UIUtils.b());
+/* 109 */     paramJSONObject.put("sdkEdition", UIUtils.c());
+/* 110 */     paramJSONObject.put("appVersion", UIUtils.d());
+/* 111 */     paramJSONObject.put("netType", UIUtils.f());
 /* 112 */     paramJSONObject.put("supportList", localJSONArray);
-/* 113 */     paramJSONObject.put("deviceId", hhh.a.a(n.a()));
+/* 113 */     paramJSONObject.put("deviceId", UIUtils.a(n.a()));
 /*     */   }
 /*     */   
 /*     */   private void a(JSONObject paramJSONObject) throws Exception {
@@ -219,8 +242,8 @@ import com.bytedance.sdk.openadsdk.hhh;
 /* 218 */     if (localWebView != null) {
 /* 219 */       String str = "javascript:ToutiaoJSBridge._handleMessageFromToutiao(" + paramJSONObject.toString() + ")";
 /* 220 */       l.a(localWebView, str);
-/* 221 */       if (m.a()) {
-/* 222 */         m.a("TTAndroidObject", "js_msg " + str);
+/* 221 */       if (LogUtils.a()) {
+/* 222 */         LogUtils.a("TTAndroidObject", "js_msg " + str);
 /*     */       }
 /*     */     }
 /*     */   }
@@ -244,7 +267,7 @@ import com.bytedance.sdk.openadsdk.hhh;
 /*     */   private void c(String paramString) {
 /*     */     try {
 /* 245 */       String str = new String(Base64.decode(paramString, 2));
-/* 246 */       m.b("TTAndroidObject", str);
+/* 246 */       LogUtils.b("TTAndroidObject", str);
 /*     */       
 /* 248 */       JSONArray localJSONArray = new JSONArray(str);
 /* 249 */       int j = localJSONArray.length();
@@ -264,10 +287,10 @@ import com.bytedance.sdk.openadsdk.hhh;
 /* 263 */           this.b.sendMessage(localMessage);
 /*     */         }
 /*     */       }
-/* 266 */     } catch (Exception localException) { if (m.a()) {
-/* 267 */         m.d("TTAndroidObject", "failed to parse jsbridge msg queue " + paramString);
+/* 266 */     } catch (Exception localException) { if (LogUtils.a()) {
+/* 267 */         LogUtils.d("TTAndroidObject", "failed to parse jsbridge msg queue " + paramString);
 /*     */       } else {
-/* 269 */         m.d("TTAndroidObject", "failed to parse jsbridge msg queue");
+/* 269 */         LogUtils.d("TTAndroidObject", "failed to parse jsbridge msg queue");
 /*     */       }
 /*     */     }
 /*     */   }
@@ -375,7 +398,7 @@ import com.bytedance.sdk.openadsdk.hhh;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 379 */     if (paramMessage == null) {
 /* 380 */       return;

@@ -1,6 +1,8 @@
 /*    */ package com.ss.android.crash.log;
 /*    */ 
-/*    */ import android.os.Debug.MemoryInfo;
+/*    */
+
+import android.os.Debug;
 /*    */ 
 /*    */ public class m
 /*    */ {
@@ -44,9 +46,9 @@
 /*    */   static
 /*    */   {
 /* 46 */     if (android.os.Build.VERSION.SDK_INT >= 19) {
-/* 47 */       a = new b(null);
+/* 47 */       a = new b();
 /*    */     } else {
-/* 49 */       a = new a(null);
+/* 49 */       a = new a();
 /*    */     }
 /*    */   }
 /*    */   

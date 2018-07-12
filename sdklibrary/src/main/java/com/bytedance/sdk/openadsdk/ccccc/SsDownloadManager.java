@@ -82,7 +82,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class b
+/*     */ public class SsDownloadManager
 /*     */ {
 /*  87 */   public static final String a = "/" + Environment.DIRECTORY_DOWNLOADS;
 /*     */   

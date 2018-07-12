@@ -228,7 +228,7 @@ String str;
 /* 241 */           Log.v("SsDownloadManager", "adding extension from type");
 /* 243 */         str = "." + str;
 /*     */       }
-/* 246 */         Log.v("SsDownloadManager", "couldn't find extension for " + paramString);
+/* 246 */         Log.v("SsDownloadManager", "couldn'MineHandler find extension for " + paramString);
 /*     */     }
 /*     */     
 /* 250 */     if (str == null) {
@@ -261,7 +261,7 @@ String str;
 /* 283 */         if (str1 != null) {
 /* 285 */             Log.v("SsDownloadManager", "substituting extension from type");
 /*     */         }
-/* 289 */           Log.v("SsDownloadManager", "couldn't find extension for " + paramString1);
+/* 289 */           Log.v("SsDownloadManager", "couldn'MineHandler find extension for " + paramString1);
 /*     */       }
 /*     */     }
 /*     */     

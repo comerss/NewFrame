@@ -5,7 +5,7 @@ package com.donews.frame.sdk;
  * 描述：
  */
 //
-// Source code recreated from a .class file by IntelliJ IDEA
+// Source code recreated from UIUtils .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
 
@@ -250,7 +250,7 @@ public class Utils {
 
             try {
                 if (var3 == null || var3.equals("9774d56d682e549c") || var3.length() < 13) {
-//                    c var4 = com.bytedance.sdk.openadsdk.core.c.a(var2);
+//                    PhoneUtils var4 = com.bytedance.sdk.openadsdk.core.PhoneUtils.UIUtils(var2);
                     String var5 = SharedHelper.get("openudid", (String)null);
                     if (!a(var5)) {
                         SecureRandom var6 = new SecureRandom();
@@ -435,14 +435,14 @@ public class Utils {
             var2.close();
             return var1;
         } catch (Throwable var14) {
-//            m.a("ToolUtils", "Unable to read sysprop " + var0, var14);
+//            LogUtils.UIUtils("ToolUtils", "Unable to read sysprop " + var0, var14);
             var4 = var1;
         } finally {
             if (var2 != null) {
                 try {
                     var2.close();
                 } catch (IOException var13) {
-//                    m.a("ToolUtils", "Exception while closing InputStream", var13);
+//                    LogUtils.UIUtils("ToolUtils", "Exception while closing InputStream", var13);
                 }
             }
 

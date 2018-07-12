@@ -1,20 +1,36 @@
 /*     */ package com.bytedance.sdk.openadsdk.eeeee;
 /*     */ 
 /*     */ import android.content.Context;
-/*     */ import android.support.annotation.NonNull;
-/*     */ import android.support.annotation.Nullable;
-/*     */ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-/*     */ import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.x;
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.x.b;
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.q;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ import java.util.HashMap;
-/*     */ import java.util.Map;
-/*     */ import org.json.JSONException;
-/*     */ import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
+import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
+import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.r;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -26,14 +42,14 @@
 /*     */   
 /*     */   private static volatile c b;
 /*     */   
-/*     */   private b c;
+/*     */   private com.bytedance.sdk.openadsdk.eeeee.b c;
 /*  30 */   private final Map<String, x> d = new HashMap();
 /*     */   
-/*     */   private a(b paramb) {
+/*     */   private a(com.bytedance.sdk.openadsdk.eeeee.b paramb) {
 /*  33 */     this.c = paramb;
 /*     */   }
 /*     */   
-/*     */   public static c a(b paramb) {
+/*     */   public static c a(com.bytedance.sdk.openadsdk.eeeee.b paramb) {
 /*  37 */     if (b == null) {
 /*  38 */       synchronized (c.class) {
 /*  39 */         if (b == null) {
@@ -247,9 +263,9 @@
 /* 247 */           for (int i = 0; i < paramAnonymousVarArgs.length; i += 2) {
 /* 248 */             localJSONObject.put(paramAnonymousVarArgs[i], paramAnonymousVarArgs[(i + 1)]);
 /*     */           }
-/* 250 */           a.a(a.this).b("app_ad_event", localJSONObject);
+/* 250 */          c.b("app_ad_event", localJSONObject);
 /*     */         } catch (JSONException localJSONException) {
-/* 252 */           m.b(a.a, "JSONException");
+/* 252 */           LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, "JSONException");
 /*     */         }
 /*     */         
 /*     */       }
@@ -271,9 +287,10 @@
 /* 271 */           for (int i = 0; i < paramAnonymousVarArgs.length; i += 2) {
 /* 272 */             localJSONObject.put(paramAnonymousVarArgs[i], paramAnonymousVarArgs[(i + 1)]);
 /*     */           }
-/* 274 */           a.a(a.this).b("app_ad_event", localJSONObject);
-/*     */         } catch (JSONException localJSONException) {
-/* 276 */           m.b(a.a, "JSONException");
+/* 274 */          c.b("app_ad_event", localJSONObject);
+        /*     */         } catch (JSONException localJSONException) {
+        /* 252 */           LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, "JSONException");
+        /*     */
 /*     */         }
 /*     */       }
 /*     */     });
@@ -285,25 +302,25 @@
 /*     */     {
 /*     */       public void a() {
 /* 287 */         com.bytedance.sdk.openadsdk.dddd.c.a(paramContext, paramh, paramString, "click_start_detail");
-/* 288 */         m.b(a.a, " js onClickDownloadStart");
+/* 288 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadStart");
 /*     */       }
 /*     */       
 /*     */       public void b()
 /*     */       {
 /* 293 */         com.bytedance.sdk.openadsdk.dddd.c.b(paramContext, paramh, paramString, "click_pause");
-/* 294 */         m.b(a.a, " js onClickDownloadPause");
+/* 294 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadPause");
 /*     */       }
 /*     */       
 /*     */       public void c()
 /*     */       {
 /* 299 */         com.bytedance.sdk.openadsdk.dddd.c.c(paramContext, paramh, paramString, "click_continue");
-/* 300 */         m.b(a.a, " js onClickDownloadContinue");
+/* 300 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadContinue");
 /*     */       }
 /*     */       
 /*     */       public void d()
 /*     */       {
 /* 305 */         com.bytedance.sdk.openadsdk.dddd.c.h(paramContext, paramh, paramString, "click_open");
-/* 306 */         m.b(a.a, "onClickOpenAdApp");
+/* 306 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, "onClickOpenAdApp");
 /*     */       }
 /* 308 */     });
 /* 309 */     return localx;
@@ -311,7 +328,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\eee\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\eee\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

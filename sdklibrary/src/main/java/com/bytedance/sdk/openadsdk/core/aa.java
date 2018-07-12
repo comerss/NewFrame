@@ -12,7 +12,8 @@
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*     */ import com.bytedance.sdk.openadsdk.core.video.a.f;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.q;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
+import com.bytedance.sdk.openadsdk.ggg.q;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */ 
 /*     */ 
@@ -61,7 +62,7 @@
 /*     */     }
 /*  62 */     if (!q.a(str)) {
 /*  63 */       if (paramh.c() == 2) {
-/*  64 */         if (!com.bytedance.sdk.openadsdk.ggg.c.a(str)) {
+/*  64 */         if (!PhoneUtils.isAccess(str)) {
 /*  65 */           return false;
 /*     */         }
 /*  67 */         localObject = new Intent("android.intent.action.VIEW");

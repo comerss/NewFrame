@@ -153,7 +153,7 @@
         <item name="android:minHeight">44dp</item>
         <item name="android:layout_marginLeft">12dp</item>
         <item name="android:text">"关闭"</item>
-        <!-- TextView in MX3 don't respond to click event if text is null -->
+        <!-- TextView in MX3 don'MineHandler respond to click event if text is null -->
         <item name="android:background">#00000000</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

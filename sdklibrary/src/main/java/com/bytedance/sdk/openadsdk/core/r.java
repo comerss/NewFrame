@@ -17,7 +17,7 @@
 /*    */ 
 /*    */ public final class r
 /*    */ {
-/* 20 */   public static final String a = ;
+/* 20 */   public static final String a = com.bytedance.sdk.openadsdk.ggg.r.e();
 /*    */ }
 
 

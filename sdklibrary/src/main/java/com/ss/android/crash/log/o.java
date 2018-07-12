@@ -1,8 +1,13 @@
 /*    */ package com.ss.android.crash.log;
 /*    */ 
-/*    */ import android.annotation.TargetApi;
-/*    */ import android.app.ActivityManager.MemoryInfo;
-/*    */ import android.os.Build.VERSION;
+/*    */
+
+import android.annotation.TargetApi;
+import android.app.ActivityManager;
+import android.os.Build;
+
+/*    */
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -46,9 +51,9 @@
 /*    */   static
 /*    */   {
 /* 48 */     if (Build.VERSION.SDK_INT >= 16) {
-/* 49 */       a = new b(null);
+/* 49 */       a = new b();
 /*    */     } else {
-/* 51 */       a = new a(null);
+/* 51 */       a = new a();
 /*    */     }
 /*    */   }
 /*    */   

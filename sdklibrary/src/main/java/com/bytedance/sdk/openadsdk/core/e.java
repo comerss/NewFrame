@@ -1,13 +1,23 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
-/*     */ import android.content.ContentValues;
-/*     */ import android.content.Context;
-/*     */ import android.database.AbstractCursor;
-/*     */ import android.database.Cursor;
-/*     */ import android.database.SQLException;
-/*     */ import android.database.sqlite.SQLiteDatabase;
-/*     */ import android.database.sqlite.SQLiteOpenHelper;
-/*     */ 
+/*     */
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.AbstractCursor;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -40,7 +50,7 @@
 /*     */     
 /*  41 */     private void e() { try { synchronized (c.getClass()) {
 /*  42 */           if ((this.b == null) || (!this.b.isOpen())) {
-/*  43 */             eeee.a locala = new eeee.a(e.this, e.this.a);
+/*  43 */             e.aHelper locala = new e.aHelper(a);
 /*  44 */             this.b = locala.getWritableDatabase();
 /*  45 */             this.b.setLockingEnabled(false);
 /*     */           }
@@ -118,7 +128,7 @@
 /* 118 */         localObject = this.b.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5);
 /*     */       } catch (Throwable localThrowable) {
 /* 120 */         localThrowable.printStackTrace();
-/* 121 */         localObject = new eeee.b(e.this);
+/* 121 */         localObject = new e.b();
 /* 122 */         if (d()) {
 /* 123 */           throw localThrowable;
 /*     */         }
@@ -260,7 +270,7 @@
 /*     */ 
 /*     */     public aHelper(Context paramContext)
 /*     */     {
-/* 263 */       super("ttopensdk.db", null, 1);
+/* 263 */       super(paramContext,"ttopensdk.db", null, 1);
 /* 264 */       this.a = paramContext;
 /*     */     }
 /*     */     

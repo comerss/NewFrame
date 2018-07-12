@@ -1,12 +1,19 @@
 /*    */ package com.bytedance.sdk.openadsdk.ff;
 /*    */ 
 /*    */ import android.content.ContentValues;
-/*    */ import android.content.Context;
-/*    */ import android.database.Cursor;
-/*    */ import android.support.annotation.VisibleForTesting;
-/*    */ import com.bytedance.sdk.openadsdk.core.eeee.c;
-/*    */ import java.util.LinkedList;
-/*    */ import java.util.List;
+import android.content.Context;
+import android.database.Cursor;
+import android.support.annotation.VisibleForTesting;
+
+import java.util.LinkedList;
+import java.util.List;
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -30,25 +37,27 @@
 /* 30 */     this.a = com.bytedance.sdk.openadsdk.core.d.a(paramContext.getApplicationContext());
 /*    */   }
 /*    */   
-/*    */   public List<c> a()
+/*    */   public List<com.bytedance.sdk.openadsdk.ff.c> a()
 /*    */   {
-/* 35 */     LinkedList localLinkedList = new LinkedList();
-/* 36 */     Cursor localCursor = this.a.a().a("trackurl", null, null, null, null, null, null);
-/*    */     try {
-/* 38 */       while (localCursor.moveToNext()) {
-/* 39 */         String str1 = localCursor.getString(localCursor.getColumnIndex("id"));
-/* 40 */         String str2 = localCursor.getString(localCursor.getColumnIndex("url"));
-/* 41 */         boolean bool = localCursor.getInt(localCursor.getColumnIndex("replaceholder")) > 0;
-/* 42 */         int i = localCursor.getInt(localCursor.getColumnIndex("retry"));
-/* 43 */         localLinkedList.add(new c(str1, str2, bool, i));
-/*    */       }
-/*    */     } finally {
-/* 46 */       localCursor.close();
-/*    */     }
-/* 48 */     return localLinkedList;
+/* 35 */    LinkedList var1 = new LinkedList();
+    Cursor var2 = this.a.a().a("trackurl", (String[])null, (String)null, (String[])null, (String)null, (String)null, (String)null);
+
+    try {
+        while(var2.moveToNext()) {
+            String var3 = var2.getString(var2.getColumnIndex("id"));
+            String var4 = var2.getString(var2.getColumnIndex("url"));
+            boolean var5 = var2.getInt(var2.getColumnIndex("replaceholder")) > 0;
+            int var6 = var2.getInt(var2.getColumnIndex("retry"));
+            var1.add(new com.bytedance.sdk.openadsdk.ff.c(var3, var4, var5, var6));
+        }
+    } finally {
+        var2.close();
+    }
+
+    return var1;
 /*    */   }
 /*    */   
-/*    */   public void a(c paramc)
+/*    */   public void a(com.bytedance.sdk.openadsdk.ff.c paramc)
 /*    */   {
 /* 53 */     ContentValues localContentValues = new ContentValues();
 /* 54 */     localContentValues.put("id", paramc.a());
@@ -58,7 +67,7 @@
 /* 58 */     this.a.a().a("trackurl", null, localContentValues);
 /*    */   }
 /*    */   
-/*    */   public void b(c paramc)
+/*    */   public void b(com.bytedance.sdk.openadsdk.ff.c paramc)
 /*    */   {
 /* 63 */     ContentValues localContentValues = new ContentValues();
 /* 64 */     localContentValues.put("id", paramc.a());
@@ -67,8 +76,9 @@
 /* 67 */     localContentValues.put("retry", Integer.valueOf(paramc.d()));
 /* 68 */     this.a.a().a("trackurl", localContentValues, "id=?", new String[] { paramc.a() });
 /*    */   }
-/*    */   
-/*    */   public void c(c paramc)
+
+    /*    */
+/*    */   public void c(com.bytedance.sdk.openadsdk.ff.c paramc)
 /*    */   {
 /* 73 */     this.a.a().a("trackurl", "id=?", new String[] { paramc.a() });
 /*    */   }
@@ -86,7 +96,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\f\eee.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\doErrorHelper\eee.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

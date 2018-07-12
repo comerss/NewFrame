@@ -105,7 +105,7 @@
 /* 104 */     File localFile = null;
 /* 106 */       Log.i("SsDownloadManager", "in verifySpace, destination: " + paramInt + ", path: " + paramString + ", length: " + paramLong);
 /* 109 */     if (paramString == null) {
-/* 110 */       throw new IllegalArgumentException("path can't be null");
+/* 110 */       throw new IllegalArgumentException("path can'MineHandler be null");
 /*     */     }
 /* 112 */     switch (paramInt) {
 /*     */     case 0: 
@@ -230,7 +230,7 @@
 /*     */   {
 /* 237 */     switch (paramInt) {
 /*     */     case 0: 
-/* 239 */       File localFile = new File(this.a.getPath() + com.bytedance.sdk.openadsdk.ccccc.b.a);
+/* 239 */       File localFile = new File(this.a.getPath() + SsDownloadManager.a);
 /* 240 */       if ((!localFile.isDirectory()) && (!localFile.mkdir()))
 /*     */       {
 /*     */ 

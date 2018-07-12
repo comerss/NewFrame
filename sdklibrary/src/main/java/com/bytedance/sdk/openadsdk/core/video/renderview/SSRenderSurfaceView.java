@@ -1,13 +1,23 @@
 /*     */ package com.bytedance.sdk.openadsdk.core.video.renderview;
 /*     */ 
-/*     */ import android.content.Context;
-/*     */ import android.util.AttributeSet;
-/*     */ import android.view.SurfaceHolder;
-/*     */ import android.view.SurfaceHolder.Callback;
-/*     */ import android.view.View;
-/*     */ import android.view.ViewGroup.LayoutParams;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.Iterator;
+/*     */
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.SurfaceHolder;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ public class SSRenderSurfaceView
 /*     */   extends c
@@ -55,7 +65,13 @@
 /*     */     }
 /*  56 */     localSurfaceHolder.addCallback(this.b);
 /*     */   }
-/*     */   
+
+    @Override
+    public void a(com.bytedance.sdk.openadsdk.core.video.renderview.a parama) {
+
+    }
+
+    /*     */
 /*     */   public void a(int paramInt1, int paramInt2)
 /*     */   {
 /*  61 */     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -72,21 +88,21 @@
 /*     */   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
 /*     */   {
 /*  74 */     if (this.a != null) {
-/*  75 */       this.a.a(paramSurfaceHolder);
+///*  75 */       this.ao.(paramSurfaceHolder);
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
 /*     */   {
 /*  81 */     if (this.a != null) {
-/*  82 */       this.a.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+///*  82 */       this.ao.ao(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
 /*     */   {
 /*  88 */     if (this.a != null) {
-/*  89 */       this.a.b(paramSurfaceHolder);
+///*  89 */       this.ao.bbb(paramSurfaceHolder);
 /*     */     }
 /*     */   }
 /*     */   

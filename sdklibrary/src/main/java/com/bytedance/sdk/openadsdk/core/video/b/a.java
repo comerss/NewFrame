@@ -1,32 +1,56 @@
 /*     */ package com.bytedance.sdk.openadsdk.core.video.b;
 /*     */ 
-/*     */ import android.app.Activity;
-/*     */ import android.content.BroadcastReceiver;
-/*     */ import android.content.Context;
-/*     */ import android.content.Intent;
-/*     */ import android.content.IntentFilter;
+/*     */
+
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.video.a.b;
+import com.bytedance.sdk.openadsdk.core.video.a.e;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 /*     */
 /*     */
-/*     */ import android.os.Message;
-/*     */ import android.view.LayoutInflater;
-/*     */ import android.view.SurfaceHolder;
-/*     */ import android.view.View;
-/*     */ import android.view.ViewGroup;
 /*     */
 /*     */
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.video.a.b;
-/*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.video.a.e;
 /*     */
 /*     */
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */
-/*     */ import java.lang.ref.WeakReference;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.EnumSet;
-/*     */ import java.util.List;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -42,16 +66,16 @@
 /*     */ 
 /*     */ 
 /*     */ public class a
-/*     */   implements com.bytedance.sdk.openadsdk.core.video.a.c, com.bytedance.sdk.openadsdk.core.video.a.d, t.a
+/*     */   implements com.bytedance.sdk.openadsdk.core.video.a.c, com.bytedance.sdk.openadsdk.core.video.a.d, MineHandler.OnResult
 /*     */ {
 /*  47 */   private static final String c = a.class.getSimpleName();
 /*     */   private com.bytedance.sdk.openadsdk.core.video.a.h d;
 /*     */   private ViewGroup e;
-/*  50 */   private t f = new t(this);
+/*  50 */   private MineHandler f = new MineHandler(this);
 /*  51 */   private long g = 0L;
 /*  52 */   private long h = 0L;
 /*     */   private com.bytedance.sdk.openadsdk.core.video.c.d i;
-/*     */   private c.a j;
+/*     */   private com.bytedance.sdk.openadsdk.core.video.a.c.a j;
 /*  55 */   private long k = 0L;
 /*  56 */   private long l = 0L;
 /*     */   private long m;
@@ -96,9 +120,9 @@
 /*     */ 
 /*     */   public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, List<String> paramList, String paramString3, long paramLong, boolean paramBoolean)
 /*     */   {
-/*  99 */     m.b(c, "video local url " + paramString1);
-/* 100 */     if (q.a(paramString1)) {
-/* 101 */       m.e(c, "No video info");
+/*  99 */      LogUtils.b(c, "video local url " + paramString1);
+/* 100 */     if (com.bytedance.sdk.openadsdk.ggg.q.a(paramString1)) {
+/* 101 */       LogUtils.e(c, "No video info");
 /* 102 */       return false;
 /*     */     }
 /* 104 */     this.v = paramBoolean;
@@ -182,7 +206,7 @@
 /*     */   
 /*     */   public long e()
 /*     */   {
-/* 185 */     return this.i == null ? 0L : this.i.m() + this.x;
+/* 185 */     return this.i == null ? 0L : this.i.p() + this.x;
 /*     */   }
 /*     */   
 /*     */   public boolean i() {
@@ -209,24 +233,24 @@
 /* 209 */       this.i.a(paramString);
 /*     */     }
 /* 211 */     this.g = System.currentTimeMillis();
-/* 212 */     if (!q.a(paramString)) {
+/* 212 */     if (!com.bytedance.sdk.openadsdk.ggg.q.a(paramString)) {
 /* 213 */       this.d.a(8);
 /* 214 */       this.d.a(0);
 /*     */       
 /* 216 */       a(new Runnable()
 /*     */       {
 /*     */         public void run() {
-/* 219 */           a.a(a.this, System.currentTimeMillis());
-/* 220 */           a.a(a.this).d(0);
-/* 221 */           if ((a.b(a.this) != null) && (a.c(a.this) == 0L)) {
-/* 222 */             a.b(a.this).a(true, 0L, !a.d(a.this));
-/* 223 */           } else if (a.b(a.this) != null) {
-/* 224 */             a.b(a.this).a(true, a.c(a.this), !a.d(a.this));
+/* 219 */          g=System.currentTimeMillis();
+/* 220 */           d.d(0);
+/* 221 */           if ((i != null) && (k == 0L)) {
+/* 222 */             i.a(true, 0L, !v);
+/* 223 */           } else if (i != null) {
+/* 224 */            i.a(true, k, !v);
 /*     */           }
-/* 226 */           if (a.e(a.this) != null) {
-/* 227 */             a.e(a.this).postDelayed(a.f(a.this), 100L);
+/* 226 */           if (f!= null) {
+/* 227 */            f.postDelayed(B, 100L);
 /*     */           }
-/* 229 */           a.this.l();
+/* 229 */          l();
 /*     */         }
 /*     */       });
 /*     */     }
@@ -238,8 +262,8 @@
 /* 238 */   private Runnable B = new Runnable()
 /*     */   {
 /*     */     public void run() {
-/* 241 */       if (a.b(a.this) != null) {
-/* 242 */         a.b(a.this).d();
+/* 241 */       if (i != null) {
+/* 242 */        i.d();
 /*     */       }
 /*     */     }
 /*     */   };
@@ -247,8 +271,8 @@
 /* 247 */   private Runnable C = new Runnable()
 /*     */   {
 /*     */     public void run() {
-/* 250 */       if (a.g(a.this) != null) {
-/* 251 */         a.g(a.this).a();
+/* 250 */       if (j != null) {
+/* 251 */         j.a();
 /*     */       }
 /*     */     }
 /*     */   };
@@ -265,13 +289,13 @@
 /* 265 */   private Runnable D = new Runnable()
 /*     */   {
 /*     */     public void run() {
-/* 268 */       if (a.b(a.this) != null) {
-/* 269 */         if (a.h(a.this) <= 0L) {
-/* 270 */           a.b(a.this).d();
+/* 268 */       if (i!= null) {
+/* 269 */         if (m<= 0L) {
+/* 270 */          i.d();
 /*     */         }
-/* 272 */         a.b(a.this).e();
+/* 272 */         i.e();
 /*     */       }
-/* 274 */       a.e(a.this).postDelayed(this, 200L);
+/* 274 */       f.postDelayed(this, 200L);
 /*     */     }
 /*     */   };
 /*     */   
@@ -316,7 +340,7 @@
 /* 316 */     if (paramRunnable == null) {
 /* 317 */       return;
 /*     */     }
-/* 319 */     if ((this.d.m()) && (this.o)) {
+/* 319 */     if (d.n() && o) {
 /* 320 */       paramRunnable.run();
 /*     */     } else {
 /* 322 */       b(paramRunnable);
@@ -334,14 +358,14 @@
 /* 334 */     if ((this.n == null) || (this.n.isEmpty())) {
 /* 335 */       return;
 /*     */     }
-/* 337 */     ArrayList localArrayList = new ArrayList(this.n);
+/* 337 */     ArrayList<Runnable> localArrayList = new ArrayList(this.n);
 /* 338 */     for (Runnable localRunnable : localArrayList) {
 /* 339 */       localRunnable.run();
 /*     */     }
 /* 341 */     this.n.clear();
 /*     */   }
 /*     */   
-/*     */   public void a(c.a parama)
+/*     */   public void a(com.bytedance.sdk.openadsdk.core.video.a.c.a parama)
 /*     */   {
 /* 346 */     this.j = parama;
 /*     */   }
@@ -416,7 +440,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 421 */     if ((this.d == null) || (paramMessage == null) || (this.p == null) || 
 /* 422 */       (this.p.get() == null)) {
@@ -530,7 +554,7 @@
 /* 530 */       return;
 /*     */     }
 /* 532 */     Context localContext = (Context)this.p.get();
-/* 533 */     long l1 = ((float)(paramInt * this.m) * 1.0F / localContext.getResources().getInteger(R.integer.video_progress_max));
+/* 533 */     long l1 = (long) ((float)(paramInt * this.m) * 1.0F / localContext.getResources().getInteger(R.integer.video_progress_max));
 /* 534 */     if (this.m > 0L) {
 /* 535 */       this.b = ((int)l1);
 /*     */     } else {
@@ -564,7 +588,7 @@
 /*     */     }
 /* 565 */     c(!this.a);
 /* 566 */     if (!(this.p.get() instanceof Activity)) {
-/* 567 */       m.b(c, "context is not activity, not support this function.");
+/* 567 */        LogUtils.b(c, "context is not activity, not support this function.");
 /* 568 */       return;
 /*     */     }
 /* 570 */     if (this.a) {
@@ -673,7 +697,7 @@
 /*     */     }
 /* 674 */     c(!this.a);
 /* 675 */     if (!(this.p.get() instanceof Activity)) {
-/* 676 */       m.b(c, "context is not activity, not support this function.");
+/* 676 */        LogUtils.b(c, "context is not activity, not support this function.");
 /* 677 */       return;
 /*     */     }
 /* 679 */     if (this.d != null) {
@@ -764,7 +788,7 @@
 /* 764 */       return;
 /*     */     }
 /*     */     
-/* 767 */     if (this.d.o()) {
+/* 767 */     if (this.d.p()) {
 /* 768 */       if ((paramLong == this.m) || (!this.a) || (this.m <= 0L)) {
 /* 769 */         return;
 /*     */       }
@@ -813,9 +837,9 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public void a(com.bytedance.sdk.openadsdk.core.widget.b.a parama, String paramString)
+/*     */   public void a(com.bytedance.sdk.openadsdk.core.widget.b.enume parama, String paramString)
 /*     */   {
-/* 818 */     switch (6.a[parama.ordinal()]) {
+/* 818 */     switch (parama.ordinal()) {
 /*     */     case 1: 
 /* 820 */       a();
 /* 821 */       break;
@@ -831,15 +855,15 @@
 /*     */   
 /*     */   protected boolean b(int paramInt)
 /*     */   {
-/* 834 */     n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a());
-/* 835 */     if ((locala != n.a.e) && (locala != n.a.a)) {
+/* 834 */     com.bytedance.sdk.openadsdk.ggg.n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a());
+/* 835 */     if ((locala != com.bytedance.sdk.openadsdk.ggg.n.a.e) && (locala != com.bytedance.sdk.openadsdk.ggg.n.a.a)) {
 /* 836 */       a();
 /* 837 */       this.y = true;
 /* 838 */       this.z = false;
 /* 839 */       if ((this.d != null) && (this.t != null)) {
 /* 840 */         return this.d.a(paramInt, this.t.a());
 /*     */       }
-/* 842 */     } else if (locala == n.a.e) {
+/* 842 */     } else if (locala == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
 /* 843 */       this.y = false;
 /* 844 */       if (this.d != null) {
 /* 845 */         this.d.a();
@@ -856,20 +880,20 @@
 /*     */     public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent) {
 /* 857 */       String str = paramAnonymousIntent.getAction();
 /* 858 */       if ("android.intent.action.SCREEN_OFF".equals(str)) {
-/* 859 */         a.this.a();
+/* 859 */         a();
 /* 860 */       } else if ("android.net.conn.CONNECTIVITY_CHANGE".equals(str)) {
-/* 861 */         a.this.a(paramAnonymousContext);
+/* 861 */       a(paramAnonymousContext);
 /*     */       }
 /*     */     }
 /*     */   };
 /*     */   
-/* 866 */   private n.a F = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+/* 866 */   private com.bytedance.sdk.openadsdk.ggg.n.a F = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
 /*     */   
 /*     */   protected void a(Context paramContext) {
 /* 869 */     if (!s()) {
 /* 870 */       return;
 /*     */     }
-/* 872 */     n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(paramContext);
+/* 872 */     com.bytedance.sdk.openadsdk.ggg.n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(paramContext);
 /*     */     
 /* 874 */     if (this.F == locala) {
 /* 875 */       return;
@@ -912,7 +936,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\result\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\result\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

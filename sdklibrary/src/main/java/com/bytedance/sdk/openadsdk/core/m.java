@@ -1,24 +1,41 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
 /*     */ import android.app.Activity;
-/*     */ import android.content.Context;
-/*     */ import android.support.annotation.NonNull;
-/*     */ import android.support.annotation.Nullable;
-/*     */ import android.view.View;
-/*     */ import android.view.ViewGroup;
-/*     */ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-/*     */ import com.bytedance.sdk.openadsdk.TTFeedAd;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
+import com.bytedance.sdk.openadsdk.TTFeedAd;
+import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.ggg.r;
+
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.x;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.ssl.b;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ import java.lang.ref.WeakReference;
-/*     */ import java.util.Iterator;
-/*     */ import java.util.LinkedList;
-/*     */ import java.util.List;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -44,10 +61,10 @@
 /*  44 */     this.a = paramContext;
 /*     */     
 /*  46 */     if (this.b.c() == 4) {
-/*  47 */       this.d = new a(null);
+/*  47 */       this.d = new a();
 /*  48 */       this.c = new x(this.a, this.b, "embeded_ad");
 /*     */       
-/*  50 */       this.c.a(new ssl.c(this.a, this.b, "embeded_ad"));
+/*  50 */       this.c.a(new com.bytedance.sdk.openadsdk.core.a.c(this.a, this.b, "embeded_ad"));
 /*     */     }
 /*     */   }
 /*     */   
@@ -75,29 +92,29 @@
 /*  75 */     localf.a();
 /*  76 */     localf.setRefClickViews(paramList1);
 /*  77 */     localf.setRefCreativeViews(paramList2);
-/*     */     
+/*     */
 /*     */ 
-/*  80 */     b localb = new b(this.a, this.b, "embeded_ad", 1);
+/*  80 */     com.bytedance.sdk.openadsdk.core.a.b localb = new com.bytedance.sdk.openadsdk.core.a.b(this.a, this.b, "embeded_ad", 1);
 /*  81 */     localb.a(paramViewGroup);
 /*  82 */     localb.a(this.e);
-/*  83 */     localb.a(new bbb.a()
+/*  83 */     localb.a(new com.bytedance.sdk.openadsdk.core.a.b.bb()
 /*     */     {
 /*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
 /*  86 */         if (paramAdInteractionListener != null) {
-/*  87 */           paramAdInteractionListener.onAdClicked(paramAnonymousView, m.a(m.this));
+/*  87 */           paramAdInteractionListener.onAdClicked(paramAnonymousView,e);
 /*     */         }
 /*     */         
 /*     */       }
 /*     */       
 /*  92 */     });
-/*  93 */     a locala = new a(this.a, this.b, "embeded_ad", 1);
+/*  93 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.a, this.b, "embeded_ad", 1);
 /*  94 */     locala.a(paramViewGroup);
 /*  95 */     locala.a(this.c);
-/*  96 */     locala.a(new bbb.a()
+/*  96 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.a.bb()
 /*     */     {
 /*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
 /*  99 */         if (paramAdInteractionListener != null) {
-/* 100 */           paramAdInteractionListener.onAdCreativeClick(paramAnonymousView, m.a(m.this));
+/* 100 */           paramAdInteractionListener.onAdCreativeClick(paramAnonymousView, e);
 /*     */         }
 /*     */         
 /*     */       }
@@ -105,14 +122,14 @@
 /* 105 */     localf.a(paramList1, localb);
 /* 106 */     localf.a(paramList2, locala);
 /*     */     
-/* 108 */     localf.setCallback(new ffff.a()
+/* 108 */     localf.setCallback(new com.bytedance.sdk.openadsdk.core.f.a()
 /*     */     {
 /*     */       public void a(boolean paramAnonymousBoolean) {
-/* 111 */         if (m.b(m.this) != null) {
+/* 111 */         if (c!= null) {
 /* 112 */           if (paramAnonymousBoolean) {
-/* 113 */             m.b(m.this).e();
+/* 113 */           c.e();
 /*     */           } else {
-/* 115 */             m.b(m.this).f();
+/* 115 */           c.f();
 /*     */           }
 /*     */         }
 /*     */       }
@@ -127,12 +144,12 @@
 /*     */ 
 /*     */       public void a(View paramAnonymousView)
 /*     */       {
-/* 130 */         com.bytedance.sdk.openadsdk.dddd.c.a(m.this.a, m.c(m.this), "embeded_ad");
+/* 130 */         com.bytedance.sdk.openadsdk.dddd.c.a(a, b, "embeded_ad");
 /* 131 */         if (paramAdInteractionListener != null) {
-/* 132 */           paramAdInteractionListener.onAdShow(m.a(m.this));
+/* 132 */           paramAdInteractionListener.onAdShow(e);
 /*     */         }
-/* 134 */         if (m.c(m.this).t()) {
-/* 135 */           r.a(m.c(m.this), paramAnonymousView);
+/* 134 */         if (b.t()) {
+/* 135 */           r.a(b, paramAnonymousView);
 /*     */         }
 /*     */       }
 /* 138 */     });
@@ -154,7 +171,7 @@
 /*     */   {
 /* 155 */     if (this.c != null) {
 /* 156 */       if (this.d == null) {
-/* 157 */         this.d = new a(null);
+/* 157 */         this.d = new a();
 /*     */       }
 /* 159 */       this.d.a(paramTTAppDownloadListener);
 /* 160 */       this.c.a(paramTTAppDownloadListener);

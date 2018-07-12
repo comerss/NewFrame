@@ -17,11 +17,10 @@ import com.bytedance.sdk.openadsdk.TTSplashAd;
 import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.f;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-import com.bytedance.sdk.openadsdk.core.ssl;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.q;
 import com.bytedance.sdk.openadsdk.ggg.r;
-import com.bytedance.sdk.openadsdk.ggg.t;
 
 /*     */
 /*     */
@@ -53,7 +52,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */ 
 /*     */ 
 /*     */ public class d
-/*     */   implements TTSplashAd, t.a
+/*     */   implements TTSplashAd, MineHandler.OnResult
 /*     */ {
 /*  35 */   private static String a = "TTSplashAdImpl";
 /*     */   
@@ -71,7 +70,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */   private c e;
 /*     */   private TTSplashAd.AdInteractionListener f;
 /*     */   private boolean g;
-/*  51 */   private t h = new t(Looper.getMainLooper(), this);
+/*  51 */   private MineHandler h = new MineHandler(Looper.getMainLooper(), this);
 /*     */   
 /*     */   private x i;
 /*     */   
@@ -140,7 +139,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 117 */         if (d.t()) {
 /* 118 */           r.a(d, paramAnonymousView);
 /*     */         }
-/* 120 */         m.b(d.b(), "开屏广告展示");
+/* 120 */         LogUtils.b(d.b(), "开屏广告展示");
 /*     */       }
 /* 122 */     });
 /* 123 */     localf.setNeedCheckingShow(true);
@@ -150,7 +149,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 127 */     locala.a(this.e);
 /* 128 */     locala.b(this.e.getDislikeView());
 /* 129 */     locala.a(this.i);
-/* 130 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.b.bb()
+/* 130 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.a.bb()
 /*     */     {
 /*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
 /* 133 */         if (f != null) {
@@ -228,7 +227,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 204 */     this.e.setSkipText(localSpannableStringBuilder);
 /*     */   }
 /*     */   
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 209 */     if (paramMessage.what == 1) {
 /* 210 */       this.b -= 1;
@@ -236,7 +235,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /* 212 */         if (this.f != null) {
 /* 213 */           this.f.onAdTimeOver();
 /*     */         }
-/* 215 */         m.b(a, "播放时间到");
+/* 215 */         LogUtils.b(a, "播放时间到");
 /* 216 */         this.h.removeCallbacksAndMessages(null);
 /* 217 */       } else if (this.b > 0) {
 /* 218 */         a(this.b);
@@ -247,7 +246,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\f\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\doErrorHelper\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

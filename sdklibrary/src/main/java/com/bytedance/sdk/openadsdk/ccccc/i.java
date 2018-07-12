@@ -19,7 +19,7 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.service.TTDownloadService;
 
 import java.io.File;
@@ -169,7 +169,7 @@ import java.util.Map;
 /*     */ 
 /*     */     public void onCreate(SQLiteDatabase paramSQLiteDatabase)
 /*     */     {
-/* 143 */       if (com.bytedance.sdk.openadsdk.ccccc.b.d) {
+/* 143 */       if (SsDownloadManager.d) {
 /* 144 */         Log.v("SsDownloadManager", "populating new database");
 /*     */       }
 /* 146 */       onUpgrade(paramSQLiteDatabase, 100, 101);
@@ -218,7 +218,7 @@ import java.util.Map;
 /* 189 */         a(paramSQLiteDatabase);
 /* 190 */         break;
 /*     */       default: 
-/* 192 */         throw new IllegalStateException("Don't know how to upgrade to " + paramInt);
+/* 192 */         throw new IllegalStateException("Don'MineHandler know how to upgrade to " + paramInt);
 /*     */       }
 /*     */       
 /*     */     }
@@ -313,7 +313,7 @@ import java.util.Map;
 /*     */ 
 /*     */ 
 /*     */ 
-/* 287 */         Log.e("SsDownloadManager", "couldn't create table in downloads database");
+/* 287 */         Log.e("SsDownloadManager", "couldn'MineHandler create table in downloads database");
 /* 288 */         throw localSQLException;
 /*     */       }
 /*     */     }
@@ -488,7 +488,7 @@ import java.util.Map;
 /*     */       
 /* 460 */       long l2 = localSQLiteDatabase.insert("ss_downloads", null, localContentValues);
 /* 461 */       if (l2 == -1L) {
-/* 462 */         Log.d("SsDownloadManager", "couldn't insert into downloads database");
+/* 462 */         Log.d("SsDownloadManager", "couldn'MineHandler insert into downloads database");
 /* 463 */         return null;
 /*     */       }
 /*     */       
@@ -505,7 +505,7 @@ import java.util.Map;
 /*     */       
 /* 477 */       return ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, l2);
 /*     */     } catch (Exception localException1) {
-/* 479 */       m.b("TT_AD_SDK", localException1.getMessage());
+/* 479 */       LogUtils.b("TT_AD_SDK", localException1.getMessage());
 /*     */     }
 /* 481 */     return null;
 /*     */   }
@@ -516,13 +516,13 @@ import java.util.Map;
 /*     */   {
 /* 488 */     String str1 = paramContentValues.getAsString("hint");
 /* 489 */     if (str1 == null) {
-/* 490 */       throw new IllegalArgumentException("DESTINATION_FILE_URI must include ssl file URI under COLUMN_FILE_NAME_HINT");
+/* 490 */       throw new IllegalArgumentException("DESTINATION_FILE_URI must include SslHepler file URI under COLUMN_FILE_NAME_HINT");
 /*     */     }
 /*     */     
 /* 493 */     Uri localUri = Uri.parse(str1);
 /* 494 */     String str2 = localUri.getScheme();
 /* 495 */     if ((str2 == null) || (!str2.equals("file"))) {
-/* 496 */       throw new IllegalArgumentException("Not ssl file URI: " + localUri);
+/* 496 */       throw new IllegalArgumentException("Not SslHepler file URI: " + localUri);
 /*     */     }
 /* 498 */     String str3 = localUri.getPath();
 /* 499 */     if (str3 == null) {
@@ -630,7 +630,7 @@ import java.util.Map;
 /*     */       
 /* 602 */       int i = c.match(paramUri);
 /* 603 */       if (i == -1) {
-/* 604 */         if (com.bytedance.sdk.openadsdk.ccccc.b.c) {
+/* 604 */         if (SsDownloadManager.c) {
 /* 605 */           Log.v("SsDownloadManager", "querying unknown URI: " + paramUri);
 /*     */         }
 /* 607 */         throw new IllegalArgumentException("Unknown URI: " + paramUri);
@@ -646,7 +646,7 @@ import java.util.Map;
 /*     */       
 /* 618 */       b localb = a(paramUri, paramString1, paramArrayOfString2, i);
 /*     */       
-/* 620 */       if (com.bytedance.sdk.openadsdk.ccccc.b.d) {
+/* 620 */       if (SsDownloadManager.d) {
 /* 621 */         a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, localSQLiteDatabase);
 /*     */       }
 /*     */       
@@ -655,12 +655,12 @@ import java.util.Map;
 /*     */       
 /* 627 */       if (localCursor != null) {
 /* 628 */         localCursor.setNotificationUri(this.b.getContentResolver(), paramUri);
-/* 629 */         if (com.bytedance.sdk.openadsdk.ccccc.b.d) {
+/* 629 */         if (SsDownloadManager.d) {
 /* 630 */           Log.v("SsDownloadManager", "created cursor " + localCursor + " on behalf of " + 
 /* 631 */             Binder.getCallingPid());
 /*     */         }
 /*     */       }
-/* 634 */       else if (com.bytedance.sdk.openadsdk.ccccc.b.c) {
+/* 634 */       else if (SsDownloadManager.c) {
 /* 635 */         Log.v("SsDownloadManager", "query failed in downloads database");
 /*     */       }
 /*     */       

@@ -29,7 +29,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation project(':baselibrary')
-    implementation (name: 'open_ad_sdk', ext:'aar')
+    implementation project(':sdklibrary')
+//    implementation (name: 'open_ad_sdk', ext:'aar')
 //    implementation 'com.comers:BaseLibrary:1.0.0'
 //    implementation (name:"BaseLibrary",ext:'aar')
 

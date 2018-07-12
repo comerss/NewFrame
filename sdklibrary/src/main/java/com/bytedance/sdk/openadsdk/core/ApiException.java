@@ -36,7 +36,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class g
+/*    */ public class ApiException
 /*    */ {
 /*    */   public static String a(int paramInt)
 /*    */   {
@@ -93,7 +93,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\g.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\ApiException.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

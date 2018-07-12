@@ -101,14 +101,14 @@ import com.bytedance.sdk.openadsdk.core.v;
 /*  86 */     final String str2 = localIntent.getStringExtra("web_title");
 /*  87 */     final String str3 = localIntent.getStringExtra("icon_url");
 /*  88 */     b();
-/*  89 */     this.c.setWebViewClient(new b(this.g, this.a, this.k));
+/*  89 */     this.c.setWebViewClient(new MineWebViewClient(this.g, this.a, this.k));
 /*  90 */     this.c.getSettings().setUserAgentString(com.bytedance.sdk.openadsdk.ggg.j.a(this.c, this.h));
 /*     */
 /*  92 */     if (Build.VERSION.SDK_INT >= 21) {
 /*  93 */       this.c.getSettings().setMixedContentMode(0);
 /*     */     }
 /*  95 */     this.c.loadUrl(str1);
-/*  96 */     this.c.setWebChromeClient(new a(this.a));
+/*  96 */     this.c.setWebChromeClient(new MineWebChromeClient(this.a));
 /*  97 */     this.c.setDownloadListener(new DownloadListener()
 /*     */     {
 /*     */       public void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong) {

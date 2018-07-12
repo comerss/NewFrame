@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Instrumented test, which will execute on an Android device.
  *
- * @see <ssl href="http://d.android.com/tools/testing">Testing documentation</ssl>
+ * @see <SslHepler href="http://d.android.com/tools/testing">Testing documentation</SslHepler>
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {

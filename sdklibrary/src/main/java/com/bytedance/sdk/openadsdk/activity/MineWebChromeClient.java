@@ -12,13 +12,13 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class a
+/*    */ public class MineWebChromeClient
 /*    */   extends WebChromeClient
 /*    */ {
 /* 18 */   private static final String a = WebChromeClient.class.getSimpleName();
 /*    */   private v b;
 /*    */   
-/*    */   public a(v paramv) {
+/*    */   public MineWebChromeClient(v paramv) {
 /* 22 */     this.b = paramv;
 /*    */   }
 /*    */   
@@ -56,7 +56,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\activity\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\activity\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

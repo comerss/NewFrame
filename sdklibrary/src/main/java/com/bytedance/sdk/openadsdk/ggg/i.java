@@ -1,6 +1,7 @@
 /*     */ package com.bytedance.sdk.openadsdk.ggg;
 /*     */ 
-/*     */ import android.content.Context;
+/*     */ import android.annotation.SuppressLint;
+import android.content.Context;
 /*     */
 /*     */ import android.content.pm.PackageInfo;
 /*     */ import android.content.pm.PackageManager;
@@ -9,7 +10,7 @@
 /*     */ import android.support.annotation.Nullable;
 /*     */ import android.support.annotation.WorkerThread;
 /*     */ import android.text.TextUtils;
-/*     */ import com.bytedance.sdk.openadsdk.core.c;
+/*     */ import com.bytedance.sdk.openadsdk.core.SharedHepler;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.List;
@@ -34,7 +35,7 @@
 /*     */ {
 /*     */   @Nullable
 /*     */   @MainThread
-/*     */   public static JSONArray a(@NonNull Context paramContext, @NonNull ExecutorService paramExecutorService)
+/*     */   public static JSONArray a(@NonNull final Context paramContext, @NonNull ExecutorService paramExecutorService)
 /*     */   {
 /*  39 */     if (!e(paramContext)) {
 /*  40 */       return null;
@@ -42,7 +43,7 @@
 /*  42 */     paramExecutorService.submit(new Runnable()
 /*     */     {
 /*     */       public void run() {
-/*  45 */         i.a(this.a);
+/*  45 */         d( paramContext);
 /*     */       }
 /*  47 */     });
 /*  48 */     return c(paramContext);
@@ -52,11 +53,12 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   @Nullable
+/*     */   @SuppressLint("WrongConstant")
+@Nullable
 /*     */   private static List<String> b(Context paramContext)
 /*     */   {
 /*  58 */     PackageManager localPackageManager = paramContext.getPackageManager();
-/*  59 */     List localList = null;
+/*  59 */     List<PackageInfo> localList = null;
 /*     */     try {
 /*  61 */       localList = localPackageManager.getInstalledPackages(8192);
 /*     */     }
@@ -85,7 +87,7 @@
 /*     */   @Nullable
 /*     */   private static JSONArray c(Context paramContext)
 /*     */   {
-/*  88 */     c localc = c.a(paramContext);
+/*  88 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /*  89 */     String str = localc.b("install_app_incremental_string", null);
 /*  90 */     if (!TextUtils.isEmpty(str)) {
 /*  91 */       List localList = a(str);
@@ -104,7 +106,7 @@
 /* 104 */     if ((localList1 == null) || (localList1.isEmpty())) {
 /* 105 */       return;
 /*     */     }
-/* 107 */     c localc = c.a(paramContext);
+/* 107 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 108 */     String str = localc.b("install_app_string", null);
 /* 109 */     List localList2 = a(str);
 /* 110 */     a(paramContext, a(localList1));
@@ -116,20 +118,20 @@
 /*     */   
 /*     */   @WorkerThread
 /*     */   private static void a(Context paramContext, String paramString) {
-/* 119 */     c localc = c.a(paramContext);
+/* 119 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 120 */     localc.a("install_app_string", paramString);
 /*     */   }
 /*     */   
 /*     */   @WorkerThread
 /*     */   private static void b(Context paramContext, String paramString)
 /*     */   {
-/* 126 */     c localc = c.a(paramContext);
+/* 126 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 127 */     localc.a("install_app_incremental_string", paramString);
 /* 128 */     localc.a("apptime", System.currentTimeMillis());
 /*     */   }
 /*     */   
 /*     */   private static boolean e(Context paramContext) {
-/* 132 */     c localc = c.a(paramContext);
+/* 132 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 133 */     long l = localc.b("apptime", -1L).longValue();
 /* 134 */     return (l == -1L) || 
 /* 135 */       (System.currentTimeMillis() - l > 43200000L);
@@ -159,7 +161,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\i.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\i.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

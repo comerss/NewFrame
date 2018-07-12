@@ -3,7 +3,7 @@
 /*    */ import android.os.Handler;
 /*    */ import android.os.Message;
 /*    */ import android.support.annotation.NonNull;
-/*    */ import com.bytedance.sdk.openadsdk.core.o;
+/*    */ import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -15,13 +15,13 @@
 /*    */ 
 /*    */ public class b<T>
 /*    */ {
-/*    */   private f<T> a;
+/*    */   private doErrorHelper<T> a;
 /*    */   private Handler b;
 /*    */   private boolean c;
 /*    */   
-/*    */   public b(d<T> paramd, o<T> paramo, f.b paramb, f.a parama)
+/*    */   public b(d<T> paramd, AdNativeListener<T> paramo, doErrorHelper.b paramb, doErrorHelper.a parama)
 /*    */   {
-/* 24 */     this.a = new f(paramd, paramo, paramb, parama);
+/* 24 */     this.a = new doErrorHelper(paramd, paramo, paramb, parama);
 /*    */   }
 /*    */   
 /*    */   public void a() {
@@ -51,7 +51,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\d\result.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\LocationUtils\result.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

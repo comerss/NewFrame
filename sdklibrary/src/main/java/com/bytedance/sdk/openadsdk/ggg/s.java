@@ -1,19 +1,33 @@
 /*     */ package com.bytedance.sdk.openadsdk.ggg;
 /*     */ 
-/*     */ import android.app.KeyguardManager;
-/*     */ import android.content.Context;
 /*     */
-/*     */ import android.graphics.Bitmap;
-/*     */ import android.graphics.Rect;
+
+import android.app.KeyguardManager;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.os.Build;
+import android.os.PowerManager;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
 /*     */
-/*     */ import android.os.PowerManager;
-/*     */ import android.support.annotation.Nullable;
-/*     */ import android.text.TextUtils;
-/*     */ import android.util.DisplayMetrics;
-/*     */ import android.view.View;
 /*     */
 /*     */
-/*     */ import android.widget.TextView;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -161,28 +175,28 @@
 /*     */   public static boolean a(Context paramContext, View paramView, int paramInt)
 /*     */   {
 /* 163 */     if (paramView == null) {
-/* 164 */       m.a("adView is null.");
+/* 164 */       LogUtils.a("adView is null.");
 /* 165 */       return false;
 /*     */     }
 /*     */     
 /* 168 */     if (paramView.getParent() == null) {
-/* 169 */       m.a("adView has no parent.");
+/* 169 */       LogUtils.a("adView has no parent.");
 /* 170 */       return false;
 /*     */     }
 /*     */     
 /* 173 */     if (paramView.getWindowVisibility() != 0) {
-/* 174 */       m.a("adView window is not set to VISIBLE.");
+/* 174 */       LogUtils.a("adView window is not set to VISIBLE.");
 /* 175 */       return false;
 /*     */     }
 /*     */     
 /* 178 */     if (paramView.getVisibility() != 0) {
-/* 179 */       m.a("adView is not set to VISIBLE.");
+/* 179 */       LogUtils.a("adView is not set to VISIBLE.");
 /* 180 */       return false;
 /*     */     }
 /*     */     boolean bool;
 /* 183 */     if ((paramView.getMeasuredWidth() > 0) && (paramView.getMeasuredHeight() > 0)) {
 /* 184 */       if ((Build.VERSION.SDK_INT >= 11) && (paramView.getAlpha() < 0.9F)) {
-/* 185 */         m.a("adView is transparent.");
+/* 185 */         LogUtils.a("adView is transparent.");
 /* 186 */         return false;
 /*     */       }
 /*     */       
@@ -193,7 +207,7 @@
 /* 193 */         paramView.getLocationOnScreen(arrayOfInt);
 /*     */       }
 /*     */       catch (Exception localException) {
-/* 196 */         m.a("Cannot get location on screen.");
+/* 196 */         LogUtils.a("Cannot get location on screen.");
 /* 197 */         return false;
 /*     */       }
 /*     */       
@@ -201,24 +215,24 @@
 /* 201 */       if ((arrayOfInt[0] >= 0) && (localDisplayMetrics.widthPixels - arrayOfInt[0] >= i)) {
 /* 202 */         i = (int)(j * (100.0D - paramInt) / 100.0D);
 /* 203 */         if ((arrayOfInt[1] < 0) && (Math.abs(arrayOfInt[1]) > i)) {
-/* 204 */           m.a("adView is not visible from the top.");
+/* 204 */           LogUtils.a("adView is not visible from the top.");
 /* 205 */           return false;
 /*     */         }
 /*     */         
 /* 208 */         if (j + arrayOfInt[1] - localDisplayMetrics.heightPixels > i) {
-/* 209 */           m.a("adView is not visible from the bottom.");
+/* 209 */           LogUtils.a("adView is not visible from the bottom.");
 /* 210 */           return false;
 /*     */         }
 /*     */         
-/* 213 */         m.a("adView is visible.");
+/* 213 */         LogUtils.a("adView is visible.");
 /* 214 */         return c(paramContext);
 /*     */       }
 /*     */       
-/* 217 */       m.a("adView is not fully on screen horizontally.");
+/* 217 */       LogUtils.a("adView is not fully on screen horizontally.");
 /* 218 */       bool = false;
 /*     */     }
 /*     */     else {
-/* 221 */       m.a(
+/* 221 */       LogUtils.a(
 /* 222 */         "adView has invisible dimensions (w=" + paramView.getMeasuredWidth() + ", h=" + paramView.getMeasuredHeight());
 /* 223 */       bool = false;
 /*     */     }
@@ -242,7 +256,7 @@
 /*     */       }
 /*     */     }
 /*     */     catch (Exception localException) {
-/* 245 */       m.a("adView exception:" + localException.getMessage());
+/* 245 */       LogUtils.a("adView exception:" + localException.getMessage());
 /* 246 */       localException.printStackTrace();
 /* 247 */       return false;
 /*     */     }
@@ -264,7 +278,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\s.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\s.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

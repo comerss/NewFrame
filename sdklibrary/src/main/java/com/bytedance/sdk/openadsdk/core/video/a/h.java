@@ -28,7 +28,8 @@ import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.nibuguan.m;
 import com.bytedance.sdk.openadsdk.core.video.renderview.SSRenderSurfaceView;
 import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
-import com.bytedance.sdk.openadsdk.ggg.t;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
@@ -103,7 +104,7 @@ import java.util.Locale;
 /*      */ 
 /*      */ 
 /*      */
-public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a, com.bytedance.sdk.openadsdk.core.widget.a.a, com.bytedance.sdk.openadsdk.core.widget.b.b, com.bytedance.sdk.openadsdk.ggg.t.a {
+public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a, com.bytedance.sdk.openadsdk.core.widget.a.ao, com.bytedance.sdk.openadsdk.core.widget.b.bbb, MineHandler.OnResult {
     private View a;
     private com.bytedance.sdk.openadsdk.core.video.renderview.b b;
     private TextView c;
@@ -130,7 +131,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     private ImageView mImageView;
     private View y;
     private ImageView z;
-    private t A = new t(this);
+    private MineHandler A = new MineHandler(this);
     private Context B;
     private int C;
     private int D;
@@ -339,7 +340,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
     private boolean t() {
         if (this.aa == null) {
-            com.bytedance.sdk.openadsdk.ggg.m.e("NewLiveViewLayout", "callback is null");
+            LogUtils.e("NewLiveViewLayout", "callback is null");
             return false;
         } else {
             return true;
@@ -349,7 +350,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     public void b() {
         this.b.a(this);
         this.af.a(this.a);
-        this.d.setVisibility(!this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a) ? 0 : 8);
+        this.d.setVisibility(!this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a) ? View.VISIBLE : View.GONE);
         this.d.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
                 if (h.this.t()) {
@@ -358,7 +359,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
             }
         });
-        this.c.setVisibility(this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.b) ? 8 : 0);
+        this.c.setVisibility(this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.b) ?View.VISIBLE : View.GONE);
         this.c.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
                 if (h.this.t()) {
@@ -730,8 +731,8 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     }
 
     public void h() {
-        this.k.setVisibility(8);
-        this.l.setVisibility(8);
+        this.k.setVisibility(View.GONE);
+        this.l.setVisibility(View.GONE);
         if (this.w != null) {
             com.bytedance.sdk.openadsdk.ggg.s.a(this.w, 8);
         }
@@ -739,8 +740,8 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     }
 
     public void i() {
-        this.k.setVisibility(8);
-        this.mView1.setVisibility(8);
+        this.k.setVisibility(View.GONE);
+        this.mView1.setVisibility(View.GONE);
     }
 
     public void a(SurfaceHolder var1) {
@@ -1046,7 +1047,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.a(this.X, true);
     }
 
-    public void a(Message var1) {
+    public void doResult(Message var1) {
         switch(var1.what) {
             case 1:
                 this.m();
@@ -1080,7 +1081,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             this.f.setVisibility(View.GONE);
         }
 
-        this.e.setVisibility(var1 && this.k.getVisibility() != View.VISIBLE ? View.VISIBLE : 8);
+        this.e.setVisibility(var1 && this.k.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
         if (!this.H && !this.G) {
             if (!this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a) && !var3) {
                 this.d.setVisibility(View.VISIBLE);
@@ -1172,7 +1173,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         if (this.k()) {
             SimpleDateFormat var3 = new SimpleDateFormat("HH:mm", Locale.getDefault());
             String var4 = var3.format(new Date());
-            com.bytedance.sdk.openadsdk.ggg.m.b("NewLiveViewLayout", var4);
+            LogUtils.b("NewLiveViewLayout", var4);
             if (this.ai != null && !TextUtils.isEmpty(this.ai.j())) {
                 this.a(this.ai.j());
             }
@@ -1188,7 +1189,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             var5 = true;
             this.c(this.H && !this.G);
             if (this.t()) {
-                this.aa.b(this, var1, var5, this.k.getVisibility() != 0);
+                this.aa.b(this, var1, var5, this.k.getVisibility() != View.VISIBLE);
             }
         }
 

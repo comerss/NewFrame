@@ -3,7 +3,6 @@
 /*    */ import android.app.Application;
 /*    */ import android.content.Context;
 /*    */ import android.text.TextUtils;
-/*    */ import com.bytedance.article.common.nativecrash.NativeCrashInit;
 /*    */ import java.util.Map;
 /*    */ 
 /*    */ 
@@ -73,7 +72,7 @@
 /* 73 */       g.a(this.b).a();
 /* 74 */     String str = l.b(this.b);
 /* 75 */     if ((paramBoolean2) && (!TextUtils.isEmpty(str))) {
-/* 76 */       NativeCrashInit.registerForNativeCrash(this.b, "ss_native_crash_logs", "ss_native_crash-", str);
+///* 76 */       NativeCrashInit.registerForNativeCrash(this.netState, "ss_native_crash_logs", "ss_native_crash-", str);
 /*    */     }
 /*    */   }
 /*    */   

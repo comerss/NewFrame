@@ -1,6 +1,7 @@
 /*     */ package com.bytedance.sdk.openadsdk.ggg;
 /*     */ 
-/*     */ import android.content.Context;
+/*     */ import android.annotation.SuppressLint;
+import android.content.Context;
 /*     */ import android.location.Location;
 /*     */ import android.location.LocationListener;
 /*     */ import android.location.LocationManager;
@@ -9,7 +10,7 @@
 /*     */ import android.os.Looper;
 /*     */ import android.support.annotation.Nullable;
 /*     */ import android.text.TextUtils;
-/*     */ import com.bytedance.sdk.openadsdk.core.c;
+/*     */ import com.bytedance.sdk.openadsdk.core.SharedHepler;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -41,7 +42,7 @@
 /*     */   }
 /*     */   
 /*     */   private static boolean b(Context paramContext) {
-/*  44 */     c localc = c.a(paramContext);
+/*  44 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /*  45 */     long l = localc.b("lbstime", -1L).longValue();
 /*  46 */     return (l == -1L) || 
 /*  47 */       (l - System.currentTimeMillis() > 7200000L);
@@ -49,7 +50,7 @@
 /*     */   
 /*     */   @Nullable
 /*     */   private static a c(Context paramContext) {
-/*  52 */     c localc = c.a(paramContext);
+/*  52 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /*  53 */     float f1 = localc.b("latitude", -1.0F);
 /*  54 */     float f2 = localc.b("longitude", -1.0F);
 /*  55 */     if ((f1 == -1.0F) || (f2 == -1.0F)) {
@@ -58,22 +59,14 @@
 /*  58 */     return new a(f1, f2);
 /*     */   }
 /*     */   
-/*     */   private static a d(Context paramContext)
+/*     */   private static a d(final Context paramContext)
 /*     */   {
-/*  63 */     final LocationManager localLocationManager = (LocationManager)paramContext.getSystemService("location");
+/*  63 */     @SuppressLint("WrongConstant") final LocationManager localLocationManager = (LocationManager)paramContext.getSystemService("location");
 /*  64 */     a locala = null;
 /*  65 */     if (localLocationManager != null)
-/*     */     {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */       try
+/*     */     {          try
 /*     */       {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+
 /*  77 */         Location localLocation = a(localLocationManager);
 /*  78 */         if ((localLocation != null) && (b(localLocation))) {
 /*  79 */           b(paramContext, localLocation);
@@ -85,7 +78,7 @@
 /*  85 */           new Handler(Looper.getMainLooper()).post(new Runnable()
 /*     */           {
 /*     */             public void run() {
-/*  88 */               b.a(this.a, localLocationManager);
+/*  88 */              com.bytedance.sdk.openadsdk.ggg.b.b(paramContext, localLocationManager);
 /*     */             }
 /*     */           });
 /*     */         } else {
@@ -130,7 +123,7 @@
 /* 130 */     return null;
 /*     */   }
 /*     */   
-/*     */   private static void b(Context paramContext, final LocationManager paramLocationManager) {
+/*     */   private static void b(final Context paramContext, final LocationManager paramLocationManager) {
 /*     */     try {
 /* 135 */       String str = b(paramLocationManager);
 /* 136 */       if (TextUtils.isEmpty(str)) {
@@ -140,8 +133,8 @@
 /* 140 */       paramLocationManager.requestSingleUpdate(str, new LocationListener()
 /*     */       {
 /*     */         public void onLocationChanged(Location paramAnonymousLocation) {
-/* 143 */           if ((paramAnonymousLocation != null) && (b.a(paramAnonymousLocation))) {
-/* 144 */             b.a(this.a, paramAnonymousLocation);
+/* 143 */           if ((paramAnonymousLocation != null) && (b.b(paramAnonymousLocation))) {
+/* 144 */             b.b(paramContext, paramAnonymousLocation);
 /* 145 */             paramLocationManager.removeUpdates(this);
 /*     */           }
 /*     */         }
@@ -168,7 +161,7 @@
 /* 168 */     if (!b(paramLocation)) {
 /* 169 */       return;
 /*     */     }
-/* 171 */     c localc = c.a(paramContext);
+/* 171 */     SharedHepler localc = SharedHepler.getInstance(paramContext);
 /* 172 */     localc.a("latitude", (float)paramLocation.getLatitude());
 /* 173 */     localc.a("longitude", (float)paramLocation.getLongitude());
 /* 174 */     localc.a("lbstime", System.currentTimeMillis());
@@ -180,7 +173,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\result.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\result.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

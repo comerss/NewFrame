@@ -4,7 +4,7 @@
 /*    */ import com.bytedance.sdk.openadsdk.core.h;
 /*    */ import com.bytedance.sdk.openadsdk.core.i;
 /*    */ import com.bytedance.sdk.openadsdk.core.n;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.c;
+/*    */ import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.r;
 /*    */ 
 /*    */ 
@@ -21,7 +21,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class a
+/*    */ public class UIUtils
 /*    */ {
 /*    */   public static String a()
 /*    */   {
@@ -66,7 +66,7 @@
 /*    */   public static String f()
 /*    */   {
 /* 68 */     Context localContext = n.a();
-/* 69 */     return c.b(localContext);
+/* 69 */     return PhoneUtils.netState(localContext);
 /*    */   }
 /*    */   
 /*    */ 
@@ -80,7 +80,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ssl\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\SslHepler\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

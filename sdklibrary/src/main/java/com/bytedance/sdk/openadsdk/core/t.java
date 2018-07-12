@@ -8,7 +8,9 @@
 /*     */ import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
 /*     */ import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.z;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -16,47 +18,45 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
-/*     */ public class t
-/*     */   implements TTAdManager
+/*     */ public class t implements TTAdManager
 /*     */ {
-/*     */   public t a(String paramString)
+/*     */   public t setAppId(String paramString)
 /*     */   {
 /*  25 */     h.a().a(paramString);
 /*  26 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t b(String paramString)
+/*     */   public t setName(String paramString)
 /*     */   {
 /*  31 */     h.a().b(paramString);
 /*  32 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t a(boolean paramBoolean)
+/*     */   public t setPaid(boolean paramBoolean)
 /*     */   {
 /*  37 */     h.a().a(paramBoolean);
 /*  38 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t a(int paramInt)
+/*     */   public t setGender(int paramInt)
 /*     */   {
 /*  43 */     h.a().b(paramInt);
 /*  44 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t b(int paramInt)
+/*     */   public t setAge(int paramInt)
 /*     */   {
 /*  49 */     h.a().a(paramInt);
 /*  50 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t c(String paramString)
+/*     */   public t setKeywords(String paramString)
 /*     */   {
 /*  55 */     h.a().c(paramString);
 /*  56 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t d(String paramString)
+/*     */   public t setData(String paramString)
 /*     */   {
 /*  61 */     h.a().d(paramString);
 /*  62 */     return this;
@@ -76,7 +76,7 @@
 /*     */   
 /*     */   public TTAdManager openDebugMode()
 /*     */   {
-/*  79 */     m.b();
+/*  79 */     LogUtils.b();
 /*  80 */     return this;
 /*     */   }
 /*     */   
@@ -107,7 +107,7 @@
 /*     */   {
 /* 108 */     h.a().m();
 /*     */     
-/* 110 */     return new u(paramContext);
+/* 110 */     return new TTAdNativeImpl(paramContext);
 /*     */   }
 /*     */   
 /*     */   public void requestPermissionIfNecessary(Context paramContext)
@@ -122,7 +122,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\t.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\MineHandler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

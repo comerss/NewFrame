@@ -1,16 +1,30 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
-/*     */ import android.content.Context;
-/*     */ import android.os.Handler;
-/*     */ import android.os.Looper;
-/*     */ import android.os.Message;
-/*     */ import android.support.annotation.Nullable;
-/*     */ import android.view.View;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.ssl.d;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.k;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ import java.util.List;
+
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bytedance.sdk.openadsdk.ggg.k;
+import com.bytedance.sdk.openadsdk.ggg.r;
+
+import java.util.List;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -46,13 +60,13 @@
 /*     */     public void handleMessage(Message paramAnonymousMessage) {
 /*  47 */       switch (paramAnonymousMessage.what) {
 /*     */       case 1: 
-/*  49 */         if (f.a(f.this)) {
-/*  50 */           if (z.a(f.b(f.this), 20, f.c(f.this))) {
+/*  49 */         if (b) {
+/*  50 */           if (z.a(f.this.e, 20, f.this.i)) {
 /*  51 */             f.this.c();
 /*  52 */             f.this.a.sendEmptyMessageDelayed(2, 1000L);
-/*  53 */             if (f.d(f.this) != null) {
-/*  54 */               f.d(f.this).a(f.b(f.this));
-/*     */             }
+/*  53 */            if (f.this.d != null) {
+                        f.this.d.a(f.this.e);
+                    }
 /*     */           }
 /*     */           else {
 /*  58 */             f.this.a.sendEmptyMessageDelayed(1, 1000L);
@@ -62,11 +76,13 @@
 /*     */         break;
 /*     */       case 2: 
 /*  64 */         boolean bool = r.d(n.a(), n.a().getPackageName());
-/*  65 */         if ((z.a(f.b(f.this), 20, f.c(f.this))) || (!bool)) {
-/*  66 */           f.this.a.sendEmptyMessageDelayed(2, 1000L);
-/*  67 */         } else if (!f.e(f.this)) {
-/*  68 */           f.this.setNeedCheckingShow(true);
-/*     */         }
+/*  65 */        if (!z.a(f.this.e, 20, f.this.i) && bool) {
+                if (!f.this.h) {
+                    f.this.setNeedCheckingShow(true);
+                }
+            } else {
+                f.this.a.sendEmptyMessageDelayed(2, 1000L);
+            }
 /*     */         
 /*     */         break;
 /*     */       }
@@ -123,7 +139,7 @@
 /* 123 */     a(this.g, null);
 /*     */   }
 /*     */   
-/*     */   public void a(List<View> paramList, d paramd) {
+/*     */   public void a(List<View> paramList, com.bytedance.sdk.openadsdk.core.a.d paramd) {
 /* 127 */     if (k.b(paramList)) {
 /* 128 */       for (View localView : paramList) {
 /* 129 */         localView.setOnClickListener(paramd);
@@ -183,7 +199,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\f.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\doErrorHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

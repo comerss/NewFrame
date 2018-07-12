@@ -1,24 +1,43 @@
 /*     */ package com.bytedance.sdk.openadsdk.ggg;
 /*     */ 
 /*     */ import android.annotation.SuppressLint;
-/*     */ import android.content.Context;
+import android.content.Context;
+import android.os.Build;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+
+import com.bytedance.sdk.openadsdk.core.i;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+
 /*     */
 /*     */
-/*     */ import android.os.Build;
 /*     */
-/*     */ import android.os.SystemClock;
-/*     */ import android.support.annotation.NonNull;
-/*     */ import android.text.TextUtils;
-/*     */ import android.util.DisplayMetrics;
-/*     */ import com.bytedance.sdk.openadsdk.core.i;
-/*     */ import java.net.Inet4Address;
-/*     */ import java.net.InetAddress;
-/*     */ import java.net.NetworkInterface;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.Collections;
-/*     */ import java.util.Locale;
-/*     */ import org.json.JSONException;
-/*     */ import org.json.JSONObject;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -69,7 +88,7 @@
 /*     */   {
 /*     */     try
 /*     */     {
-/*  72 */       ArrayList localArrayList = Collections.list(NetworkInterface.getNetworkInterfaces());
+/*  72 */       ArrayList<NetworkInterface> localArrayList = Collections.list(NetworkInterface.getNetworkInterfaces());
 /*  73 */       for (NetworkInterface localNetworkInterface : localArrayList)
 /*  74 */         if ((paramString == null) || 
 /*  75 */           (localNetworkInterface.getName().equalsIgnoreCase(paramString)))
@@ -104,9 +123,9 @@
 /*     */   {
 /*     */     try
 /*     */     {
-/* 107 */       ArrayList localArrayList1 = Collections.list(NetworkInterface.getNetworkInterfaces());
+/* 107 */       ArrayList<NetworkInterface> localArrayList1 = Collections.list(NetworkInterface.getNetworkInterfaces());
 /* 108 */       for (NetworkInterface localNetworkInterface : localArrayList1) {
-/* 109 */         ArrayList localArrayList2 = Collections.list(localNetworkInterface.getInetAddresses());
+/* 109 */         ArrayList<InetAddress> localArrayList2 = Collections.list(localNetworkInterface.getInetAddresses());
 /* 110 */         for (InetAddress localInetAddress : localArrayList2) {
 /* 111 */           if (!localInetAddress.isLoopbackAddress()) {
 /* 112 */             boolean bool = localInetAddress instanceof Inet4Address;
@@ -199,7 +218,7 @@
 /* 199 */       localJSONObject.put("vendor", Build.MANUFACTURER);
 /* 200 */       localJSONObject.put("model", Build.MODEL);
 /* 201 */       localJSONObject.put("language", Locale.getDefault().getLanguage());
-/* 202 */       localJSONObject.put("conn_type", c.a(paramContext));
+/* 202 */       localJSONObject.put("conn_type", PhoneUtils.isWifi(paramContext));
 /* 203 */       localJSONObject.put("mac", b());
 /* 204 */       DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
 /* 205 */       localJSONObject.put("screen_width", localDisplayMetrics.widthPixels);
@@ -211,7 +230,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

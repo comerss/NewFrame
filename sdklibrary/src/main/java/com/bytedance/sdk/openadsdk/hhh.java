@@ -2,7 +2,7 @@ package com.bytedance.sdk.openadsdk;
 
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.k;
-import com.bytedance.sdk.openadsdk.core.o;
+import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 
 import org.json.JSONObject;
 
@@ -67,7 +67,7 @@ public class hhh {
 
     protected void a(JSONObject var1) {
         if (var1 != null) {
-            o var2 = n.c();
+            AdNativeListener var2 = n.c();
             var2.a(var1);
         }
     }

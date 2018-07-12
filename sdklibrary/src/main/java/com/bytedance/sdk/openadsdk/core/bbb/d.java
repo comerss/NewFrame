@@ -10,12 +10,11 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bytedance.sdk.openadsdk.R;
-import com.bytedance.sdk.openadsdk.b.dislike;
+import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.s;
 
 /*     */
@@ -53,7 +52,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   private c b;
 /*     */   private c c;
 /*     */   private ImageView d;
-/*     */   private dislike e;
+/*     */   private TTAdDislikeImpl e;
 /*     */   private int f;
 /*     */   private boolean g;
 /*  42 */   private boolean h = false;
@@ -90,8 +89,8 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*  73 */     this.d.setOnClickListener(new View.OnClickListener()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView) {
-/*  76 */         if (d.a(d.this) != null) {
-/*  77 */           d.a(d.this).showDislikeDialog();
+/*  76 */         if (e != null) {
+/*  77 */          e.showDislikeDialog();
 /*     */         }
 /*     */         
 /*     */       }
@@ -122,7 +121,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   
 /*     */   public void a() {
 /* 107 */     this.c = new c(this.a);
-/* 108 */     this.c.setVisibility(8);
+/* 108 */     this.c.setVisibility(View.GONE);
 /* 109 */     addView(this.c, new FrameLayout.LayoutParams(-1, -1));
 /* 110 */     i();
 /* 111 */     if (this.h) {
@@ -130,7 +129,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   void a(dislike paramb) {
+/*     */   void a(TTAdDislikeImpl paramb) {
 /* 117 */     this.e = paramb;
 /* 118 */     h();
 /*     */   }
@@ -173,20 +172,20 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /* 156 */     localObjectAnimator.addListener(new Animator.AnimatorListener()
 /*     */     {
 /*     */       public void onAnimationStart(Animator paramAnonymousAnimator) {
-/* 159 */         m.b("TTBannerAd", "SLIDE START");
+/* 159 */         LogUtils.b("TTBannerAd", "SLIDE START");
 /*     */       }
 /*     */       
 /*     */       public void onAnimationEnd(Animator paramAnonymousAnimator)
 /*     */       {
-/* 164 */         d.a(d.this, false);
-/* 165 */         d.b(d.this);
+/* 164 */       g= false;
+/* 165 */      j();
 /* 166 */         if (paramc != null) {
-/* 167 */           d.a(d.this, paramc.a());
+/* 167 */          a( paramc.a());
 /*     */         }
 /*     */         
-/* 170 */         m.b("TTBannerAd", "SLIDE END");
-/* 171 */         if (m.a) {
-/* 172 */           Toast.makeText(d.c(d.this).getApplicationContext(), "END", 0).show();
+/* 170 */         LogUtils.b("TTBannerAd", "SLIDE END");
+/* 171 */         if (LogUtils.isDebug) {
+///* 172 */           Toast.makeText(LocationUtils.PhoneUtils(LocationUtils.this).getApplicationContext(), "END", 0).show();
 /*     */         }
 /*     */       }
 /*     */       
@@ -211,7 +210,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /* 194 */       AnimatorSet localAnimatorSet = new AnimatorSet();
 /* 195 */       localAnimatorSet.play(a(this.b)).with(b(this.c));
 /* 196 */       localAnimatorSet.setDuration(this.f).start();
-/* 197 */       this.c.setVisibility(0);
+/* 197 */       this.c.setVisibility(View.VISIBLE);
 /* 198 */       this.g = true;
 /*     */     }
 /*     */   }
@@ -245,7 +244,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\result\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\result\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

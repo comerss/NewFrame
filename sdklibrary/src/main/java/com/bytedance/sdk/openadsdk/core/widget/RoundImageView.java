@@ -1,18 +1,32 @@
 /*     */ package com.bytedance.sdk.openadsdk.core.widget;
 /*     */ 
-/*     */ import android.content.Context;
-/*     */ import android.graphics.Bitmap;
-/*     */ import android.graphics.Bitmap.Config;
-/*     */ import android.graphics.Canvas;
-/*     */ import android.graphics.Paint;
-/*     */ import android.graphics.PorterDuff.Mode;
-/*     */ import android.graphics.PorterDuffXfermode;
-/*     */ import android.graphics.Rect;
-/*     */ import android.graphics.drawable.BitmapDrawable;
-/*     */ import android.graphics.drawable.Drawable;
-/*     */ import android.graphics.drawable.NinePatchDrawable;
-/*     */ import android.util.AttributeSet;
-/*     */ import android.widget.ImageView;
+/*     */
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -81,6 +95,8 @@
 /*     */     int n;
 /*     */     int m;
 /*     */     int i1;
+    Bitmap localBitmap2;
+    Bitmap localBitmap1;
 /*  84 */     int i2; if (k > j) {
 /*  85 */       m = n = j;
 /*  86 */       i1 = 0;
@@ -123,9 +139,7 @@
 /*     */     
 /* 124 */     localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 /* 125 */     localCanvas.drawBitmap(localBitmap1, localRect, localRect, localPaint);
-/* 126 */     paramBitmap = null;
-/* 127 */     Bitmap localBitmap2 = null;
-/* 128 */     Bitmap localBitmap1 = null;
+/* 126 */
 /* 129 */     return localBitmap3;
 /*     */   }
 /*     */ }

@@ -9,7 +9,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -30,9 +30,9 @@ import java.lang.reflect.Method;
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class a
+/*    */ public class PermisionHelper
 /*    */ {
-/* 22 */   private static final String a = a.class.getSimpleName();
+/* 22 */   private static final String a = PermisionHelper.class.getSimpleName();
 /*    */   
 /*    */   public static boolean a(Context paramContext, String paramString) {
 /* 25 */     if (Build.VERSION.SDK_INT >= 19) {
@@ -65,7 +65,7 @@ import java.lang.reflect.Method;
 /*    */       
 /* 53 */       bool = (i != 2) && (i != 1) && (i != 4);
 /*    */     } catch (Exception localException) {
-/* 55 */       m.e(a, "权限检查出错时默认返回有权限，异常代码：" + localException);
+/* 55 */       LogUtils.e(a, "权限检查出错时默认返回有权限，异常代码：" + localException);
 /*    */     }
 /* 57 */     return bool;
 /*    */   }
@@ -78,7 +78,7 @@ import java.lang.reflect.Method;
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\c\dislike\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cc\TTAdDislikeImpl\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

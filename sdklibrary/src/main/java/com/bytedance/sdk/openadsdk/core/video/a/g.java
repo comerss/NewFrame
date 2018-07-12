@@ -15,7 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.R;
-import com.bytedance.sdk.openadsdk.ggg.t;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 
-public class g implements c, d, t.a {
+public class g implements c, d, MineHandler.OnResult {
     private static final String c = g.class.getSimpleName();
     private h d;
     private ViewGroup e;
-    private t f = new t(this);
+    private MineHandler f = new MineHandler(this);
     private long g = 0L;
     private long h = 0L;
     private com.bytedance.sdk.openadsdk.core.video.c.d i;
@@ -41,7 +42,7 @@ public class g implements c, d, t.a {
     private boolean q = false;
     private boolean r = false;
     private boolean s = false;
-    private final com.bytedance.sdk.openadsdk.core.d.h t;
+    private final com.bytedance.sdk.openadsdk.core.nibuguan.h t;
     private boolean u = true;
     private boolean v = false;
     private WeakReference<e> w;
@@ -102,7 +103,7 @@ public class g implements c, d, t.a {
         this.d.a(this);
     }
 
-    public g(Context var1, ViewGroup var2, com.bytedance.sdk.openadsdk.core.d.h var3) {
+    public g(Context var1, ViewGroup var2, com.bytedance.sdk.openadsdk.core.nibuguan.h var3) {
         this.e = var2;
         this.p = new WeakReference(var1);
         this.t = var3;
@@ -111,9 +112,9 @@ public class g implements c, d, t.a {
     }
 
     public boolean a(String var1, String var2, int var3, int var4, List<String> var5, String var6, long var7, boolean var9) {
-        com.bytedance.sdk.openadsdk.ggg.m.b(c, "video local url " + var1);
+        LogUtils.b(c, "video local url " + var1);
         if (com.bytedance.sdk.openadsdk.ggg.q.a(var1)) {
-            com.bytedance.sdk.openadsdk.ggg.m.e(c, "No video info");
+            LogUtils.e(c, "No video info");
             return false;
         } else {
             this.v = var9;
@@ -209,7 +210,7 @@ public class g implements c, d, t.a {
         }
 
         this.g = System.currentTimeMillis();
-        if (!com.bytedance.sdk.openadsdk.h.q.a(var1)) {
+        if (!com.bytedance.sdk.openadsdk.ggg.q.a(var1)) {
             this.d.a(8);
             this.d.a(0);
             this.a(new Runnable() {
@@ -258,7 +259,7 @@ public class g implements c, d, t.a {
                 this.h = System.currentTimeMillis() - this.g;
                 this.d.a(this.t, this.p, true);
                 if (!this.s) {
-                    com.bytedance.sdk.openadsdk.d.c.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
+                    com.bytedance.sdk.openadsdk.dddd.c.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
                     this.s = true;
                     this.a(this.m, this.m);
                     this.l = this.k = this.m;
@@ -365,13 +366,13 @@ public class g implements c, d, t.a {
         this.m();
         this.r();
         if (!this.s && this.r) {
-            com.bytedance.sdk.openadsdk.ggg.c.a((Context)this.p.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
+            com.bytedance.sdk.openadsdk.dddd.c.a(p.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
             this.s = true;
         }
 
     }
 
-    public void a(Message var1) {
+    public void doResult(Message var1) {
         if (this.d != null && var1 != null && this.p != null && this.p.get() != null) {
             switch(var1.what) {
                 case 108:
@@ -406,9 +407,9 @@ public class g implements c, d, t.a {
 
                     if (this.q && var2 == 3 && !this.r) {
                         if (this.u) {
-                            com.bytedance.sdk.openadsdk.ggg.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            com.bytedance.sdk.openadsdk.ggg.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;
@@ -421,9 +422,9 @@ public class g implements c, d, t.a {
 
                     if (!this.q && !this.r) {
                         if (this.u) {
-                            com.bytedance.sdk.openadsdk.ggg.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            com.bytedance.sdk.openadsdk.ggg.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;
@@ -518,7 +519,7 @@ public class g implements c, d, t.a {
         if (this.s()) {
             this.c(!this.a);
             if (!(this.p.get() instanceof Activity)) {
-                com.bytedance.sdk.openadsdk.h.m.b(c, "context is not activity, not support this function.");
+                LogUtils.b(c, "context is not activity, not support this function.");
             } else {
                 if (this.a) {
                     this.a(var3 ? 8 : 0);
@@ -623,7 +624,7 @@ public class g implements c, d, t.a {
         if (this.s()) {
             this.c(!this.a);
             if (!(this.p.get() instanceof Activity)) {
-                com.bytedance.sdk.openadsdk.h.m.b(c, "context is not activity, not support this function.");
+                LogUtils.b(c, "context is not activity, not support this function.");
             } else {
                 if (this.d != null) {
                     this.d.c(this.e);
@@ -718,8 +719,8 @@ public class g implements c, d, t.a {
         }
     }
 
-    public void a(com.bytedance.sdk.openadsdk.core.widget.b.a var1, String var2) {
-        switch(null.a[var1.ordinal()]) {
+    public void a(com.bytedance.sdk.openadsdk.core.widget.b.enume var1, String var2) {
+        switch(var1.ordinal()) {
             case 1:
                 this.a();
                 break;
@@ -735,19 +736,19 @@ public class g implements c, d, t.a {
     }
 
     protected boolean b(int var1) {
-        com.bytedance.sdk.openadsdk.h.n.a var2 = com.bytedance.sdk.openadsdk.h.n.b(com.bytedance.sdk.openadsdk.core.n.a());
-        if (var2 == com.bytedance.sdk.openadsdk.h.n.a.a) {
+        com.bytedance.sdk.openadsdk.ggg.n.a var2 = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a());
+        if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.a) {
             this.d.a(this.t, this.p, false);
         }
 
-        if (var2 != com.bytedance.sdk.openadsdk.h.n.a.e && var2 != com.bytedance.sdk.openadsdk.h.n.a.a) {
+        if (var2 != com.bytedance.sdk.openadsdk.ggg.n.a.e && var2 != com.bytedance.sdk.openadsdk.ggg.n.a.a) {
             this.a();
             this.y = true;
             this.z = false;
             if (this.d != null && this.t != null) {
                 return this.d.a(var1, this.t.a());
             }
-        } else if (var2 == com.bytedance.sdk.openadsdk.h.n.a.e) {
+        } else if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
             this.y = false;
             if (this.d != null) {
                 this.d.a();
@@ -759,14 +760,14 @@ public class g implements c, d, t.a {
 
     protected void a(Context var1) {
         if (this.s()) {
-            com.bytedance.sdk.openadsdk.h.n.a var2 = com.bytedance.sdk.openadsdk.h.n.b(var1);
+            com.bytedance.sdk.openadsdk.ggg.n.a var2 = com.bytedance.sdk.openadsdk.ggg.n.b(var1);
             if (this.F != var2) {
                 if (!this.z) {
                     this.b(2);
                 }
 
                 this.F = var2;
-                if (var2 == com.bytedance.sdk.openadsdk.h.n.a.e) {
+                if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
                     this.b();
                 }
 

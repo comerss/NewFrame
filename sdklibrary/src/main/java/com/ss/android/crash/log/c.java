@@ -1,25 +1,46 @@
 /*     */ package com.ss.android.crash.log;
 /*     */ 
-/*     */ import android.content.Context;
-/*     */ import android.content.SharedPreferences;
-/*     */ import android.content.SharedPreferences.Editor;
-/*     */ import android.os.Build.VERSION;
-/*     */ import android.os.HandlerThread;
-/*     */ import android.os.Looper;
-/*     */ import android.os.Message;
-/*     */ import android.os.Process;
-/*     */ import android.text.TextUtils;
-/*     */ import java.io.BufferedReader;
-/*     */ import java.io.File;
-/*     */ import java.io.FileReader;
-/*     */ import java.io.IOException;
-/*     */ import java.text.SimpleDateFormat;
-/*     */ import java.util.Date;
-/*     */ import java.util.Locale;
-/*     */ import java.util.regex.Matcher;
-/*     */ import java.util.regex.Pattern;
-/*     */ import org.json.JSONArray;
-/*     */ import org.json.JSONObject;
+/*     */
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Process;
+import android.text.TextUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -72,7 +93,7 @@
 /*  72 */       if (this.e != null) {
 /*  73 */         JSONObject localJSONObject1 = new JSONObject();
 /*  74 */         String str = this.e.getPackageName();
-/*  75 */         if (!e.a(this.e, str))
+/*  75 */         if (!com.ss.android.crash.log.e.a(this.e, str))
 /*  76 */           return;
 /*  77 */         int i = Process.myPid();
 /*  78 */         if ((TextUtils.isEmpty(str)) || (i <= 0))
@@ -80,7 +101,7 @@
 /*  80 */         if (paramInt == 200) {
 /*  81 */           localJSONObject1 = a(paramString, i, str);
 /*  82 */         } else if (paramInt == 100) {
-/*  83 */           localJSONObject1 = e.a();
+/*  83 */           localJSONObject1 =  com.ss.android.crash.log.e.a();
 /*     */         }
 /*  85 */         if ((localJSONObject1 != null) && (localJSONObject1.length() > 0)) {
 /*  86 */           localJSONObject1.put("pid", i);
@@ -90,7 +111,7 @@
 /*  90 */           localJSONObject2.put("data", localJSONObject1.toString());
 /*  91 */           localJSONObject2.put("is_anr", 1);
 /*  92 */           localJSONObject2.put("anr_time", System.currentTimeMillis());
-/*  93 */           i.b().a(localJSONObject2);
+/*  93 */           com.ss.android.crash.log.i.b().a(localJSONObject2);
 /*     */         }
 /*     */       }
 /*     */     } catch (Throwable localThrowable) {
@@ -146,7 +167,7 @@
 /*     */         }
 /* 147 */         Matcher localMatcher2 = Pattern.compile("tid=\\d+").matcher(arrayOfObject3[1].toString());
 /* 148 */         if (localMatcher2.find()) {
-/* 149 */           str3 = localMatcher2.group();
+/* 149 */          String str3 = localMatcher2.group();
 /* 150 */           k = Integer.parseInt(str3.substring(str3.indexOf("=") + 1));
 /*     */         }
 /* 152 */         String str3 = a(localBufferedReader);

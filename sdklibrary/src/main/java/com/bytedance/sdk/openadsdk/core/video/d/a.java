@@ -1,7 +1,11 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.video.d;
 /*    */ 
-/*    */ import android.os.Build.VERSION;
-/*    */ import android.view.View;
+/*    */
+
+import android.os.Build;
+import android.view.View;
+
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -73,7 +77,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\d\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\LocationUtils\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

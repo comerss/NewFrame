@@ -13,7 +13,7 @@ import android.support.annotation.NonNull;
 /*    */
 /*    */
 /*    */ 
-/*    */ public class b
+/*    */ public class PermistionUtils
 /*    */ {
 /*    */   public static void a(@NonNull Activity paramActivity, @NonNull String[] paramArrayOfString, int paramInt)
 /*    */   {
@@ -49,7 +49,7 @@ import android.support.annotation.NonNull;
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\c\Result\Result.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\SharedHepler\Result\Result.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

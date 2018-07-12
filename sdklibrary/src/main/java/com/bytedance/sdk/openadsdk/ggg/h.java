@@ -17,29 +17,27 @@
 /*    */ 
 /*    */ public class h
 /*    */ {
-/*    */   public static void a(Context paramContext, String paramString, a parama)
+/*    */   public static void a(Context paramContext, String paramString, final a var2)
 /*    */   {
 /* 22 */     AQuery2 localAQuery2 = new AQuery2(paramContext);
-/* 23 */     AjaxCallback local1 = new AjaxCallback()
-/*    */     {
-/*    */       public void a(String paramAnonymousString, byte[] paramAnonymousArrayOfByte, AjaxStatus paramAnonymousAjaxStatus) {
-/* 26 */         if (this.a != null) {
-/* 27 */           if ((paramAnonymousAjaxStatus == null) || (paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length == 0)) {
-/* 28 */             this.a.a();
-/*    */           }
-/* 30 */           else if (paramAnonymousAjaxStatus.getCode() == 200) {
-/* 31 */             m.b("ImageBytesHelper", "图片数据返回成功" + paramAnonymousArrayOfByte.length);
-/* 32 */             this.a.a(paramAnonymousArrayOfByte);
-/*    */           } else {
-/* 34 */             this.a.a();
-/*    */           }
-/*    */           
-/*    */         }
-/*    */         
-/*    */       }
-/*    */       
-/* 41 */     };
-/* 42 */     localAQuery2.ajax(paramString, byte[].class, local1);
+/* 23 */    AjaxCallback var4 = new AjaxCallback<byte[]>() {
+        public void a(String var1, byte[] var2x, AjaxStatus var3) {
+            if (var2 != null) {
+                if (var3 != null && var2x != null && var2x.length != 0) {
+                    if (var3.getCode() == 200) {
+                        LogUtils.b("ImageBytesHelper", "图片数据返回成功" + var2x.length);
+                        var2.a(var2x);
+                    } else {
+                        var2.a();
+                    }
+                } else {
+                    var2.a();
+                }
+            }
+
+        }
+    };
+/* 42 */     localAQuery2.ajax(paramString, byte[].class, var4);
 /*    */   }
 /*    */   
 /*    */ 

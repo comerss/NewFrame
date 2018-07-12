@@ -12,10 +12,11 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdNative;
+import com.bytedance.sdk.openadsdk.core.ApiException;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-import com.bytedance.sdk.openadsdk.core.o;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.core.AdNativeListener;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -50,7 +51,7 @@ import java.lang.ref.WeakReference;
 /*  31 */   public static final String a = b.class.getSimpleName();
 /*     */   private static volatile b b;
 /*     */   private WeakReference<Context> c;
-/*     */   private o d;
+/*     */   private AdNativeListener d;
 /*     */   private AdSlot e;
 /*     */   private AQuery2 f;
 /*     */   
@@ -77,23 +78,23 @@ import java.lang.ref.WeakReference;
 /*     */   }
 /*     */
 /*     */   void asss(final assssss parama) {
-/*  61 */     this.d.a(this.e, 1, new com.bytedance.sdk.openadsdk.core.o.a()
+/*  61 */     this.d.getAds(this.e, null,1, new AdNativeListener.OnAdLoad()
 /*     */     {
-/*     */       public void a(int paramAnonymousInt, String paramAnonymousString) {
-/*  64 */         m.b(b.a, paramAnonymousString + "  " + paramAnonymousInt);
+/*     */       public void onError(int paramAnonymousInt, String paramAnonymousString) {
+/*  64 */         LogUtils.b(b.a, paramAnonymousString + "  " + paramAnonymousInt);
 /*  65 */         if (parama != null) {
 /*  66 */           parama.asa();
 /*     */         }
 /*     */       }
 
         @Override
-        public void a(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa) {
+        public void onSuccess(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa) {
             if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
                          h localh = (h)paramAnonymousa.b().get(0);
                            if (localh.v()) {
                                asss(localh, parama);
                              } else {
-                             m.b(b.a, "Banner广告解析失败/广告为空");
+                             LogUtils.b(b.a, "Banner广告解析失败/广告为空");
                                 if (parama != null) {
                                      parama.asa();
                                     }
@@ -108,14 +109,14 @@ import java.lang.ref.WeakReference;
 /*     */   
 /*     */   public void asss(@NonNull AdSlot paramAdSlot, @NonNull final TTAdNative.BannerAdListener paramBannerAdListener) {
 /*  88 */     this.e = paramAdSlot;
-/*  89 */     this.d.a(paramAdSlot, 1, new o.a()
+/*  89 */     this.d.getAds(paramAdSlot, null,1, new AdNativeListener.OnAdLoad()
 /*     */     {
-/*     */       public void a(int paramAnonymousInt, String paramAnonymousString) {
+/*     */       public void onError(int paramAnonymousInt, String paramAnonymousString) {
 /*  92 */         paramBannerAdListener.onError(paramAnonymousInt, paramAnonymousString);
-/*  93 */         m.b(b.a, paramAnonymousString + " " + paramAnonymousInt);
+/*  93 */         LogUtils.b(b.a, paramAnonymousString + " " + paramAnonymousInt);
 /*     */       }
 /*     */       
-/*     */       public void a(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa)
+/*     */       public void onSuccess(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa)
 /*     */       {
 /*  98 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /*  99 */           h localh = (h)paramAnonymousa.b().get(0);
@@ -131,18 +132,18 @@ import java.lang.ref.WeakReference;
 /*     */
 /*     */               public void asa()
 /*     */               {
-/* 112 */                paramBannerAdListener.onError(-5, com.bytedance.sdk.openadsdk.core.g.a(-5));
+/* 112 */                paramBannerAdListener.onError(-5, ApiException.a(-5));
 /*     */               }
 /*     */               
 /* 115 */             };
 /* 116 */             asss(localh, local1);
 /*     */           } else {
-/* 118 */             m.b(b.a, "Banner广告解析失败");
-/* 119 */             paramBannerAdListener.onError(-4, com.bytedance.sdk.openadsdk.core.g.a(-4));
+/* 118 */             LogUtils.b(b.a, "Banner广告解析失败");
+/* 119 */             paramBannerAdListener.onError(-4, ApiException.a(-4));
 /*     */           }
 /*     */         } else {
-/* 122 */           m.b(b.a, "Banner广告解析失败/广告为空");
-/* 123 */           paramBannerAdListener.onError(-4, com.bytedance.sdk.openadsdk.core.g.a(-4));
+/* 122 */           LogUtils.b(b.a, "Banner广告解析失败/广告为空");
+/* 123 */           paramBannerAdListener.onError(-4, ApiException.a(-4));
 /*     */         }
 /*     */       }
 /*     */     });

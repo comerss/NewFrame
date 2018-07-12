@@ -9,6 +9,9 @@ import android.os.SystemClock
 import android.telephony.TelephonyManager
 import android.text.TextUtils
 import android.util.Base64
+import com.bytedance.sdk.openadsdk.AdSlot
+import com.bytedance.sdk.openadsdk.TTAdNative
+import com.bytedance.sdk.openadsdk.TTSplashAd
 import com.comers.baselibrary.base.UpdateService
 import com.comers.baselibrary.http.HttpHelper
 import com.comers.baselibrary.http.HttpResult
@@ -17,6 +20,7 @@ import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.comers.market.base.Data
 import com.donews.frame.R
 import com.donews.frame.sdk.Utils.c
+import kotlinx.android.synthetic.main.activity_sdk.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -33,7 +37,7 @@ import javax.crypto.spec.SecretKeySpec
  */
 class SdkActivity : RxBaseActivity() {
     override fun initView() {
-        var response=""
+        var response = ""
     }
 
     override fun initListener() {
@@ -41,7 +45,31 @@ class SdkActivity : RxBaseActivity() {
 
     override fun initData() {
 //        getAd()
-        downLoad()
+//        downLoad()
+        getDas()
+    }
+
+    private fun getDas() {
+
+        var mAdSlot = AdSlot.Builder().setCodeId("801622501")
+                .setSupportDeepLink(true)
+                .setImageAcceptedSize(200, 300)
+                .build()
+        DoApplication.getManage().createAdNative(this).loadSplashAd(mAdSlot, object : TTAdNative.SplashAdListener {
+            override fun onError(paramInt: Int, paramString: String?) {
+                showToast(paramString)
+            }
+
+            override fun onTimeout() {
+                showToast("超时了")
+            }
+
+            override fun onSplashAdLoad(paramTTSplashAd: TTSplashAd?) {
+                showToast("成功饿了")
+                this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
+            }
+
+        })
     }
 
     private fun downLoad() {
@@ -79,7 +107,7 @@ class SdkActivity : RxBaseActivity() {
         }
     }
 
-    private fun getParams( var3: Int): JSONObject {
+    private fun getParams(var3: Int): JSONObject {
         val var4 = JSONObject()
 
         try {
@@ -89,7 +117,7 @@ class SdkActivity : RxBaseActivity() {
             var5.put("ad_sdk_version", "1.9.2")
             var5.put("source_type", "app")
             var5.put("app", doParams())
-            val var7 =doParams(this)
+            val var7 = doParams(this)
             if (var7 != null) {
 //                var7.put("orientation", var1.getOrientation())
             }
@@ -99,7 +127,7 @@ class SdkActivity : RxBaseActivity() {
             var5.put("ua", getUa())
             var5.put("ip", getIp(true))
             val var8 = JSONArray()
-            var8.put(initParam( var3))
+            var8.put(initParam(var3))
             var5.put("adslots", var8)
             val var9 = getSecret(var5.toString(), "b0458c2b262949b8")
             if (!TextUtils.isEmpty(var9)) {
@@ -130,13 +158,14 @@ class SdkActivity : RxBaseActivity() {
         }
 
     }
-    private fun initParam( var2: Int): JSONObject {
+
+    private fun initParam(var2: Int): JSONObject {
         val var3 = JSONObject()
         try {
             var3.put("id", "801622501")
             var3.put("adtype", var2)
             var3.put("pos", getPosition(var2))
-//            this.a(var3, "accepted_size", var1.getImgAcceptedWidth(), var1.getImgAcceptedHeight())
+//            this.UIUtils(var3, "accepted_size", var1.getImgAcceptedWidth(), var1.getImgAcceptedHeight())
             var3.put("is_support_dpl", true)
             var var4 = 1
             if (var4 < 1) {
@@ -153,6 +182,7 @@ class SdkActivity : RxBaseActivity() {
 
         return var3
     }
+
     fun getIp(var0: Boolean): String {
         try {
             val var1 = Collections.list(NetworkInterface.getNetworkInterfaces())
@@ -184,6 +214,7 @@ class SdkActivity : RxBaseActivity() {
 
         return ""
     }
+
     //   .setAppID("5001622")
 //    .setAdvertiseId("901622650")//901622650   801622501  801622501
     fun getUa(): String {
@@ -215,13 +246,14 @@ class SdkActivity : RxBaseActivity() {
             return var1.toString()
         }
     }
+
     private fun doParams(): JSONObject {
         val var1 = JSONObject()
         try {
             var1.put("appid", "5001622")
             var1.put("name", "引力资讯-android_android")
-            var1.put("package_name",this.packageName)
-            var1.put("version",this.packageManager.getPackageInfo(this.packageName,0).versionCode)
+            var1.put("package_name", this.packageName)
+            var1.put("version", this.packageManager.getPackageInfo(this.packageName, 0).versionCode)
             var1.put("is_paid_app", false)
         } catch (var3: JSONException) {
         }
@@ -229,7 +261,7 @@ class SdkActivity : RxBaseActivity() {
         return var1
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission", "WrongConstant")
     private fun getPhoneNub(): String? {
         try {
             val var1 = this.getSystemService("phone") as TelephonyManager?
@@ -239,24 +271,26 @@ class SdkActivity : RxBaseActivity() {
         }
 
     }
+
     private fun getUser(): JSONObject {
         val var1 = JSONObject()
 
         try {
             var1.put("gender", 1)
-            var1.put( "phone_nub", getPhoneNub())
-//            var1.put( "keywords", com.bytedance.sdk.openadsdk.core.h.a().g())
-           /* val var2 = com.bytedance.sdk.openadsdk.h.i.a(this.a, this.c)
-            if (var2 != null) {
-                var1.put("app_list", var2)//已经装的app  集合
-            }*/
+            var1.put("phone_nub", getPhoneNub())
+//            var1.put( "keywords", com.bytedance.sdk.openadsdk.core.h.UIUtils().ApiException())
+            /* val var2 = com.bytedance.sdk.openadsdk.h.i.UIUtils(this.UIUtils, this.PhoneUtils)
+             if (var2 != null) {
+                 var1.put("app_list", var2)//已经装的app  集合
+             }*/
 
-            var1.put( "data", "")
+            var1.put("data", "")
         } catch (var3: JSONException) {
         }
 
         return var1
     }
+
     fun doParams(var0: Context): JSONObject {
         val var1 = JSONObject()
 
@@ -276,7 +310,7 @@ class SdkActivity : RxBaseActivity() {
             var1.put("vendor", Build.MANUFACTURER)
             var1.put("model", Build.MODEL)
             var1.put("language", Locale.getDefault().language)
-            var1.put("conn_type",conect(var0))
+            var1.put("conn_type", conect(var0))
             var1.put("mac", b())
             val var2 = var0.resources.displayMetrics
             var1.put("screen_width", var2.widthPixels)
@@ -288,9 +322,9 @@ class SdkActivity : RxBaseActivity() {
     }
 
     fun b(): String {
-        var var0="" /*= a("wlan0")
+        var var0 = "" /*= UIUtils("wlan0")
         if (TextUtils.isEmpty(var0)) {
-            var0 = a("eth0")
+            var0 = UIUtils("eth0")
         }*/
 
         if (TextUtils.isEmpty(var0)) {
@@ -299,6 +333,7 @@ class SdkActivity : RxBaseActivity() {
 
         return var0
     }
+
     @SuppressLint("WrongConstant")
     fun conect(var0: Context): Int {
         var var1: Byte = 0

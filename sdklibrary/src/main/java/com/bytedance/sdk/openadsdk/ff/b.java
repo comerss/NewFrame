@@ -8,8 +8,9 @@
 /*     */ import com.androidquery.AQuery;
 /*     */ import com.androidquery.callback.AjaxCallback;
 /*     */ import com.androidquery.callback.AjaxStatus;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.k;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.k;
+/*     */
 /*     */ import com.bytedance.sdk.openadsdk.ggg.n;
 /*     */ import java.util.List;
 /*     */ import java.util.Random;
@@ -45,7 +46,7 @@
 /*  45 */     if (k.b(paramList)) {
 /*  46 */       for (String str : paramList) {
 /*  47 */         c localc = new c(UUID.randomUUID().toString(), str, paramBoolean, 5);
-/*  48 */         a locala = new a(localc, paramString, null);
+/*  48 */         a locala = new a(localc, paramString);
 /*  49 */         locala.executeOnExecutor(this.c, new Void[0]);
 /*     */       }
 /*     */     }
@@ -56,12 +57,12 @@
 /*  56 */     this.c.submit(new Runnable()
 /*     */     {
 /*     */       public void run() {
-/*  59 */         final List localList = b.a(b.this).a();
+/*  59 */         final List localList = b.a();
 /*  60 */         Handler localHandler = new Handler(Looper.getMainLooper());
 /*  61 */         localHandler.post(new Runnable()
 /*     */         {
 /*     */           public void run() {
-/*  64 */             b.a(b.this, localList, b.1.this.a);
+/*  64 */             a( localList, paramString);
 /*     */           }
 /*     */         });
 /*     */       }
@@ -71,7 +72,7 @@
 /*     */   private void a(List<c> paramList, String paramString) {
 /*  72 */     if (k.b(paramList)) {
 /*  73 */       for (c localc : paramList) {
-/*  74 */         a locala = new a(localc, paramString, null);
+/*  74 */         a locala = new a(localc, paramString);
 /*  75 */         locala.executeOnExecutor(this.c, new Void[0]);
 /*     */       }
 /*     */     }
@@ -124,20 +125,20 @@
 /* 124 */       return str;
 /*     */     }
 /*     */     
-/*     */     protected Void a(Void... paramVarArgs)
+/*     */     protected Void doInBackground(Void... paramVarArgs)
 /*     */     {
 /* 129 */       if (!a(this.b.b())) {
 /* 130 */         return null;
 /*     */       }
 /* 132 */       if (this.b.d() == 0) {
-/* 133 */         b.a(b.this).c(this.b);
+/* 133 */       b.c();
 /* 134 */         return null;
 /*     */       }
 /* 136 */       while ((this.b.d() > 0) && (!isCancelled())) {
 /* 137 */         if (this.b.d() == 5) {
-/* 138 */           b.a(b.this).a(this.b);
+/* 138 */           b.a();
 /*     */         }
-/* 140 */         if (!n.a(b.b(b.this))) {
+/* 140 */         if (!n.a(a)) {
 /*     */           break;
 /*     */         }
 /*     */         
@@ -151,30 +152,30 @@
 /* 151 */         localAjaxCallback.timeout(10000);
 /* 152 */         localAjaxCallback.method(0);
 /*     */         
-/* 154 */         AQuery localAQuery = new AQuery(b.b(b.this));
+/* 154 */         AQuery localAQuery = new AQuery(a);
 /* 155 */         localAQuery.sync(localAjaxCallback);
 /* 156 */         AjaxStatus localAjaxStatus = localAjaxCallback.getStatus();
 /* 157 */         if (localAjaxStatus.getCode() == 200)
 /*     */         {
-/* 159 */           b.a(b.this).c(this.b);
-/* 160 */           if (!m.a) break;
-/* 161 */           m.c("trackurl", "track success : " + this.b.b()); break;
+/* 159 */           b.c();
+/* 160 */           if (!LogUtils.isDebug) break;
+/* 161 */           LogUtils.c("trackurl", "track success : " + this.b.b()); break;
 /*     */         }
 /*     */         
 /*     */ 
-/* 165 */         if (m.a) {
-/* 166 */           m.c("trackurl", "track fail : " + this.b.b());
+/* 165 */         if (LogUtils.isDebug) {
+/* 166 */           LogUtils.c("trackurl", "track fail : " + this.b.b());
 /*     */         }
 /*     */         
 /* 169 */         this.b.a(this.b.d() - 1);
 /* 170 */         if (this.b.d() == 0) {
-/* 171 */           b.a(b.this).c(this.b);
-/* 172 */           if (!m.a) break;
-/* 173 */           m.c("trackurl", "track fail and delete : " + this.b.b()); break;
+/* 171 */           b.c();
+/* 172 */           if (!LogUtils.isDebug) break;
+/* 173 */           LogUtils.c("trackurl", "track fail and delete : " + this.b.b()); break;
 /*     */         }
 /*     */         
 /*     */ 
-/* 177 */         b.a(b.this).b(this.b);
+/* 177 */         b.b();
 /*     */       }
 /*     */       
 /*     */ 
@@ -184,7 +185,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\f\Result.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\doErrorHelper\Result.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

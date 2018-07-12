@@ -1,16 +1,27 @@
 /*     */ package com.ss.android.crash.log;
 /*     */ 
-/*     */ import android.app.Activity;
-/*     */ import android.app.ActivityManager;
-/*     */ import android.app.ActivityManager.RunningTaskInfo;
-/*     */ import android.app.Application;
-/*     */ import android.app.Application.ActivityLifecycleCallbacks;
-/*     */ import android.content.ComponentName;
-/*     */ import android.content.Context;
-/*     */ import android.os.Build.VERSION;
-/*     */ import android.os.Bundle;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.List;
+/*     */
+
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.Application;
+import android.content.Context;
+import android.os.Build;
+import android.os.Bundle;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -34,9 +45,9 @@
 /*     */   {
 /*     */     public void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
 /*     */     {
-/*  37 */       String str = paramAnonymousActivity.getClass().getName();
-/*  38 */       f.a(f.this).add(str);
-/*  39 */       f.a(f.this, str + "(" + String.valueOf(System.currentTimeMillis()) + ")");
+/*  37 */       String var3 = paramAnonymousActivity.getClass().getName();
+    f.this.c.add(var3);
+    f.this.e = var3 + "(" + System.currentTimeMillis() + ")";
 /*     */     }
 /*     */     
 /*     */ 
@@ -44,14 +55,14 @@
 /*     */     public void onActivityStarted(Activity paramAnonymousActivity) {}
 /*     */     
 /*     */ 
-/*     */     public void onActivityResumed(Activity paramAnonymousActivity)
-/*     */     {
-/*  49 */       String str = paramAnonymousActivity.getClass().getName();
-/*  50 */       f.b(f.this, str + "(" + String.valueOf(System.currentTimeMillis()) + ")");
-/*  51 */       if (f.b(f.this) != null) {
-/*  52 */         f.b(f.this).a();
-/*     */       }
-/*     */     }
+/*     */     public void onActivityResumed(Activity var1) {
+    String var2 = var1.getClass().getName();
+    f.this.f = var2 + "(" + System.currentTimeMillis() + ")";
+    if (f.this.g != null) {
+        f.this.g.a();
+    }
+
+}
 /*     */     
 /*     */ 
 /*     */ 
@@ -70,9 +81,9 @@
 /*     */ 
 /*     */     public void onActivityDestroyed(Activity paramAnonymousActivity)
 /*     */     {
-/*  73 */       String str = paramAnonymousActivity.getClass().getName();
-/*  74 */       f.a(f.this).remove(str);
-/*  75 */       f.c(f.this).add(str);
+/*  73 */         String var2 = paramAnonymousActivity.getClass().getName();
+    f.this.c.remove(var2);
+    f.this.d.add(var2);
 /*     */     }
 /*     */   };
 /*     */   
@@ -136,7 +147,7 @@
 /*     */     String str;
 /*     */     StringBuilder localStringBuilder;
 /* 138 */     try { ActivityManager localActivityManager = (ActivityManager)this.b.getSystemService("activity");
-/* 139 */       List localList = localActivityManager.getRunningTasks(5);
+/* 139 */       List<ActivityManager.RunningTaskInfo> localList = localActivityManager.getRunningTasks(5);
 /* 140 */       if (localList == null)
 /* 141 */         return "";
 /* 142 */       str = this.b.getPackageName();
@@ -167,7 +178,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\f.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\doErrorHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -1,45 +1,90 @@
 /*      */ package com.androidquery.callback;
 /*      */ 
-/*      */ import android.app.Activity;
-/*      */ import android.content.Context;
-/*      */ import android.graphics.Bitmap;
-/*      */ import android.graphics.Bitmap.Config;
-/*      */ import android.graphics.BitmapFactory;
-/*      */ import android.graphics.BitmapFactory.Options;
-/*      */ import android.graphics.Canvas;
-/*      */ import android.graphics.Matrix;
-/*      */ import android.graphics.Paint;
-/*      */ import android.graphics.PorterDuff.Mode;
-/*      */ import android.graphics.PorterDuffXfermode;
-/*      */ import android.graphics.Rect;
-/*      */ import android.graphics.RectF;
-/*      */ import android.graphics.drawable.BitmapDrawable;
-/*      */ import android.graphics.drawable.Drawable;
-/*      */ import android.graphics.drawable.TransitionDrawable;
-/*      */ import android.media.ExifInterface;
-/*      */ import android.view.View;
-/*      */ import android.view.animation.AlphaAnimation;
-/*      */ import android.view.animation.Animation;
-/*      */ import android.view.animation.AnimationUtils;
-/*      */ import android.view.animation.DecelerateInterpolator;
-/*      */ import android.widget.ImageView;
-/*      */ import com.androidquery.AQuery;
-/*      */ import com.androidquery.auth.AccountHandle;
-/*      */ import com.androidquery.util.AQUtility;
-/*      */ import com.androidquery.util.Common;
-/*      */ import com.androidquery.util.RatioDrawable;
-/*      */ import java.io.File;
-/*      */ import java.io.FileDescriptor;
-/*      */ import java.io.FileInputStream;
-/*      */ import java.io.IOException;
-/*      */ import java.lang.ref.WeakReference;
-/*      */ import java.util.Collections;
-/*      */ import java.util.HashMap;
-/*      */ import java.util.Map;
-/*      */ import java.util.Set;
-/*      */ import java.util.WeakHashMap;
-/*      */ import org.apache.http.HttpHost;
-/*      */ import pl.droidsonroids.gif.GifDrawable;
+/*      */
+
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.media.ExifInterface;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+
+import com.androidquery.AQuery;
+import com.androidquery.auth.AccountHandle;
+import com.androidquery.util.AQUtility;
+import com.androidquery.util.Common;
+import com.androidquery.util.RatioDrawable;
+
+import org.apache.http.HttpHost;
+
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
+
+import pl.droidsonroids.gif.GifDrawable;
+
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
+/*      */
 /*      */ 
 /*      */ 
 /*      */ 
@@ -412,7 +457,7 @@
 /*      */     
 /*  413 */     if (paramInt1 > 0)
 /*      */     {
-/*  415 */       localObject = new BitmapFactory.Options();
+/*  415 */    Options   localObject = new BitmapFactory.Options();
 /*  416 */       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
 /*      */       
 /*  418 */       a(paramString, paramArrayOfByte, (BitmapFactory.Options)localObject, paramBoolean2);
@@ -478,7 +523,7 @@
 /*      */ 
 /*      */   protected Drawable a(String paramString, File paramFile, AjaxStatus paramAjaxStatus)
 /*      */   {
-/*  481 */     return a(paramFile.getAbsolutePath(), null);
+/*  481 */     return a(paramFile.getAbsolutePath(), (byte[]) null);
 /*      */   }
 /*      */   
 /*      */ 
@@ -588,7 +633,7 @@
 /*      */     
 /*  589 */     if (localWeakHashMap != null)
 /*      */     {
-/*  591 */       Set localSet = localWeakHashMap.keySet();
+/*  591 */       Set<ImageView> localSet = localWeakHashMap.keySet();
 /*      */       
 /*  593 */       for (ImageView localImageView2 : localSet) {
 /*  594 */         DrawableAjaxCallback localDrawableAjaxCallback = (DrawableAjaxCallback)localWeakHashMap.get(localImageView2);
@@ -708,7 +753,7 @@
 /*      */   private static Map<String, Drawable> c()
 /*      */   {
 /*  710 */     if (h == null) {
-/*  711 */       h = Collections.synchronizedMap(new a(b, d, e));
+/*  711 */       h = Collections.synchronizedMap(new ParamMap(b, d, e));
 /*      */     }
 /*  713 */     return h;
 /*      */   }
@@ -716,14 +761,14 @@
 /*      */   private static Map<String, Drawable> d()
 /*      */   {
 /*  718 */     if (g == null) {
-/*  719 */       g = Collections.synchronizedMap(new a(a, c, 250000));
+/*  719 */       g = Collections.synchronizedMap(new ParamMap(a, c, 250000));
 /*      */     }
 /*  721 */     return g;
 /*      */   }
 /*      */   
 /*      */   private static Map<String, Drawable> e() {
 /*  725 */     if (i == null) {
-/*  726 */       i = Collections.synchronizedMap(new a(100, d, 250000));
+/*  726 */       i = Collections.synchronizedMap(new ParamMap(100, d, 250000));
 /*      */     }
 /*  728 */     return i;
 /*      */   }
@@ -804,7 +849,7 @@
 /*      */     }
 /*  805 */     int i1 = 0;
 /*  806 */     if ((paramDrawable instanceof BitmapDrawable)) {
-/*  807 */       localObject = ((BitmapDrawable)paramDrawable).getBitmap();
+/*  807 */      Bitmap localObject = ((BitmapDrawable)paramDrawable).getBitmap();
 /*  808 */       i1 = ((Bitmap)localObject).getWidth() * ((Bitmap)localObject).getHeight();
 /*      */     }
 /*      */     else {
@@ -855,11 +900,11 @@
 /*      */       }
 /*      */       
 /*  857 */       if (localBitmap != null) {
-/*  858 */         paramView.setVisibility(0);
+/*  858 */         paramView.setVisibility(View.VISIBLE);
 /*  859 */       } else if (paramInt == -2) {
-/*  860 */         paramView.setVisibility(8);
+/*  860 */         paramView.setVisibility(View.GONE);
 /*  861 */       } else if (paramInt == -1) {
-/*  862 */         paramView.setVisibility(4);
+/*  862 */         paramView.setVisibility(View.INVISIBLE);
 /*      */       }
 /*      */     }
 /*      */     
@@ -927,7 +972,7 @@
 /*  927 */       paramImageView.setImageBitmap(null); return;
 /*      */     }
 /*      */     
-/*      */     Object localObject1;
+/*      */     Drawable localObject1;
 /*  931 */     if ((paramDrawable1 instanceof BitmapDrawable)) {
 /*  932 */       localObject1 = a(paramImageView, ((BitmapDrawable)paramDrawable1).getBitmap(), paramFloat1, paramFloat2);
 /*      */     }

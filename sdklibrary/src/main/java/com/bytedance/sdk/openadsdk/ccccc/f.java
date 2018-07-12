@@ -9,7 +9,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
@@ -17,7 +16,7 @@ import android.util.Log;
 import android.util.Pair;
 
 import com.bytedance.sdk.openadsdk.core.h;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.r;
 
 import java.io.File;
@@ -520,7 +519,7 @@ import java.util.List;
 /*  494 */         throw new IllegalStateException("Failed to get external storage files directory");
 /*  495 */       if (localFile.exists()) {
 /*  496 */         if (!localFile.isDirectory()) {
-/*  497 */           throw new IllegalStateException(localFile.getAbsolutePath() + " already exists and is not ssl directory");
+/*  497 */           throw new IllegalStateException(localFile.getAbsolutePath() + " already exists and is not SslHepler directory");
 /*      */         }
 /*      */         
 /*      */       }
@@ -1076,37 +1075,33 @@ return null;
 /* 1035 */             aaaaaa(l1);
 /* 1036 */             return l1;
 /*      */           }
-/* 1038 */           AsyncTask local1 = new AsyncTask()
-/*      */           {
+/* 1038 */             new Thread(){
                     @Override
-                    protected Object doInBackground(Object[] objects) {
+                    public void run() {
+                        HttpURLConnection localHttpURLConnection = null;
+                        try
+                        {
+                            URL localURL = new URL(paramc.b.toString());
+                            localHttpURLConnection = (HttpURLConnection)localURL.openConnection();
+                            localHttpURLConnection.setInstanceFollowRedirects(false);
+                            localHttpURLConnection.setConnectTimeout(20000);
+                            localHttpURLConnection.setReadTimeout(20000);
+                            localHttpURLConnection.addRequestProperty("User-Agent", SsDownloadManager.b);
+                            localHttpURLConnection.setRequestProperty("Accept-Encoding", "identity");
+                            localHttpURLConnection.addRequestProperty("If-None-Match", str);
+                            int i = localHttpURLConnection.getResponseCode();
+                            if (i == 304) {
+                                aaaaaa(l1);
+                            } else {
+                                aaaaaa(paramc.m, new long[] { l1 });
+                            }
+                        } catch (Exception localException) {
+                            localException.printStackTrace();
+                        }
 
-                                       HttpURLConnection localHttpURLConnection = null;
-                                        try
-                                          {
-                                            URL localURL = new URL(paramc.b.toString());
-                                           localHttpURLConnection = (HttpURLConnection)localURL.openConnection();
-                                          localHttpURLConnection.setInstanceFollowRedirects(false);
-                                          localHttpURLConnection.setConnectTimeout(20000);
-                                       localHttpURLConnection.setReadTimeout(20000);
-                                           localHttpURLConnection.addRequestProperty("User-Agent", com.bytedance.sdk.openadsdk.ccccc.b.b);
-                                          localHttpURLConnection.setRequestProperty("Accept-Encoding", "identity");
-                                           localHttpURLConnection.addRequestProperty("If-None-Match", str);
-                                           int i = localHttpURLConnection.getResponseCode();
-                                            if (i == 304) {
-                                                   aaaaaa(l1);
-                                              } else {
-                                                  aaaaaa(paramc.m, new long[] { l1 });
-                                                }
-                                         } catch (Exception localException) {
-                                            localException.printStackTrace();
-                                        }
-                                       return null;
-                                         }
-
-/*      */
-/* 1064 */           };
-/* 1065 */           local1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+                }
+                }.start();
+///* 1065 */           local1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
 /*      */         } else {
 /* 1067 */           aaaaaa(l1);
 /*      */         }
@@ -1207,7 +1202,7 @@ return null;
             var2.put("deleted", 1);
             return var1.length == 1 ? this.mI.a(ContentUris.withAppendedId(this.f, var1[0]), var2, (String)null, (String[])null) : this.mI.a(this.f, var2, e(var1), f(var1));
         } else {
-            throw new IllegalArgumentException("input param 'ids' can't be null");
+            throw new IllegalArgumentException("input param 'ids' can'MineHandler be null");
         }
     } catch (Exception var3) {
         return -1;
@@ -1232,7 +1227,7 @@ return null;
 /* 1181 */         if ((i != 2) && (i != 1))
 /*      */         {
 /*      */ 
-/* 1184 */           throw new IllegalArgumentException("Can only pause ssl running download: " + localCursor.getLong(localCursor
+/* 1184 */           throw new IllegalArgumentException("Can only pause SslHepler running download: " + localCursor.getLong(localCursor
 /* 1185 */             .getColumnIndex("_id")));
 /*      */         }
 /*      */       }
@@ -1272,7 +1267,7 @@ return null;
 /* 1221 */         if (i != 4)
 /*      */         {
 /*      */ 
-/* 1224 */           throw new IllegalArgumentException("Cann only resume ssl paused download: " + localCursor.getLong(localCursor
+/* 1224 */           throw new IllegalArgumentException("Cann only resume SslHepler paused download: " + localCursor.getLong(localCursor
 /* 1225 */             .getColumnIndex("_id")));
 /*      */         }
 /*      */       }
@@ -1713,8 +1708,8 @@ return null;
 /*      */     }
 /* 1649 */     int i = -1;
 /*      */     try {
-/* 1651 */       if (m.a()) {
-/* 1652 */         m.b("AppAdViewHolder", "mId = " + paramLong + " mStatus = " + paramInt);
+/* 1651 */       if (LogUtils.a()) {
+/* 1652 */         LogUtils.b("AppAdViewHolder", "mId = " + paramLong + " mStatus = " + paramInt);
 /*      */       }
 /* 1654 */       switch (paramInt) {
 /*      */       case 16: 
@@ -1764,7 +1759,7 @@ return null;
 /*      */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\f.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\doErrorHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

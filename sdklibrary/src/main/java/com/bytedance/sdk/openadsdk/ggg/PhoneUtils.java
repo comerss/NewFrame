@@ -18,9 +18,9 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class c
+/*     */ public class PhoneUtils
 /*     */ {
-/*     */   public static int a(Context paramContext)
+/*     */   public static int isWifi(Context paramContext)
 /*     */   {
 /*  25 */     int i = 0;
 /*     */     try
@@ -75,9 +75,9 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static String b(Context paramContext)
+/*     */   public static String netState(Context paramContext)
 /*     */   {
-/*  80 */     int i = a(paramContext);
+/*  80 */     int i = isWifi(paramContext);
 /*     */     String str;
 /*  82 */     switch (i) {
 /*     */     case 1: 
@@ -99,7 +99,7 @@
 /*  99 */     return str;
 /*     */   }
 /*     */   
-/*     */   public static boolean a(String paramString) {
+/*     */   public static boolean isAccess(String paramString) {
 /* 103 */     if (q.a(paramString)) {
 /* 104 */       return false;
 /*     */     }
@@ -108,7 +108,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\c.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\cc.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

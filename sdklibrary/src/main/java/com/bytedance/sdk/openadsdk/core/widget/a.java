@@ -1,22 +1,36 @@
 /*     */ package com.bytedance.sdk.openadsdk.core.widget;
 /*     */ 
-/*     */ import android.app.Dialog;
-/*     */ import android.content.Context;
-/*     */ import android.view.LayoutInflater;
-/*     */ import android.view.MotionEvent;
-/*     */ import android.view.View;
+/*     */
+
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.video.a.d;
+
 /*     */
 /*     */
 /*     */
-/*     */ import android.widget.ImageView;
-/*     */ import android.widget.ProgressBar;
-/*     */ import android.widget.TextView;
-/*     */ import com.bytedance.sdk.openadsdk.R.drawable;
-/*     */ import com.bytedance.sdk.openadsdk.R.id;
-/*     */ import com.bytedance.sdk.openadsdk.R.layout;
-/*     */ import com.bytedance.sdk.openadsdk.R.style;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.video.a.d;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */
 
 /*     */
@@ -33,7 +47,7 @@
 /*     */ 
 /*     */ public class a
 /*     */ {
-/*     */   private a a;
+/*     */   private ao a;
 /*  36 */   private boolean b = false;
 /*  37 */   private boolean c = false;
 /*     */   
@@ -52,7 +66,7 @@
 /*  51 */   private long l = 0L;
 /*     */   private float m;
 /*     */   
-/*  54 */   public a(a parama) { this.a = parama;
+/*  54 */   public a(ao parama) { this.a = parama;
 /*  55 */     this.d = true;
 /*     */   }
 /*     */   
@@ -83,79 +97,83 @@
 /*  82 */   private View.OnTouchListener t = new View.OnTouchListener()
 /*     */   {
 /*     */     public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent) {
-/*  85 */       if (a.a(a.this).p()) {
-/*  86 */         return (a.b(a.this)) || (!a.c(a.this));
+/*  85 */       if (a.p()) {
+/*  86 */         return b || c;
 /*     */       }
 /*  88 */       float f1 = paramAnonymousMotionEvent.getX();
 /*  89 */       float f2 = paramAnonymousMotionEvent.getY();
 /*  90 */       switch (paramAnonymousMotionEvent.getAction()) {
-/*     */       case 0: 
-/*  92 */         a.a(a.this, a.a(a.this, paramAnonymousMotionEvent));
-/*  93 */         a.a(a.this, f1);
-/*  94 */         a.b(a.this, f2);
-/*  95 */         a.a(a.this, (int)f1);
-/*  96 */         a.b(a.this, (int)f2);
-/*  97 */         a.b(a.this, true);
-/*  98 */         if ((a.a(a.this) != null) && (a.c(a.this)) && (!a.b(a.this))) {
-/*  99 */           a.a(a.this).a(paramAnonymousView, true);
+/*     */       case 0:
+                    u=a(paramAnonymousMotionEvent);
+/*  93 */         m= f1;
+/*  94 */        n= f2;
+/*  95 */        o= (int)f1;
+/*  96 */        p= (int)f2;
+/*  97 */        q= true;
+/*  98 */         if ((a != null) && (c && b)) {
+/*  99 */           a.a(paramAnonymousView, true);
 /*     */         }
 /*     */         break;
-/*     */       case 2: 
-/* 103 */         if ((a.b(a.this)) && (!a.d(a.this)))
-/*     */         {
-/*     */ 
-/* 106 */           float f3 = f1 - a.e(a.this);
-/* 107 */           float f4 = f2 - a.f(a.this);
-/* 108 */           float f5 = Math.abs(f3);
-/* 109 */           float f6 = Math.abs(f4);
-/*     */           
-/* 111 */           if (!a.g(a.this)) {
-/* 112 */             if ((f5 > 20.0F) || (f6 > 20.0F)) {
-/* 113 */               a.c(a.this, true);
-/*     */             } else {
-/* 115 */               return true;
-/*     */             }
-/*     */           }
-/* 118 */           if (a.a(a.this) != null) {
-/* 119 */             a.a(a.this).n();
-/*     */           }
-/* 121 */           if (f5 > f6) {
-/* 122 */             if (f3 > 0.0F) {
-/* 123 */               a.c(a.this, f5);
-/* 124 */             } else if (f3 < 0.0F) {
-/* 125 */               a.d(a.this, f5);
-/*     */             }
-/*     */           }
-/* 128 */           a.a(a.this, f1);
-/* 129 */           a.b(a.this, f2); }
-/* 130 */         break;
-/*     */       case 1: 
-/* 132 */         if ((Math.abs(f1 - a.h(a.this)) > 20.0F) || 
-/* 133 */           (Math.abs(f2 - a.i(a.this)) > 20.0F)) {
-/* 134 */           a.b(a.this, false);
-/*     */         }
-/* 136 */         if (!a.b(a.this)) {
-/* 137 */           a.b(a.this, true);
-/*     */         }
-/* 139 */         a.c(a.this, false);
-/* 140 */         a.a(a.this, 0.0F);
-/* 141 */         a.b(a.this, 0.0F);
-/* 142 */         a.a(a.this, 0);
-/* 143 */         if (a.a(a.this) != null) {
-/* 144 */           a.a(a.this).a(paramAnonymousView, a.j(a.this));
-/*     */         }
-/* 146 */         if (a.a(a.this) != null) {
-/* 147 */           a.a(a.this).b(a.k(a.this));
-/*     */         }
-/* 149 */         a.a(a.this, false);
-/* 150 */         break;
-/*     */       case 3: 
-/* 152 */         a.a(a.this, false);
+/*     */       case 1:
+            if (Math.abs(f1 - (float)o) > 20.0F || Math.abs(f2 - (float)p) > 20.0F) {
+               q = false;
+            }
+
+            if (!b) {
+                q = true;
+            }
+
+            r = false;
+            m = 0.0F;
+            n = 0.0F;
+            o = 0;
+            if (a != null) {
+                a.a(paramAnonymousView, q);
+            }
+
+            if (a != null) {
+                a.b(l);
+            }
+
+            u = false;
+            break;
+        case 2:
+            if (b && !u) {
+                float var5 = f1 - m;
+                float var6 = f2 - n;
+                float var7 = Math.abs(var5);
+                float var8 = Math.abs(var6);
+                if (!r) {
+                    if (var7 <= 20.0F && var8 <= 20.0F) {
+                        return true;
+                    }
+
+                    r = true;
+                }
+
+                if (a != null) {
+                    a.p();
+                }
+
+                if (var7 > var8) {
+                    if (var5 > 0.0F) {
+                        b(var7);
+                    } else if (var5 < 0.0F) {
+                       a(var7);
+                    }
+                }
+
+                m = f1;
+                n = f2;
+            }
+            break;
+        case 3:
+            u = false;
 /* 153 */         break;
 /*     */       }
 /*     */       
 /*     */       
-/* 157 */       return (a.b(a.this)) || (!a.c(a.this));
+/* 157 */       return b|| c;
 /*     */     }
 /*     */   };
 /*     */   
@@ -167,8 +185,8 @@
 /*     */   private boolean a(MotionEvent paramMotionEvent)
 /*     */   {
 /* 168 */     if (paramMotionEvent.getActionMasked() == 0) {
-/* 169 */       int i1 = s.a(n.a().getApplicationContext());
-/* 170 */       int i2 = s.b(n.a().getApplicationContext());
+/* 169 */       int i1 = com.bytedance.sdk.openadsdk.ggg.s.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+/* 170 */       int i2 = com.bytedance.sdk.openadsdk.ggg.s.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
 /*     */       
 /* 172 */       float f1 = paramMotionEvent.getRawX();
 /* 173 */       float f2 = paramMotionEvent.getRawY();
@@ -314,11 +332,11 @@
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public static abstract interface a
+/*     */   public static abstract interface ao
 /*     */   {
 /*     */     public abstract void a(View paramView, boolean paramBoolean);
 /*     */     
-/*     */     public abstract void n();
+/*     */     public abstract boolean n();
 /*     */     
 /*     */     public abstract void b(long paramLong);
 /*     */     
@@ -327,7 +345,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\widget\ssl.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\widget\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -4,13 +4,13 @@
 /*     */ import android.content.Context;
 /*     */ import android.media.MediaDataSource;
 /*     */ import android.media.MediaPlayer;
-/*     */ import android.media.MediaPlayer.OnBufferingUpdateListener;
-/*     */ import android.media.MediaPlayer.OnCompletionListener;
-/*     */ import android.media.MediaPlayer.OnErrorListener;
-/*     */ import android.media.MediaPlayer.OnInfoListener;
-/*     */ import android.media.MediaPlayer.OnPreparedListener;
-/*     */ import android.media.MediaPlayer.OnSeekCompleteListener;
-/*     */ import android.media.MediaPlayer.OnVideoSizeChangedListener;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import android.net.Uri;
 /*     */ import android.text.TextUtils;
 /*     */ import android.view.Surface;
@@ -35,7 +35,7 @@
 /*     */   extends a
 /*     */ {
 /*     */   private final MediaPlayer a;
-/*     */   private final a b;
+/*     */   private final aaa b;
 /*     */   private MediaDataSource c;
 /*  40 */   private final Object d = new Object();
 /*     */   private boolean e;
@@ -45,7 +45,7 @@
 /*  45 */       this.a = new MediaPlayer();
 /*     */     }
 /*  47 */     this.a.setAudioStreamType(3);
-/*  48 */     this.b = new a(this);
+/*  48 */     this.b = new aaa(this);
 /*  49 */     n();
 /*     */   }
 /*     */   
@@ -209,28 +209,28 @@
 /*     */   }
 /*     */   
 /*     */ 
-/*     */   private class a
+/*     */   private class aaa
 /*     */     implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnInfoListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener, MediaPlayer.OnVideoSizeChangedListener
 /*     */   {
 /*     */     public final WeakReference<b> a;
 /*     */     
 /*     */ 
-/*     */     public a(b paramb)
+/*     */     public aaa(com.bytedance.sdk.openadsdk.core.video.c.b paramb)
 /*     */     {
 /* 220 */       this.a = new WeakReference(paramb);
 /*     */     }
 /*     */     
 /*     */     public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
 /*     */     {
-/* 225 */       b localb = (b)this.a.get();
-/* 226 */       return (localb != null) && (b.this.b(paramInt1, paramInt2));
+/* 225 */       b localb = a.get();
+/* 226 */       return (localb != null) && (b(paramInt1, paramInt2));
 /*     */     }
 /*     */     
 /*     */ 
 /*     */     public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
 /*     */     {
 /* 232 */       b localb = (b)this.a.get();
-/* 233 */       return (localb != null) && (b.this.a(paramInt1, paramInt2));
+/* 233 */       return (localb != null) && (a(paramInt1, paramInt2));
 /*     */     }
 /*     */     
 /*     */ 
@@ -240,7 +240,7 @@
 /* 240 */       if (localb == null) {
 /* 241 */         return;
 /*     */       }
-/* 243 */       b.this.a(paramInt1, paramInt2, 1, 1);
+/* 243 */      a(paramInt1, paramInt2, 1, 1);
 /*     */     }
 /*     */     
 /*     */     public void onSeekComplete(MediaPlayer paramMediaPlayer)
@@ -249,7 +249,7 @@
 /* 249 */       if (localb == null) {
 /* 250 */         return;
 /*     */       }
-/* 252 */       b.this.d();
+/* 252 */      d();
 /*     */     }
 /*     */     
 /*     */     public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
@@ -258,7 +258,7 @@
 /* 258 */       if (localb == null) {
 /* 259 */         return;
 /*     */       }
-/* 261 */       b.this.a(paramInt);
+/* 261 */      a(paramInt);
 /*     */     }
 /*     */     
 /*     */     public void onCompletion(MediaPlayer paramMediaPlayer)
@@ -267,7 +267,7 @@
 /* 267 */       if (localb == null) {
 /* 268 */         return;
 /*     */       }
-/* 270 */       b.this.c();
+/* 270 */       c();
 /*     */     }
 /*     */     
 /*     */     public void onPrepared(MediaPlayer paramMediaPlayer)
@@ -276,7 +276,7 @@
 /* 276 */       if (localb == null) {
 /* 277 */         return;
 /*     */       }
-/* 279 */       b.this.b();
+/* 279 */       b();
 /*     */     }
 /*     */   }
 /*     */ }

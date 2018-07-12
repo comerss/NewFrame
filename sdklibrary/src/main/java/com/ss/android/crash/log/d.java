@@ -27,7 +27,7 @@
 /* 27 */   private Runnable g = new Runnable()
 /*    */   {
 /*    */     public void run() {
-/* 30 */       d.a(d.this, (d.a(d.this) + 1) % Integer.MAX_VALUE);
+/* 30 */     d.this.d = (d.this.d + 1) % 2147483647;
 /*    */     }
 /*    */   };
 /*    */   
@@ -38,7 +38,7 @@
 /* 38 */     while (!isInterrupted()) {
 /* 39 */       int i = this.d;
 /* 40 */       this.a.post(this.g);
-/* 41 */       e.a(this.b);
+/* 41 */       com.ss.android.crash.log.e.a(this.b);
 /* 42 */       if (i == this.d) {
 /* 43 */         if (b()) {
 /* 44 */           int j = 0;
@@ -53,7 +53,7 @@
 /* 53 */               if (k >= 3)
 /*    */                 break;
 /*    */             } else {
-/* 56 */               e.a(500L);
+/* 56 */               com.ss.android.crash.log.e.a(500L);
 /*    */             }
 /* 58 */           } while (j++ <= 40);
 /*    */         } else {
@@ -87,7 +87,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\ss\android\crash\log\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

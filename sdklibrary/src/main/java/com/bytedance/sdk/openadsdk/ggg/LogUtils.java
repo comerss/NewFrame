@@ -10,9 +10,9 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class m
+/*     */ public class LogUtils
 /*     */ {
-/*  15 */   public static boolean a = false;
+/*  15 */   public static boolean isDebug = true;
 /*     */   
 /*  17 */   static int b = 4;
 /*     */   
@@ -29,7 +29,7 @@
 /*     */   }
 /*     */   
 /*     */   public static void b() {
-/*  32 */     a = true;
+/*  32 */     isDebug = true;
 /*  33 */     a(3);
 /*     */   }
 /*     */   
@@ -38,7 +38,7 @@
 /*     */ 
 /*     */   public static void a(String paramString1, String paramString2)
 /*     */   {
-/*  41 */     if (!a) {
+/*  41 */     if (!isDebug) {
 /*  42 */       return;
 /*     */     }
 /*  44 */     if (paramString2 == null) {
@@ -60,14 +60,14 @@
 /*     */ 
 /*     */   public static void a(String paramString)
 /*     */   {
-/*  63 */     if (!a) {
+/*  63 */     if (!isDebug) {
 /*  64 */       return;
 /*     */     }
 /*  66 */     b("Logger", paramString);
 /*     */   }
 /*     */   
 /*     */   public static void b(String paramString1, String paramString2) {
-/*  70 */     if (!a) {
+/*  70 */     if (!isDebug) {
 /*  71 */       return;
 /*     */     }
 /*  73 */     if (paramString2 == null) {
@@ -96,7 +96,7 @@
 /*     */ 
 /*     */   public static void c(String paramString1, String paramString2)
 /*     */   {
-/*  99 */     if (!a) {
+/*  99 */     if (!isDebug) {
 /* 100 */       return;
 /*     */     }
 /* 102 */     if (paramString2 == null) {
@@ -125,7 +125,7 @@
 /*     */ 
 /*     */   public static void d(String paramString1, String paramString2)
 /*     */   {
-/* 128 */     if (!a) {
+/* 128 */     if (!isDebug) {
 /* 129 */       return;
 /*     */     }
 /* 131 */     if (paramString2 == null) {
@@ -154,7 +154,7 @@
 /*     */ 
 /*     */   public static void e(String paramString1, String paramString2)
 /*     */   {
-/* 157 */     if (!a) {
+/* 157 */     if (!isDebug) {
 /* 158 */       return;
 /*     */     }
 /* 160 */     if (paramString2 == null) {
@@ -165,7 +165,7 @@
 /*     */   }
 /*     */   
 /*     */   public static void a(String paramString1, String paramString2, Throwable paramThrowable) {
-/* 168 */     if (!a) {
+/* 168 */     if (!isDebug) {
 /* 169 */       return;
 /*     */     }
 /* 171 */     if ((paramString2 == null) && (paramThrowable == null)) {
@@ -178,7 +178,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\m.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\LogUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

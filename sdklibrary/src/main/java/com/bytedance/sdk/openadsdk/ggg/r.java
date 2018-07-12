@@ -2,6 +2,7 @@
 /*     */ 
 /*     */
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ComponentName;
@@ -111,6 +112,7 @@ import java.util.UUID;
     public static boolean b = false;
     private static String c = null;
 
+    @SuppressLint("WrongConstant")
     public static Intent a(Context var0, String var1) {
         Intent var2 = var0.getPackageManager().getLaunchIntentForPackage(var1);
         if (var2 == null) {
@@ -194,14 +196,14 @@ import java.util.UUID;
             var2.close();
             return var1;
         } catch (Throwable var14) {
-            m.a("ToolUtils", "Unable to read sysprop " + var0, var14);
+            LogUtils.a("ToolUtils", "Unable to read sysprop " + var0, var14);
             var4 = var1;
         } finally {
             if (var2 != null) {
                 try {
                     var2.close();
                 } catch (IOException var13) {
-                    m.a("ToolUtils", "Exception while closing InputStream", var13);
+                    LogUtils.a("ToolUtils", "Exception while closing InputStream", var13);
                 }
             }
 
@@ -251,7 +253,7 @@ import java.util.UUID;
 
                     try {
                         var8 = var0.getPackageManager().getPackageInfo(var6, 1);
-                    } catch (NameNotFoundException var10) {
+                    } catch (PackageManager.NameNotFoundException var10) {
                         var8 = null;
                     }
 
@@ -279,10 +281,10 @@ import java.util.UUID;
             try {
                 ActivityManager var2 = (ActivityManager)var0.getSystemService("activity");
                 List var3;
-                if (VERSION.SDK_INT < 21) {
+                if (Build.VERSION.SDK_INT < 21) {
                     var3 = var2.getRunningTasks(1);
                     if (!var3.isEmpty()) {
-                        ComponentName var4 = ((RunningTaskInfo)var3.get(0)).topActivity;
+                        ComponentName var4 = ((ActivityManager.RunningTaskInfo)var3.get(0)).topActivity;
                         if (var4 != null && var1.equals(var4.getPackageName())) {
                             return true;
                         }
@@ -292,7 +294,7 @@ import java.util.UUID;
                     Iterator var7 = var3.iterator();
 
                     while(var7.hasNext()) {
-                        RunningAppProcessInfo var5 = (RunningAppProcessInfo)var7.next();
+                        ActivityManager.RunningAppProcessInfo var5 = (ActivityManager.RunningAppProcessInfo)var7.next();
                         if (var5.importance == 100) {
                             return var1.equals(var5.pkgList[0]);
                         }
@@ -308,6 +310,7 @@ import java.util.UUID;
         }
     }
 
+    @SuppressLint("WrongConstant")
     public static boolean e(Context var0, String var1) {
         if (var0 != null && !q.a(var1)) {
             try {
@@ -329,7 +332,7 @@ import java.util.UUID;
 
     public static boolean a(Context var0) {
         try {
-            ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
+            @SuppressLint("WrongConstant") ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
             NetworkInfo var2 = var1.getActiveNetworkInfo();
             return var2 != null && var2.isAvailable();
         } catch (Exception var3) {

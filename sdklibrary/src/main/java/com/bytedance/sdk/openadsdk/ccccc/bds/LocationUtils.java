@@ -47,15 +47,15 @@ import java.util.Set;
 /*     */
 /*     */
 /*     */
-/*     */ public class d
+/*     */ public class LocationUtils
 /*     */ {
-/*  30 */   private static final String a = d.class.getSimpleName();
+/*  30 */   private static final String a = LocationUtils.class.getSimpleName();
 /*     */
 /*  32 */   private final Set<String> b = new HashSet(1);
 /*  33 */   private final List<WeakReference<e>> c = new ArrayList(1);
 /*  34 */   private final List<e> d = new ArrayList(1);
 /*     */
-/*  36 */   private static d e = null;
+/*  36 */   private static LocationUtils e = null;
 /*     */
 /*  38 */   private static Map<String, Integer> f = new HashMap();
 /*     */
@@ -69,14 +69,14 @@ import java.util.Set;
 /*     */     }
 /*     */   }
 /*     */
-/*     */   public static d a() {
+/*     */   public static LocationUtils a() {
 /*  51 */     if (e == null) {
-/*  52 */       e = new d();
+/*  52 */       e = new LocationUtils();
 /*     */     }
 /*  54 */     return e;
 /*     */   }
 /*     */
-/*     */   private d() {
+/*     */   private LocationUtils() {
 /*  58 */     b();
 /*     */   }
 /*     */
@@ -165,10 +165,10 @@ import java.util.Set;
 /* 143 */       return false;
 /*     */     }
 /* 145 */     if (com.bytedance.sdk.openadsdk.ggg.d.a()) {
-/* 146 */       return (com.bytedance.sdk.openadsdk.ccccc.bds.a.a(paramContext, paramString)) && ((com.bytedance.sdk.openadsdk.ccccc.bds.b.a(paramContext, paramString) == 0) ||
+/* 146 */       return (PermisionHelper.a(paramContext, paramString)) && ((PermistionUtils.a(paramContext, paramString) == 0) ||
 /* 147 */         (!this.b.contains(paramString)));
 /*     */     }
-/* 149 */     return (com.bytedance.sdk.openadsdk.ccccc.bds.b.a(paramContext, paramString) == 0) ||
+/* 149 */     return (PermistionUtils.a(paramContext, paramString) == 0) ||
 /* 150 */       (!this.b.contains(paramString));
 /*     */   }
 /*     */
@@ -206,7 +206,7 @@ import java.util.Set;
 /* 184 */           a(parame);
 /*     */         } else {
 /* 186 */           String[] arrayOfString = (String[])localList.toArray(new String[localList.size()]);
-/* 187 */           com.bytedance.sdk.openadsdk.ccccc.bds.b.a(paramActivity, arrayOfString, 1);
+/* 187 */           PermistionUtils.a(paramActivity, arrayOfString, 1);
 /*     */         }
 /*     */       }
 /*     */     } catch (Throwable localThrowable) {
@@ -232,7 +232,7 @@ import java.util.Set;
 /*     */           boolean bool;
 /* 211 */           if (!this.b.contains(str)) {
 /* 212 */             bool = parame.a(str, com.bytedance.sdk.openadsdk.ccccc.bds.c.c);
-/* 213 */           } else if (com.bytedance.sdk.openadsdk.ccccc.bds.b.a(paramActivity, str) != 0)
+/* 213 */           } else if (PermistionUtils.a(paramActivity, str) != 0)
 /*     */           {
 /* 215 */             bool = parame.a(str, com.bytedance.sdk.openadsdk.ccccc.bds.c.c.b);
 /*     */           } else {
@@ -306,7 +306,7 @@ import java.util.Set;
 /* 284 */       ArrayList localArrayList = new ArrayList(3);
 /* 285 */       int i = 0; for (int j = paramArrayOfString.length; i < j; i++) {
 /* 286 */         String str = paramArrayOfString[i];
-/* 287 */         if (((paramArrayOfInt[i] == -1) || ((com.bytedance.sdk.openadsdk.ggg.d.a()) && (!com.bytedance.sdk.openadsdk.ccccc.bds.a.a(paramActivity, str)))) &&
+/* 287 */         if (((paramArrayOfInt[i] == -1) || ((com.bytedance.sdk.openadsdk.ggg.d.a()) && (!PermisionHelper.a(paramActivity, str)))) &&
 /* 288 */           (paramArrayOfInt[i] != -1)) {
 /* 289 */           paramArrayOfInt[i] = -1;
 /*     */         }
@@ -349,7 +349,7 @@ import java.util.Set;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\Result\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\Result\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

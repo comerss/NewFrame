@@ -8,12 +8,13 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
 
+import com.bytedance.sdk.openadsdk.core.AdNativeListenerImpl;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.core.nibuguan.j;
-import com.bytedance.sdk.openadsdk.ggg.m;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.q;
-import com.bytedance.sdk.openadsdk.ggg.t;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,10 +65,10 @@ import java.util.concurrent.ScheduledExecutorService;
 /*     */ 
 /*     */ 
 /*     */
-class afff implements com.bytedance.sdk.openadsdk.ggg.t.a {
+class afff implements MineHandler.OnResult {
     private static volatile afff a;
     private Context mContext;
-    private t c = new t(Looper.getMainLooper(), this);
+    private MineHandler c = new MineHandler(Looper.getMainLooper(), this);
     private afff.a d;
     private afff.b e;
     private afff.c f;
@@ -157,15 +158,15 @@ class afff implements com.bytedance.sdk.openadsdk.ggg.t.a {
         return com.bytedance.sdk.openadsdk.ggg.f.a(var1, var2, var3);
     }
 
-    public void a(Message var1) {
+    public void doResult(Message var1) {
         if (var1.what == 1) {
             if (this.d != null) {
                 if (var1.obj != null && var1.obj instanceof j) {
                     this.d.a((j)var1.obj);
-                    m.b("SplashAdCacheManager", "缓存反序列化成功");
+                    LogUtils.b("SplashAdCacheManager", "缓存反序列化成功");
                 } else {
                     this.d.a();
-                    m.b("SplashAdCacheManager", "缓存反序列化失败");
+                    LogUtils.b("SplashAdCacheManager", "缓存反序列化失败");
                 }
             }
 
@@ -310,7 +311,7 @@ class afff implements com.bytedance.sdk.openadsdk.ggg.t.a {
             String var2 = var1.getString("materialMeta", (String)null);
             if (!q.a(var2)) {
                 try {
-                    com.bytedance.sdk.openadsdk.core.p.aClass var3 = com.bytedance.sdk.openadsdk.core.p.aClass.a(new JSONObject(var2));
+                    AdNativeListenerImpl.aClass var3 = AdNativeListenerImpl.aClass.a(new JSONObject(var2));
                     if (var3 != null && var3.d != null && var3.d.b() != null && !var3.d.b().isEmpty()) {
                         h var4 = (h)var3.d.b().get(0);
                         if (var4.v()) {

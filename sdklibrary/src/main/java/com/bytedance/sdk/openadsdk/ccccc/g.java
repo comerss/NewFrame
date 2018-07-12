@@ -28,6 +28,7 @@ import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadInfo;
 import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
 import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.s;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
@@ -724,8 +725,8 @@ public class g {
                 final String var9 = var1.toString();
                 com.bytedance.sdk.openadsdk.ccccc.h.a(this.f, new com.bytedance.sdk.openadsdk.ccccc.h.b() {
                     public void a(SharedPreferences.Editor var1) {
-                        if (com.bytedance.sdk.openadsdk.ggg.m.a()) {
-                            com.bytedance.sdk.openadsdk.ggg.m.b("DownloadNotifier saveToMiscConfig", var9);
+                        if (LogUtils.a()) {
+                            LogUtils.b("DownloadNotifier saveToMiscConfig", var9);
                         }
 
                         var1.putString("notifs_string", var9);
@@ -743,8 +744,8 @@ public class g {
             com.bytedance.sdk.openadsdk.ccccc.h.a(this.f, new com.bytedance.sdk.openadsdk.ccccc.h.a() {
                 public void a(SharedPreferences var1) {
                     String var2 = var1.getString("notifs_string", "");
-                    if (com.bytedance.sdk.openadsdk.ggg.m.a()) {
-                        com.bytedance.sdk.openadsdk.ggg.m.b("DownloadNotifier loadFromMiscConfig", var2);
+                    if (LogUtils.a()) {
+                        LogUtils.b("DownloadNotifier loadFromMiscConfig", var2);
                     }
 
                     String[] var3 = var2.split("\\|");

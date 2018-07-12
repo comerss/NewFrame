@@ -14,8 +14,8 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.s;
-import com.bytedance.sdk.openadsdk.ggg.t;
 
 /*     */
 /*     */
@@ -34,7 +34,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */
 
 /*     */
-/*     */ public class f extends FrameLayout implements t.a
+/*     */ public class f extends FrameLayout implements MineHandler.OnResult
 /*     */ {
 /*     */   private Context a;
 /*     */   private final h b;
@@ -54,7 +54,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*  37 */   private boolean l = true;
 /*     */   
 /*     */   private long m;
-/*  40 */   private t n = new t(this);
+/*  40 */   private MineHandler n = new MineHandler(this);
 /*     */   
 /*     */   public f(@NonNull Context paramContext, @NonNull h paramh) {
 /*  43 */     super(paramContext);
@@ -116,7 +116,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 104 */     switch (paramMessage.what) {
 /*     */     case 1: 
@@ -232,7 +232,7 @@ import com.bytedance.sdk.openadsdk.ggg.t;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\ssl\f.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\SslHepler\doErrorHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

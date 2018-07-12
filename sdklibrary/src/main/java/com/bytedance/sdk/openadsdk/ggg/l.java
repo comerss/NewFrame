@@ -57,9 +57,9 @@
 /*    */   static
 /*    */   {
 /* 59 */     if (android.os.Build.VERSION.SDK_INT >= 19) {
-/* 60 */       a = new b(null);
+/* 60 */       a = new b();
 /*    */     } else {
-/* 62 */       a = new a(null);
+/* 62 */       a = new a();
 /*    */     }
 /*    */   }
 /*    */   

@@ -55,7 +55,7 @@ import java.util.List;
 /*     */
 /*     */
 /*     */ 
-/*     */ public class dislike implements TTAdDislike
+/*     */ public class TTAdDislikeImpl implements TTAdDislike
 /*     */ {
 /*     */   private Context a;
 /*     */   private h b;
@@ -63,7 +63,7 @@ import java.util.List;
 /*     */   private a d;
 /*     */   private TTAdDislike.DislikeInteractionCallback e;
 /*     */   
-/*     */   public dislike(Context paramContext, h paramh)
+/*     */   public TTAdDislikeImpl(Context paramContext, h paramh)
 /*     */   {
 /*  43 */     o.a(paramContext, "Dislike 初始化必须使用activity,请在TTAdManager.createAdNative(activity)中传入");
 /*  44 */     this.a = paramContext;
@@ -103,7 +103,7 @@ import java.util.List;
 /*     */         
 /*     */ 
 /*  80 */         ((f)b.q().get(paramAnonymousInt)).a(true);
-///*  81 */         c.c(bee.bee(dislike.this));
+///*  81 */         cc.cc(bee.bee(TTAdDislikeImpl.this));
                 com.bytedance.sdk.openadsdk.dddd.c.c(b);
 /*  82 */         if (e != null)
 /*     */         {

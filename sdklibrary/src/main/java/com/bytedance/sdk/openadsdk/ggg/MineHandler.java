@@ -8,37 +8,37 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class t
+/*    */ public class MineHandler
 /*    */   extends Handler
 /*    */ {
-/*    */   WeakReference<a> a;
+/*    */   WeakReference<OnResult> a;
 /*    */   
-/*    */   public t(a parama)
+/*    */   public MineHandler(OnResult parama)
 /*    */   {
 /* 18 */     this.a = new WeakReference(parama);
 /*    */   }
 /*    */   
-/*    */   public t(Looper paramLooper, a parama) {
+/*    */   public MineHandler(Looper paramLooper, OnResult parama) {
 /* 22 */     super(paramLooper);
 /* 23 */     this.a = new WeakReference(parama);
 /*    */   }
 /*    */   
 /*    */   public void handleMessage(Message paramMessage)
 /*    */   {
-/* 28 */     a locala = (a)this.a.get();
+/* 28 */     OnResult locala = (OnResult)this.a.get();
 /* 29 */     if ((locala != null) && (paramMessage != null)) {
-/* 30 */       locala.a(paramMessage);
+/* 30 */       locala.doResult(paramMessage);
 /*    */     }
 /*    */   }
 /*    */   
-/*    */   public static abstract interface a
+/*    */   public static abstract interface OnResult
 /*    */   {
-/*    */     public abstract void a(Message paramMessage);
+/*    */     public abstract void doResult(Message paramMessage);
 /*    */   }
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\t.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\MineHandler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

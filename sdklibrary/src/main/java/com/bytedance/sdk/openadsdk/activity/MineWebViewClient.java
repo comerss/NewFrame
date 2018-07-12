@@ -11,9 +11,13 @@
 /*    */ import android.webkit.WebViewClient;
 /*    */ import com.bytedance.sdk.openadsdk.core.n;
 /*    */ import com.bytedance.sdk.openadsdk.core.v;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.j;
+/*    */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
+import com.bytedance.sdk.openadsdk.ggg.j;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.l;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.m;
+/*    */
+
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -22,8 +26,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ 
-/*    */ public class b
+/*    */ public class MineWebViewClient
 /*    */   extends WebViewClient
 /*    */ {
 /* 29 */   private static final String a = WebChromeClient.class.getSimpleName();
@@ -31,7 +34,7 @@
 /*    */   private Context c;
 /*    */   private String d;
 /*    */   
-/*    */   public b(Context paramContext, v paramv, String paramString) {
+/*    */   public MineWebViewClient(Context paramContext, v paramv, String paramString) {
 /* 35 */     this.c = paramContext;
 /* 36 */     this.b = paramv;
 /* 37 */     this.d = paramString;
@@ -54,7 +57,7 @@
 /*    */   
 /*    */   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
 /*    */   {
-/* 57 */     m.b(a, "shouldOverrideUrlLoading " + paramString);
+/* 57 */     LogUtils.b(a, "shouldOverrideUrlLoading " + paramString);
 /*    */     try
 /*    */     {
 /* 60 */       Uri localUri = Uri.parse(paramString);
@@ -63,7 +66,7 @@
 /* 63 */         j.a(localUri, this.b);
 /* 64 */         return true;
 /*    */       }
-/* 66 */       if (!com.bytedance.sdk.openadsdk.ggg.c.a(paramString)) {
+/* 66 */       if (!PhoneUtils.isAccess(paramString)) {
 /* 67 */         Intent localIntent = new Intent("android.intent.action.VIEW");
 /* 68 */         localIntent.setData(localUri);
 /* 69 */         localIntent.addFlags(268435456);
@@ -78,8 +81,8 @@
 /*    */   
 /*    */   public void onPageFinished(WebView paramWebView, String paramString)
 /*    */   {
-/* 81 */     if (m.a()) {
-/* 82 */       m.a(a, "onPageFinished " + paramString);
+/* 81 */     if (LogUtils.a()) {
+/* 82 */       LogUtils.a(a, "onPageFinished " + paramString);
 /*    */     }
 /* 84 */     if (paramWebView != null) {
 /* 85 */       String str1 = n.e().b();

@@ -5,7 +5,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import java.io.IOException;
 
-public abstract interface c
+public abstract interface cc
 {
   public abstract void a(SurfaceHolder paramSurfaceHolder);
   
@@ -57,37 +57,37 @@ public abstract interface c
   
   public static abstract interface d
   {
-    public abstract boolean b(c paramc, int paramInt1, int paramInt2);
+    public abstract boolean b(cc paramc, int paramInt1, int paramInt2);
   }
   
   public static abstract interface c
   {
-    public abstract boolean a(c paramc, int paramInt1, int paramInt2);
+    public abstract boolean a(cc paramc, int paramInt1, int paramInt2);
   }
   
   public static abstract interface g
   {
-    public abstract void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+    public abstract void a(cc paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   }
   
   public static abstract interface f
   {
-    public abstract void c(c paramc);
+    public abstract void c(cc paramc);
   }
   
   public static abstract interface a
   {
-    public abstract void a(c paramc, int paramInt);
+    public abstract void a(cc paramc, int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void a(c paramc);
+    public abstract void a(cc paramc);
   }
   
   public static abstract interface e
   {
-    public abstract void b(c paramc);
+    public abstract void b(cc paramc);
   }
 }
 

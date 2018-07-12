@@ -1,20 +1,32 @@
 /*     */ package com.bytedance.sdk.openadsdk.core.widget;
 /*     */ 
-/*     */ import android.content.Context;
 /*     */
-/*     */ import android.view.LayoutInflater;
-/*     */ import android.view.View;
-/*     */
-/*     */ import android.view.ViewGroup;
-/*     */ import android.widget.TextView;
-/*     */
-/*     */
-/*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.m;
-/*     */ import com.bytedance.sdk.openadsdk.core.n;
-/*     */
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.n;
+import com.bytedance.sdk.openadsdk.core.nibuguan.m;
 import com.bytedance.sdk.openadsdk.core.video.a.d;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.s;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -44,7 +56,7 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*     */   private View c;
 /*     */   private Context d;
 /*     */   private d e;
-/*     */   private b f;
+/*     */   private bbb f;
 /*  47 */   private boolean g = false;
 /*     */   private m h;
 /*     */   
@@ -58,15 +70,15 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*  57 */       this.c.setOnClickListener(new View.OnClickListener()
 /*     */       {
 /*     */         public void onClick(View paramAnonymousView) {
-/*  60 */           b.a(b.this, true);
-/*  61 */           b.a(b.this);
-/*  62 */           b.b(b.this).a(b.a.c, null);
+/*  60 */          g= true;
+/*  61 */         c();
+/*  62 */          e.a(enume.c, (String)null);
 /*     */         }
 /*     */       });
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(d paramd, b paramb) {
+/*     */   public void a(d paramd, bbb paramb) {
 /*  69 */     this.f = paramb;
 /*  70 */     this.e = paramd;
 /*     */   }
@@ -109,10 +121,10 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*     */     }
 /* 109 */     if (!this.g) {
 /* 110 */       if ((this.e != null) && (this.f != null)) {
-/* 111 */         if (this.f.j()) {
+/* 111 */         if (f.l()) {
 /* 112 */           this.e.e(null, null);
 /*     */         }
-/* 114 */         this.e.a(a.a, null);
+/* 114 */         this.e.a(enume.a, null);
 /*     */       }
 /* 116 */       a(this.h, true);
 /* 117 */       return false;
@@ -136,21 +148,21 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*     */   }
 /*     */   
 /*     */   public boolean a() {
-/* 138 */     if ((this.a != null) && (this.a.getVisibility() == 0)) {
+/* 138 */     if ((this.a != null) && (this.a.getVisibility() == View.VISIBLE)) {
 /* 139 */       return true;
 /*     */     }
 /* 141 */     return false;
 /*     */   }
 /*     */   
 /*     */   private void d() {
-/* 145 */     this.a.setVisibility(8);
+/* 145 */     this.a.setVisibility(View.GONE);
 /*     */   }
 /*     */   
 /*     */   public void a(m paramk, boolean paramBoolean) {
 /* 149 */     if ((paramk == null) || (this.a == null) || (this.d == null)) {
 /* 150 */       return;
 /*     */     }
-/* 152 */     if (this.a.getVisibility() == 0) {
+/* 152 */     if (this.a.getVisibility() == View.VISIBLE) {
 /* 153 */       return;
 /*     */     }
 /* 155 */     if (this.f != null) {
@@ -176,12 +188,14 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public static enum a
+/*     */   public static enum enume
 /*     */   {
-/*     */     private a() {}
+/*     */     a,
+    b,
+    c
 /*     */   }
 /*     */   
-/*     */   public static abstract interface b
+/*     */   public static abstract interface bbb
 /*     */   {
 /*     */     public abstract boolean l();
 /*     */     

@@ -18,7 +18,7 @@
 /*    */       try {
 /* 19 */         paramv.b(paramUri);
 /*    */       } catch (Exception localException) {
-/* 21 */         m.d("WebView", "TTAndroidObj handleUri exception: " + localException);
+/* 21 */         LogUtils.d("WebView", "TTAndroidObj handleUri exception: " + localException);
 /*    */       }
 /*    */     }
 /*    */   }
@@ -38,7 +38,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\j.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\j.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

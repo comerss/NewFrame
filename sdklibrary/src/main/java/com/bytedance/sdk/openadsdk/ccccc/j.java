@@ -14,7 +14,7 @@
 /*     */ import android.os.SystemClock;
 /*     */ import android.text.TextUtils;
 /*     */ import android.util.Log;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.t;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 /*     */
         /*     */ import java.util.HashMap;
 /*     */ 
@@ -25,11 +25,11 @@
 /*     */ 
 /*     */ 
 /*     */ public class j
-/*     */   implements MediaScannerConnection.MediaScannerConnectionClient, t.a
+/*     */   implements MediaScannerConnection.MediaScannerConnectionClient, MineHandler.OnResult
 /*     */ {
 /*     */   private final Context b;
 /*     */   private final MediaScannerConnection c;
-/*  31 */   protected final t a = new t(Looper.getMainLooper(), this);
+/*  31 */   protected final MineHandler a = new MineHandler(Looper.getMainLooper(), this);
 /*     */   
 /*     */   private static class a {
 /*     */     public final long a;
@@ -84,7 +84,7 @@
 /*     */ 
 /*     */   public void a(d paramd)
 /*     */   {
-///*  86 */     if (bee.c) Log.v("SsDownloadManager", "requestScan() for " + paramd.eee);
+///*  86 */     if (bee.cc) Log.v("SsDownloadManager", "requestScan() for " + paramd.eee);
 /*  87 */     synchronized (this.c) {
 /*  88 */       a locala = new a(paramd.a, paramd.e, paramd.f);
 /*  89 */       this.d.put(locala.b, locala);
@@ -120,7 +120,7 @@
 /* 119 */     this.a.sendMessage(localMessage);
 /*     */   }
 /*     */   
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 124 */     if (paramMessage == null) {
 /* 125 */       return;

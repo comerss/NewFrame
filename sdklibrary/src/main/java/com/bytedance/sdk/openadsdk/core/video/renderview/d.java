@@ -1,6 +1,8 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.video.renderview;
 /*    */ 
-/*    */ import android.view.SurfaceHolder.Callback;
+/*    */
+
+import android.view.SurfaceHolder;
 /*    */ 
 /*    */ public class d implements SurfaceHolder.Callback
 /*    */ {
@@ -41,7 +43,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\renderview\d.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\video\renderview\LocationUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

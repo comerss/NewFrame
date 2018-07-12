@@ -4,8 +4,9 @@
 /*     */ import android.net.Uri;
 /*     */ import android.os.Environment;
 /*     */ import com.bytedance.sdk.openadsdk.core.h;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.e;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.m;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.e;
+/*     */
 /*     */ import com.bytedance.sdk.openadsdk.ggg.q;
 /*     */ import java.io.File;
 /*     */ 
@@ -99,7 +100,7 @@
 /*  99 */       localc.a(false);
 /* 100 */       return localf.aaaaaa(localc);
 /*     */     } catch (Throwable localThrowable) {
-/* 102 */       m.b("MyDownloadManager", "add download task error:" + localThrowable); }
+/* 102 */       LogUtils.b("MyDownloadManager", "add download task error:" + localThrowable); }
 /* 103 */     return -1L;
 /*     */   }
 /*     */ }

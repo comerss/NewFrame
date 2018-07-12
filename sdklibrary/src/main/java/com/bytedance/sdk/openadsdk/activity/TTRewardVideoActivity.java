@@ -29,12 +29,11 @@ import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.bytedance.sdk.openadsdk.ccccc.x;
-import com.bytedance.sdk.openadsdk.core.a.e;
+import com.bytedance.sdk.openadsdk.core.AdNativeListener;
+import com.bytedance.sdk.openadsdk.core.AdNativeListenerImpl;
 import com.bytedance.sdk.openadsdk.core.ab;
-import com.bytedance.sdk.openadsdk.core.o;
-import com.bytedance.sdk.openadsdk.core.p;
 import com.bytedance.sdk.openadsdk.core.v;
-import com.bytedance.sdk.openadsdk.ggg.t;
+import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 
 import org.json.JSONObject;
 
@@ -98,7 +97,7 @@ import java.util.UUID;
 /*     */
 /*     */ public class TTRewardVideoActivity
 /*     */   extends Activity
-/*     */   implements t.a
+/*     */   implements MineHandler.OnResult
 /*     */ {
 /*     */   private Context a;
 /*     */   private SSWebView b;
@@ -127,11 +126,11 @@ import java.util.UUID;
 /*  88 */   private boolean y = false;
 /*     */
 /*     */
-/*  91 */   private t z = new t(Looper.getMainLooper(), this);
+/*  91 */   private MineHandler z = new MineHandler(Looper.getMainLooper(), this);
 /*     */   private int A;
 /*     */   private AQuery2 B;
-/*     */   private o C;
-/*     */   private e D;
+/*     */   private AdNativeListener C;
+/*     */   private com.bytedance.sdk.openadsdk.core.a.e D;
 /*  96 */   private boolean E = true;
 /*     */
 /*     */   private long F;
@@ -178,7 +177,7 @@ import java.util.UUID;
 /* 139 */     this.n = ((TextView)findViewById(R.id.tv_comment_text));
 /* 140 */     if (!this.E) {
 /* 141 */       this.k.setVisibility(View.INVISIBLE);
-///* 142 */       int i1 = (int)com.bytedance.sdk.openadsdk.g.s.intera(this.intera, 24.0F);
+///* 142 */       int i1 = (int)com.bytedance.sdk.openadsdk.ApiException.s.intera(this.intera, 24.0F);
 /* 143 */       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.d.getLayoutParams();
 /* 144 */       localLayoutParams.gravity = 85;
 /* 145 */       localLayoutParams.bottomMargin = 24;
@@ -252,14 +251,14 @@ import java.util.UUID;
 /* 213 */     this.v = 1;
 /* 214 */     boolean bool = Build.VERSION.SDK_INT >= 16;
 /* 215 */      com.bytedance.sdk.openadsdk.core.q.a(this.a).a(bool).a(this.b);
-/* 216 */     this.b.setWebViewClient(new com.bytedance.sdk.openadsdk.activity.b(this.a, this.t, this.r));
+/* 216 */     this.b.setWebViewClient(new MineWebViewClient(this.a, this.t, this.r));
 /* 217 */     this.b.getSettings().setUserAgentString(com.bytedance.sdk.openadsdk.ggg.j.a(this.b, this.v));
 /*     */
 /* 219 */     if (Build.VERSION.SDK_INT >= 21) {
 /* 220 */       this.b.getSettings().setMixedContentMode(0);
 /*     */     }
 /* 222 */     this.b.loadUrl(this.w);
-/* 223 */     this.b.setWebChromeClient(new com.bytedance.sdk.openadsdk.activity.a(this.t));
+/* 223 */     this.b.setWebChromeClient(new MineWebChromeClient(this.t));
 /* 224 */     this.b.setDownloadListener(new DownloadListener()
 /*     */     {
 /*     */       public void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong) {
@@ -314,7 +313,7 @@ import java.util.UUID;
 /* 275 */       return;
 /*     */     }
 /*     */
-/* 278 */     this.D = new e(this, this.o, "embeded_ad", 1)
+/* 278 */     this.D = new com.bytedance.sdk.openadsdk.core.a.e(this, this.o, "embeded_ad", 1)
 /*     */     {
 /*     */       public void a(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
 /*     */       {
@@ -421,7 +420,7 @@ import java.util.UUID;
 /*     */
 /*     */   private void h() {
 /* 384 */     JSONObject localJSONObject = i();
-/* 385 */     this.C.a(localJSONObject, new com.bytedance.sdk.openadsdk.core.o.b()
+/* 385 */     this.C.a(localJSONObject, new AdNativeListener.b()
 /*     */     {
 /*     */       public void a(int paramAnonymousInt, String paramAnonymousString) {
 /* 388 */         if (mListener != null) {
@@ -429,7 +428,7 @@ import java.util.UUID;
 /*     */         }
 /*     */       }
 /*     */
-/*     */       public void a(p.cdsss paramAnonymousc)
+/*     */       public void a(AdNativeListenerImpl.cdsss paramAnonymousc)
 /*     */       {
 /* 395 */         int i = paramAnonymousc.c.a();
 /* 396 */         String str = paramAnonymousc.c.b();
@@ -553,7 +552,7 @@ import java.util.UUID;
 /*     */     }
 /*     */   }
 /*     */
-/*     */   public void a(Message paramMessage)
+/*     */   public void doResult(Message paramMessage)
 /*     */   {
 /* 520 */     if (paramMessage.what == 1) {
 /* 521 */       if (!j()) {

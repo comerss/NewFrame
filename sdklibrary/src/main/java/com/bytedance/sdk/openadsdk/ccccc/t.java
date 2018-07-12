@@ -34,7 +34,7 @@
 /*    */   {
 /* 35 */     ConnectivityManager localConnectivityManager = (ConnectivityManager)this.a.getSystemService("connectivity");
 /* 36 */     if (localConnectivityManager == null) {
-/* 37 */       Log.w("SsDownloadManager", "couldn't get connectivity manager");
+/* 37 */       Log.w("SsDownloadManager", "couldn'MineHandler get connectivity manager");
 /* 38 */       return null;
 /*    */     }
 /*    */     
@@ -50,7 +50,7 @@
 /*    */   {
 /* 51 */     ConnectivityManager localConnectivityManager = (ConnectivityManager)this.a.getSystemService("connectivity");
 /* 52 */     if (localConnectivityManager == null) {
-/* 53 */       Log.w("SsDownloadManager", "couldn't get connectivity manager");
+/* 53 */       Log.w("SsDownloadManager", "couldn'MineHandler get connectivity manager");
 /* 54 */       return false;
 /*    */     }
 /* 56 */     NetworkInfo localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
@@ -83,7 +83,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ccccc\t.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ccccc\MineHandler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -12,7 +12,7 @@
 /*     */ import com.bytedance.sdk.openadsdk.TTFeedAd;
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.TTImage;
-/*     */ import com.bytedance.sdk.openadsdk.b.dislike;
+/*     */ import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 /*     */
 import com.bytedance.sdk.openadsdk.ccccc.x;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.g;
@@ -185,7 +185,7 @@ import com.bytedance.sdk.openadsdk.ccccc.x;
 /*     */   private void a()
 /*     */   {
 /* 186 */     if ((this.a instanceof Activity)) {
-/* 187 */       this.d = new dislike(this.a, this.c);
+/* 187 */       this.d = new TTAdDislikeImpl(this.a, this.c);
 /*     */     }
 /*     */   }
 /*     */ }

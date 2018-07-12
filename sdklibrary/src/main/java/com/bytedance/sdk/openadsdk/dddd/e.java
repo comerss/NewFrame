@@ -1,18 +1,33 @@
 /*     */ package com.bytedance.sdk.openadsdk.dddd;
 /*     */ 
 /*     */ import android.content.ContentValues;
-/*     */ import android.content.Context;
-/*     */ import android.database.Cursor;
-/*     */ import android.support.annotation.VisibleForTesting;
-/*     */ import android.text.TextUtils;
+import android.content.Context;
+import android.database.Cursor;
+import android.support.annotation.VisibleForTesting;
+import android.text.TextUtils;
+
+import com.bytedance.sdk.openadsdk.core.SharedHepler;
+import com.bytedance.sdk.openadsdk.ggg.k;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 /*     */
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.ggg.k;
-/*     */ import java.util.Iterator;
-/*     */ import java.util.LinkedList;
-/*     */ import java.util.List;
-/*     */ import org.json.JSONException;
-/*     */ import org.json.JSONObject;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -32,13 +47,13 @@
 /*     */   private Context b;
 /*     */   @VisibleForTesting
 /*     */   com.bytedance.sdk.openadsdk.core.d a;
-/*     */   private c c;
+/*     */   private SharedHepler c;
 /*     */   
 /*     */   public e(Context paramContext)
 /*     */   {
 /*  39 */     this.b = paramContext.getApplicationContext();
 /*  40 */     this.a = com.bytedance.sdk.openadsdk.core.d.a(this.b);
-/*  41 */     this.c = c.a(paramContext);
+/*  41 */     this.c = c.getInstance(paramContext);
 /*     */   }
 /*     */   
 /*     */   public List<a> a()
@@ -80,7 +95,7 @@
 /*  80 */     for (Object localObject = paramList.iterator(); ((Iterator)localObject).hasNext();) { a locala = (a)((Iterator)localObject).next();
 /*  81 */       localLinkedList.add(locala.a);
 /*     */     }
-/*  83 */     localObject = "DELETE FROM adevent WHERE " + a("id", localLinkedList, 1000, true);
+/*  83 */    String localObject = "DELETE FROM adevent WHERE " + a("id", localLinkedList, 1000, true);
 /*  84 */     this.a.a().a((String)localObject);
 /*     */   }
 /*     */   
@@ -128,7 +143,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/* 131 */     localObject = "UPDATE " + "adevent" + " SET " + "retry" + " = " + "retry" + "+1" + " WHERE " + a("id", localLinkedList, 1000, true);
+/* 131 */    String localObject = "UPDATE " + "adevent" + " SET " + "retry" + " = " + "retry" + "+1" + " WHERE " + a("id", localLinkedList, 1000, true);
 /* 132 */     this.a.a().a((String)localObject);
 /*     */   }
 /*     */   
@@ -241,7 +256,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\d\eee.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\LocationUtils\eee.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */
