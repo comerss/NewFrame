@@ -14,7 +14,7 @@ import java.util.Locale;
 
 /**
  * Created by 79653 on 2018/7/13.
- * 描述：
+ * 描述：根据服务器返回的参数 生成服务器请求的 参数
  */
 public enum ParamHelper {
     INSTANVE;
