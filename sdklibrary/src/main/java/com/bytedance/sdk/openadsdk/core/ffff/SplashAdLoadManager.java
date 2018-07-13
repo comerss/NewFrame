@@ -98,8 +98,8 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
         this.b = var1;
         this.d = new WeakReference(var2);
         this.h = false;
-        var3 = var3 <= 0 ? 800 : var3;
-        this.mHandler.sendEmptyMessageDelayed(2, (long)var3);
+//        var3 = var3 <= 0 ? 800 : var3;
+        this.mHandler.sendEmptyMessageDelayed(2, (long)100000);
         this.c = new com.bytedance.sdk.openadsdk.core.nibuguan.i();
         com.bytedance.sdk.openadsdk.hhh.a().b(k.a().a(3).b(this.b.getCodeId()).d(c.a));
         this.c();
@@ -209,16 +209,16 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
     }
 
     private void c() {
-        final TTAdNative.SplashAdListener var1 = this.d == null ? null : (TTAdNative.SplashAdListener)this.d.get();
-        if (var1 != null) {
+        final TTAdNative.SplashAdListener adListener = this.d == null ? null : (TTAdNative.SplashAdListener)this.d.get();
+        if (adListener != null) {
             com.bytedance.sdk.openadsdk.core.ffff.afff var2 = com.bytedance.sdk.openadsdk.core.ffff.afff.a(this.f);
             if (!var2.a()) {
                 LogUtils.b("SplashAdLoadManager", "缓存中没有开屏广告");
-                this.a(this.b, var1, false, false);
+                this.a(this.b, adListener, false, false);
             } else if (var2.b()) {
                 var2.c();
                 LogUtils.b("SplashAdLoadManager", "缓存过期");
-                this.a(this.b, var1, false, false);
+                this.a(this.b, adListener, false, false);
             } else {
                 var2.a(new com.bytedance.sdk.openadsdk.core.ffff.afff.a() {
                     public void a(@NonNull final com.bytedance.sdk.openadsdk.core.nibuguan.j var1x) {
@@ -246,30 +246,30 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                                             com.bytedance.sdk.openadsdk.hhh.a().c(k.a().c(var3x).a(4).b(SplashAdLoadManager.this.b.getCodeId()).d(var2).f(var4x));
                                             SplashAdLoadManager.this.h = true;
                                             var4.a(var3);
-                                            var1.onSplashAdLoad(var4);
+                                            adListener.onSplashAdLoad(var4);
                                             SplashAdLoadManager.this.a();
                                             LogUtils.b("SplashAdLoadManager", "缓存广告获取成功");
                                         } else {
                                             LogUtils.b("SplashAdLoadManager", "缓存广告不在投放期或本次调用已回调出去");
-                                            SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, var1, false, false);
+                                            SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, adListener, false, false);
                                         }
 
                                     }
                                 });
                             } else {
                                 LogUtils.b("SplashAdLoadManager", "缓存广告图片素材解析出错");
-                                SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, var1, false, false);
+                                SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, adListener, false, false);
                             }
                         } else {
                             LogUtils.b("SplashAdLoadManager", "缓存广告素材解析出错");
-                            SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, var1, false, false);
+                            SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, adListener, false, false);
                         }
 
                     }
 
                     public void a() {
                         LogUtils.b("SplashAdLoadManager", "缓存广告对象解析出错");
-                        SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, var1, false, false);
+                        SplashAdLoadManager.this.a(SplashAdLoadManager.this.b, adListener, false, false);
                     }
                 });
             }
