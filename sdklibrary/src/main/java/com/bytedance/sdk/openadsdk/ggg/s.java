@@ -233,7 +233,7 @@ import android.widget.TextView;
 /*     */     }
 /*     */     else {
 /* 221 */       LogUtils.a(
-/* 222 */         "adView has invisible dimensions (w=" + paramView.getMeasuredWidth() + ", h=" + paramView.getMeasuredHeight());
+/* 222 */         "adView has invisible dimensions (w=" + paramView.getMeasuredWidth() + ", ImageHelper=" + paramView.getMeasuredHeight());
 /* 223 */       bool = false;
 /*     */     }
 /*     */     

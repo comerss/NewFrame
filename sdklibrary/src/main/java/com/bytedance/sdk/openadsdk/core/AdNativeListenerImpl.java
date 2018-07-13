@@ -21,11 +21,12 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.e;
-import com.bytedance.sdk.openadsdk.ggg.q;
 
 import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
@@ -42,7 +43,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
-import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -94,7 +94,7 @@ import java.util.concurrent.Executors;
         return var3;
     }
 
-    private JSONObject doParam(AdSlot var1, com.bytedance.sdk.openadsdk.core.nibuguan.i var2, int var3) {
+    private JSONObject doParam(AdSlot adSlot, com.bytedance.sdk.openadsdk.core.nibuguan.i var2, int var3) {
         JSONObject var4 = new JSONObject();
 
         try {
@@ -103,21 +103,21 @@ import java.util.concurrent.Executors;
             var5.put("request_id", var6);
             var5.put("ad_sdk_version", "1.9.2");
             var5.put("source_type", "app");
-            var5.put("app", this.d());
+            var5.put("app", this.e());
             JSONObject var7 = com.bytedance.sdk.openadsdk.ggg.d.d(this.a);
             if (var7 != null) {
-                var7.put("orientation", var1.getOrientation());
+                var7.put("orientation", adSlot.getOrientation());
             }
 
             var5.put("device", var7);
-            var5.put("user", this.f());
+            var5.put("user", getUser());
             var5.put("ua", com.bytedance.sdk.openadsdk.core.r.a);
-            var5.put("ip", this.h());
+            var5.put("ip", this.getIp());
             JSONArray var8 = new JSONArray();
-            var8.put(this.a(var1, var3));
+            var8.put(this.a(adSlot, var3));
             var5.put("adslots", var8);
             Log.i("Look", "get_ads参数--->" + var5.toString());
-            String var9 = asa.a(var5.toString(), "b0458c2b262949b8");
+            String var9 = AESHelper.encrypt(var5.toString(), "b0458c2b262949b8");
             if (this.b(var9)) {
                 var4.put("message", var9);
                 var4.put("cipher", 1);
@@ -133,24 +133,58 @@ import java.util.concurrent.Executors;
 
         return var4;
     }
+    public String getIp(){
+        return com.bytedance.sdk.openadsdk.ggg.d.a(true);
+    }
+    private JSONObject getUser() {
+        JSONObject var1 = new JSONObject();
 
+        try {
+            var1.put("gender", com.bytedance.sdk.openadsdk.core.h.a().f());
+            if (com.bytedance.sdk.openadsdk.core.h.a().e() > 0) {
+                var1.put("age", com.bytedance.sdk.openadsdk.core.h.a().e());
+            }
+
+            this.a(var1, "phone_nub", getPhone());
+            this.a(var1, "keywords", com.bytedance.sdk.openadsdk.core.h.a().g());
+            JSONArray var2 = com.bytedance.sdk.openadsdk.ggg.i.a(this.a, this.c);
+            if (var2 != null) {
+                var1.put("app_list", var2);
+            }
+
+            this.a(var1, "data", com.bytedance.sdk.openadsdk.core.h.a().h());
+        } catch (JSONException var3) {
+            ;
+        }
+
+        return var1;
+    }
+    @SuppressLint("MissingPermission")
+    private String getPhone() {
+        try {
+            @SuppressLint("WrongConstant") TelephonyManager var1 = (TelephonyManager)a.getSystemService("phone");
+            return var1.getLine1Number();
+        } catch (Throwable var2) {
+            return null;
+        }
+    }
     /*     */
     /*     */
-    public void getAds(AdSlot var1, com.bytedance.sdk.openadsdk.core.nibuguan.i var2, int var3, final OnAdLoad var4) {
-        if (var4 != null) {
+    public void getAds(AdSlot var1, com.bytedance.sdk.openadsdk.core.nibuguan.i var2, int var3, final OnAdLoad onAdLoad) {
+        if (onAdLoad != null) {
             if (this.a(var1.getCodeId())) {
-                var4.onError(-8, ApiException.a(-8));
+                onAdLoad.onError(-8, ApiException.a(-8));
             } else {
                 final JSONObject var5 = this.doParam(var1, var2, var3);
                 if (var5 == null) {
-                    var4.onError(-9, ApiException.a(-9));
+                    onAdLoad.onError(-9, ApiException.a(-9));
                 } else {
                     AQuery var6 = new AQuery(this.a);
                     AjaxCallback var7 = new AjaxCallback<String>() {
-                        public void a(String var1, String var2, AjaxStatus var3) {
+                        public void callback(String var1, String var2, AjaxStatus var3) {
                             if (var3.getCode() == 200) {
                                 if (TextUtils.isEmpty(var2)) {
-                                    aaaa(var4);
+                                    aaaa(onAdLoad);
                                     asasas(var3.getCode(), -1, var5.toString(), var2);
                                     return;
                                 }
@@ -162,34 +196,34 @@ import java.util.concurrent.Executors;
                                     }
 
                                     if (var4x.b != 20000) {
-                                        var4.onError(var4x.b, ApiException.a(var4x.b));
+                                        onAdLoad.onError(var4x.b, ApiException.a(var4x.b));
                                         asasas(var3.getCode(), var4x.b, var5.toString(), var2);
                                         return;
                                     }
 
                                     if (var4x.d == null) {
                                         asasas(var3.getCode(), -1, var5.toString(), var2);
-                                        aaaa(var4);
+                                        aaaa(onAdLoad);
                                         return;
                                     }
 
                                     var4x.d.c(var2);
-                                    var4.onSuccess(var4x.d);
+                                    onAdLoad.onSuccess(var4x.d);
                                 } catch (JSONException var5x) {
-                                    aaaa(var4);
+                                    aaaa(onAdLoad);
                                     asasas(var3.getCode(), -1, var5.toString(), var2);
                                 }
                             } else if (var3.getCode() > 0) {
-                                var4.onError(var3.getCode(), var3.getMessage());
+                                onAdLoad.onError(var3.getCode(), var3.getMessage());
                                 asasas(var3.getCode(), -1, var5.toString(), var2);
                             } else {
-                                var4.onError(-2, ApiException.a(-2));
+                                onAdLoad.onError(-2, ApiException.a(-2));
                                 asasas(var3.getCode(), -2, var5.toString(), var2);
                             }
 
                         }
                     };
-                    var7.timeout(1000000000);
+                    var7.timeout(5000);
                     AjaxCallback.setAgent(com.bytedance.sdk.openadsdk.core.r.a);
                     var6.post("https://i.snssdk.com/api/ad/union/sdk/get_ads/", var5, String.class, var7);
                 }
@@ -229,7 +263,7 @@ import java.util.concurrent.Executors;
     /*     */
     private boolean b(String paramString) {
         /* 233 */
-        return !q.a(paramString);
+        return !StringUtils.isEmpty(paramString);
         /*     */
     }
 
@@ -427,7 +461,7 @@ import java.util.concurrent.Executors;
             /* 337 */
             AQuery localAQuery = new AQuery(this.a);
             /* 338 */
-            localAQuery.post("https://is.snssdk.com/api/ad/union/sdk/upload/log/", localJSONObject2, String.class, localAjaxCallback);
+//            localAQuery.post("https://is.snssdk.com/api/ad/union/sdk/upload/log/", localJSONObject2, String.class, localAjaxCallback);
             /*     */
         }
         /*     */ catch (Exception localException) {
@@ -536,12 +570,6 @@ import java.util.concurrent.Executors;
     /*     */
     /*     */
     /*     */
-    private String d()
-    /*     */ {
-        /* 399 */
-        return UUID.randomUUID().toString();
-        /*     */
-    }
 
     /*     */
     /*     */
@@ -1080,12 +1108,12 @@ import java.util.concurrent.Executors;
         /*     */     final String c;
         /*     */
         @Nullable
-        /*     */ public final com.bytedance.sdk.openadsdk.core.nibuguan.a d;
+        /*     */ public final NativeData d;
         /*     */     final String e;
 
         /*     */
         /*     */
-        private aClass(String paramString1, int paramInt1, int paramInt2, String paramString2, @Nullable com.bytedance.sdk.openadsdk.core.nibuguan.a parama)
+        private aClass(String paramString1, int paramInt1, int paramInt2, String paramString2, @Nullable NativeData parama)
         /*     */ {
             /* 711 */
             this.a = paramInt1;
@@ -1112,7 +1140,7 @@ import java.util.concurrent.Executors;
             /* 722 */
             String str2 = paramJSONObject.optString("request_id");
             /* 723 */
-            com.bytedance.sdk.openadsdk.core.nibuguan.a locala = com.bytedance.sdk.openadsdk.core.b.a(paramJSONObject);
+            NativeData locala = com.bytedance.sdk.openadsdk.core.b.a(paramJSONObject);
             /* 724 */
             if (locala != null)
                 /*     */ {
@@ -1457,7 +1485,7 @@ import java.util.concurrent.Executors;
         AjaxCallback local4 = new AjaxCallback()
                 /*     */ {
             /*     */
-            public void a(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
+            public void callback(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
                 /* 914 */
                 if (paramAnonymousAjaxStatus.getCode() == 200) {
                     /* 915 */

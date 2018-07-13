@@ -76,7 +76,7 @@ import java.io.File;
 /*  57 */     this.a = new AQuery2(this.b);
 /*  58 */     this.a.download(this.c.a().d(), a(this.b, "/reward_video_cache/", "tt_reward_video_cache"), new AjaxCallback()
 /*     */     {
-/*     */       public void a(String paramAnonymousString, File paramAnonymousFile, AjaxStatus paramAnonymousAjaxStatus)
+/*     */       public void callback(String paramAnonymousString, File paramAnonymousFile, AjaxStatus paramAnonymousAjaxStatus)
 /*     */       {
 /*  62 */         super.callback(paramAnonymousString, paramAnonymousFile, paramAnonymousAjaxStatus);
 /*  63 */         if ((paramAnonymousAjaxStatus.getCode() == 200) && (paramAnonymousFile != null)) {

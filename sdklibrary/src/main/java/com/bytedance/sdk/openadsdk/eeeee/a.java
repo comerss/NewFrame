@@ -9,7 +9,7 @@ import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
 import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.r;
 
 import org.json.JSONException;
@@ -114,7 +114,7 @@ import java.util.Map;
 /*  98 */       return;
 /*     */     }
 /* 100 */     String str = r.a(paramInt);
-/* 101 */     if (q.a(str)) {
+/* 101 */     if (StringUtils.isEmpty(str)) {
 /* 102 */       return;
 /*     */     }
 /* 104 */     localx = a(paramContext, paramh, paramJSONObject, str, paramBoolean);
@@ -198,7 +198,7 @@ import java.util.Map;
 /*     */   
 /*     */   public void a(String paramString)
 /*     */   {
-/* 185 */     if ((q.a(paramString)) || (this.d == null)) {
+/* 185 */     if ((StringUtils.isEmpty(paramString)) || (this.d == null)) {
 /* 186 */       return;
 /*     */     }
 /* 188 */     x localx = (x)this.d.get(paramString);

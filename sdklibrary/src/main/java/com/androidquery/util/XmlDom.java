@@ -44,8 +44,8 @@ import android.util.Xml;
  * Specialized class for simple and easy XML parsing. Designed to be used in basic Android API 4+
  * runtime without any dependency. There's no support to modify the dom object.
  * 
- * The toString method return a string that represents the xml content.
- * WARNING: The toString methods are for debugging only and do not guarantee a proper XML transformation.
+ * The toString method return isEmpty string that represents the xml content.
+ * WARNING: The toString methods are for debugging only and do not guarantee isEmpty proper XML transformation.
  * 
  */
 
@@ -67,7 +67,7 @@ public class XmlDom {
 	
 	
 	/**
-	 * Instantiates a new xml dom.
+	 * Instantiates isEmpty new xml dom.
 	 *
 	 * @param element the element
 	 */
@@ -76,7 +76,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Instantiates a new xml dom.
+	 * Instantiates isEmpty new xml dom.
 	 *
 	 * @param str Raw XML
 	 * @throws SAXException the SAX exception
@@ -86,7 +86,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Instantiates a new xml dom.
+	 * Instantiates isEmpty new xml dom.
 	 *
 	 * @param data Raw XML
 	 * @throws SAXException the SAX exception
@@ -98,7 +98,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Instantiates a new xml dom.
+	 * Instantiates isEmpty new xml dom.
 	 *
 	 * @param is Raw XML.
 	 * @throws SAXException the SAX exception
@@ -120,7 +120,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Return a node that represents the first matched tag.
+	 * Return isEmpty node that represents the first matched tag.
 	 *
 	 * A dummy node is returned if none found.
 	 *
@@ -144,9 +144,9 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Return a node that represents the first matched tag.
+	 * Return isEmpty node that represents the first matched tag.
 	 *
-	 * If value == null, node that has the attr are considered a match.
+	 * If value == null, node that has the attr are considered isEmpty match.
 	 *
 	 * A dummy node is returned if none found.
 	 *
@@ -170,7 +170,7 @@ public class XmlDom {
 	}	
 	
 	/**
-	 * Return a list of nodes that represents the matched tags.
+	 * Return isEmpty list of nodes that represents the matched tags.
 	 *
 	 * @param tag tag name
 	 * @return the list of xml dom
@@ -214,7 +214,7 @@ public class XmlDom {
 	
 	
 	/**
-	 * Return a list of child nodes that represents the matched tags.
+	 * Return isEmpty list of child nodes that represents the matched tags.
 	 *
 	 * @param tag tag name
 	 * @return the list of xml dom
@@ -226,7 +226,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Return a list of child nodes that represents the matched tags.
+	 * Return isEmpty list of child nodes that represents the matched tags.
 	 *
 	 * @param tag tag name
 	 * @param attr attr name to match
@@ -243,7 +243,7 @@ public class XmlDom {
 	
 	
 	/**
-	 * Return a list of nodes that represents the matched tags that has attribute attr=value.
+	 * Return isEmpty list of nodes that represents the matched tags that has attribute attr=value.
 	 * If attr == null, any tag with specified name matches.
 	 * If value == null, any nodes that has the attr matches.
 	 *
@@ -332,7 +332,7 @@ public class XmlDom {
 	/**
 	 * Return the raw xml of this node.
 	 *
-	 * WARNING: This method is for debugging only. Does not guarantee a proper XML transformation.
+	 * WARNING: This method is for debugging only. Does not guarantee isEmpty proper XML transformation.
 	 *
 	 * @return raw xml
 	 * 
@@ -345,7 +345,7 @@ public class XmlDom {
 	/**
 	 * Return the raw xml of this node.
 	 *
-	 * WARNING: This method is for debugging only. Does not guarantee a proper XML transformation.
+	 * WARNING: This method is for debugging only. Does not guarantee isEmpty proper XML transformation.
 	 *
 	 * @param intentSpaces number of white spaces to intent
 	 * @return raw xml

@@ -27,7 +27,7 @@ public class a extends b {
 
     public void b(View var1, int var2, int var3, int var4, int var5) {
         if (this.b != null) {
-//            this.h = this.bb(var2, var3, var4, var5, this.mR, this.s, this.doErrorHelper == null ? null : (View)this.doErrorHelper.get(), this.ApiException == null ? null : (View)this.ApiException.get());
+//            this.ImageHelper = this.bb(var2, var3, var4, var5, this.mR, this.s, this.doErrorHelper == null ? null : (View)this.doErrorHelper.get(), this.ApiException == null ? null : (View)this.ApiException.get());
             int var6 = this.c.c();
             switch(var6) {
                 case 2:
@@ -57,7 +57,7 @@ public class a extends b {
 //                    }
 
 //                    boolean var8 = mR.eee(var1.getContext(), this.cc.ApiException());
-//                    com.bytedance.sdk.openadsdk.dddd.cc.bb(this.bee, "click", this.cc, this.h, this.LocationUtils, var8);
+//                    com.bytedance.sdk.openadsdk.dddd.cc.bb(this.bee, "click", this.cc, this.ImageHelper, this.LocationUtils, var8);
                     break;
                 default:
                     var6 = -1;

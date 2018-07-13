@@ -12,7 +12,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.r;
 
 import java.io.File;
@@ -91,14 +91,14 @@ import java.io.File;
 /*     */ 
 /*     */   private static Intent a(Context paramContext, long paramLong, String paramString)
 /*     */   {
-/*  78 */     f localf = f.aaaaaa(paramContext);
-/*  79 */     Cursor localCursor = localf.aaaaaa(new f.b().a(new long[] { paramLong }));
+/*  78 */     ImageUtils localf = ImageUtils.aaaaaa(paramContext);
+/*  79 */     Cursor localCursor = localf.aaaaaa(new ImageUtils.fbbb().a(new long[] { paramLong }));
 /*     */     try {
 /*  81 */       if (!localCursor.moveToFirst()) {
 /*  82 */         return null;
 /*     */       }
 /*  84 */       Object localObject1 = localCursor.getString(localCursor.getColumnIndexOrThrow("local_filename"));
-/*  85 */       Intent localIntent; if (q.a((String)localObject1))
+/*  85 */       Intent localIntent; if (StringUtils.isEmpty((String)localObject1))
 /*  86 */         return null;
 /*     */       Object localObject2;
 /*     */       Object localObject3;
@@ -113,7 +113,7 @@ import java.io.File;
 /*  97 */         if (localb != null) {
 /*  98 */           localb.a(paramLong, 2, paramString);
 /*     */         }
-/* 100 */       } else if ((!q.a(paramString)) && (r.b(paramContext, paramString))) {
+/* 100 */       } else if ((!StringUtils.isEmpty(paramString)) && (r.b(paramContext, paramString))) {
 /* 101 */         localObject2 = paramContext.getPackageManager();
 /* 102 */         localIntent = ((PackageManager)localObject2).getLaunchIntentForPackage(paramString);
 /* 103 */         localObject3 = n.a();

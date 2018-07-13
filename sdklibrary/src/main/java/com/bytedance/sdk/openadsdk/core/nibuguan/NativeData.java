@@ -7,7 +7,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class a
+/*    */ public class NativeData
 /*    */ {
 /*    */   private String a;
 /*    */   private int b;
@@ -68,7 +68,19 @@
 /*    */   {
 /* 69 */     this.f = paramLong;
 /*    */   }
-/*    */ }
+
+    @Override
+    public String toString() {
+        return "NativeData{" +
+                "OnLoadImage='" + a + '\'' +
+                ", fbbb=" + b +
+                ", fccc='" + c + '\'' +
+                ", d=" + d +
+                ", e='" + e + '\'' +
+                ", ImageUtils=" + f +
+                '}';
+    }
+    /*    */ }
 
 
 /* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\LocationUtils\SslHepler.class

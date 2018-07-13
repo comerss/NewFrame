@@ -13,7 +13,7 @@
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*     */ import com.bytedance.sdk.openadsdk.core.video.a.f;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */ 
 /*     */ 
@@ -37,7 +37,7 @@ import com.bytedance.sdk.openadsdk.ggg.q;
 /*  36 */     d locald = paramh.n();
 /*  37 */     String str; Object localObject; Uri localUri; if (locald != null) {
 /*  38 */       str = locald.a();
-/*  39 */       if (!q.a(str)) {
+/*  39 */       if (!StringUtils.isEmpty(str)) {
 /*  40 */         localObject = locald.a();
 /*  41 */         localUri = Uri.parse((String)localObject);
 /*  42 */         Intent localIntent = new Intent("android.intent.action.VIEW");
@@ -60,7 +60,7 @@ import com.bytedance.sdk.openadsdk.ggg.q;
 /*     */     else {
 /*  60 */       str = paramh.e();
 /*     */     }
-/*  62 */     if (!q.a(str)) {
+/*  62 */     if (!StringUtils.isEmpty(str)) {
 /*  63 */       if (paramh.c() == 2) {
 /*  64 */         if (!PhoneUtils.isAccess(str)) {
 /*  65 */           return false;

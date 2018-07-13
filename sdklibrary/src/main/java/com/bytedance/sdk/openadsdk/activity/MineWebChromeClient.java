@@ -5,9 +5,11 @@
 /*    */ import android.webkit.ConsoleMessage;
 /*    */ import android.webkit.WebChromeClient;
 /*    */ import com.bytedance.sdk.openadsdk.core.v;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.j;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.q;
-/*    */ 
+/*    */ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+import com.bytedance.sdk.openadsdk.ggg.j;
+/*    */
+
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -24,7 +26,7 @@
 /*    */   
 /*    */   public void onConsoleMessage(String paramString1, int paramInt, String paramString2)
 /*    */   {
-/* 27 */     if (!q.a(paramString1)) {
+/* 27 */     if (!StringUtils.isEmpty(paramString1)) {
 /* 28 */       a(paramString1);
 /*    */     }
 /* 30 */     super.onConsoleMessage(paramString1, paramInt, paramString2);
@@ -32,7 +34,7 @@
 /*    */   
 /*    */   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
 /*    */   {
-/* 35 */     if ((paramConsoleMessage != null) && (!q.a(paramConsoleMessage.message()))) {
+/* 35 */     if ((paramConsoleMessage != null) && (!StringUtils.isEmpty(paramConsoleMessage.message()))) {
 /* 36 */       boolean bool = a(paramConsoleMessage.message());
 /* 37 */       if (bool) {
 /* 38 */         return true;

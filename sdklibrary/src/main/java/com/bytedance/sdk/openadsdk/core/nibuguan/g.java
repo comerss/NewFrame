@@ -1,7 +1,7 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.nibuguan;
 /*    */ 
 /*    */ import com.bytedance.sdk.openadsdk.TTImage;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.q;
+/*    */ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -37,7 +37,7 @@
 /*    */   }
 /*    */   
 /*    */   public boolean d() {
-/* 40 */     return (!q.a(this.a)) && (this.b > 0) && (this.c > 0);
+/* 40 */     return (!StringUtils.isEmpty(this.a)) && (this.b > 0) && (this.c > 0);
 /*    */   }
 /*    */   
 /*    */   public static TTImage a(g paramg) {

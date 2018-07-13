@@ -19,13 +19,13 @@ import android.view.WindowManager;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.ccccc.bds.LocationUtils;
 import com.bytedance.sdk.openadsdk.ccccc.bds.e;
-import com.bytedance.sdk.openadsdk.ccccc.f;
+import com.bytedance.sdk.openadsdk.ccccc.ImageUtils;
 import com.bytedance.sdk.openadsdk.ccccc.g;
 import com.bytedance.sdk.openadsdk.ccccc.x;
 import com.bytedance.sdk.openadsdk.core.h;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.net.URL;
 
@@ -145,7 +145,7 @@ import java.net.URL;
 /*     */
 /* 118 */     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this, i);
 /*     */     String str;
-/* 120 */     if (!q.a(paramString2)) {
+/* 120 */     if (!StringUtils.isEmpty(paramString2)) {
 /* 121 */       str = String.format(getString(R.string.tt_confirm_download_have_app_name), new Object[] { paramString2 });
 /*     */     } else {
 /* 123 */       str = getString(R.string.tt_confirm_download);
@@ -332,7 +332,7 @@ import java.net.URL;
 /* 261 */       .setPositiveButton(getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 264 */           f.aaaaaa(TTDelegateActivity.this).d(new long[] { l });
+/* 264 */           ImageUtils.aaaaaa(TTDelegateActivity.this).d(new long[] { l });
 /* 265 */           if (com.bytedance.sdk.openadsdk.eeeee.a.a() != null) {
 /* 266 */             com.bytedance.sdk.openadsdk.eeeee.a.a().a(str2);
 /*     */           }

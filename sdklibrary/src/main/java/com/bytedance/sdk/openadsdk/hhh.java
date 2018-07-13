@@ -1,7 +1,7 @@
 package com.bytedance.sdk.openadsdk;
 
 import com.bytedance.sdk.openadsdk.core.n;
-import com.bytedance.sdk.openadsdk.core.nibuguan.k;
+import com.bytedance.sdk.openadsdk.core.nibuguan.SplashNative;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 
 import org.json.JSONObject;
@@ -29,11 +29,11 @@ public class hhh {
         return a;
     }
 
-    public boolean a(k var1) {
+    public boolean a(SplashNative var1) {
         return var1 == null;
     }
 
-    public void b(k var1) {
+    public void b(SplashNative var1) {
         if (!this.a(var1)) {
             var1.a("outer_call");
             var1.a(System.currentTimeMillis() / 1000L);
@@ -41,7 +41,7 @@ public class hhh {
         }
     }
 
-    public void c(k var1) {
+    public void c(SplashNative var1) {
         if (!this.a(var1)) {
             var1.a("outer_call_send");
             var1.a(System.currentTimeMillis() / 1000L);
@@ -49,7 +49,7 @@ public class hhh {
         }
     }
 
-    public void d(k var1) {
+    public void d(SplashNative var1) {
         if (!this.a(var1)) {
             var1.a("outer_call_no_rsp");
             var1.a(System.currentTimeMillis() / 1000L);
@@ -57,7 +57,7 @@ public class hhh {
         }
     }
 
-    public void e(k var1) {
+    public void e(SplashNative var1) {
         if (!this.a(var1)) {
             var1.a("load_creative_error");
             var1.a(System.currentTimeMillis() / 1000L);

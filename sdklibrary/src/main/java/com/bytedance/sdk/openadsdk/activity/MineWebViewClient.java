@@ -13,6 +13,7 @@
 /*    */ import com.bytedance.sdk.openadsdk.core.v;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.j;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.l;
 /*    */
@@ -87,7 +88,7 @@ import com.bytedance.sdk.openadsdk.ggg.j;
 /* 84 */     if (paramWebView != null) {
 /* 85 */       String str1 = n.e().b();
 /* 86 */       String str2 = com.bytedance.sdk.openadsdk.core.q.a(str1, this.d);
-/* 87 */       if (!com.bytedance.sdk.openadsdk.ggg.q.a(str2)) {
+/* 87 */       if (!StringUtils.isEmpty(str2)) {
 /* 88 */         l.a(paramWebView, str2);
 /*    */       }
 /*    */     }

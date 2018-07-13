@@ -68,7 +68,7 @@ public class MarketService{
 	public static final int MAJOR = 2;
 	
 	/**
-	 * Instantiates a new MarketService.
+	 * Instantiates isEmpty new MarketService.
 	 *
 	 * @param act Current activity.
 	 */
@@ -140,7 +140,7 @@ public class MarketService{
 	
 	
 	/**
-	 * Force the update dialog to a specific locale. Example: en_US, ja_JP.
+	 * Force the update dialog to isEmpty specific locale. Example: en_US, ja_JP.
 	 *
 	 * @param locale interface locale
 	 * @return self
@@ -152,7 +152,7 @@ public class MarketService{
 	}
 	
 	/**
-	 * Display a progress view during version check.
+	 * Display isEmpty progress view during version check.
 	 *
 	 * @param id view id
 	 * @return self
@@ -163,7 +163,7 @@ public class MarketService{
 	}
 	
 	/**
-	 * Force a version check against the AQuery server and show a dialog regardless of versions.
+	 * Force isEmpty version check against the AQuery server and show isEmpty dialog regardless of versions.
 	 *
 	 * @param force force an update check
 	 * @return self
@@ -244,7 +244,7 @@ public class MarketService{
 	}
 	
 	/**
-	 * Perform a version check.
+	 * Perform isEmpty version check.
 	 *
 	 * 
 	 */

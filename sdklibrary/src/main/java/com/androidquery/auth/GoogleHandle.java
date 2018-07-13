@@ -108,7 +108,7 @@ public class GoogleHandle extends AccountHandle implements DialogInterface.OnCli
 	private void accountDialog() {
 	    
         AlertDialog.Builder builder = new AlertDialog.Builder(act);
-        //builder.setTitle("Select a Google account");
+        //builder.setTitle("Select isEmpty Google account");
         accs = am.getAccountsByType("com.google");
         int size = accs.length;
         

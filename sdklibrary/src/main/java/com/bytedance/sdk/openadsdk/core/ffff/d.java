@@ -19,7 +19,7 @@ import com.bytedance.sdk.openadsdk.core.f;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.r;
 
 /*     */
@@ -171,7 +171,7 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView)
 /*     */       {
-/* 152 */       if (!q.a(d.this.d.o())) {
+/* 152 */       if (!StringUtils.isEmpty(d.this.d.o())) {
         com.bytedance.sdk.openadsdk.dddd.c.c(d.this.d);
     }
 

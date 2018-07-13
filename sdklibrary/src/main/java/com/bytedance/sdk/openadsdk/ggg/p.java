@@ -52,7 +52,7 @@
 /*     */     }
 /*     */     
 /*  54 */     String str = k();
-/*  55 */     if (!q.a(str)) {
+/*  55 */     if (!StringUtils.isEmpty(str)) {
 /*  56 */       return str;
 /*     */     }
 /*     */     
@@ -71,7 +71,7 @@
 /*     */     
 /*     */ 
 /*  73 */     str = h();
-/*  74 */     if (!q.a(str)) {
+/*  74 */     if (!StringUtils.isEmpty(str)) {
 /*  75 */       return str;
 /*     */     }
 /*     */     
@@ -84,7 +84,7 @@
 /*     */   
 /*     */   public static boolean c() {
 /*  86 */     String str = Build.MANUFACTURER + Build.BRAND;
-/*  87 */     if (q.a(str))
+/*  87 */     if (StringUtils.isEmpty(str))
 /*  88 */       return false;
 /*  89 */     str = str.toLowerCase();
 /*  90 */     return (str.contains("360")) || (str.contains("qiku"));
@@ -97,12 +97,12 @@
 /*     */   
 /*     */   public static boolean e() {
 /*  99 */     String str = a("ro.vivo.os.build.display.id");
-/* 100 */     return (!q.a(str)) && 
+/* 100 */     return (!StringUtils.isEmpty(str)) &&
 /* 101 */       (str.toLowerCase().contains(c));
 /*     */   }
 /*     */   
 /*     */   public static boolean f() {
-/* 105 */     return (!q.a(Build.DISPLAY)) && 
+/* 105 */     return (!StringUtils.isEmpty(Build.DISPLAY)) &&
 /* 106 */       (Build.DISPLAY.toLowerCase().contains(b));
 /*     */   }
 /*     */   
@@ -121,7 +121,7 @@
 /*     */   }
 /*     */   
 /*     */   public static boolean i() {
-/* 124 */     return !q.a(a("ro.letv.release.version"));
+/* 124 */     return !StringUtils.isEmpty(a("ro.letv.release.version"));
 /*     */   }
 /*     */   
 /*     */ 
@@ -158,7 +158,7 @@
 /*     */   
 /*     */   public static boolean m() {
 /* 160 */     String str = Build.MANUFACTURER;
-/* 161 */     if (!q.a(str)) {
+/* 161 */     if (!StringUtils.isEmpty(str)) {
 /* 162 */       return str.toLowerCase().contains("oppo");
 /*     */     }
 /* 164 */     return false;

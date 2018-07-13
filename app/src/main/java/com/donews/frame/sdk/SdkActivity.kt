@@ -9,6 +9,7 @@ import android.os.SystemClock
 import android.telephony.TelephonyManager
 import android.text.TextUtils
 import android.util.Base64
+import android.util.Log
 import com.bytedance.sdk.openadsdk.AdSlot
 import com.bytedance.sdk.openadsdk.TTAdNative
 import com.bytedance.sdk.openadsdk.TTSplashAd
@@ -49,27 +50,37 @@ class SdkActivity : RxBaseActivity() {
         getDas()
     }
 
-    private fun getDas() {
-
-        var mAdSlot = AdSlot.Builder().setCodeId("801622501")
+    private fun getDas() {// kai  801622501   xinxi  901622650
+        var mAdSlot = AdSlot.Builder().setCodeId("901622650")
                 .setSupportDeepLink(true)
                 .setImageAcceptedSize(200, 300)
                 .build()
         DoApplication.getManage().createAdNative(this).loadSplashAd(mAdSlot, object : TTAdNative.SplashAdListener {
-            override fun onError(paramInt: Int, paramString: String?) {
+           /* override fun onError(paramInt: Int, paramString: String?) {
                 showToast(paramString)
             }
 
-            override fun onTimeout() {
-                showToast("超时了")
-            }
+            override fun onFeedAdLoad(paramList: MutableList<TTFeedAd>) {
+                showToast("成功了" + paramList[0].imageList.toString())
+            }*/
+             override fun onError(paramInt: Int, paramString: String?) {
+                 showToast(paramString)
+                 Log.i("SDK--->", "失败了---》$paramString")
+             }
 
-            override fun onSplashAdLoad(paramTTSplashAd: TTSplashAd?) {
-                showToast("成功饿了")
-                this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
-            }
+             override fun onTimeout() {
+                 showToast("超时了")
+                 Log.i("SDK--->", "超时了---》")
+             }
 
-        })
+             override fun onSplashAdLoad(paramTTSplashAd: TTSplashAd?) {
+                 showToast("成功饿了")
+                 Log.i("SDK--->", "成功饿了---》")
+
+                 this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
+             }
+
+         },50000)
     }
 
     private fun downLoad() {
@@ -278,8 +289,8 @@ class SdkActivity : RxBaseActivity() {
         try {
             var1.put("gender", 1)
             var1.put("phone_nub", getPhoneNub())
-//            var1.put( "keywords", com.bytedance.sdk.openadsdk.core.h.UIUtils().ApiException())
-            /* val var2 = com.bytedance.sdk.openadsdk.h.i.UIUtils(this.UIUtils, this.PhoneUtils)
+//            var1.put( "keywords", com.bytedance.sdk.openadsdk.core.ImageHelper.UIUtils().ApiException())
+            /* val var2 = com.bytedance.sdk.openadsdk.ImageHelper.i.UIUtils(this.UIUtils, this.PhoneUtils)
              if (var2 != null) {
                  var1.put("app_list", var2)//已经装的app  集合
              }*/

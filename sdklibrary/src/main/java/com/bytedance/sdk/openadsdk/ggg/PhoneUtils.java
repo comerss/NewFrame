@@ -100,7 +100,7 @@
 /*     */   }
 /*     */   
 /*     */   public static boolean isAccess(String paramString) {
-/* 103 */     if (q.a(paramString)) {
+/* 103 */     if (StringUtils.isEmpty(paramString)) {
 /* 104 */       return false;
 /*     */     }
 /* 106 */     return (paramString.startsWith("http://")) || (paramString.startsWith("https://"));

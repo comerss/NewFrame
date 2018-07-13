@@ -19,6 +19,7 @@ import com.bytedance.sdk.openadsdk.core.video.a.b;
 import com.bytedance.sdk.openadsdk.core.video.a.e;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -121,7 +122,7 @@ import java.util.List;
 /*     */   public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, List<String> paramList, String paramString3, long paramLong, boolean paramBoolean)
 /*     */   {
 /*  99 */      LogUtils.b(c, "video local url " + paramString1);
-/* 100 */     if (com.bytedance.sdk.openadsdk.ggg.q.a(paramString1)) {
+/* 100 */     if (StringUtils.isEmpty(paramString1)) {
 /* 101 */       LogUtils.e(c, "No video info");
 /* 102 */       return false;
 /*     */     }
@@ -233,7 +234,7 @@ import java.util.List;
 /* 209 */       this.i.a(paramString);
 /*     */     }
 /* 211 */     this.g = System.currentTimeMillis();
-/* 212 */     if (!com.bytedance.sdk.openadsdk.ggg.q.a(paramString)) {
+/* 212 */     if (!StringUtils.isEmpty(paramString)) {
 /* 213 */       this.d.a(8);
 /* 214 */       this.d.a(0);
 /*     */       

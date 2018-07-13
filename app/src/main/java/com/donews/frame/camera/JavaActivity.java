@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 
+import com.androidquery.callback.AjaxCallback;
 import com.comers.baselibrary.base.CrashHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -36,6 +37,9 @@ public class JavaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         CrashHelper.getDefault().init(this);
         initData();
+        new AjaxCallback(){
+
+        };
     }
 
     private void initData() {

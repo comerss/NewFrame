@@ -28,7 +28,7 @@
 /* 28 */       return "";
 /*    */     }
 /* 30 */     String str = paramWebView.getSettings().getUserAgentString();
-/* 31 */     if (q.a(str)) {
+/* 31 */     if (StringUtils.isEmpty(str)) {
 /* 32 */       return "";
 /*    */     }
 /* 34 */     StringBuilder localStringBuilder = new StringBuilder(str);

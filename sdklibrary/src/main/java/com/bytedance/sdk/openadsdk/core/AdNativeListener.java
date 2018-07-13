@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.dddd.g;
 
@@ -30,7 +31,7 @@ public abstract interface AdNativeListener<T>
   {
     public abstract void onError(int paramInt, String paramString);
     
-    public abstract void onSuccess(com.bytedance.sdk.openadsdk.core.nibuguan.a parama);
+    public abstract void onSuccess(NativeData parama);
   }
   
   public static abstract interface b

@@ -30,6 +30,7 @@ import com.bytedance.sdk.openadsdk.core.video.renderview.SSRenderSurfaceView;
 import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
@@ -682,11 +683,11 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             com.bytedance.sdk.openadsdk.ggg.s.a(this.q, 0);
             com.bytedance.sdk.openadsdk.ggg.s.a(this.r, 0);
             String var4 = "";
-            if (!com.bytedance.sdk.openadsdk.ggg.q.a(var1.b())) {
+            if (!StringUtils.isEmpty(var1.b())) {
                 var4 = var1.b();
-            } else if (!com.bytedance.sdk.openadsdk.ggg.q.a(var1.j())) {
+            } else if (!StringUtils.isEmpty(var1.j())) {
                 var4 = var1.j();
-            } else if (!com.bytedance.sdk.openadsdk.ggg.q.a(var1.k())) {
+            } else if (!StringUtils.isEmpty(var1.k())) {
                 var4 = var1.k();
             }
 
@@ -696,7 +697,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 ((AQuery)this.ah.id(this.s)).image(this.ai.d().a());
                 this.s.setOnClickListener(this.am);
                 this.s.setOnTouchListener(this.am);
-            } else if (!com.bytedance.sdk.openadsdk.ggg.q.a(var4)) {
+            } else if (!StringUtils.isEmpty(var4)) {
                 com.bytedance.sdk.openadsdk.ggg.s.a(this.s, 4);
                 com.bytedance.sdk.openadsdk.ggg.s.a(this.mView, 0);
                 this.mView.setText(var4.substring(0, 1));
@@ -704,7 +705,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 this.mView.setOnTouchListener(this.am);
             }
 
-            if (!com.bytedance.sdk.openadsdk.ggg.q.a(var4)) {
+            if (!StringUtils.isEmpty(var4)) {
                 this.u.setText(var4);
             }
 

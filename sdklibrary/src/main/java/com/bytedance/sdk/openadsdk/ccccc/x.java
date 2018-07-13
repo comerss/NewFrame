@@ -22,8 +22,8 @@ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.n;
-import com.bytedance.sdk.openadsdk.ggg.q;
 import com.bytedance.sdk.openadsdk.ggg.r;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
@@ -131,7 +131,7 @@ import java.util.HashMap;
 /* 103 */       return;
 /*     */     }
 /* 105 */     if ((this.e != null) && (this.e.a > 0L)) {
-/* 106 */       com.bytedance.sdk.openadsdk.ccccc.f.aaaaaa(this.a, this.e.b, this.e.a, this.b.c());
+/* 106 */       ImageUtils.aaaaaa(this.a, this.e.b, this.e.a, this.b.c());
 /* 107 */       if ((this.e != null) && (this.e.a >= 0L)) {
             com.bytedance.sdk.openadsdk.ccccc.g.a(this.a).a(Long.valueOf(this.e.a), this, this.m);
 /*     */       }
@@ -217,7 +217,7 @@ import java.util.HashMap;
 /*     */     }
 /* 189 */     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.a, R.style.Theme_Dialog_TTDownload);
 /*     */     String str;
-/* 191 */     if ((this.b != null) && (!q.a(this.b.b()))) {
+/* 191 */     if ((this.b != null) && (!StringUtils.isEmpty(this.b.b()))) {
 /* 192 */       str = String.format(this.a.getString(R.string.tt_confirm_download_have_app_name), new Object[] { this.b.b() });
 /*     */     } else {
 /* 194 */       str = this.a.getString(R.string.tt_confirm_download);
@@ -277,7 +277,7 @@ import java.util.HashMap;
 /*     */   @SuppressLint("WrongConstant")
 private void i()
 /*     */   {
-/* 224 */     if ((this.b == null) || (q.a(this.b.a()))) {
+/* 224 */     if ((this.b == null) || (StringUtils.isEmpty(this.b.a()))) {
 /* 225 */       return;
 /*     */     }
 /* 227 */     if (l == null) {
@@ -317,7 +317,7 @@ private void i()
 /* 261 */       return false;
 /*     */     }
 /* 263 */     String str = this.b.c();
-/* 264 */     if ((!q.a(str)) && (r.b(this.a, str))) {
+/* 264 */     if ((!StringUtils.isEmpty(str)) && (r.b(this.a, str))) {
 /* 265 */       Intent localIntent = r.a(this.a, str);
 /* 266 */       if (localIntent == null) {
 /* 267 */         return false;
@@ -339,7 +339,7 @@ private boolean k()
 /*     */   {
 /* 283 */     if (this.c.n() != null) {
 /* 284 */       String str = this.c.n().a();
-/* 285 */       if (!q.a(str)) {
+/* 285 */       if (!StringUtils.isEmpty(str)) {
 /* 286 */         Uri localUri = Uri.parse(str);
 /* 287 */         Intent localIntent = new Intent("android.intent.action.VIEW");
 /* 288 */         localIntent.setData(localUri);
@@ -577,7 +577,7 @@ private boolean k()
     protected y doInBackground(String... var1) {
         if (var1 != null && (var1.length < 1 || !TextUtils.isEmpty(var1[0])) && x.this.a != null) {
             String var2 = var1[0];
-            f var3 = com.bytedance.sdk.openadsdk.ccccc.f.aaaaaa(a);
+            ImageUtils var3 = ImageUtils.aaaaaa(a);
             return var3.aaaaaa(var2);
         } else {
             return null;
@@ -588,7 +588,7 @@ private boolean k()
         super.onPostExecute(var1);
         if (!this.isCancelled()) {
             try {
-                if (var1 == null || var1.a <= -1L || com.bytedance.sdk.openadsdk.ccccc.f.aaaaaa(a).aaaaaa(var1) && !r.b(x.this.a, x.this.b.c())) {
+                if (var1 == null || var1.a <= -1L || ImageUtils.aaaaaa(a).aaaaaa(var1) && !r.b(x.this.a, x.this.b.c())) {
                     if (r.b(x.this.a, x.this.b.c())) {
                         if (x.this.e != null) {
                             x.this.a(x.this.e);

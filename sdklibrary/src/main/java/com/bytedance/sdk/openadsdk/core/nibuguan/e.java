@@ -1,6 +1,6 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.nibuguan;
 /*    */ 
-/*    */ import com.bytedance.sdk.openadsdk.ggg.q;
+/*    */ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -24,7 +24,7 @@
 /*    */   }
 /*    */   
 /*    */   public boolean c() {
-/* 27 */     return (this.b != null) && (!q.a(this.a));
+/* 27 */     return (this.b != null) && (!StringUtils.isEmpty(this.a));
 /*    */   }
 /*    */ }
 

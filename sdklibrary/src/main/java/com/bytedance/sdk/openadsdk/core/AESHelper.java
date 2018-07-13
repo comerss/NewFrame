@@ -9,8 +9,8 @@ import javax.crypto.spec.SecretKeySpec;
  * Created by 79653 on 2018/7/12.
  * 描述：
  */
-public class asa {
-    public static String a(String var0, String var1) {
+public class AESHelper {
+    public static String encrypt(String var0, String var1) {
         try {
             SecretKeySpec var2 = new SecretKeySpec(var1.getBytes(), "AES");
             Cipher var3 = Cipher.getInstance("AES/ECB/PKCS5Padding");

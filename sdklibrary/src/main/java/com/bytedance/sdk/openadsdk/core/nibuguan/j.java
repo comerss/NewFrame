@@ -5,14 +5,14 @@
 public class j {
     private h a;
     private byte[] b;
-    private a c;
+    private NativeData c;
 
     public j(h var1, byte[] var2) {
         this.a = var1;
         this.b = var2;
     }
 
-    public j(a var1, h var2, byte[] var3) {
+    public j(NativeData var1, h var2, byte[] var3) {
         this.c = var1;
         this.a = var2;
         this.b = var3;
@@ -26,7 +26,7 @@ public class j {
         return this.b;
     }
 
-    public a c() {
+    public NativeData c() {
         return this.c;
     }
 }

@@ -48,8 +48,8 @@
 /* 48 */     if (paramLong < 0L) {
 /* 49 */       return;
 /*    */     }
-/* 51 */     int i = f.aaaaaa(paramInt);
-/* 52 */     f.aaaaaa(this.b, i, paramLong);
+/* 51 */     int i = ImageUtils.aaaaaa(paramInt);
+/* 52 */     ImageUtils.aaaaaa(this.b, i, paramLong);
 /*    */   }
 /*    */   
 /*    */   public void removeDownloadTask(long paramLong)

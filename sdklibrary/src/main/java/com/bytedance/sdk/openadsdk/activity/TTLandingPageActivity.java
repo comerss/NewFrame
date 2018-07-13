@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.ab;
 import com.bytedance.sdk.openadsdk.core.v;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 /*     */
 /*     */
@@ -116,7 +117,7 @@ import com.bytedance.sdk.openadsdk.core.v;
 /*     */       }
 /*     */     });
 /* 103 */     if (this.f != null) {
-/* 104 */       this.f.setText(com.bytedance.sdk.openadsdk.ggg.q.a(str2) ? getBaseContext().getString(R.string.tt_web_title_default) : str2);
+/* 104 */       this.f.setText(StringUtils.isEmpty(str2) ? getBaseContext().getString(R.string.tt_web_title_default) : str2);
 /*     */     }
 /*     */   }
 /*     */   

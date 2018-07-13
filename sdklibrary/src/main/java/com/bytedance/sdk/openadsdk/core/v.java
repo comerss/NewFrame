@@ -13,8 +13,8 @@ import com.bytedance.sdk.openadsdk.a.UIUtils;
 import com.bytedance.sdk.openadsdk.eeeee.b;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.l;
-import com.bytedance.sdk.openadsdk.ggg.q;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -138,11 +138,11 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */   }
 /*     */   
 /*     */   private void a(JSONObject paramJSONObject) throws Exception {
-/* 117 */     if (!q.a(this.f)) {
+/* 117 */     if (!StringUtils.isEmpty(this.f)) {
 /* 118 */       paramJSONObject.put("cid", this.f);
 /*     */     }
 /*     */     
-/* 121 */     if (!q.a(this.g)) {
+/* 121 */     if (!StringUtils.isEmpty(this.g)) {
 /* 122 */       paramJSONObject.put("log_extra", this.g);
 /*     */     }
 /*     */   }
@@ -156,7 +156,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */     
 /*     */ 
 /* 134 */     if ("appInfo".equals(parama.c)) {
-/* 135 */       if (!q.a(parama.b)) {
+/* 135 */       if (!StringUtils.isEmpty(parama.b)) {
 /* 136 */         a(localJSONObject, parama.e);
 /* 137 */         c(parama.b, localJSONObject);
 /*     */       }
@@ -164,7 +164,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */     }
 /*     */     
 /* 142 */     if ("adInfo".equals(parama.c)) {
-/* 143 */       if (!q.a(parama.b)) {
+/* 143 */       if (!StringUtils.isEmpty(parama.b)) {
 /* 144 */         a(localJSONObject);
 /* 145 */         c(parama.b, localJSONObject);
 /*     */       }
@@ -173,7 +173,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */     
 /*     */ 
 /* 151 */     boolean bool = a(parama, localJSONObject);
-/* 152 */     if (q.a(parama.b)) {
+/* 152 */     if (StringUtils.isEmpty(parama.b)) {
 /* 153 */       return;
 /*     */     }
 /* 155 */     if (bool) {
@@ -250,7 +250,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */   
 /*     */   public void a(String paramString, JSONObject paramJSONObject) {
 /*     */     try {
-/* 229 */       if (q.a(paramString)) {
+/* 229 */       if (StringUtils.isEmpty(paramString)) {
 /* 230 */         return;
 /*     */       }
 /* 232 */       JSONObject localJSONObject = new JSONObject();
@@ -279,7 +279,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /* 255 */         locala.c = localJSONObject.optString("func");
 /* 256 */         locala.d = localJSONObject.optJSONObject("params");
 /* 257 */         locala.e = localJSONObject.optInt("JSSDK");
-/* 258 */         if ((!q.a(locala.a)) && (!q.a(locala.c)))
+/* 258 */         if ((!StringUtils.isEmpty(locala.a)) && (!StringUtils.isEmpty(locala.c)))
 /*     */         {
 /*     */ 
 /* 261 */           Message localMessage = this.b.obtainMessage(11);
@@ -331,7 +331,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */         catch (Exception localException3) {}
 /* 308 */         JSONObject localJSONObject = null;
 /* 309 */         String str5 = paramUri.getQueryParameter("extra");
-/* 310 */         if (!q.a(str5)) {
+/* 310 */         if (!StringUtils.isEmpty(str5)) {
 /*     */           try {
 /* 312 */             localJSONObject = new JSONObject(str5);
 /*     */           }

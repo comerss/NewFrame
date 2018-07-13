@@ -1,6 +1,8 @@
 /*     */ package com.bytedance.sdk.openadsdk.ggg;
 /*     */ 
-/*     */ import android.annotation.SuppressLint;
+/*     */
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.SystemClock;
@@ -227,6 +229,8 @@ import java.util.Locale;
 /*     */     catch (JSONException localJSONException) {}
 /* 209 */     return localJSONObject;
 /*     */   }
+
+
 /*     */ }
 
 

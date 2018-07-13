@@ -35,7 +35,7 @@
 /* 35 */       AQuery localAQuery = new AQuery(this.b);
 /* 36 */       localAQuery.ajax("http://i.snssdk.com/api/ad/union/sdk/config/", JSONObject.class, new AjaxCallback()
 /*    */       {
-/*    */         public void a(String paramAnonymousString, JSONObject paramAnonymousJSONObject, AjaxStatus paramAnonymousAjaxStatus) {
+/*    */         public void callback(String paramAnonymousString, JSONObject paramAnonymousJSONObject, AjaxStatus paramAnonymousAjaxStatus) {
 /* 39 */           super.callback(paramAnonymousString, paramAnonymousJSONObject, paramAnonymousAjaxStatus);
 /* 40 */           if ((paramAnonymousAjaxStatus.getCode() == 200) && (paramAnonymousJSONObject != null)) {
 /* 41 */            a.a(paramAnonymousJSONObject);

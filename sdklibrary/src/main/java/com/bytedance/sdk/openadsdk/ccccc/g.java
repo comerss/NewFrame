@@ -29,6 +29,7 @@ import com.bytedance.sdk.openadsdk.TTAppDownloadInfo;
 import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
 import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.s;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
@@ -169,7 +170,7 @@ public class g {
     private Bitmap c(String var1) {
         if (this.b(var1) == null) {
             this.d.ajax(var1, Bitmap.class, new AjaxCallback<Bitmap>() {
-                public void a(String var1, Bitmap var2, AjaxStatus var3) {
+                public void callback(String var1, Bitmap var2, AjaxStatus var3) {
                     super.callback(var1, var2, var3);
                     if (var3 != null && var2 != null && var3.getCode() == 200) {
                         float var4 = s.a(g.this.f, 44.0F);
@@ -426,10 +427,10 @@ public class g {
                     String var24 = "";
                     String var42 = "";
                     if (var32 == 1) {
-                        var24 = com.bytedance.sdk.openadsdk.ggg.q.a(var34.t) + "/" + com.bytedance.sdk.openadsdk.ggg.q.a(var34.s);
+                        var24 = StringUtils.isEmpty(var34.t) + "/" + StringUtils.isEmpty(var34.s);
                         var42 = this.f.getResources().getString(R.string.tt_downloading);
                     } else if (var32 == 2) {
-                        var24 = com.bytedance.sdk.openadsdk.ggg.q.a(var34.t) + "/" + com.bytedance.sdk.openadsdk.ggg.q.a(var34.s);
+                        var24 = StringUtils.isEmpty(var34.t) + "/" + StringUtils.isEmpty(var34.s);
                         var42 = this.f.getResources().getString(R.string.tt_download_pause);
                     } else if (var32 == 3) {
                         if (!com.bytedance.sdk.openadsdk.ccccc.m.a.b(var34.j) && !b(var34)) {
@@ -515,7 +516,7 @@ public class g {
             }
 
             var6.a = var1.a;
-            var6.b = com.bytedance.sdk.openadsdk.ccccc.f.aaaaaa(var1.j);
+            var6.b = ImageUtils.aaaaaa(var1.j);
             var6.c = var1.s;
             var6.d = var1.t;
             var6.e = var1.e;

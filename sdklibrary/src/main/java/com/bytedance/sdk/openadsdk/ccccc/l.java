@@ -5,9 +5,10 @@
 /*     */ import android.os.Environment;
 /*     */ import com.bytedance.sdk.openadsdk.core.h;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.ggg.q;
+/*     */
 /*     */ import java.io.File;
 /*     */ 
 /*     */ 
@@ -61,22 +62,22 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */     }
 /*     */     try
 /*     */     {
-/*  63 */       f localf = f.aaaaaa(paramContext);
+/*  63 */       ImageUtils localf = ImageUtils.aaaaaa(paramContext);
 /*  64 */       if (localf == null)
 /*  65 */         return -1L;
 /*  66 */       Uri localUri = Uri.parse(paramString1);
 /*  67 */       String str = e.a(localUri.getLastPathSegment());
-/*  68 */       if (q.a(str)) {
-/*  69 */         if (!q.a(paramString2)) {
+/*  68 */       if (StringUtils.isEmpty(str)) {
+/*  69 */         if (!StringUtils.isEmpty(paramString2)) {
 /*  70 */           str = paramString2;
 /*     */         } else {
 /*  72 */           str = "default.apk";
 /*     */         }
 /*     */       }
-/*  75 */       if (q.a(paramString2)) {
+/*  75 */       if (StringUtils.isEmpty(paramString2)) {
 /*  76 */         paramString2 = str;
 /*     */       }
-/*  78 */       f.c localc = new f.c(localUri);
+/*  78 */       ImageUtils.fccc localc = new ImageUtils.fccc(localUri);
 /*  79 */       if (!str.endsWith(".apk")) {
 /*  80 */         str = str + ".apk";
 /*     */       }

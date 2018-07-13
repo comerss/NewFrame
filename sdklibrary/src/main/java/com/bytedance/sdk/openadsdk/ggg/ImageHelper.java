@@ -15,23 +15,23 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class h
+/*    */ public class ImageHelper
 /*    */ {
-/*    */   public static void a(Context paramContext, String paramString, final a var2)
+/*    */   public static void loadImage(Context paramContext, String paramString, final OnLoadImage onLoadImage)
 /*    */   {
 /* 22 */     AQuery2 localAQuery2 = new AQuery2(paramContext);
 /* 23 */    AjaxCallback var4 = new AjaxCallback<byte[]>() {
-        public void a(String var1, byte[] var2x, AjaxStatus var3) {
-            if (var2 != null) {
+        public void callback(String var1, byte[] var2x, AjaxStatus var3) {
+            if (onLoadImage != null) {
                 if (var3 != null && var2x != null && var2x.length != 0) {
                     if (var3.getCode() == 200) {
                         LogUtils.b("ImageBytesHelper", "图片数据返回成功" + var2x.length);
-                        var2.a(var2x);
+                        onLoadImage.onsuccess(var2x);
                     } else {
-                        var2.a();
+                        onLoadImage.onFail();
                     }
                 } else {
-                    var2.a();
+                    onLoadImage.onFail();
                 }
             }
 
@@ -52,16 +52,16 @@
 /* 54 */     return localDrawableAjaxCallback.transform(null, paramArrayOfByte, new AjaxStatus());
 /*    */   }
 /*    */   
-/*    */   public static abstract interface a
+/*    */   public static abstract interface OnLoadImage
 /*    */   {
-/*    */     public abstract void a(@NonNull byte[] paramArrayOfByte);
+/*    */     public abstract void onsuccess(@NonNull byte[] paramArrayOfByte);
 /*    */     
-/*    */     public abstract void a();
+/*    */     public abstract void onFail();
 /*    */   }
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\h.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\ImageHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

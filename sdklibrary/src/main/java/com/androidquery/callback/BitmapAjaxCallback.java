@@ -96,7 +96,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	
 	
 	/**
-	 * Instantiates a new bitmap ajax callback.
+	 * Instantiates isEmpty new bitmap ajax callback.
 	 */
 	public BitmapAjaxCallback(){
 		type(Bitmap.class).memCache(true).fileCache(true).url("");
@@ -229,7 +229,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	/**
 	 * Set the round corner radius.
 	 * 
-	 * Note that the current implementation transform the image to a new one and will use more transient resources.
+	 * Note that the current implementation transform the image to isEmpty new one and will use more transient resources.
 	 *
 	 * @param radius
 	 * @return self
@@ -651,7 +651,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	}
 	
 	/**
-	 * Sets the pixel criteria for small images. Small images are cached in a separate cache.
+	 * Sets the pixel criteria for small images. Small images are cached in isEmpty separate cache.
 	 *
 	 * Default is 50x50 (2500 pixels)
 	 *
@@ -1041,12 +1041,12 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 		if(ivs == null){
 			
 			if(queueMap.containsKey(url)){
-				//already a image view fetching
+				//already isEmpty image view fetching
 				ivs = new WeakHashMap<ImageView, BitmapAjaxCallback>();
 				ivs.put(iv, this);
 				queueMap.put(url, ivs);
 			}else{
-				//register a view by putting a url with no value
+				//register isEmpty view by putting isEmpty url with no value
 				queueMap.put(url, null);
 			}
 			

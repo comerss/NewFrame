@@ -289,7 +289,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*
 *//*     *//*       public void LocationUtils()
 *//*     *//*       {
-*//* 276 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.h(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_open_detail");
+*//* 276 *//*         com.bytedance.sdk.openadsdk.LocationUtils.cc.ImageHelper(TTVideoLandingPageActivity.TTAdDislikeImpl(TTVideoLandingPageActivity.this), TTVideoLandingPageActivity.intera(TTVideoLandingPageActivity.this), "embeded_ad", "click_open_detail");
 *//*     *//*       }
 *//*     *//*     });
 *//*     *//*   }
@@ -297,7 +297,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*   private void eee() {
 *//* 282 *//*     this.j = new v(this);
 *//* 283 *//*     this.j.intera(this.TTAdDislikeImpl)
-*//* 284 *//*       .intera(this.h)
+*//* 284 *//*       .intera(this.ImageHelper)
 *//* 285 *//*       .TTAdDislikeImpl(this.i)
 *//* 286 *//*       .intera(this.LogUtils);
 *//*     *//*   }
@@ -339,7 +339,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 323 *//*           localMarginLayoutParams = (ViewGroup.MarginLayoutParams)TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).getLayoutParams();
 *//* 324 *//*           localMarginLayoutParams.width = TTVideoLandingPageActivity.doErrorHelper(TTVideoLandingPageActivity.this);
 *//* 325 *//*           localMarginLayoutParams.height = TTVideoLandingPageActivity.ApiException(TTVideoLandingPageActivity.this);
-*//* 326 *//*           localMarginLayoutParams.leftMargin = TTVideoLandingPageActivity.h(TTVideoLandingPageActivity.this);
+*//* 326 *//*           localMarginLayoutParams.leftMargin = TTVideoLandingPageActivity.ImageHelper(TTVideoLandingPageActivity.this);
 *//* 327 *//*           localMarginLayoutParams.topMargin = TTVideoLandingPageActivity.i(TTVideoLandingPageActivity.this);
 *//* 328 *//*           TTVideoLandingPageActivity.eee(TTVideoLandingPageActivity.this).setLayoutParams(localMarginLayoutParams);
 *//*     *//*         }

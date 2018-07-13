@@ -15,7 +15,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ class c
+/*    */ class ArrayUtils
 /*    */ {
 /* 20 */   static final boolean[] a = new boolean[0];
 /* 21 */   static final int[] b = new int[0];

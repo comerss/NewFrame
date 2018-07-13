@@ -355,7 +355,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */ public class f
+/*      */ public class ImageUtils
 /*      */ {
 /*  335 */   public static final String[] STRINGS = { "_id", "_data AS local_filename", "mediaprovider_uri", "destination", "title", "description", "icon_url", "uri", "status", "hint", "mimetype AS media_type", "total_bytes AS total_size", "lastmod AS last_modified_timestamp", "current_bytes AS bytes_so_far", "allow_write", "etag", "'placeholder' AS local_uri", "'placeholder' AS reason" };
 /*      */   
@@ -391,7 +391,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */   public static class c
+/*      */   public static class fccc
 /*      */   {
 /*      */     private Uri b;
 /*      */     
@@ -460,7 +460,7 @@ import java.util.List;
 /*      */     
 /*      */ 
 /*      */ 
-/*      */     public c(Uri paramUri)
+/*      */     public fccc(Uri paramUri)
 /*      */     {
 /*  440 */       if (paramUri == null) {
 /*  441 */         throw new NullPointerException();
@@ -512,7 +512,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public c a(Context paramContext, String paramString1, String paramString2)
+/*      */     public fccc a(Context paramContext, String paramString1, String paramString2)
 /*      */     {
 /*  492 */       File localFile = paramContext.getExternalFilesDir(paramString1);
 /*  493 */       if (localFile == null)
@@ -611,13 +611,13 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public c a(CharSequence paramCharSequence)
+/*      */     public fccc a(CharSequence paramCharSequence)
 /*      */     {
 /*  591 */       this.e = paramCharSequence;
 /*  592 */       return this;
 /*      */     }
 /*      */     
-/*      */     public c b(CharSequence paramCharSequence) {
+/*      */     public fccc b(CharSequence paramCharSequence) {
 /*  596 */       this.g = paramCharSequence;
 /*  597 */       return this;
 /*      */     }
@@ -639,7 +639,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public c a(String paramString)
+/*      */     public fccc a(String paramString)
 /*      */     {
 /*  619 */       this.h = paramString;
 /*  620 */       return this;
@@ -661,7 +661,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public c a(int paramInt)
+/*      */     public fccc a(int paramInt)
 /*      */     {
 /*  641 */       this.m = paramInt;
 /*  642 */       return this;
@@ -687,7 +687,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public c a(boolean paramBoolean)
+/*      */     public fccc a(boolean paramBoolean)
 /*      */     {
 /*  667 */       this.j = paramBoolean;
 /*  668 */       return this;
@@ -773,7 +773,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */   public static class b
+/*      */   public static class fbbb
 /*      */   {
 /*  753 */     private long[] a = null;
 /*  754 */     private String[] b = null;
@@ -786,7 +786,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public b a(long... paramVarArgs)
+/*      */     public fbbb a(long... paramVarArgs)
 /*      */     {
 /*  766 */       this.a = paramVarArgs;
 /*  767 */       return this;
@@ -807,7 +807,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */     public b a(String... paramVarArgs)
+/*      */     public fbbb a(String... paramVarArgs)
 /*      */     {
 /*  787 */       this.b = paramVarArgs;
 /*  788 */       return this;
@@ -896,7 +896,7 @@ import java.util.List;
 /*  871 */           ((List)localObject).add("(" + a(">=", 400) + " AND " + 
 /*  872 */             a("<", 600) + ")");
 /*      */         }
-/*  874 */         localArrayList1.add(a(" OR ", (Iterable)localObject));
+/*  874 */         localArrayList1.add(getString(" OR ", (Iterable)localObject));
 /*      */       }
 /*      */       
 /*  877 */       if (this.f) {
@@ -906,7 +906,7 @@ import java.util.List;
 /*      */ 
 /*  882 */       localArrayList1.add("deleted != '1'");
 /*      */       
-/*  884 */       Object localObject = a(" AND ", localArrayList1);
+/*  884 */       Object localObject = getString(" AND ", localArrayList1);
 /*      */       try {
 /*  886 */         arrayOfString = (String[])localArrayList2.toArray(new String[localArrayList2.size()]);
 /*      */       } catch (ArrayStoreException localArrayStoreException) {
@@ -921,7 +921,7 @@ import java.util.List;
 /*  896 */       return null;
 /*      */     }
 /*      */     
-/*      */     private String a(String paramString, Iterable<String> paramIterable)
+/*      */     private String getString(String paramString, Iterable<String> paramIterable)
 /*      */     {
 /*  901 */       StringBuilder localStringBuilder = new StringBuilder();
 /*  902 */       int i = 1;
@@ -945,16 +945,16 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*  922 */   private Uri f = com.bytedance.sdk.openadsdk.ccccc.m.a.a;
-/*      */   private static f g;
+/*      */   private static ImageUtils g;
 /*      */   
-/*      */   public static synchronized f aaaaaa(Context paramContext) {
+/*      */   public static synchronized ImageUtils aaaaaa(Context paramContext) {
 /*  926 */     if (g == null) {
-/*  927 */       g = new f(paramContext, paramContext.getPackageName());
+/*  927 */       g = new ImageUtils(paramContext, paramContext.getPackageName());
 /*      */     }
 /*  929 */     return g;
 /*      */   }
 /*      */   
-/*      */   private f(Context paramContext, String paramString) {
+/*      */   private ImageUtils(Context paramContext, String paramString) {
 /*  933 */     this.b = paramContext.getApplicationContext();
 /*  934 */     this.c = paramContext.getApplicationContext().getContentResolver();
 /*  935 */     this.mI = i.a(this.b.getApplicationContext());
@@ -968,7 +968,7 @@ import java.util.List;
 /*      */     }
 /*  944 */     Cursor localCursor = null;
 /*      */     try {
-/*  946 */       b localb = new b();
+/*  946 */       fbbb localb = new fbbb();
 /*  947 */       localb.a(new String[] { paramString });
 /*  948 */       localCursor = aaaaaa(localb);
 /*  949 */       if ((localCursor != null) && (localCursor.getCount() >= 1)) {
@@ -1039,7 +1039,7 @@ return null;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */   public long aaaaaa(c paramc)
+/*      */   public long aaaaaa(fccc paramc)
 /*      */   {
 /*      */     try
 /*      */     {
@@ -1057,13 +1057,13 @@ return null;
 /*      */   }
 /*      */   
 /*      */ 
-/*      */   private long b(final c paramc)
+/*      */   private long b(final fccc paramc)
 /*      */   {
 /* 1022 */     Cursor localCursor = null;
 /*      */     
 /*      */     try
 /*      */     {
-/* 1026 */       b localb = new b();
+/* 1026 */       fbbb localb = new fbbb();
 /* 1027 */       localb.a(new String[] { paramc.b.toString() });
 /* 1028 */       localCursor = aaaaaa(localb);
 /* 1029 */       if ((localCursor != null) && (localCursor.getCount() >= 1)) {
@@ -1218,7 +1218,7 @@ return null;
 /*      */ 
 /*      */   public void b(long... paramVarArgs)
 /*      */   {
-/* 1175 */     Cursor localCursor = aaaaaa(new b().a(paramVarArgs));
+/* 1175 */     Cursor localCursor = aaaaaa(new fbbb().a(paramVarArgs));
 /*      */     try {
 /* 1177 */       for (localCursor.moveToFirst(); !localCursor.isAfterLast(); localCursor
 /* 1178 */             .moveToNext())
@@ -1258,7 +1258,7 @@ return null;
 /*      */ 
 /*      */   public void c(long... paramVarArgs)
 /*      */   {
-/* 1215 */     Cursor localCursor = aaaaaa(new b().a(paramVarArgs));
+/* 1215 */     Cursor localCursor = aaaaaa(new fbbb().a(paramVarArgs));
 /*      */     try {
 /* 1217 */       for (localCursor.moveToFirst(); !localCursor.isAfterLast(); localCursor
 /* 1218 */             .moveToNext())
@@ -1322,7 +1322,7 @@ return null;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */   public Cursor aaaaaa(b paramb)
+/*      */   public Cursor aaaaaa(fbbb paramb)
 /*      */   {
 /* 1267 */     Cursor localCursor = paramb.a(this.mI, STRINGS, this.f);
 /* 1268 */     if (localCursor == null) {
@@ -1428,7 +1428,7 @@ return null;
 /*      */ 
 /*      */   public void aaaaaa(int paramInt, long... paramVarArgs)
 /*      */   {
-/* 1371 */     Cursor localCursor = aaaaaa(new b().a(paramVarArgs));
+/* 1371 */     Cursor localCursor = aaaaaa(new fbbb().a(paramVarArgs));
 /*      */     try {
 /* 1373 */       for (localCursor.moveToFirst(); !localCursor.isAfterLast(); localCursor.moveToNext()) {
 /* 1374 */         int i = localCursor.getInt(localCursor.getColumnIndex("status"));

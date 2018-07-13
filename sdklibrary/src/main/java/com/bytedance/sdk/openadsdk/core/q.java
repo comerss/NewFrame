@@ -4,7 +4,9 @@
 /*     */ import android.content.Context;
 /*     */ import android.webkit.WebSettings;
 /*     */ import android.webkit.WebView;
-/*     */ import java.lang.ref.WeakReference;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+
+import java.lang.ref.WeakReference;
 /*     */ import java.util.LinkedHashSet;
 /*     */ import java.util.Set;
 /*     */ 
@@ -120,7 +122,7 @@
 /*     */ 
 /*     */   public static String a(String paramString1, String paramString2)
 /*     */   {
-/* 123 */     if ((com.bytedance.sdk.openadsdk.ggg.q.a(paramString1)) || (com.bytedance.sdk.openadsdk.ggg.q.a(paramString2)) || ("0".equals(paramString2)) || (!paramString1.contains("{{ad_id}}"))) {
+/* 123 */     if ((StringUtils.isEmpty(paramString1)) || (StringUtils.isEmpty(paramString2)) || ("0".equals(paramString2)) || (!paramString1.contains("{{ad_id}}"))) {
 /* 124 */       return null;
 /*     */     }
 /* 126 */     paramString1 = paramString1.replace("{{ad_id}}", paramString2);
@@ -169,7 +171,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\q.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\StringUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

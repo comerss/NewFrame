@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by 79653 on 2018/7/11.
  * 描述：
  */
-public class k {
+public class SplashNative {
     private String a;
     private String b;
     private String c;
@@ -21,11 +21,11 @@ public class k {
     private String j;
     private String k;
 
-    public k() {
+    public SplashNative() {
     }
 
-    public static k a() {
-        return new k();
+    public static SplashNative a() {
+        return new SplashNative();
     }
 
     public JSONObject b() {
@@ -79,7 +79,7 @@ public class k {
         return var1;
     }
 
-    protected k c() {
+    protected SplashNative c() {
         return this;
     }
 
@@ -87,7 +87,7 @@ public class k {
         return this.a;
     }
 
-    public k a(String var1) {
+    public SplashNative a(String var1) {
         this.a = var1;
         return this.c();
     }
@@ -96,7 +96,7 @@ public class k {
         return this.b;
     }
 
-    public k b(String var1) {
+    public SplashNative b(String var1) {
         this.b = var1;
         return this.c();
     }
@@ -105,7 +105,7 @@ public class k {
         return this.c;
     }
 
-    public k c(String var1) {
+    public SplashNative c(String var1) {
         this.c = var1;
         return this.c();
     }
@@ -118,7 +118,7 @@ public class k {
         return this.e;
     }
 
-    public k a(long var1) {
+    public SplashNative a(long var1) {
         this.e = var1;
         return this.c();
     }
@@ -127,7 +127,7 @@ public class k {
         return this.f;
     }
 
-    public k a(int var1) {
+    public SplashNative a(int var1) {
         this.f = var1;
         return this.c();
     }
@@ -136,7 +136,7 @@ public class k {
         return this.g;
     }
 
-    public k d(String var1) {
+    public SplashNative d(String var1) {
         this.g = var1;
         return this.c();
     }
@@ -145,7 +145,7 @@ public class k {
         return this.h;
     }
 
-    public k b(int var1) {
+    public SplashNative b(int var1) {
         this.h = var1;
         return this.c();
     }
@@ -154,7 +154,7 @@ public class k {
         return this.i;
     }
 
-    public k e(String var1) {
+    public SplashNative e(String var1) {
         this.i = var1;
         return this.c();
     }
@@ -163,7 +163,7 @@ public class k {
         return this.j;
     }
 
-    public k f(String var1) {
+    public SplashNative f(String var1) {
         this.j = var1;
         return this.c();
     }
@@ -172,7 +172,7 @@ public class k {
         return this.k;
     }
 
-    public k g(String var1) {
+    public SplashNative g(String var1) {
         this.k = var1;
         return this.c();
     }

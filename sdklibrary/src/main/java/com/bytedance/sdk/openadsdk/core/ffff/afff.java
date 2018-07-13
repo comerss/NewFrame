@@ -14,7 +14,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.core.nibuguan.j;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.q;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -309,7 +309,7 @@ class afff implements MineHandler.OnResult {
         private h a() {
             SharedPreferences var1 = mContext.getSharedPreferences("tt_materialMeta", 0);
             String var2 = var1.getString("materialMeta", (String)null);
-            if (!q.a(var2)) {
+            if (!StringUtils.isEmpty(var2)) {
                 try {
                     AdNativeListenerImpl.aClass var3 = AdNativeListenerImpl.aClass.a(new JSONObject(var2));
                     if (var3 != null && var3.d != null && var3.d.b() != null && !var3.d.b().isEmpty()) {

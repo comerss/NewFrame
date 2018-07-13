@@ -14,6 +14,7 @@ import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.core.ApiException;
 import com.bytedance.sdk.openadsdk.core.n;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
@@ -88,7 +89,7 @@ import java.lang.ref.WeakReference;
 /*     */       }
 
         @Override
-        public void onSuccess(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa) {
+        public void onSuccess(NativeData paramAnonymousa) {
             if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
                          h localh = (h)paramAnonymousa.b().get(0);
                            if (localh.v()) {
@@ -116,7 +117,7 @@ import java.lang.ref.WeakReference;
 /*  93 */         LogUtils.b(b.a, paramAnonymousString + " " + paramAnonymousInt);
 /*     */       }
 /*     */       
-/*     */       public void onSuccess(com.bytedance.sdk.openadsdk.core.nibuguan.a paramAnonymousa)
+/*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  98 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /*  99 */           h localh = (h)paramAnonymousa.b().get(0);
@@ -154,7 +155,7 @@ import java.lang.ref.WeakReference;
 /*     */     
 /* 132 */     this.f.ajax(str, Bitmap.class, new AjaxCallback()
 /*     */     {
-/*     */       public void a(String paramAnonymousString, Bitmap paramAnonymousBitmap, AjaxStatus paramAnonymousAjaxStatus) {
+/*     */       public void callback(String paramAnonymousString, Bitmap paramAnonymousBitmap, AjaxStatus paramAnonymousAjaxStatus) {
 /* 135 */         super.callback(paramAnonymousString, paramAnonymousBitmap, paramAnonymousAjaxStatus);
 /* 136 */         if ((paramAnonymousAjaxStatus == null) || (paramAnonymousBitmap == null) || (paramAnonymousAjaxStatus.getCode() != 200)) {
 /* 137 */           if (parama != null) {

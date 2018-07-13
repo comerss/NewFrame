@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -113,7 +114,7 @@ public class g implements c, d, MineHandler.OnResult {
 
     public boolean a(String var1, String var2, int var3, int var4, List<String> var5, String var6, long var7, boolean var9) {
         LogUtils.b(c, "video local url " + var1);
-        if (com.bytedance.sdk.openadsdk.ggg.q.a(var1)) {
+        if (StringUtils.isEmpty(var1)) {
             LogUtils.e(c, "No video info");
             return false;
         } else {
@@ -210,7 +211,7 @@ public class g implements c, d, MineHandler.OnResult {
         }
 
         this.g = System.currentTimeMillis();
-        if (!com.bytedance.sdk.openadsdk.ggg.q.a(var1)) {
+        if (!StringUtils.isEmpty(var1)) {
             this.d.a(8);
             this.d.a(0);
             this.a(new Runnable() {

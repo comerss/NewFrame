@@ -131,7 +131,7 @@ import java.util.UUID;
 
     public static boolean b(Context var0, String var1) {
         boolean var2 = false;
-        if (null != var0 && !q.a(var1)) {
+        if (null != var0 && !StringUtils.isEmpty(var1)) {
             PackageManager var3 = var0.getPackageManager();
 
             try {
@@ -160,7 +160,7 @@ import java.util.UUID;
         boolean var0 = false;
 
         try {
-            var0 = !q.a(Build.BRAND) && Build.BRAND.toLowerCase().startsWith("huawei") || !q.a(Build.MANUFACTURER) && Build.MANUFACTURER.toLowerCase().startsWith("huawei");
+            var0 = !StringUtils.isEmpty(Build.BRAND) && Build.BRAND.toLowerCase().startsWith("huawei") || !StringUtils.isEmpty(Build.MANUFACTURER) && Build.MANUFACTURER.toLowerCase().startsWith("huawei");
         } catch (Throwable var2) {
             ;
         }
@@ -237,7 +237,7 @@ import java.util.UUID;
 
     public static boolean c(Context var0, String var1) {
         boolean var2 = false;
-        if (var0 != null && var1 != null && !q.a(var1)) {
+        if (var0 != null && var1 != null && !StringUtils.isEmpty(var1)) {
             try {
                 File var3 = new File(var1);
                 if (var3.exists()) {
@@ -277,7 +277,7 @@ import java.util.UUID;
     }
 
     public static boolean d(Context var0, String var1) {
-        if (var0 != null && !q.a(var1)) {
+        if (var0 != null && !StringUtils.isEmpty(var1)) {
             try {
                 ActivityManager var2 = (ActivityManager)var0.getSystemService("activity");
                 List var3;
@@ -312,7 +312,7 @@ import java.util.UUID;
 
     @SuppressLint("WrongConstant")
     public static boolean e(Context var0, String var1) {
-        if (var0 != null && !q.a(var1)) {
+        if (var0 != null && !StringUtils.isEmpty(var1)) {
             try {
                 Uri var2 = Uri.parse("tel:" + Uri.encode(var1));
                 Intent var3 = new Intent("android.intent.action.DIAL", var2);

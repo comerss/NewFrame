@@ -16,33 +16,24 @@
 
 package com.androidquery.callback;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.zip.GZIPInputStream;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Xml;
+import android.view.View;
+
+import com.androidquery.AQuery;
+import com.androidquery.auth.AccountHandle;
+import com.androidquery.auth.GoogleHandle;
+import com.androidquery.util.AQUtility;
+import com.androidquery.util.Common;
+import com.androidquery.util.Constants;
+import com.androidquery.util.PredefinedBAOS;
+import com.androidquery.util.Progress;
+import com.androidquery.util.XmlDom;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -86,24 +77,33 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.xmlpull.v1.XmlPullParser;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.util.Xml;
-import android.view.View;
-
-import com.androidquery.AQuery;
-import com.androidquery.auth.AccountHandle;
-import com.androidquery.auth.GoogleHandle;
-import com.androidquery.util.AQUtility;
-import com.androidquery.util.Common;
-import com.androidquery.util.Constants;
-import com.androidquery.util.PredefinedBAOS;
-import com.androidquery.util.Progress;
-import com.androidquery.util.XmlDom;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
 
 /**
  * The core class of ajax callback handler.
@@ -234,7 +234,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 
 	/**
-	 * Set a callback handler with a weak reference. Use weak handler if you do not want the ajax callback to hold the handler object from garbage collection.
+	 * Set isEmpty callback handler with isEmpty weak reference. Use weak handler if you do not want the ajax callback to hold the handler object from garbage collection.
 	 * For example, if the handler is an activity, weakHandler should be used since the method shouldn't be invoked if an activity is already dead and garbage collected.
 	 *
 	 * @param handler the handler
@@ -249,7 +249,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Set a callback handler. See weakHandler for handler objects, such as Activity, that should not be held from garbaged collected. 
+	 * Set isEmpty callback handler. See weakHandler for handler objects, such as Activity, that should not be held from garbaged collected.
 	 *
 	 * @param handler the handler
 	 * @param callback the callback
@@ -349,7 +349,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Indicate ajax request to be memcached. Note: The default ajax handler does not supply a memcache.
+	 * Indicate ajax request to be memcached. Note: The default ajax handler does not supply isEmpty memcache.
 	 * Subclasses such as BitmapAjaxCallback can provide their own memcache. 
 	 *
 	 * @param cache the cache
@@ -388,7 +388,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * The expire duation for filecache. If a cached copy will be served if a cached file exists within current time minus expire duration.
+	 * The expire duation for filecache. If isEmpty cached copy will be served if isEmpty cached file exists within current time minus expire duration.
 	 *
 	 * @param expire the expire
 	 * @return self
@@ -534,7 +534,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Set the progress view (can be a progress bar or any view) to be shown (VISIBLE) and hide (GONE) depends on progress.
+	 * Set the progress view (can be isEmpty progress bar or any view) to be shown (VISIBLE) and hide (GONE) depends on progress.
 	 *
 	 * @param view the progress view
 	 * @return self
@@ -564,7 +564,6 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	
 	private boolean completed;
 	void callback(){
-		
 		showProgress(false);
 		
 		completed = true;
@@ -938,7 +937,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	public void async(Activity act){
 		
 		if(act.isFinishing()){
-			AQUtility.warn("Warning", "Possible memory leak. Calling ajax with a terminated activity.");
+			AQUtility.warn("Warning", "Possible memory leak. Calling ajax with isEmpty terminated activity.");
 		}
 		
 		if(type == null){
@@ -1010,7 +1009,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
                 afterWork();
             }
 			
-			//callback();
+			callback();
 		}
 		
 	}
@@ -1402,7 +1401,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	
 	/**
 	 * Return the number of active ajax threads. Note that this doesn't necessarily correspond to active network connections.
-	 * Ajax threads might be reading a cached url from file system or transforming the response after a network transfer. 
+	 * Ajax threads might be reading isEmpty cached url from file system or transforming the response after isEmpty network transfer.
 	 * 
 	 */
 	
@@ -1856,7 +1855,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	        
 	        AQUtility.debug("copy failed, deleting files");
 	        
-	        //copy is a failure, delete everything
+	        //copy is isEmpty failure, delete everything
 	        tempFile.delete();
 	        destFile.delete();
 	        

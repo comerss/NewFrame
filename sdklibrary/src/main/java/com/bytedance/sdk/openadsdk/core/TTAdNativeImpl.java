@@ -10,7 +10,7 @@
 /*     */
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
-import com.bytedance.sdk.openadsdk.core.nibuguan.a;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
@@ -38,7 +38,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.a;
 /*  37 */         paramFeedAdListener.onError(paramAnonymousInt, paramAnonymousString);
 /*     */       }
 /*     */       
-/*     */       public void onSuccess(a paramAnonymousa)
+/*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  42 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /*  43 */           List<h> localList = paramAnonymousa.b();
@@ -76,7 +76,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.a;
 /*  75 */         paramInteractionAdListener.onError(paramAnonymousInt, paramAnonymousString);
 /*     */       }
 /*     */       
-/*     */       public void onSuccess(a paramAnonymousa)
+/*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  80 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /*  81 */           h localh = (h)paramAnonymousa.b().get(0);
@@ -126,7 +126,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.a;
 /* 125 */         paramRewardVideoAdListener.onError(paramAnonymousInt, paramAnonymousString);
 /*     */       }
 /*     */       
-/*     */       public void onSuccess(a paramAnonymousa)
+/*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /* 130 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /* 131 */           h localh = (h)paramAnonymousa.b().get(0);

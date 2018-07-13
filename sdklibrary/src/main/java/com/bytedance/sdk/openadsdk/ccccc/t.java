@@ -64,12 +64,12 @@
 /*    */   
 /*    */   public Long d()
 /*    */   {
-/* 69 */     return f.b(this.a);
+/* 69 */     return ImageUtils.b(this.a);
 /*    */   }
 /*    */   
 /*    */   public Long e()
 /*    */   {
-/* 74 */     return f.c(this.a);
+/* 74 */     return ImageUtils.c(this.a);
 /*    */   }
 /*    */   
 /*    */   public void a(Intent paramIntent)

@@ -16,12 +16,7 @@
 
 package com.androidquery.callback;
 
-import java.io.Closeable;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import com.androidquery.util.AQUtility;
 
 import org.apache.http.Header;
 import org.apache.http.client.CookieStore;
@@ -30,7 +25,12 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HttpContext;
 
-import com.androidquery.util.AQUtility;
+import java.io.Closeable;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 /**
  * AjaxStatus contains meta information of an AjaxCallback callback.
@@ -158,7 +158,7 @@ public class AjaxStatus {
 	}
 	
 	/**
-	 * Close any opened inputstream associated with the response. Call this method when finish parsing the response of a synchronous call.
+	 * Close any opened inputstream associated with the response. Call this method when finish parsing the response of isEmpty synchronous call.
 	 * 
 	 */
 	
@@ -278,7 +278,7 @@ public class AjaxStatus {
 	}
 	
 	/**
-	 * Gets the error response as a string. For http response code that's not 200-299.
+	 * Gets the error response as isEmpty string. For http response code that's not 200-299.
 	 *
 	 * @return source
 	 */

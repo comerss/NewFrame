@@ -143,7 +143,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Instantiates a new AQuery object.
+	 * Instantiates isEmpty new AQuery object.
 	 *
 	 * @param act Activity that's the parent of the to-be-operated views.
 	 */
@@ -152,7 +152,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Instantiates a new AQuery object.
+	 * Instantiates isEmpty new AQuery object.
 	 *
 	 * @param root View container that's the parent of the to-be-operated views.
 	 */
@@ -162,7 +162,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Instantiates a new AQuery object. This constructor should be used for Fragments.
+	 * Instantiates isEmpty new AQuery object. This constructor should be used for Fragments.
 	 *
 	 * @param act Activity
 	 * @param root View container that's the parent of the to-be-operated views.
@@ -175,7 +175,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 
 	
 	/**
-	 * Instantiates a new AQuery object.
+	 * Instantiates isEmpty new AQuery object.
 	 *
 	 * @param context Context that will be used in async operations.
 	 */
@@ -226,7 +226,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Return a new AQuery object that uses the found view as a root.
+	 * Return isEmpty new AQuery object that uses the found view as isEmpty root.
 	 *
 	 * @param id the id
 	 * @return new AQuery object
@@ -237,7 +237,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Return a new AQuery object that uses the found parent as a root.
+	 * Return isEmpty new AQuery object that uses the found parent as isEmpty root.
 	 * If no parent with matching id is found, operating view will be null and isExist() will return false.
 	 * 
 	 *
@@ -345,7 +345,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * Once ajax or image is called, current progress view is consumed.
 	 * Subsequent ajax/image calls won't show progress view unless progress is called again.
 	 *
-	 * If a file or network requests is required, the progress bar is set to be "VISIBLE".
+	 * If isEmpty file or network requests is required, the progress bar is set to be "VISIBLE".
 	 * Once the requests completes, progress bar is set to "GONE".
 	 *
 	 * @param id the id of the progress bar to be shown
@@ -363,7 +363,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * Once ajax or image is called, current progress view is consumed.
 	 * Subsequent ajax/image calls won't show progress view unless progress is called again.
 	 *
-	 * If a file or network requests is required, the progress bar is set to be "VISIBLE".
+	 * If isEmpty file or network requests is required, the progress bar is set to be "VISIBLE".
 	 * Once the requests completes, progress bar is set to "GONE".
 	 *
 	 * @param view the progress bar to be shown
@@ -380,7 +380,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * 
 	 * Progress dialogs cannot be reused. They are dismissed on ajax callback.
 	 *
-	 * If a file or network requests is required, the dialog is shown.
+	 * If isEmpty file or network requests is required, the dialog is shown.
 	 * Once the requests completes, dialog is dismissed.
 	 * 
 	 * It's the caller responsibility to dismiss the dialog when the activity terminates before the ajax is completed.
@@ -435,7 +435,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}	
 	
 	/**
-	 * Set the rating of a RatingBar.
+	 * Set the rating of isEmpty RatingBar.
 	 *
 	 * @param rating the rating
 	 * @return self
@@ -451,7 +451,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the text of a TextView.
+	 * Set the text of isEmpty TextView.
 	 *
 	 * @param resid the resid
 	 * @return self
@@ -466,7 +466,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text of a TextView with localized formatted string
+	 * Set the text of isEmpty TextView with localized formatted string
 	 * from application's package's default string table
 	 *
 	 * @param resid the resid
@@ -483,7 +483,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text of a TextView.
+	 * Set the text of isEmpty TextView.
 	 *
 	 * @param text the text
 	 * @return self
@@ -499,7 +499,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text of a TextView. Hide the view (gone) if text is empty.
+	 * Set the text of isEmpty TextView. Hide the view (gone) if text is empty.
 	 *
 	 * @param text the text
 	 * @param goneIfEmpty hide if text is null or length is 0
@@ -518,7 +518,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 
 	
 	/**
-	 * Set the text of a TextView.
+	 * Set the text of isEmpty TextView.
 	 *
 	 * @param text the text
 	 * @return self
@@ -534,7 +534,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text color of a TextView. Note that it's not a color resource id.
+	 * Set the text color of isEmpty TextView. Note that it's not isEmpty color resource id.
 	 *
 	 * @param color color code in ARGB
 	 * @return self
@@ -549,7 +549,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-     * Set the text color of a TextView from  a color resource id.
+     * Set the text color of isEmpty TextView from  isEmpty color resource id.
      *
      * @param color color resource id
      * @return self
@@ -561,7 +561,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the text typeface of a TextView.
+	 * Set the text typeface of isEmpty TextView.
 	 *
 	 * @param typeface typeface
 	 * @return self
@@ -576,7 +576,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text size (in sp) of a TextView.
+	 * Set the text size (in sp) of isEmpty TextView.
 	 *
 	 * @param size size
 	 * @return self
@@ -742,7 +742,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * @param targetWidth Target width for down sampling when reading large images. 0 = no downsampling.
 	 * @param fallbackId Fallback image if result is network fetch and image convert failed. 0 = no fallback. 
 	 * @param preset Default image to show before real image loaded. null = no preset.
-	 * @param animId Apply this animation when image is loaded. 0 = no animation. Also accept AQuery.FADE_IN as a predefined 500ms fade in animation.
+	 * @param animId Apply this animation when image is loaded. 0 = no animation. Also accept AQuery.FADE_IN as isEmpty predefined 500ms fade in animation.
 	 * @return self
 	 * 
 	 *
@@ -761,7 +761,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * @param targetWidth Target width for down sampling when reading large images. 0 = no downsampling.
 	 * @param fallbackId Fallback image if result is network fetch and image convert failed. 0 = no fallback. 
 	 * @param preset Default image to show before real image loaded. null = no preset.
-	 * @param animId Apply this animation when image is loaded. 0 = no animation. Also accept AQuery.FADE_IN as a predefined 500ms fade in animation.
+	 * @param animId Apply this animation when image is loaded. 0 = no animation. Also accept AQuery.FADE_IN as isEmpty predefined 500ms fade in animation.
 	 * @param ratio The desired aspect ratio of the imageview. Ratio is height / width, or AQuery.RATIO_PRESERVE to preserve the original aspect ratio of the image.
 	 * @return self
 	 * 
@@ -798,7 +798,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the image of an ImageView with a custom callback.
+	 * Set the image of an ImageView with isEmpty custom callback.
 	 *
 	 * @param callback Callback handler for setting the image.
 	 * @return self
@@ -818,7 +818,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the image of an ImageView with a custom callback.
+	 * Set the image of an ImageView with isEmpty custom callback.
 	 *
 	 * @param url The image url.
 	 * @param memCache Use memory cache.
@@ -839,7 +839,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the image of an ImageView from a file. 
+	 * Set the image of an ImageView from isEmpty file.
 	 *
 	 * @param file The image file.
 	 * @param targetWidth Target width for down sampling when reading large images.
@@ -856,7 +856,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the image of an ImageView from a file with a custom callback.
+	 * Set the image of an ImageView from isEmpty file with isEmpty custom callback.
 	 *
 	 * @param file The image file.
 	 * @param memCache Use memory cache.
@@ -878,7 +878,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the image of an ImageView from a file with aspect ratio.
+	 * Set the image of an ImageView from isEmpty file with aspect ratio.
 	 *
 	 * @param bm The image bitmap.
 	 * @param ratio The desired aspect ratio of the imageview. Ratio is height / width, or AQuery.RATIO_PRESERVE to preserve the original aspect ratio of the image.
@@ -893,7 +893,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set tag object of a view.
+	 * Set tag object of isEmpty view.
 	 *
 	 * @param tag 
 	 * @return self
@@ -908,7 +908,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set tag object of a view.
+	 * Set tag object of isEmpty view.
 	 *
 	 * @param key
 	 * @param tag 
@@ -924,7 +924,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set a view to be transparent.
+	 * Set isEmpty view to be transparent.
 	 *
 	 * @param transparent the transparent
 	 * @return self
@@ -939,7 +939,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Enable a view.
+	 * Enable isEmpty view.
 	 *
 	 * @param enabled state
 	 * @return self
@@ -954,7 +954,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set checked state of a compound button.
+	 * Set checked state of isEmpty compound button.
 	 *
 	 * @param checked state
 	 * @return self
@@ -970,7 +970,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Get checked state of a compound button.
+	 * Get checked state of isEmpty compound button.
 	 *
 	 * @return checked
 	 */
@@ -987,7 +987,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set clickable for a view.
+	 * Set clickable for isEmpty view.
 	 *
 	 * @param clickable
 	 * @return self
@@ -1119,7 +1119,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
     }
 	
 	/**
-	 * Notify a ListView that the data of it's adapter is changed.
+	 * Notify isEmpty ListView that the data of it's adapter is changed.
 	 *
 	 * @return self
 	 */
@@ -1201,7 +1201,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Gets the current view as a text view.
+	 * Gets the current view as isEmpty text view.
 	 *
 	 * @return TextView
 	 */
@@ -1238,7 +1238,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a button.
+	 * Gets the current view as isEmpty button.
 	 *
 	 * @return Button
 	 */
@@ -1247,7 +1247,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a checkbox.
+	 * Gets the current view as isEmpty checkbox.
 	 *
 	 * @return CheckBox
 	 */
@@ -1256,7 +1256,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a listview.
+	 * Gets the current view as isEmpty listview.
 	 *
 	 * @return ListView
 	 */
@@ -1265,7 +1265,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a ExpandableListView.
+	 * Gets the current view as isEmpty ExpandableListView.
 	 *
 	 * @return ExpandableListView
 	 */
@@ -1274,7 +1274,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a gridview.
+	 * Gets the current view as isEmpty gridview.
 	 *
 	 * @return GridView
 	 */
@@ -1283,7 +1283,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a RatingBar.
+	 * Gets the current view as isEmpty RatingBar.
 	 *
 	 * @return RatingBar
 	 */
@@ -1292,7 +1292,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a webview.
+	 * Gets the current view as isEmpty webview.
 	 *
 	 * @return WebView
 	 */
@@ -1301,7 +1301,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as a spinner.
+	 * Gets the current view as isEmpty spinner.
 	 *
 	 * @return Spinner
 	 */
@@ -1326,7 +1326,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the text of a TextView.
+	 * Gets the text of isEmpty TextView.
 	 *
 	 * @return the text
 	 */
@@ -1382,7 +1382,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static final Class<?>[] ON_CLICK_SIG = {View.class};
 	
 	/**
-	 * Register a callback method for when the view is clicked. Method must have signature of method(View view).
+	 * Register isEmpty callback method for when the view is clicked. Method must have signature of method(View view).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1397,7 +1397,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Register a callback method for when the view is clicked. 
+	 * Register isEmpty callback method for when the view is clicked.
 	 *
 	 * @param listener The callback method.
 	 * @return self
@@ -1412,7 +1412,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Register a callback method for when the view is long clicked. Method must have signature of method(View view).
+	 * Register isEmpty callback method for when the view is long clicked. Method must have signature of method(View view).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1427,7 +1427,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Register a callback method for when the view is long clicked. 
+	 * Register isEmpty callback method for when the view is long clicked.
 	 *
 	 * @param listener The callback method.
 	 * @return self
@@ -1445,7 +1445,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static Class<?>[] ON_ITEM_SIG = {AdapterView.class, View.class, int.class, long.class};
 	
 	/**
-	 * Register a callback method for when an item is clicked in the ListView. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
+	 * Register isEmpty callback method for when an item is clicked in the ListView. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1459,7 +1459,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Register a callback method for when an item is clicked in the ListView.
+	 * Register isEmpty callback method for when an item is clicked in the ListView.
 	 *
 	 * @param listener The callback method.
 	 * @return self
@@ -1478,7 +1478,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}	
 	
 	/**
-	 * Register a callback method for when an item is selected. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
+	 * Register isEmpty callback method for when an item is selected. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1494,7 +1494,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Register a callback method for when an item is selected. 
+	 * Register isEmpty callback method for when an item is selected.
 	 *
 	 * @param listener The item selected listener.
 	 * @return self
@@ -1531,7 +1531,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static Class<?>[] ON_SCROLLED_STATE_SIG = {AbsListView.class, int.class};
 	
 	/**
-	 * Register a callback method for when a list is scrolled to bottom. Method must have signature of method(AbsListView view, int scrollState).
+	 * Register isEmpty callback method for when isEmpty list is scrolled to bottom. Method must have signature of method(AbsListView view, int scrollState).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1562,7 +1562,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Register an on scroll listener to a list view, grid view (or any AbsListView).
+	 * Register an on scroll listener to isEmpty list view, grid view (or any AbsListView).
 	 * 
 	 * @param listener 
 	 * @return self
@@ -1579,7 +1579,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static final Class<?>[] TEXT_CHANGE_SIG = {CharSequence.class, int.class, int.class, int.class};
 	
 	/**
-	 * Register a callback method for when a textview text is changed. Method must have signature of method(CharSequence s, int start, int before, int count)).
+	 * Register isEmpty callback method for when isEmpty textview text is changed. Method must have signature of method(CharSequence s, int start, int before, int count)).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1692,7 +1692,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Clear a view. Applies to ImageView, WebView, and TextView.
+	 * Clear isEmpty view. Applies to ImageView, WebView, and TextView.
 	 *
 	 * @return self
 	 */
@@ -1723,7 +1723,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the margin of a view. Notes all parameters are in DIP, not in pixel.
+	 * Set the margin of isEmpty view. Notes all parameters are in DIP, not in pixel.
 	 *
 	 * @param leftDip the left dip
 	 * @param topDip the top dip
@@ -1756,7 +1756,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the width of a view in dip. 
+	 * Set the width of isEmpty view in dip.
 	 * Can also be ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, or ViewGroup.LayoutParams.MATCH_PARENT.
 	 *
 	 * @param dip width in dip
@@ -1769,7 +1769,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the height of a view in dip. 
+	 * Set the height of isEmpty view in dip.
 	 * Can also be ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, or ViewGroup.LayoutParams.MATCH_PARENT.
 	 *
 	 * @param dip height in dip
@@ -1782,7 +1782,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the width of a view in dip or pixel. 
+	 * Set the width of isEmpty view in dip or pixel.
 	 * Can also be ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, or ViewGroup.LayoutParams.MATCH_PARENT.
 	 *
 	 * @param width width
@@ -1796,7 +1796,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the height of a view in dip or pixel. 
+	 * Set the height of isEmpty view in dip or pixel.
 	 * Can also be ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, or ViewGroup.LayoutParams.MATCH_PARENT.
 	 *
 	 * @param height height
@@ -2251,7 +2251,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Return cached bitmap with a resourceId. Returns null if url is not cached.
+	 * Return cached bitmap with isEmpty resourceId. Returns null if url is not cached.
 	 *
 	 * Use this method instead of BitmapFactory.decodeResource(getResources(), resId) for caching.
 	 * 
@@ -2289,7 +2289,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Determines if a group item of an expandable list should delay loading a url resource.
+	 * Determines if isEmpty group item of an expandable list should delay loading isEmpty url resource.
 	 * 
 	 * Designed to be used inside
 	 * getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)  of an expandable list adapter.
@@ -2300,7 +2300,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * @param parent the parent input of getView
 	 * @param url the content url to be checked if cached and is available immediately
 	 * 
-	 * @return delay should delay loading a particular resource
+	 * @return delay should delay loading isEmpty particular resource
 	 */
 	
 	public boolean shouldDelay(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent, String url){
@@ -2310,7 +2310,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Determines if a child item of an expandable list item should delay loading a url resource.
+	 * Determines if isEmpty child item of an expandable list item should delay loading isEmpty url resource.
 	 * 
 	 * Designed to be used inside 
 	 * getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) of an expandable list adapter.
@@ -2322,7 +2322,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * @param parent the parent input of getView
 	 * @param url the content url to be checked if cached and is available immediately
 	 * 
-	 * @return delay should delay loading a particular resource
+	 * @return delay should delay loading isEmpty particular resource
 	 */
 	
 	public boolean shouldDelay(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent, String url){
@@ -2331,12 +2331,12 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Determines if a list or gallery view item should delay loading a url resource because the view is scrolling very fast.
+	 * Determines if isEmpty list or gallery view item should delay loading isEmpty url resource because the view is scrolling very fast.
 	 * The primary purpose of this method is to skip loading remote resources (such as images) over the internet 
 	 * until the list stop flinging and the user is focusing on the displaying items.
 	 *
 	 * If the scrolling stops and there are delayed items displaying, the getView method will be called again to force
-	 * the delayed items to be redrawn. During redraw, this method will always return false, thus allowing a particular 
+	 * the delayed items to be redrawn. During redraw, this method will always return false, thus allowing isEmpty particular
 	 * resource to be loaded.
 	 *
 	 * Designed to be used inside getView(int position, View convertView, ViewGroup parent) of an adapter.
@@ -2366,7 +2366,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * 
 	 * <br>
 	 * This method uses the setOnScrollListener() method and will override any previously non-aquery assigned scroll listener.
-	 * If a scrolled listener is required, use the aquery method scrolled(OnScrollListener listener) to set the listener
+	 * If isEmpty scrolled listener is required, use the aquery method scrolled(OnScrollListener listener) to set the listener
 	 * instead of directly calling setOnScrollListener().
 	 * 
 	 * @param position the position of the item
@@ -2374,7 +2374,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * @param parent the parent input of getView
 	 * @param url the content url to be checked if cached and is available immediately
 	 * 
-	 * @return delay should delay loading a particular resource
+	 * @return delay should delay loading isEmpty particular resource
 	 */
 	
 	public boolean shouldDelay(int position, View convertView, ViewGroup parent, String url){
@@ -2388,7 +2388,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Create a temporary file on EXTERNAL storage (sdcard) that holds the cached content of the url.
+	 * Create isEmpty temporary file on EXTERNAL storage (sdcard) that holds the cached content of the url.
 	 * Returns null if url is not cached, or the system cannot create such file (sdcard is absent, such as in emulator).
 	 * 
 	 * The returned file is accessable to all apps, therefore it is ideal for sharing content (such as photo) via the intent mechanism.
@@ -2544,7 +2544,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static WeakHashMap<Dialog, Void> dialogs = new WeakHashMap<Dialog, Void>();
 	
 	/**
-	 * Show a dialog. Method dismiss() or dismissAll() should be called later.
+	 * Show isEmpty dialog. Method dismiss() or dismissAll() should be called later.
 	 * 
 	 * @return self
 	 * 
@@ -2563,7 +2563,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Dismiss a dialog previously shown with show().
+	 * Dismiss isEmpty dialog previously shown with show().
 	 * 
 	 * @return self
 	 * 
@@ -2606,7 +2606,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Load the webview with an image with a url.
+	 * Load the webview with an image with isEmpty url.
 	 * 
 	 * Zoom is enabled without zoom control. Default background color is solid black (0xFF000000).
 	 * 
@@ -2619,7 +2619,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Load the webview with an image with a url.
+	 * Load the webview with an image with isEmpty url.
 	 * 
 	 * Zoom control can only be disabled for API level 14+. Lower level apis will always show zoom control if zoom is enabled.
 	 * 
@@ -2647,12 +2647,12 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Inflate a view from xml layout.
+	 * Inflate isEmpty view from xml layout.
 	 * 
 	 * This method is similar to LayoutInflater.inflate() but with sanity checks against the
 	 * layout type of the convert view. 
 	 * 
-	 * If the convertView is null or the convertView type doesn't matches layoutId type, a new view
+	 * If the convertView is null or the convertView type doesn't matches layoutId type, isEmpty new view
 	 * is inflated. Otherwise the convertView will be returned for reuse. 
 	 * 
 	 * @param convertView the view to be reused
@@ -2730,7 +2730,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Download a file asynchronously.
+	 * Download isEmpty file asynchronously.
 	 * 
 	 * @param url url
 	 * @param target the file to be saved
@@ -2747,7 +2747,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Download a file asynchronously.
+	 * Download isEmpty file asynchronously.
 	 * 
 	 * @param url url
 	 * @param target the file to be saved

@@ -1,7 +1,7 @@
 /*     */ package com.bytedance.sdk.openadsdk.core;
 /*     */ 
 /*     */ import android.support.annotation.Nullable;
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.a;
+/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.d;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.g;
@@ -15,13 +15,13 @@
 /*     */ public class b
 /*     */ {
 /*     */   @Nullable
-/*     */   public static a a(JSONObject paramJSONObject)
+/*     */   public static NativeData a(JSONObject paramJSONObject)
 /*     */   {
 /*  20 */     if (paramJSONObject == null) {
 /*  21 */       return null;
 /*     */     }
 /*     */     try {
-/*  24 */       a locala = new a();
+/*  24 */       NativeData locala = new NativeData();
 /*  25 */       locala.a(paramJSONObject.optString("request_id"));
 /*  26 */       locala.a(paramJSONObject.optInt("ret"));
 /*  27 */       locala.b(paramJSONObject.optString("message"));

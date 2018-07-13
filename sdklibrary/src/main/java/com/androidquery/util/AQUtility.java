@@ -680,7 +680,7 @@ public class AQUtility {
 				}else{				
 					f.delete();
 					deletes++;
-					//AQUtility.debug("del", f.getAbsolutePath());
+					//AQUtility.debug("del", ImageUtils.getAbsolutePath());
 				}
 				
 			}
