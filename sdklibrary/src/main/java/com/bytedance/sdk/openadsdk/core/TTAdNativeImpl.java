@@ -81,7 +81,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*  80 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /*  81 */           h localh = (h)paramAnonymousa.b().get(0);
 /*  82 */           if (localh.v()) {
-/*  83 */             final x localx = new x(b, localh);
+/*  83 */             final TTInteractionAdImpl localx = new TTInteractionAdImpl(b, localh);
 /*  84 */             localx.a(new j()
 /*     */             {
 /*     */               public void a() {

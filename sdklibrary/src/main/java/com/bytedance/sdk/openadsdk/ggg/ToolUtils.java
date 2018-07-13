@@ -107,7 +107,7 @@ import java.util.UUID;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class r {
+/*     */ public class ToolUtils {
     public static boolean a = false;
     public static boolean b = false;
     private static String c = null;
@@ -409,7 +409,7 @@ import java.util.UUID;
         if (var2 != null) {
             int var3 = var2.optInt("rit", 0);
             String var4 = var2.optString("req_id", "");
-            n.c().a(var3, var4, var0.l(), s.d(var1.getRootView()));
+            n.c().a(var3, var4, var0.l(), ViewWather.d(var1.getRootView()));
         }
 
     }

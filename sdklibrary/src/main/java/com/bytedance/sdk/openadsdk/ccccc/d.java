@@ -65,9 +65,9 @@ import java.util.concurrent.Future;
     private NotificationManager J;
     private final w K;
     private final v L;
-    private final g M;
+    private final DownloadNotifier M;
 
-    private d(Context var1, w var2, v var3, g var4) {
+    private d(Context var1, w var2, v var3, DownloadNotifier var4) {
         this.F = new ArrayList();
         this.I = var1;
         this.J = (NotificationManager)this.I.getSystemService("notification");
@@ -233,8 +233,8 @@ import java.util.concurrent.Future;
         if (this.e != null) {
             File var2 = new File(var1);
             if (this.j == 200 && !var2.exists()) {
-                String var3 = com.bytedance.sdk.openadsdk.ccccc.g.a(this);
-                com.bytedance.sdk.openadsdk.ccccc.g.a(this.I).a(var3);
+                String var3 = DownloadNotifier.a(this);
+                DownloadNotifier.a(this.I).a(var3);
                 com.bytedance.sdk.openadsdk.ccccc.i.a(this.I).a(this.d(), (String)null, (String[])null);
             }
         }
@@ -337,7 +337,7 @@ import java.util.concurrent.Future;
             this.b = var2;
         }
 
-        public d a(Context var1, w var2, v var3, g var4) {
+        public d a(Context var1, w var2, v var3, DownloadNotifier var4) {
             d var5 = new d(var1, var2, var3, var4);
             this.a(var5);
             this.b(var5);

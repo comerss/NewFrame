@@ -46,7 +46,7 @@ import java.util.WeakHashMap;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class c
+/*     */ public class AdEvent
 /*     */ {
 /*  34 */   private static Map<com.bytedance.sdk.openadsdk.core.nibuguan.h, h> a = new WeakHashMap();
 /*     */   
@@ -66,7 +66,7 @@ import java.util.WeakHashMap;
 /*     */ 
 /*     */ 
 /*     */
-public static void a(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.h var1, String var2) {
+public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.h var1, String var2) {
     var0 = n.a();
     com.bytedance.sdk.openadsdk.dddd.h var3 = a.get(var1);
     boolean var4 = false;

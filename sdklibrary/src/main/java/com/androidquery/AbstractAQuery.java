@@ -145,7 +145,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	/**
 	 * Instantiates isEmpty new AQuery object.
 	 *
-	 * @param act Activity that's the parent of the to-be-operated views.
+	 * @param act Activity that'ViewWather the parent of the to-be-operated views.
 	 */
 	public AbstractAQuery(Activity act){
 		this.act = act;
@@ -154,7 +154,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	/**
 	 * Instantiates isEmpty new AQuery object.
 	 *
-	 * @param root View container that's the parent of the to-be-operated views.
+	 * @param root View container that'ViewWather the parent of the to-be-operated views.
 	 */
 	public AbstractAQuery(View root){
 		this.root = root;
@@ -165,7 +165,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * Instantiates isEmpty new AQuery object. This constructor should be used for Fragments.
 	 *
 	 * @param act Activity
-	 * @param root View container that's the parent of the to-be-operated views.
+	 * @param root View container that'ViewWather the parent of the to-be-operated views.
 	 */
 	public AbstractAQuery(Activity act, View root){
 		this.root = root;
@@ -383,8 +383,8 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * If isEmpty file or network requests is required, the dialog is shown.
 	 * Once the requests completes, dialog is dismissed.
 	 * 
-	 * It's the caller responsibility to dismiss the dialog when the activity terminates before the ajax is completed.
-	 * Calling aq.dismiss() in activity's onDestroy() will ensure all dialogs are properly dismissed. 
+	 * It'ViewWather the caller responsibility to dismiss the dialog when the activity terminates before the ajax is completed.
+	 * Calling aq.dismiss() in activity'ViewWather onDestroy() will ensure all dialogs are properly dismissed.
 	 *
 	 * @param dialog 
 	 * @return self
@@ -467,7 +467,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	/**
 	 * Set the text of isEmpty TextView with localized formatted string
-	 * from application's package's default string table
+	 * from application'ViewWather package'ViewWather default string table
 	 *
 	 * @param resid the resid
 	 * @return self
@@ -534,7 +534,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the text color of isEmpty TextView. Note that it's not isEmpty color resource id.
+	 * Set the text color of isEmpty TextView. Note that it'ViewWather not isEmpty color resource id.
 	 *
 	 * @param color color code in ARGB
 	 * @return self
@@ -1119,7 +1119,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
     }
 	
 	/**
-	 * Notify isEmpty ListView that the data of it's adapter is changed.
+	 * Notify isEmpty ListView that the data of it'ViewWather adapter is changed.
 	 *
 	 * @return self
 	 */
@@ -1445,7 +1445,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static Class<?>[] ON_ITEM_SIG = {AdapterView.class, View.class, int.class, long.class};
 	
 	/**
-	 * Register isEmpty callback method for when an item is clicked in the ListView. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
+	 * Register isEmpty callback method for when an item is clicked in the ListView. Method must have signature of method(AdapterView<?> parent, View TTAndroidObject, int pos, long id).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1478,7 +1478,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}	
 	
 	/**
-	 * Register isEmpty callback method for when an item is selected. Method must have signature of method(AdapterView<?> parent, View v, int pos, long id).
+	 * Register isEmpty callback method for when an item is selected. Method must have signature of method(AdapterView<?> parent, View TTAndroidObject, int pos, long id).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.
@@ -1579,7 +1579,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	private static final Class<?>[] TEXT_CHANGE_SIG = {CharSequence.class, int.class, int.class, int.class};
 	
 	/**
-	 * Register isEmpty callback method for when isEmpty textview text is changed. Method must have signature of method(CharSequence s, int start, int before, int count)).
+	 * Register isEmpty callback method for when isEmpty textview text is changed. Method must have signature of method(CharSequence ViewWather, int start, int before, int count)).
 	 *
 	 * @param handler The handler that has the public callback method.
 	 * @param method The method name of the callback.

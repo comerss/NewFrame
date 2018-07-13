@@ -212,7 +212,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	 * Value of 1 implies show top end of the image, 0 implies at the center, -1 implies show at the bottom.
 	 * 
 	 * A special value AQuery.ANCHOR_DYNAMIC will adjust the anchor base. 
-	 * This setting will add up from 0 to 0.5 bias and it's suitable for portraits and common photos.
+	 * This setting will add up from 0 to 0.5 bias and it'ViewWather suitable for portraits and common photos.
 	 * 
 	 * Default value is ANCHOR_DYNAMIC.
 	 *
@@ -488,7 +488,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 			}
 			
 						
-			//invalidating the file if it's not an image, could be caused by proxy returning 200 with html data
+			//invalidating the file if it'ViewWather not an image, could be caused by proxy returning 200 with html data
 			if(status.getSource() == AjaxStatus.NETWORK && file != null){
 			    AQUtility.debug("invalid bm from net");
 			    file.delete();
@@ -944,7 +944,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	/**
 	 * AQuery internal use only. Please uses AQuery image() methods instead.
 	 * 
-	 * Optimize memory usage if mem hit and there's no custom callback.
+	 * Optimize memory usage if mem hit and there'ViewWather no custom callback.
 	 *
 	 *
 	 */
@@ -959,7 +959,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	/**
 	 * AQuery internal use only. Please uses AQuery image() methods instead.
 	 * 
-	 * Optimize memory usage if mem hit and there's no custom callback.
+	 * Optimize memory usage if mem hit and there'ViewWather no custom callback.
 	 *
 	 *
 	 */

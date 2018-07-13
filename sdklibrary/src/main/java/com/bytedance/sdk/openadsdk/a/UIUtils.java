@@ -5,7 +5,7 @@
 /*    */ import com.bytedance.sdk.openadsdk.core.i;
 /*    */ import com.bytedance.sdk.openadsdk.core.n;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
-/*    */ import com.bytedance.sdk.openadsdk.ggg.r;
+/*    */ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -49,7 +49,7 @@
 /*    */ 
 /*    */   public static String d()
 /*    */   {
-/* 52 */     return r.b(n.a());
+/* 52 */     return ToolUtils.b(n.a());
 /*    */   }
 /*    */   
 /*    */ 

@@ -169,7 +169,7 @@ public class LocationAjaxCallback extends AbstractAjaxCallback<Location, Locatio
 		
 		if(result == null) return true;
 		
-		// if this loc is network and there's already an recent async gps update
+		// if this loc is network and there'ViewWather already an recent async gps update
 		if(result.getTime() > initTime && result.getProvider().equals(LocationManager.GPS_PROVIDER) && loc.getProvider().equals(LocationManager.NETWORK_PROVIDER)){
 			AQUtility.debug("inferior location");
 			return false;

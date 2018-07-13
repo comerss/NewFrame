@@ -20,11 +20,14 @@ import com.androidquery.callback.BitmapAjaxCallback;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTInteractionAd;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.g;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.r;
-import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 /*     */
 /*     */
@@ -59,20 +62,20 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */
 /*     */ 
 /*     */ 
-/*     */ class x
+/*     */ class TTInteractionAdImpl
 /*     */   implements TTInteractionAd
 /*     */ {
 /*     */   private Context a;
 /*     */   private h b;
 /*     */   private Dialog c;
 /*     */   private TTInteractionAd.AdInteractionListener d;
-/*     */   private com.bytedance.sdk.openadsdk.ccccc.x e;
+/*     */   private DownLoadListenerImpl e;
 /*     */   private j f;
 /*     */   private ImageView g;
 /*     */   private ImageView h;
 /*     */   private static boolean i;
 /*     */   
-/*     */   x(Context paramContext, h paramh)
+/*     */   TTInteractionAdImpl(Context paramContext, h paramh)
 /*     */   {
 /*  51 */     this.a = paramContext;
 /*  52 */     this.b = paramh;
@@ -83,9 +86,9 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   void a(@NonNull j paramj)
 /*     */   {
 /*  59 */     this.f = paramj;
-/*  60 */     com.bytedance.sdk.openadsdk.dddd.c.a(this.b);
+/*  60 */     AdEvent.a(this.b);
 /*  61 */     if (getInteractionType() == 4) {
-/*  62 */       this.e = new com.bytedance.sdk.openadsdk.ccccc.x(this.a, this.b, "interaction");
+/*  62 */       this.e = new DownLoadListenerImpl(this.a, this.b, "interaction");
 /*     */     }
 /*     */     
 /*  65 */     a();
@@ -101,12 +104,12 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */     {
 /*     */       public void onShow(DialogInterface paramAnonymousDialogInterface) {
 /*  77 */         if (c.isShowing()) {
-/*  78 */           com.bytedance.sdk.openadsdk.dddd.c.a(a, b, "interaction");
+/*  78 */           AdEvent.show(a, b, "interaction");
 /*  79 */           if (d != null) {
 /*  80 */            d.onAdShow();
 /*     */           }
 /*  82 */           if (b.t()) {
-/*  83 */             r.a(b, h);
+/*  83 */             ToolUtils.a(b, h);
 /*     */           }
 /*     */           
 /*     */         }
@@ -115,7 +118,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*  89 */     this.c.setContentView(R.layout.tt_insert_ad_layout);
 /*  90 */     this.h = ((ImageView)this.c.findViewById(R.id.insert_ad_img));
 /*     */     
-/*  92 */     int j = s.a(this.a);
+/*  92 */     int j = ViewWather.a(this.a);
 /*  93 */     int k = j / 3;
 /*  94 */     this.h.setMaxWidth(j);
 /*  95 */     this.h.setMinimumWidth(k);
@@ -123,8 +126,8 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */     
 /*  98 */     this.g = ((ImageView)this.c.findViewById(R.id.insert_dislike_icon_img));
 /*     */     
-/* 100 */     int m = (int)s.a(this.a, 15.0F);
-/* 101 */     s.a(this.g, m, m, m, m);
+/* 100 */     int m = (int) ViewWather.a(this.a, 15.0F);
+/* 101 */     ViewWather.a(this.g, m, m, m, m);
 /*     */     
 /* 103 */     b();
 /*     */     
@@ -140,9 +143,9 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /* 114 */     locala.a(this.h);
 /* 115 */     locala.b(this.g);
 /* 116 */     locala.a(this.e);
-/* 117 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.b.bb()
+/* 117 */     locala.a(new AdClickListenerImpl.OnClick()
 /*     */     {
-/*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
+/*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /* 120 */         if (d != null) {
 /* 121 */           d.onAdClicked();
 /*     */         }
@@ -165,7 +168,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView) {
 /* 141 */        d();
-/* 142 */         com.bytedance.sdk.openadsdk.dddd.c.c(b);
+/* 142 */         AdEvent.c(b);
 /* 143 */         if (d != null) {
 /* 144 */         d.onAdDismiss();
 /*     */         }
@@ -257,7 +260,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\x.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\TTInteractionAdImpl.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

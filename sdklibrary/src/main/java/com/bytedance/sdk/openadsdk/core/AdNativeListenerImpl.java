@@ -26,6 +26,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 import com.bytedance.sdk.openadsdk.ggg.e;
 
 import org.apache.http.entity.StringEntity;
@@ -99,7 +100,7 @@ import java.util.concurrent.Executors;
 
         try {
             JSONObject var5 = new JSONObject();
-            String var6 = var2 != null && !TextUtils.isEmpty(var2.a) ? var2.a : com.bytedance.sdk.openadsdk.ggg.r.f();
+            String var6 = var2 != null && !TextUtils.isEmpty(var2.a) ? var2.a : ToolUtils.f();
             var5.put("request_id", var6);
             var5.put("ad_sdk_version", "1.9.2");
             var5.put("source_type", "app");
@@ -889,7 +890,7 @@ import java.util.concurrent.Executors;
             /* 583 */
             DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
             /* 584 */
-            localJSONObject.put("resolution", localDisplayMetrics.heightPixels + "x" + localDisplayMetrics.widthPixels);
+            localJSONObject.put("resolution", localDisplayMetrics.heightPixels + "TTInteractionAdImpl" + localDisplayMetrics.widthPixels);
             /* 585 */
             localJSONObject.put("display_density", a(localDisplayMetrics.densityDpi));
             /* 586 */
@@ -977,19 +978,19 @@ import java.util.concurrent.Executors;
         try
             /*     */ {
             /* 633 */
-            if (com.bytedance.sdk.openadsdk.ggg.r.c()) {
+            if (ToolUtils.c()) {
                 /* 634 */
                 localStringBuilder.append("MIUI-");
                 /* 635 */
-            } else if (com.bytedance.sdk.openadsdk.ggg.r.d()) {
+            } else if (ToolUtils.d()) {
                 /* 636 */
                 localStringBuilder.append("FLYME-");
                 /*     */
             } else {
                 /* 638 */
-                String str = com.bytedance.sdk.openadsdk.ggg.r.b();
+                String str = ToolUtils.b();
                 /* 639 */
-                if (com.bytedance.sdk.openadsdk.ggg.r.a(str)) {
+                if (ToolUtils.a(str)) {
                     /* 640 */
                     localStringBuilder.append("EMUI-");
                     /*     */
@@ -1169,13 +1170,12 @@ import java.util.concurrent.Executors;
         final JSONObject localJSONObject = c(paramJSONObject);
         /* 738 */
         AQuery localAQuery = new AQuery(this.a);
-        new AjaxCallback() {
-        };
+
         /* 739 */
         AjaxCallback local2 = new AjaxCallback()
                 /*     */ {
             /*     */
-            public void a(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
+            public void callback(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
                 /* 742 */
                 if (paramAnonymousAjaxStatus.getCode() == 200) {
                     /* 743 */
@@ -1382,7 +1382,7 @@ import java.util.concurrent.Executors;
         AjaxCallback local3 = new AjaxCallback()
                 /*     */ {
             /*     */
-            public void a(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
+            public void callback(String paramAnonymousString1, String paramAnonymousString2, AjaxStatus paramAnonymousAjaxStatus) {
                 /* 850 */
                 super.callback(paramAnonymousString1, paramAnonymousString2, paramAnonymousAjaxStatus);
                 /*     */

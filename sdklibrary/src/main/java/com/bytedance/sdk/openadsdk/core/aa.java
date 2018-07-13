@@ -12,10 +12,12 @@
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*     */ import com.bytedance.sdk.openadsdk.core.video.a.f;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
+/*     */ import com.bytedance.sdk.openadsdk.dddd.AdEvent;
+import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
-/*     */ 
+/*     */ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -42,12 +44,12 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*  41 */         localUri = Uri.parse((String)localObject);
 /*  42 */         Intent localIntent = new Intent("android.intent.action.VIEW");
 /*  43 */         localIntent.setData(localUri);
-/*  44 */         if (r.a(paramContext, localIntent)) {
+/*  44 */         if (ToolUtils.a(paramContext, localIntent)) {
 /*  45 */           if (!(paramContext instanceof Activity)) {
 /*  46 */             localIntent.addFlags(268435456);
 /*     */           }
 /*  48 */           paramContext.startActivity(localIntent);
-/*  49 */           com.bytedance.sdk.openadsdk.dddd.c.h(paramContext, paramh, paramString, "open_url_app");
+/*  49 */           AdEvent.h(paramContext, paramh, paramString, "open_url_app");
 /*  50 */           return true;
 /*     */         }
 /*  52 */         str = locald.b();
@@ -55,7 +57,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*     */       else {
 /*  55 */         str = locald.b();
 /*     */       }
-/*  57 */       com.bytedance.sdk.openadsdk.dddd.c.h(paramContext, paramh, paramString, "open_fallback_url");
+/*  57 */       AdEvent.h(paramContext, paramh, paramString, "open_fallback_url");
 /*     */     }
 /*     */     else {
 /*  60 */       str = paramh.e();

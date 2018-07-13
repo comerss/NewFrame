@@ -10,8 +10,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bytedance.sdk.openadsdk.core.a.AdClickListener;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 import com.bytedance.sdk.openadsdk.ggg.k;
-import com.bytedance.sdk.openadsdk.ggg.r;
 
 import java.util.List;
 
@@ -43,12 +44,12 @@ import java.util.List;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class f
+/*     */ public class SplashManager
 /*     */   extends View
 /*     */ {
 /*     */   private boolean b;
-/*     */   private boolean c;
-/*     */   private a d;
+/*     */   private boolean needCheckShow;
+/*     */   private SplashListener d;
 /*     */   private View e;
 /*     */   private List<View> f;
 /*     */   @Nullable
@@ -61,27 +62,27 @@ import java.util.List;
 /*  47 */       switch (paramAnonymousMessage.what) {
 /*     */       case 1: 
 /*  49 */         if (b) {
-/*  50 */           if (z.a(f.this.e, 20, f.this.i)) {
-/*  51 */             f.this.c();
-/*  52 */             f.this.a.sendEmptyMessageDelayed(2, 1000L);
-/*  53 */            if (f.this.d != null) {
-                        f.this.d.a(f.this.e);
+/*  50 */           if (z.a(SplashManager.this.e, 20, SplashManager.this.i)) {
+/*  51 */             SplashManager.this.c();
+/*  52 */             SplashManager.this.a.sendEmptyMessageDelayed(2, 1000L);
+/*  53 */            if (SplashManager.this.d != null) {
+                        SplashManager.this.d.onShow(SplashManager.this.e);
                     }
 /*     */           }
 /*     */           else {
-/*  58 */             f.this.a.sendEmptyMessageDelayed(1, 1000L);
+/*  58 */             SplashManager.this.a.sendEmptyMessageDelayed(1, 1000L);
 /*     */           }
 /*     */         }
 /*     */         
 /*     */         break;
 /*     */       case 2: 
-/*  64 */         boolean bool = r.d(n.a(), n.a().getPackageName());
-/*  65 */        if (!z.a(f.this.e, 20, f.this.i) && bool) {
-                if (!f.this.h) {
-                    f.this.setNeedCheckingShow(true);
+/*  64 */         boolean bool = ToolUtils.d(n.a(), n.a().getPackageName());
+/*  65 */        if (!z.a(SplashManager.this.e, 20, SplashManager.this.i) && bool) {
+                if (!SplashManager.this.h) {
+                    SplashManager.this.setNeedCheckingShow(true);
                 }
             } else {
-                f.this.a.sendEmptyMessageDelayed(2, 1000L);
+                SplashManager.this.a.sendEmptyMessageDelayed(2, 1000L);
             }
 /*     */         
 /*     */         break;
@@ -90,7 +91,7 @@ import java.util.List;
 /*     */     }
 /*     */   };
 /*     */   
-/*     */   public f(Context paramContext, View paramView)
+/*     */   public SplashManager(Context paramContext, View paramView)
 /*     */   {
 /*  79 */     super(n.a());
 /*  80 */     this.e = paramView;
@@ -139,7 +140,7 @@ import java.util.List;
 /* 123 */     a(this.g, null);
 /*     */   }
 /*     */   
-/*     */   public void a(List<View> paramList, com.bytedance.sdk.openadsdk.core.a.d paramd) {
+/*     */   public void a(List<View> paramList, AdClickListener paramd) {
 /* 127 */     if (k.b(paramList)) {
 /* 128 */       for (View localView : paramList) {
 /* 129 */         localView.setOnClickListener(paramd);
@@ -153,7 +154,7 @@ import java.util.List;
 /*     */ 
 /*     */   void b()
 /*     */   {
-/* 140 */     if ((!this.c) || (this.b)) {
+/* 140 */     if ((!this.needCheckShow) || (this.b)) {
 /* 141 */       return;
 /*     */     }
 /* 143 */     this.b = true;
@@ -169,7 +170,7 @@ import java.util.List;
 /*     */   }
 /*     */   
 /*     */   public void setNeedCheckingShow(boolean paramBoolean) {
-/* 156 */     this.c = paramBoolean;
+/* 156 */     this.needCheckShow = paramBoolean;
 /* 157 */     if ((!paramBoolean) && (this.b))
 /*     */     {
 /* 159 */       c();
@@ -178,7 +179,7 @@ import java.util.List;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void setCallback(a parama) {
+/*     */   public void setCallback(SplashListener parama) {
 /* 166 */     this.d = parama;
 /*     */   }
 /*     */   
@@ -186,7 +187,7 @@ import java.util.List;
 /* 170 */     this.i = paramInt;
 /*     */   }
 /*     */   
-/*     */   public static abstract interface a
+/*     */   public static abstract interface SplashListener
 /*     */   {
 /*     */     public abstract void a(boolean paramBoolean);
 /*     */     
@@ -194,12 +195,12 @@ import java.util.List;
 /*     */     
 /*     */     public abstract void b();
 /*     */     
-/*     */     public abstract void a(View paramView);
+/*     */     public abstract void onShow(View paramView);
 /*     */   }
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\doErrorHelper.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\HandleInitEvent.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

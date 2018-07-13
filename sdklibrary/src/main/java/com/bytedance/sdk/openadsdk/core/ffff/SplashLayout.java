@@ -36,14 +36,14 @@ import pl.droidsonroids.gif.GifImageView;
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class c
+/*    */ public class SplashLayout
 /*    */   extends FrameLayout
 /*    */ {
 /*    */   private Context a;
 /*    */   private GifImageView b;
 /*    */   private TextView c;
 /*    */   
-/*    */   public c(@NonNull Context paramContext)
+/*    */   public SplashLayout(@NonNull Context paramContext)
 /*    */   {
 /* 33 */     super(paramContext);
 /* 34 */     this.a = paramContext;

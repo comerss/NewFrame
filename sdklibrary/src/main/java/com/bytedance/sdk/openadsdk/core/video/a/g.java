@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.video.c.SSMediaPlayeWrapper;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
@@ -27,12 +29,12 @@ import java.util.List;
 
 public class g implements c, d, MineHandler.OnResult {
     private static final String c = g.class.getSimpleName();
-    private h d;
+    private NewLiveViewLayout d;
     private ViewGroup e;
     private MineHandler f = new MineHandler(this);
     private long g = 0L;
     private long h = 0L;
-    private com.bytedance.sdk.openadsdk.core.video.c.d i;
+    private SSMediaPlayeWrapper i;
     private com.bytedance.sdk.openadsdk.core.video.a.c.a j;
     private long k = 0L;
     private long l = 0L;
@@ -100,7 +102,7 @@ public class g implements c, d, MineHandler.OnResult {
         EnumSet var2 = EnumSet.noneOf(com.bytedance.sdk.openadsdk.core.video.a.b.a.class);
         var2.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.a);
         var2.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.e);
-        this.d = new h(var1, LayoutInflater.from(var1.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, (ViewGroup)null, false), true, var2, this.t, this);
+        this.d = new NewLiveViewLayout(var1, LayoutInflater.from(var1.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, (ViewGroup)null, false), true, var2, this.t, this);
         this.d.a(this);
     }
 
@@ -133,7 +135,7 @@ public class g implements c, d, MineHandler.OnResult {
             }
 
             if (this.i == null) {
-                this.i = new com.bytedance.sdk.openadsdk.core.video.c.d(this.f);
+                this.i = new SSMediaPlayeWrapper(this.f);
             }
 
             this.h = 0L;
@@ -147,7 +149,7 @@ public class g implements c, d, MineHandler.OnResult {
         }
     }
 
-    public com.bytedance.sdk.openadsdk.core.video.c.d h() {
+    public SSMediaPlayeWrapper h() {
         return this.i;
     }
 
@@ -260,7 +262,7 @@ public class g implements c, d, MineHandler.OnResult {
                 this.h = System.currentTimeMillis() - this.g;
                 this.d.a(this.t, this.p, true);
                 if (!this.s) {
-                    com.bytedance.sdk.openadsdk.dddd.c.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
+                    AdEvent.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
                     this.s = true;
                     this.a(this.m, this.m);
                     this.l = this.k = this.m;
@@ -367,7 +369,7 @@ public class g implements c, d, MineHandler.OnResult {
         this.m();
         this.r();
         if (!this.s && this.r) {
-            com.bytedance.sdk.openadsdk.dddd.c.a(p.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
+            AdEvent.a(p.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
             this.s = true;
         }
 
@@ -408,9 +410,9 @@ public class g implements c, d, MineHandler.OnResult {
 
                     if (this.q && var2 == 3 && !this.r) {
                         if (this.u) {
-                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;
@@ -423,9 +425,9 @@ public class g implements c, d, MineHandler.OnResult {
 
                     if (!this.q && !this.r) {
                         if (this.u) {
-                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;

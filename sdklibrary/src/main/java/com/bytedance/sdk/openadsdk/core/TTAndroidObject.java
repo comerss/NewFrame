@@ -10,6 +10,7 @@ import android.util.Log;
 import android.webkit.WebView;
 
 import com.bytedance.sdk.openadsdk.a.UIUtils;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.eeeee.b;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
@@ -61,7 +62,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class v
+/*     */ public class TTAndroidObject
 /*     */   implements b, MineHandler.OnResult
 /*     */ {
 /*     */   private WeakReference<WebView> a;
@@ -84,7 +85,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*  60 */     c.put("dispatch_message", Boolean.TRUE);
 /*     */   }
 /*     */   
-/*     */   public v(Context paramContext) {
+/*     */   public TTAndroidObject(Context paramContext) {
 /*  64 */     this.d = new WeakReference(paramContext);
 /*  65 */     this.b = new MineHandler(Looper.getMainLooper(), this);
 /*     */   }
@@ -93,22 +94,22 @@ import java.util.concurrent.ConcurrentHashMap;
 /*  69 */     return this.a != null ? (WebView)this.a.get() : null;
 /*     */   }
 /*     */   
-/*     */   public v a(WebView paramWebView) {
+/*     */   public TTAndroidObject a(WebView paramWebView) {
 /*  73 */     this.a = new WeakReference(paramWebView);
 /*  74 */     return this;
 /*     */   }
 /*     */   
-/*     */   public v a(String paramString) {
+/*     */   public TTAndroidObject a(String paramString) {
 /*  78 */     this.f = paramString;
 /*  79 */     return this;
 /*     */   }
 /*     */   
-/*     */   public v b(String paramString) {
+/*     */   public TTAndroidObject b(String paramString) {
 /*  83 */     this.g = paramString;
 /*  84 */     return this;
 /*     */   }
 /*     */   
-/*     */   public v a(int paramInt) {
+/*     */   public TTAndroidObject a(int paramInt) {
 /*  88 */     this.h = paramInt;
 /*  89 */     return this;
 /*     */   }
@@ -337,7 +338,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */           }
 /*     */           catch (Exception localException4) {}
 /*     */         }
-/* 316 */         com.bytedance.sdk.openadsdk.dddd.c.a(str2, str3, str4, l1, l2, localJSONObject);
+/* 316 */         AdEvent.a(str2, str3, str4, l1, l2, localJSONObject);
 /* 317 */       } else if (("private".equals(str1)) || ("dispatch_message".equals(str1))) {
 /* 318 */         d(paramUri.toString());
 /*     */       } else {
@@ -438,7 +439,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\v.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\TTAndroidObject.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

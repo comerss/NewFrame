@@ -126,7 +126,7 @@ import java.lang.ref.WeakReference;
 /*     */             {
 /*     */               public void asa(@NonNull com.bytedance.sdk.openadsdk.core.bbb.a paramAnonymous2a) {
 /* 104 */                 if (c.get() != null) {
-/* 105 */                   eee locale = new eee((Context)c.get(), paramAnonymous2a);
+/* 105 */                   TTBannerAdImpl locale = new TTBannerAdImpl((Context)c.get(), paramAnonymous2a);
 /* 106 */                  paramBannerAdListener.onBannerAdLoad(locale);
 /*     */                 }
 /*     */               }

@@ -20,9 +20,10 @@ import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAdDislike;
 import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 import com.bytedance.sdk.openadsdk.ggg.k;
 import com.bytedance.sdk.openadsdk.ggg.o;
-import com.bytedance.sdk.openadsdk.ggg.s;
 
 import java.util.List;
 
@@ -79,7 +80,7 @@ import java.util.List;
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView) {
 /*  56 */        c.dismiss();
-/*  57 */          com.bytedance.sdk.openadsdk.dddd.c.c(b);
+/*  57 */          AdEvent.c(b);
 /*  58 */         if (e!= null) {
 /*  59 */          e.onSelected(0, a.getString(R.string.tt_unlike));
 /*     */         }
@@ -104,7 +105,7 @@ import java.util.List;
 /*     */ 
 /*  80 */         ((f)b.q().get(paramAnonymousInt)).a(true);
 ///*  81 */         cc.cc(bee.bee(TTAdDislikeImpl.this));
-                com.bytedance.sdk.openadsdk.dddd.c.c(b);
+                AdEvent.c(b);
 /*  82 */         if (e != null)
 /*     */         {
 /*  84 */          e.onSelected(paramAnonymousInt + 1, ((f)b.q().get(paramAnonymousInt)).b());
@@ -115,7 +116,7 @@ import java.util.List;
 /*  89 */     localListView.setAdapter(this.d);
 /*     */     
 /*     */ 
-/*  92 */     int i = s.a(this.a) - 120;
+/*  92 */     int i = ViewWather.a(this.a) - 120;
 /*  93 */     this.c.setContentView(localView, new LinearLayout.LayoutParams(i, -2));
 /*  94 */     Window localWindow = this.c.getWindow();
 /*  95 */     localWindow.setGravity(80);

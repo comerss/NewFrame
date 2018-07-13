@@ -37,7 +37,7 @@ import android.widget.TextView;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class s
+/*     */ public class ViewWather
 /*     */ {
 /*     */   public static float a(Context paramContext, float paramFloat)
 /*     */   {
@@ -115,12 +115,12 @@ import android.widget.TextView;
 /* 101 */     paramView.setVisibility(paramInt);
 /*     */   }
 /*     */   
-/*     */   public static final boolean c(View paramView) {
+/*     */   public static final boolean isVisible(View paramView) {
 /* 105 */     if (paramView == null) {
 /* 106 */       return false;
 /*     */     }
 /*     */     
-/* 109 */     return paramView.getVisibility() == 0;
+/* 109 */     return paramView.getVisibility() == View.VISIBLE;
 /*     */   }
 /*     */   
 /*     */   public static void a(TextView paramTextView, CharSequence paramCharSequence) {
@@ -143,7 +143,7 @@ import android.widget.TextView;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void b(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+/*     */   public static void setLayoutParam(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
 /*     */   {
 /* 134 */     if (paramView == null)
 /* 135 */       return;
@@ -151,11 +151,11 @@ import android.widget.TextView;
 /* 137 */     if (localLayoutParams == null)
 /* 138 */       return;
 /* 139 */     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-/* 140 */       a(paramView, (ViewGroup.MarginLayoutParams)localLayoutParams, paramInt1, paramInt2, paramInt3, paramInt4);
+/* 140 */       setLayoutParam(paramView, (ViewGroup.MarginLayoutParams)localLayoutParams, paramInt1, paramInt2, paramInt3, paramInt4);
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private static void a(View paramView, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*     */   private static void setLayoutParam(View paramView, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 145 */     if ((paramView == null) || (paramMarginLayoutParams == null) || ((paramMarginLayoutParams.leftMargin == paramInt1) && (paramMarginLayoutParams.topMargin == paramInt2) && (paramMarginLayoutParams.rightMargin == paramInt3) && (paramMarginLayoutParams.bottomMargin == paramInt4)))
 /*     */     {
 /*     */ 
@@ -172,7 +172,7 @@ import android.widget.TextView;
 /*     */   }
 /*     */   
 /*     */ 
-/*     */   public static boolean a(Context paramContext, View paramView, int paramInt)
+/*     */   public static boolean isVisible(Context paramContext, View paramView, int paramInt)
 /*     */   {
 /* 163 */     if (paramView == null) {
 /* 164 */       LogUtils.a("adView is null.");
@@ -184,12 +184,12 @@ import android.widget.TextView;
 /* 170 */       return false;
 /*     */     }
 /*     */     
-/* 173 */     if (paramView.getWindowVisibility() != 0) {
+/* 173 */     if (paramView.getWindowVisibility() != View.VISIBLE) {
 /* 174 */       LogUtils.a("adView window is not set to VISIBLE.");
 /* 175 */       return false;
 /*     */     }
 /*     */     
-/* 178 */     if (paramView.getVisibility() != 0) {
+/* 178 */     if (paramView.getVisibility() != View.VISIBLE) {
 /* 179 */       LogUtils.a("adView is not set to VISIBLE.");
 /* 180 */       return false;
 /*     */     }
@@ -278,7 +278,7 @@ import android.widget.TextView;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\s.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\ViewWather.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

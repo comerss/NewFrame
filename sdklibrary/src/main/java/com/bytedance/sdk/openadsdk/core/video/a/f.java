@@ -15,7 +15,7 @@ import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
-import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 /*     */
 /*     */
@@ -128,7 +128,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   
 /*     */   private void f()
 /*     */   {
-/* 114 */     boolean bool = s.a(getContext(), this, 50);
+/* 114 */     boolean bool = ViewWather.isVisible(getContext(), this, 50);
 /* 115 */     a(bool);
 /* 116 */     this.n.obtainMessage(1).sendToTarget();
 /*     */   }
@@ -179,7 +179,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /* 162 */       this.c.a(this.b.a().d(), this.b.l(), this.d
 /* 163 */         .getWidth(), this.d.getHeight(), null, this.b.o(), this.m, b());
 /* 164 */       this.l = false;
-/* 165 */       s.a(this.i, 8);
+/* 165 */       ViewWather.a(this.i, 8);
 /*     */     }
 /* 167 */     if ((paramInt == 0) && 
 /* 168 */       (this.n != null) && (this.c != null) && (this.c.h() != null) && 
@@ -204,10 +204,10 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   public void setIsAutoPlay(boolean paramBoolean) {
 /* 188 */     this.f = paramBoolean;
 /* 189 */     if (!paramBoolean) {
-/* 190 */       s.a(this.i, 0);
+/* 190 */       ViewWather.a(this.i, 0);
 /* 191 */       ((AQuery)this.k.id(this.j)).image(this.b.a().c());
 /*     */     } else {
-/* 193 */       s.a(this.i, 8);
+/* 193 */       ViewWather.a(this.i, 8);
 /*     */     }
 /*     */   }
 /*     */   

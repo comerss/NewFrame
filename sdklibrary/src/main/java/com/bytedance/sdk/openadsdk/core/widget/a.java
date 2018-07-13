@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.video.a.d;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 /*     */
 /*     */
@@ -185,8 +186,8 @@ import com.bytedance.sdk.openadsdk.core.video.a.d;
 /*     */   private boolean a(MotionEvent paramMotionEvent)
 /*     */   {
 /* 168 */     if (paramMotionEvent.getActionMasked() == 0) {
-/* 169 */       int i1 = com.bytedance.sdk.openadsdk.ggg.s.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
-/* 170 */       int i2 = com.bytedance.sdk.openadsdk.ggg.s.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+/* 169 */       int i1 = ViewWather.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+/* 170 */       int i2 = ViewWather.a(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
 /*     */       
 /* 172 */       float f1 = paramMotionEvent.getRawX();
 /* 173 */       float f2 = paramMotionEvent.getRawY();

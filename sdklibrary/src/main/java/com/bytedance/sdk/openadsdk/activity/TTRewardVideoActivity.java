@@ -28,12 +28,16 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
+import com.bytedance.sdk.openadsdk.ccccc.MyDownloadManager;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 import com.bytedance.sdk.openadsdk.core.AdNativeListenerImpl;
 import com.bytedance.sdk.openadsdk.core.ab;
-import com.bytedance.sdk.openadsdk.core.v;
+import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
+import com.bytedance.sdk.openadsdk.ggg.WebViewHelper;
 
 import org.json.JSONObject;
 
@@ -115,10 +119,10 @@ import java.util.UUID;
 /*     */   private TextView n;
 /*     */   private com.bytedance.sdk.openadsdk.core.nibuguan.h o;
 /*     */   private TTRewardVideoAd.RewardAdInteractionListener mListener;
-/*     */   private x q;
+/*     */   private DownLoadListenerImpl q;
 /*     */   private String r;
 /*     */   private String s;
-/*     */   private v t;
+/*     */   private TTAndroidObject t;
 /*     */   private int u;
 /*     */   private int v;
 /*     */   private String w;
@@ -177,7 +181,7 @@ import java.util.UUID;
 /* 139 */     this.n = ((TextView)findViewById(R.id.tv_comment_text));
 /* 140 */     if (!this.E) {
 /* 141 */       this.k.setVisibility(View.INVISIBLE);
-///* 142 */       int i1 = (int)com.bytedance.sdk.openadsdk.ApiException.s.intera(this.intera, 24.0F);
+///* 142 */       int i1 = (int)com.bytedance.sdk.openadsdk.ApiException.ViewWather.intera(this.intera, 24.0F);
 /* 143 */       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.d.getLayoutParams();
 /* 144 */       localLayoutParams.gravity = 85;
 /* 145 */       localLayoutParams.bottomMargin = 24;
@@ -191,10 +195,10 @@ import java.util.UUID;
 /* 153 */       this.n.setVisibility(View.GONE);
 /* 154 */       this.g.setVisibility(View.VISIBLE);
 /* 155 */       this.m.setVisibility(View.VISIBLE);
-/* 156 */       this.f.setMaxWidth((int)com.bytedance.sdk.openadsdk.ggg.s.a(this, 120.0F));
+/* 156 */       this.f.setMaxWidth((int) ViewWather.a(this, 120.0F));
 /* 157 */       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.l.getLayoutParams();
-/* 158 */       localLayoutParams.leftMargin = ((int)com.bytedance.sdk.openadsdk.ggg.s.a(this, 89.0F));
-/* 159 */       localLayoutParams.topMargin = ((int)com.bytedance.sdk.openadsdk.ggg.s.a(this, 2.0F));
+/* 158 */       localLayoutParams.leftMargin = ((int) ViewWather.a(this, 89.0F));
+/* 159 */       localLayoutParams.topMargin = ((int) ViewWather.a(this, 2.0F));
 /* 160 */       this.l.setLayoutParams(localLayoutParams);
 /*     */     }
 /*     */   }
@@ -252,7 +256,7 @@ import java.util.UUID;
 /* 214 */     boolean bool = Build.VERSION.SDK_INT >= 16;
 /* 215 */      com.bytedance.sdk.openadsdk.core.q.a(this.a).a(bool).a(this.b);
 /* 216 */     this.b.setWebViewClient(new MineWebViewClient(this.a, this.t, this.r));
-/* 217 */     this.b.getSettings().setUserAgentString(com.bytedance.sdk.openadsdk.ggg.j.a(this.b, this.v));
+/* 217 */     this.b.getSettings().setUserAgentString(WebViewHelper.a(this.b, this.v));
 /*     */
 /* 219 */     if (Build.VERSION.SDK_INT >= 21) {
 /* 220 */       this.b.getSettings().setMixedContentMode(0);
@@ -266,7 +270,7 @@ import java.util.UUID;
 /* 228 */         if (o != null) {
 /* 229 */           str = o.d() == null ? null : o.d().a();
 /*     */         }
-/* 231 */         com.bytedance.sdk.openadsdk.ccccc.l.a(a, paramAnonymousString1, null, str);
+/* 231 */         MyDownloadManager.a(a, paramAnonymousString1, null, str);
 /* 232 */         TTRewardVideoActivity.this.a();
 /*     */       }
 /* 234 */     });
@@ -276,7 +280,7 @@ import java.util.UUID;
 /* 238 */         if (mListener != null) {
 /* 239 */          mListener.onAdClose();
 /*     */         }
-/* 241 */         com.bytedance.sdk.openadsdk.dddd.c.g(a, o, "embeded_ad", "click_close");
+/* 241 */         AdEvent.g(a, o, "embeded_ad", "click_close");
 /* 242 */         TTRewardVideoActivity.this.finish();
 /*     */       }
 /* 244 */     });
@@ -325,27 +329,27 @@ import java.util.UUID;
 /*     */         }
 /*     */       }
 /* 289 */     };
-///* 290 */     this.D.bb(this.mQ);
-/* 291 */     this.q.a(new x.b()
+///* 290 */     this.D.OnClick(this.mQ);
+/* 291 */     this.q.a(new DownLoadListenerImpl.b()
 /*     */     {
 /*     */       public void a() {
 /* 294 */         String str = L ? "click_start_play_bar" : "click_start_play";
-/* 295 */         com.bytedance.sdk.openadsdk.dddd.c.a(a, o, "embeded_ad", str);
+/* 295 */         AdEvent.a(a, o, "embeded_ad", str);
 /*     */       }
 /*     */
 /*     */       public void b()
 /*     */       {
-/* 300 */         com.bytedance.sdk.openadsdk.dddd.c.b(a, o, "embeded_ad", "click_play_pause");
+/* 300 */         AdEvent.b(a, o, "embeded_ad", "click_play_pause");
 /*     */       }
 /*     */
 /*     */       public void c()
 /*     */       {
-/* 305 */         com.bytedance.sdk.openadsdk.dddd.c.c(a, o, "embeded_ad", "click_play_continue");
+/* 305 */         AdEvent.c(a, o, "embeded_ad", "click_play_continue");
 /*     */       }
 /*     */
 /*     */       public void d()
 /*     */       {
-/* 310 */         com.bytedance.sdk.openadsdk.dddd.c.h(a,o,  "embeded_ad", "click_play_open");
+/* 310 */         AdEvent.h(a,o,  "embeded_ad", "click_play_open");
 /*     */       }
 /* 312 */     });
 /* 313 */     this.i.setOnClickListener(this.D);
@@ -356,7 +360,7 @@ import java.util.UUID;
 /*     */
 /*     */   private void g()
 /*     */   {
-/* 321 */     this.t = new v(this.a);
+/* 321 */     this.t = new TTAndroidObject(this.a);
 /* 322 */     this.t.a(this.b)
 /* 323 */       .a(this.r)
 /* 324 */       .b(this.s)
@@ -399,7 +403,7 @@ import java.util.UUID;
 /*     */       {
 /* 362 */         TTRewardVideoActivity.this.A = (int)(TTRewardVideoActivity.this.o.a().b() - (double)(paramAnonymousLong1 / 1000L));
     if (TTRewardVideoActivity.this.A >= 0) {
-        com.bytedance.sdk.openadsdk.ggg.s.a(TTRewardVideoActivity.this.h, 0);
+        ViewWather.a(TTRewardVideoActivity.this.h, 0);
         TTRewardVideoActivity.this.h.setText(String.valueOf(TTRewardVideoActivity.this.A));
     }
 /*     */       }
@@ -409,7 +413,7 @@ import java.util.UUID;
 /* 371 */       .getWidth(), this.j.getHeight(), null, this.o.o(), paramLong, this.y);
 /* 372 */     if (bool)
 /*     */     {
-/* 374 */       com.bytedance.sdk.openadsdk.dddd.c.a(this.a, this.o, "embeded_ad");
+/* 374 */       AdEvent.show(this.a, this.o, "embeded_ad");
 /* 375 */       if (this.mListener != null) {
 /* 376 */         this.mListener.onAdShow();
 /*     */       }

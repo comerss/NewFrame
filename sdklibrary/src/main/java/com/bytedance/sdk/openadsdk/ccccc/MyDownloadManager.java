@@ -53,7 +53,7 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class l
+/*     */ public class MyDownloadManager
 /*     */ {
 /*     */   public static long a(Context paramContext, String paramString1, String paramString2, String paramString3)
 /*     */   {
@@ -62,7 +62,7 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */     }
 /*     */     try
 /*     */     {
-/*  63 */       ImageUtils localf = ImageUtils.aaaaaa(paramContext);
+/*  63 */       AppAdViewHolder localf = AppAdViewHolder.aaaaaa(paramContext);
 /*  64 */       if (localf == null)
 /*  65 */         return -1L;
 /*  66 */       Uri localUri = Uri.parse(paramString1);
@@ -77,7 +77,7 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*  75 */       if (StringUtils.isEmpty(paramString2)) {
 /*  76 */         paramString2 = str;
 /*     */       }
-/*  78 */       ImageUtils.fccc localc = new ImageUtils.fccc(localUri);
+/*  78 */       AppAdViewHolder.fccc localc = new AppAdViewHolder.fccc(localUri);
 /*  79 */       if (!str.endsWith(".apk")) {
 /*  80 */         str = str + ".apk";
 /*     */       }
@@ -107,7 +107,7 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ccccc\l.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ccccc\MyDownloadManager.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResult {
+public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResult {
     private cc a;
     private boolean b;
     private boolean c;
@@ -49,11 +49,11 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
     private long u;
     private boolean v;
 
-    public d(Handler var1) {
+    public SSMediaPlayeWrapper(Handler var1) {
         this(var1, -1);
     }
 
-    public d(Handler var1, int var2) {
+    public SSMediaPlayeWrapper(Handler var1, int var2) {
         this.a = null;
         this.b = false;
         this.c = false;
@@ -115,7 +115,7 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
 
             this.a(new Runnable() {
                 public void run() {
-                    d.this.g.sendEmptyMessageDelayed(100, 0L);
+                    SSMediaPlayeWrapper.this.g.sendEmptyMessageDelayed(100, 0L);
                 }
             });
         }
@@ -151,8 +151,8 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
     public void c() {
         this.a(new Runnable() {
             public void run() {
-                if (d.this.g != null) {
-                    d.this.g.sendEmptyMessage(104);
+                if (SSMediaPlayeWrapper.this.g != null) {
+                    SSMediaPlayeWrapper.this.g.sendEmptyMessage(104);
                 }
 
             }
@@ -164,8 +164,8 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
         if (this.e == 207 || this.e == 206 || this.e == 209) {
             this.a(new Runnable() {
                 public void run() {
-                    if (d.this.g != null) {
-                        d.this.g.obtainMessage(106, var1).sendToTarget();
+                    if (SSMediaPlayeWrapper.this.g != null) {
+                        SSMediaPlayeWrapper.this.g.obtainMessage(106, var1).sendToTarget();
                     }
 
                 }
@@ -184,9 +184,9 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
     public void a(final SurfaceHolder var1) {
         this.a(new Runnable() {
             public void run() {
-                d.this.q();
-                if (d.this.g != null) {
-                    d.this.g.obtainMessage(110, var1).sendToTarget();
+                SSMediaPlayeWrapper.this.q();
+                if (SSMediaPlayeWrapper.this.g != null) {
+                    SSMediaPlayeWrapper.this.g.obtainMessage(110, var1).sendToTarget();
                 }
 
             }
@@ -210,9 +210,9 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
     public void a(final String var1) {
         this.a(new Runnable() {
             public void run() {
-                d.this.q();
-                if (d.this.g != null) {
-                    d.this.g.obtainMessage(107, var1).sendToTarget();
+                SSMediaPlayeWrapper.this.q();
+                if (SSMediaPlayeWrapper.this.g != null) {
+                    SSMediaPlayeWrapper.this.g.obtainMessage(107, var1).sendToTarget();
                 }
 
             }
@@ -512,9 +512,9 @@ public class d implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResu
             this.g.post(new Runnable() {
                 public void run() {
                     try {
-                        d.this.a.h();
-                        d.this.e = 207;
-                        d.this.o = false;
+                        SSMediaPlayeWrapper.this.a.h();
+                        SSMediaPlayeWrapper.this.e = 207;
+                        SSMediaPlayeWrapper.this.o = false;
                     } catch (Exception var2) {
                         ;
                     }

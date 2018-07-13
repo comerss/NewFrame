@@ -4,7 +4,7 @@
 /*     */ import android.graphics.Rect;
 /*     */ import android.os.PowerManager;
 /*     */ import android.view.View;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.s;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */ import java.lang.reflect.Method;
 /*     */ 
 /*     */ 
@@ -95,7 +95,7 @@
 /*     */   private static int c(View paramView, int paramInt)
 /*     */   {
 /*  97 */     if (paramInt == 3) {
-/*  98 */       return (int)(s.a(paramView.getContext().getApplicationContext()) * 0.7D);
+/*  98 */       return (int)(ViewWather.a(paramView.getContext().getApplicationContext()) * 0.7D);
 /*     */     }
 /* 100 */     return 100;
 /*     */   }
@@ -108,7 +108,7 @@
 /*     */   private static int d(View paramView, int paramInt)
 /*     */   {
 /* 110 */     if (paramInt == 3) {
-/* 111 */       return s.b(paramView.getContext().getApplicationContext()) / 2;
+/* 111 */       return ViewWather.b(paramView.getContext().getApplicationContext()) / 2;
 /*     */     }
 /* 113 */     return 100;
 /*     */   }

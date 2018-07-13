@@ -10,9 +10,10 @@ import android.app.Service;
 /*     */ import android.os.IBinder;
 /*     */ import android.text.TextUtils;
 /*     */ import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.ImageUtils;
-/*     */ import com.bytedance.sdk.openadsdk.ccccc.g;
+/*     */ import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
+import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
+/*     */ import com.bytedance.sdk.openadsdk.ccccc.AppAdViewHolder;
+/*     */
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.i;
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.ccccc.n;
@@ -69,7 +70,7 @@ public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*  66 */         localObject2 = i.a(paramContext).a((Uri)localObject1, null, null, null, null);
 /*     */         try {
 /*  68 */           if (((Cursor)localObject2).moveToFirst()) {
-/*  69 */             j = g.a((Cursor)localObject2, "status");
+/*  69 */             j = DownloadNotifier.a((Cursor)localObject2, "status");
 /*     */           } else {
 /*  71 */             LogUtils.d("TTDownloadHandlerService", "Missing details for download " + l);
 /*  72 */             return;
@@ -86,8 +87,8 @@ public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*     */           catch (Exception localException2) {}
 /*     */           
 /*     */ 
-/*  86 */           ImageUtils.aaaaaa(paramContext,
-/*  87 */             ImageUtils.aaaaaa(j), l);
+/*  86 */           AppAdViewHolder.aaaaaa(paramContext,
+/*  87 */             AppAdViewHolder.aaaaaa(j), l);
 /*     */         }
 /*     */         catch (Exception localException3)
 /*     */         {
@@ -104,8 +105,8 @@ public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*     */ 
 /*     */ 
 /*  88 */         if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(j)) {
-/*  89 */           g.a(paramContext).a(paramContext, l);
-/*  90 */           g.a(paramContext).a(str2);
+/*  89 */           DownloadNotifier.a(paramContext).a(paramContext, l);
+/*  90 */           DownloadNotifier.a(paramContext).a(str2);
 /*     */         }
 /*  92 */       } else if (str1.equals("android.ss.intent.action.DOWNLOAD_COMPLETE")) {
 /*  93 */         l = paramIntent.getLongExtra("extra_download_id", -1L);
@@ -137,14 +138,14 @@ private void b(Context paramContext, Intent paramIntent)
 /* 118 */         localIntent.addFlags(268435456);
 /* 119 */         paramContext.startActivity(localIntent);
 /* 120 */         long l2 = ContentUris.parseId(paramIntent.getData());
-/* 121 */         g.a(paramContext).a(paramContext, l2); } else { long l1;
+/* 121 */         DownloadNotifier.a(paramContext).a(paramContext, l2); } else { long l1;
 /* 122 */         if ("android.ss.intent.action.DOWNLOAD_OPEN".equals(str)) {
 /* 123 */           l1 = ContentUris.parseId(paramIntent.getData());
 /* 124 */           s.a(paramContext, l1, 268435456);
-/* 125 */           g.a(paramContext).a(paramContext, l1);
+/* 125 */           DownloadNotifier.a(paramContext).a(paramContext, l1);
 /* 126 */         } else if ("android.ss.intent.action.DOWNLOAD_HIDE".equals(str)) {
 /* 127 */           l1 = ContentUris.parseId(paramIntent.getData());
-/* 128 */           g.a(paramContext).a(paramContext, l1);
+/* 128 */           DownloadNotifier.a(paramContext).a(paramContext, l1);
 /*     */         }
 /*     */       }
 /* 131 */     } catch (Exception localException) { localException.printStackTrace();

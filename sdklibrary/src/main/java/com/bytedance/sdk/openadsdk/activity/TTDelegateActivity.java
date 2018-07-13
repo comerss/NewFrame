@@ -17,11 +17,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.ccccc.AppAdViewHolder;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.ccccc.bds.LocationUtils;
 import com.bytedance.sdk.openadsdk.ccccc.bds.e;
-import com.bytedance.sdk.openadsdk.ccccc.ImageUtils;
-import com.bytedance.sdk.openadsdk.ccccc.g;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
 import com.bytedance.sdk.openadsdk.core.h;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
@@ -171,7 +171,7 @@ import java.net.URL;
 /*     */     {
 /*     */       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
 /*     */       {
-/* 130 */         x.a(paramString1, 1);
+/* 130 */         DownLoadListenerImpl.a(paramString1, 1);
 /* 131 */         TTDelegateActivity.this.finish();
 /*     */       }
 /*     */
@@ -186,7 +186,7 @@ import java.net.URL;
 /* 142 */       ).setNegativeButton(getString(R.string.tt_label_cancel), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 137 */           x.a(paramString1, 2);
+/* 137 */           DownLoadListenerImpl.a(paramString1, 2);
 /* 138 */           TTDelegateActivity.this.finish(); } })
 /*     */
 /*     */
@@ -198,7 +198,7 @@ import java.net.URL;
 /*     */         public void onCancel(DialogInterface paramAnonymousDialogInterface)
 /*     */         {
 /*     */
-/* 145 */           x.a(paramString1, 2);
+/* 145 */           DownLoadListenerImpl.a(paramString1, 2);
 /* 146 */           TTDelegateActivity.this.finish();
 /*     */         }
 /*     */
@@ -332,7 +332,7 @@ import java.net.URL;
 /* 261 */       .setPositiveButton(getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 264 */           ImageUtils.aaaaaa(TTDelegateActivity.this).d(new long[] { l });
+/* 264 */           AppAdViewHolder.aaaaaa(TTDelegateActivity.this).d(new long[] { l });
 /* 265 */           if (com.bytedance.sdk.openadsdk.eeeee.a.a() != null) {
 /* 266 */             com.bytedance.sdk.openadsdk.eeeee.a.a().a(str2);
 /*     */           }
@@ -361,7 +361,7 @@ import java.net.URL;
 /*     */   private void a(int paramInt, long paramLong)
 /*     */   {
 /* 290 */     if ((!h.a().j()) && (paramInt != 200)) {
-/* 291 */       g.b(getApplicationContext(), paramLong);
+/* 291 */       DownloadNotifier.b(getApplicationContext(), paramLong);
 /*     */     }
 /*     */   }
 /*     */

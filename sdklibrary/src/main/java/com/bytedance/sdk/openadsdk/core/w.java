@@ -14,7 +14,7 @@
 /*     */ import com.bytedance.sdk.openadsdk.TTImage;
 /*     */ import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 /*     */
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.g;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*     */ import com.bytedance.sdk.openadsdk.core.video.a.f;
@@ -151,7 +151,7 @@ import com.bytedance.sdk.openadsdk.ccccc.x;
 /*     */   public DownloadStatusController getDownloadStatusController()
 /*     */   {
 /* 152 */     if ((this.e == null) && (this.b != null)) {
-/* 153 */       final x localx = this.b.a();
+/* 153 */       final DownLoadListenerImpl localx = this.b.a();
 /* 154 */       if (localx != null) {
 /* 155 */         this.e = new DownloadStatusController()
 /*     */         {

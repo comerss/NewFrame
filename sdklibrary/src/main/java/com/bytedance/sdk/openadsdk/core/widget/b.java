@@ -12,7 +12,7 @@ import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.m;
 import com.bytedance.sdk.openadsdk.core.video.a.d;
-import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 /*     */
 /*     */
@@ -180,10 +180,10 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /* 167 */       str = this.d.getResources().getString(R.string.video_without_wifi_tips) + this.d.getResources().getString(R.string.video_bytesize);
 /*     */     }
 /*     */     
-/* 170 */     s.a(this.a, 0);
-/* 171 */     s.a(this.b, str);
+/* 170 */     ViewWather.a(this.a, 0);
+/* 171 */     ViewWather.a(this.b, str);
 /*     */     
-/* 173 */     if (s.c(this.a)) {
+/* 173 */     if (ViewWather.isVisible(this.a)) {
 /* 174 */       this.a.bringToFront();
 /*     */     }
 /*     */   }

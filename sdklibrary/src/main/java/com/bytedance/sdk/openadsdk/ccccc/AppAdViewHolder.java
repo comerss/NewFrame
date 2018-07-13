@@ -17,7 +17,7 @@ import android.util.Pair;
 
 import com.bytedance.sdk.openadsdk.core.h;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 import java.io.File;
 import java.net.HttpURLConnection;
@@ -355,7 +355,7 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*      */ 
-/*      */ public class ImageUtils
+/*      */ public class AppAdViewHolder
 /*      */ {
 /*  335 */   public static final String[] STRINGS = { "_id", "_data AS local_filename", "mediaprovider_uri", "destination", "title", "description", "icon_url", "uri", "status", "hint", "mimetype AS media_type", "total_bytes AS total_size", "lastmod AS last_modified_timestamp", "current_bytes AS bytes_so_far", "allow_write", "etag", "'placeholder' AS local_uri", "'placeholder' AS reason" };
 /*      */   
@@ -945,16 +945,16 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*  922 */   private Uri f = com.bytedance.sdk.openadsdk.ccccc.m.a.a;
-/*      */   private static ImageUtils g;
+/*      */   private static AppAdViewHolder g;
 /*      */   
-/*      */   public static synchronized ImageUtils aaaaaa(Context paramContext) {
+/*      */   public static synchronized AppAdViewHolder aaaaaa(Context paramContext) {
 /*  926 */     if (g == null) {
-/*  927 */       g = new ImageUtils(paramContext, paramContext.getPackageName());
+/*  927 */       g = new AppAdViewHolder(paramContext, paramContext.getPackageName());
 /*      */     }
 /*  929 */     return g;
 /*      */   }
 /*      */   
-/*      */   private ImageUtils(Context paramContext, String paramString) {
+/*      */   private AppAdViewHolder(Context paramContext, String paramString) {
 /*  933 */     this.b = paramContext.getApplicationContext();
 /*  934 */     this.c = paramContext.getApplicationContext().getContentResolver();
 /*  935 */     this.mI = i.a(this.b.getApplicationContext());
@@ -1071,7 +1071,7 @@ return null;
 /* 1031 */         final long l1 = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
 /* 1032 */         final String str = localCursor.getString(localCursor.getColumnIndexOrThrow("etag"));
 /* 1033 */         if (!TextUtils.isEmpty(str)) {
-/* 1034 */           if (!r.a(this.b)) {
+/* 1034 */           if (!ToolUtils.a(this.b)) {
 /* 1035 */             aaaaaa(l1);
 /* 1036 */             return l1;
 /*      */           }
@@ -1759,7 +1759,7 @@ return null;
 /*      */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\doErrorHelper.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\HandleInitEvent.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

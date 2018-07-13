@@ -48,8 +48,8 @@
 /* 48 */     if (paramLong < 0L) {
 /* 49 */       return;
 /*    */     }
-/* 51 */     int i = ImageUtils.aaaaaa(paramInt);
-/* 52 */     ImageUtils.aaaaaa(this.b, i, paramLong);
+/* 51 */     int i = AppAdViewHolder.aaaaaa(paramInt);
+/* 52 */     AppAdViewHolder.aaaaaa(this.b, i, paramLong);
 /*    */   }
 /*    */   
 /*    */   public void removeDownloadTask(long paramLong)
@@ -58,7 +58,7 @@
 /* 58 */       return;
 /*    */     }
 /*    */     try {
-/* 61 */       g.c(this.b, paramLong);
+/* 61 */       DownloadNotifier.c(this.b, paramLong);
 /* 62 */       Uri localUri = ContentUris.withAppendedId(m.a.a, paramLong);
 /* 63 */       Intent localIntent = new Intent(this.b, TTDelegateActivity.class);
 /* 64 */       localIntent.setData(localUri);

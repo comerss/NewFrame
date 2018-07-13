@@ -1,6 +1,6 @@
 package com.bytedance.sdk.openadsdk.core.video.a;
 
-import com.bytedance.sdk.openadsdk.core.video.c.d;
+import com.bytedance.sdk.openadsdk.core.video.c.SSMediaPlayeWrapper;
 import java.util.List;
 
 public abstract interface c
@@ -33,7 +33,7 @@ public abstract interface c
   
   public abstract boolean g();
   
-  public abstract d h();
+  public abstract SSMediaPlayeWrapper h();
   
   public abstract boolean i();
   

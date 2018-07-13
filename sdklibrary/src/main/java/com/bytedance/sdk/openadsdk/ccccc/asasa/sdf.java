@@ -5,9 +5,9 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 
 import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
-import com.bytedance.sdk.openadsdk.ccccc.g;
+import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
 import com.bytedance.sdk.openadsdk.core.nibuguan.e;
-import com.bytedance.sdk.openadsdk.dddd.c;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,7 +49,7 @@ import java.util.concurrent.Executors;
 /*     */ 
 /*     */   public void a(long paramLong, int paramInt, String paramString)
 /*     */   {
-/*  41 */     com.bytedance.sdk.openadsdk.core.nibuguan.e locale = g.a(this.a).a(paramLong);
+/*  41 */     com.bytedance.sdk.openadsdk.core.nibuguan.e locale = DownloadNotifier.a(this.a).a(paramLong);
 /*  42 */     if ((locale == null) || (!locale.c())) {
 /*  43 */       return;
 /*     */     }
@@ -59,16 +59,16 @@ import java.util.concurrent.Executors;
 /*     */ 
 /*     */     case 1: 
 /*  50 */       this.b.submit(new intera(paramString, paramLong, locale));
-/*  51 */       c.d(this.a, locale.a(), locale.b(), "download_finish");
+/*  51 */       AdEvent.d(this.a, locale.a(), locale.b(), "download_finish");
 /*  52 */       break;
 /*     */     
 /*     */     case 3: 
 /*     */       break;
 /*     */     
 /*     */     case 2: 
-/*  58 */       c.h(this.a, locale.a(), locale.b(), "click_open");
+/*  58 */       AdEvent.h(this.a, locale.a(), locale.b(), "click_open");
 /*     */       
-/*  60 */       g.a(this.a).b(paramLong);
+/*  60 */       DownloadNotifier.a(this.a).b(paramLong);
 /*  61 */       break;
 /*     */     }
 /*     */     
@@ -102,8 +102,8 @@ import java.util.concurrent.Executors;
 /*     */ 
 /*     */   private void a(String paramString, long paramLong, e parame)
 /*     */   {
-/*  94 */     g.a(this.a).b(paramLong);
-/*  95 */     c.e(this.a, parame.a(), parame.b(), "install_finish");
+/*  94 */     DownloadNotifier.a(this.a).b(paramLong);
+/*  95 */     AdEvent.e(this.a, parame.a(), parame.b(), "install_finish");
 /*     */     
 /*  97 */     TTGlobalAppDownloadListener localTTGlobalAppDownloadListener = com.bytedance.sdk.openadsdk.core.h.a().l();
 /*  98 */     if (localTTGlobalAppDownloadListener != null) {

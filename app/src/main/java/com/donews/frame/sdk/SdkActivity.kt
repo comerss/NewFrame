@@ -21,7 +21,6 @@ import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.comers.market.base.Data
 import com.donews.frame.R
 import com.donews.frame.sdk.Utils.c
-import kotlinx.android.synthetic.main.activity_sdk.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -77,7 +76,7 @@ class SdkActivity : RxBaseActivity() {
                  showToast("成功饿了")
                  Log.i("SDK--->", "成功饿了---》")
 
-                 this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
+//                 this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
              }
 
          },50000)

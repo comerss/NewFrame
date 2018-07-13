@@ -3,16 +3,17 @@
 /*    */ import android.net.Uri;
 /*    */
 /*    */ import android.webkit.WebView;
-/*    */ import com.bytedance.sdk.openadsdk.core.v;
+/*    */ import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
+
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ 
-/*    */ public class j
+/*    */ public class WebViewHelper
 /*    */ {
-/*    */   public static void a(Uri paramUri, v paramv)
+/*    */   public static void a(Uri paramUri, TTAndroidObject paramv)
 /*    */   {
 /* 17 */     if ((paramv != null) && (paramv.a(paramUri))) {
 /*    */       try {
@@ -38,7 +39,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\j.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\mTTFeedAd.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

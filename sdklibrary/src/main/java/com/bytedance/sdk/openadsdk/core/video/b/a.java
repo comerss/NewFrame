@@ -15,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.video.a.NewLiveViewLayout;
 import com.bytedance.sdk.openadsdk.core.video.a.b;
 import com.bytedance.sdk.openadsdk.core.video.a.e;
+import com.bytedance.sdk.openadsdk.core.video.c.SSMediaPlayeWrapper;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
@@ -70,12 +73,12 @@ import java.util.List;
 /*     */   implements com.bytedance.sdk.openadsdk.core.video.a.c, com.bytedance.sdk.openadsdk.core.video.a.d, MineHandler.OnResult
 /*     */ {
 /*  47 */   private static final String c = a.class.getSimpleName();
-/*     */   private com.bytedance.sdk.openadsdk.core.video.a.h d;
+/*     */   private NewLiveViewLayout d;
 /*     */   private ViewGroup e;
 /*  50 */   private MineHandler f = new MineHandler(this);
 /*  51 */   private long g = 0L;
 /*  52 */   private long h = 0L;
-/*     */   private com.bytedance.sdk.openadsdk.core.video.c.d i;
+/*     */   private SSMediaPlayeWrapper i;
 /*     */   private com.bytedance.sdk.openadsdk.core.video.a.c.a j;
 /*  55 */   private long k = 0L;
 /*  56 */   private long l = 0L;
@@ -104,7 +107,7 @@ import java.util.List;
 /*  79 */     localEnumSet.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.a);
 /*  80 */     localEnumSet.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.e);
 /*     */     
-/*  82 */     this.d = new com.bytedance.sdk.openadsdk.core.video.a.h(paramContext, LayoutInflater.from(paramContext.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, null, false), true, localEnumSet, this.t, this);
+/*  82 */     this.d = new NewLiveViewLayout(paramContext, LayoutInflater.from(paramContext.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, null, false), true, localEnumSet, this.t, this);
 /*  83 */     this.d.a(this);
 /*     */   }
 /*     */   
@@ -140,7 +143,7 @@ import java.util.List;
 /* 115 */       this.d.a(paramInt1, paramInt2);
 /*     */     }
 /* 117 */     if (this.i == null) {
-/* 118 */       this.i = new com.bytedance.sdk.openadsdk.core.video.c.d(this.f);
+/* 118 */       this.i = new SSMediaPlayeWrapper(this.f);
 /*     */     }
 /*     */     
 /* 121 */     this.h = 0L;
@@ -152,7 +155,7 @@ import java.util.List;
 /* 127 */     return true;
 /*     */   }
 /*     */   
-/*     */   public com.bytedance.sdk.openadsdk.core.video.c.d h()
+/*     */   public SSMediaPlayeWrapper h()
 /*     */   {
 /* 132 */     return this.i;
 /*     */   }
@@ -320,7 +323,7 @@ import java.util.List;
 /*     */     }
 /*     */     
 /* 297 */     if (!this.s) {
-/* 298 */       com.bytedance.sdk.openadsdk.dddd.c.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.m, 100);
+/* 298 */       AdEvent.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.m, 100);
 /*     */       
 /* 300 */       this.s = true;
 /* 301 */       a(this.m, this.m);
@@ -378,7 +381,7 @@ import java.util.List;
 /*     */     }
 /* 354 */     if ((!this.s) && (this.r))
 /*     */     {
-/* 356 */       com.bytedance.sdk.openadsdk.dddd.c.a((Context)this.p.get(), this.t, "embeded_ad", "play_pause",
+/* 356 */       AdEvent.a((Context)this.p.get(), this.t, "embeded_ad", "play_pause",
 /* 357 */         e(), k());
 /*     */     }
 /* 359 */     r();
@@ -395,7 +398,7 @@ import java.util.List;
 /* 370 */       q();
 /*     */     }
 /* 372 */     if ((!this.s) && (this.r)) {
-/* 373 */       com.bytedance.sdk.openadsdk.dddd.c.a((Context)this.p.get(), this.t, "embeded_ad", "continue_play",
+/* 373 */       AdEvent.a((Context)this.p.get(), this.t, "embeded_ad", "continue_play",
 /* 374 */         e(), k());
 /*     */     }
 /*     */   }
@@ -464,7 +467,7 @@ import java.util.List;
 /* 439 */         this.d.g();
 /*     */       }
 /* 441 */       if ((this.q) && (i1 == 3) && (!this.r)) {
-/* 442 */         com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+/* 442 */         AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
 /* 443 */         this.r = true;
 /*     */       }
 /*     */       break;
@@ -473,7 +476,7 @@ import java.util.List;
 /* 448 */         this.f.removeCallbacks(this.C);
 /*     */       }
 /* 450 */       if ((!this.q) && (!this.r)) {
-/* 451 */         com.bytedance.sdk.openadsdk.dddd.c.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+/* 451 */         AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
 /* 452 */         this.r = true;
 /*     */       }
 /* 454 */       if (this.d != null) {

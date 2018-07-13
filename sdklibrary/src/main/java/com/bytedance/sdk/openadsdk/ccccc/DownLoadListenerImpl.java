@@ -20,11 +20,12 @@ import android.widget.Toast;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 import com.bytedance.sdk.openadsdk.ggg.n;
-import com.bytedance.sdk.openadsdk.ggg.r;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
 import java.util.HashMap;
@@ -77,8 +78,8 @@ import java.util.HashMap;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class x
-/*     */   implements e, MineHandler.OnResult
+/*     */ public class DownLoadListenerImpl
+/*     */   implements DownLoadListener, MineHandler.OnResult
 /*     */ {
 /*     */   private Context a;
 /*     */   private final com.bytedance.sdk.openadsdk.core.nibuguan.b b;
@@ -99,7 +100,7 @@ import java.util.HashMap;
 /*  71 */   private boolean n = false;
 /*     */   private String o;
 /*     */
-/*     */   public x(@NonNull Context paramContext, @NonNull com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, @NonNull String paramString)
+/*     */   public DownLoadListenerImpl(@NonNull Context paramContext, @NonNull com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, @NonNull String paramString)
 /*     */   {
 /*  76 */     this.a = paramContext;
 /*  77 */     this.c = paramh;
@@ -131,9 +132,9 @@ import java.util.HashMap;
 /* 103 */       return;
 /*     */     }
 /* 105 */     if ((this.e != null) && (this.e.a > 0L)) {
-/* 106 */       ImageUtils.aaaaaa(this.a, this.e.b, this.e.a, this.b.c());
+/* 106 */       AppAdViewHolder.aaaaaa(this.a, this.e.b, this.e.a, this.b.c());
 /* 107 */       if ((this.e != null) && (this.e.a >= 0L)) {
-            com.bytedance.sdk.openadsdk.ccccc.g.a(this.a).a(Long.valueOf(this.e.a), this, this.m);
+            DownloadNotifier.a(this.a).a(Long.valueOf(this.e.a), this, this.m);
 /*     */       }
 /*     */     }
 /*     */   }
@@ -167,9 +168,9 @@ import java.util.HashMap;
 /*     */     }
 /*     */     else
 /*     */     {
-/* 142 */       /*int i1 = bb(this.bb, this.eee.bee, this.eee.bb, this.bee.cc());
-*//* 143 *//*       if ((this.eee != null) && (this.eee.bb >= 0L)) {
-*//* 144 *//*         ApiException.bb(this.bb).bb(Long.valueOf(this.eee.bb), this, this.mM);
+/* 142 */       /*int i1 = OnClick(this.OnClick, this.TTBannerAdImpl.bee, this.TTBannerAdImpl.OnClick, this.bee.cc());
+*//* 143 *//*       if ((this.TTBannerAdImpl != null) && (this.TTBannerAdImpl.OnClick >= 0L)) {
+*//* 144 *//*         ApiException.OnClick(this.OnClick).OnClick(Long.valueOf(this.TTBannerAdImpl.OnClick), this, this.mM);
 *//*     *//*       }*/
         int i1=0;
 /* 146 */       if (i1 == 4)
@@ -317,8 +318,8 @@ private void i()
 /* 261 */       return false;
 /*     */     }
 /* 263 */     String str = this.b.c();
-/* 264 */     if ((!StringUtils.isEmpty(str)) && (r.b(this.a, str))) {
-/* 265 */       Intent localIntent = r.a(this.a, str);
+/* 264 */     if ((!StringUtils.isEmpty(str)) && (ToolUtils.b(this.a, str))) {
+/* 265 */       Intent localIntent = ToolUtils.a(this.a, str);
 /* 266 */       if (localIntent == null) {
 /* 267 */         return false;
 /*     */       }
@@ -344,16 +345,16 @@ private boolean k()
 /* 287 */         Intent localIntent = new Intent("android.intent.action.VIEW");
 /* 288 */         localIntent.setData(localUri);
 /*     */
-/* 290 */         if (r.a(this.a, localIntent)) {
+/* 290 */         if (ToolUtils.a(this.a, localIntent)) {
 /* 291 */           if (!(this.a instanceof Activity)) {
 /* 292 */             localIntent.addFlags(268435456);
 /*     */           }
 /* 294 */           this.a.startActivity(localIntent);
-/* 295 */           com.bytedance.sdk.openadsdk.dddd.c.h(this.a, this.c, this.o, "open_url_app");
+/* 295 */           AdEvent.h(this.a, this.c, this.o, "open_url_app");
 /* 296 */           return true;
 /*     */         }
 /*     */       }
-/* 299 */       com.bytedance.sdk.openadsdk.dddd.c.h(this.a, this.c, this.o, "open_fallback_url");
+/* 299 */       AdEvent.h(this.a, this.c, this.o, "open_fallback_url");
 /*     */     }
 /* 301 */     return false;
 /*     */   }
@@ -402,12 +403,12 @@ private boolean k()
 /*     */
 /*     */   private void m() {
 /* 347 */     String str = this.c.d() == null ? null : this.c.d().a();
-/* 348 */     long l1 = com.bytedance.sdk.openadsdk.ccccc.l.a(this.a, this.b.a(), this.b.b(), str);
+/* 348 */     long l1 = MyDownloadManager.a(this.a, this.b.a(), this.b.b(), str);
 /* 349 */     if (l1 >= 0L) {
 /* 350 */       if (this.h != null) {
 /* 351 */         this.h.a();
 /*     */       }
-/* 353 */        com.bytedance.sdk.openadsdk.ccccc.g.a(this.a).a(Long.valueOf(l1), this, this.m);
+/* 353 */        DownloadNotifier.a(this.a).a(Long.valueOf(l1), this, this.m);
 /* 354 */       y localy = new y();
 /* 355 */       localy.b = -1;
 /* 356 */       a(localy, 0, -1, 2);
@@ -491,7 +492,7 @@ private boolean k()
 /*     */   {
 /* 435 */     this.d = false;
 /* 436 */     if (this.e != null) {
-/* 437 */        com.bytedance.sdk.openadsdk.ccccc.g.a(this.a).a(Long.valueOf(this.e.a), this);
+/* 437 */        DownloadNotifier.a(this.a).a(Long.valueOf(this.e.a), this);
 /*     */     }
 /* 439 */     if ((this.g != null) && (this.g.getStatus() != AsyncTask.Status.FINISHED)) {
 /* 440 */       this.g.cancel(true);
@@ -537,7 +538,7 @@ private boolean k()
 /* 480 */         } else if (localy.b == 32) {
 /* 481 */           this.i.onInstalled(localy.e, str);
 /* 482 */         } else if (localy.b == 8) {
-/* 483 */           if (r.b(this.a, this.b.c())) {
+/* 483 */           if (ToolUtils.b(this.a, this.b.c())) {
 /* 484 */             this.i.onInstalled(localy.e, str);
 /*     */           } else {
 /* 486 */             this.i.onDownloadFinished(localy.c, localy.e, str);
@@ -575,9 +576,9 @@ private boolean k()
 
     @Override
     protected y doInBackground(String... var1) {
-        if (var1 != null && (var1.length < 1 || !TextUtils.isEmpty(var1[0])) && x.this.a != null) {
+        if (var1 != null && (var1.length < 1 || !TextUtils.isEmpty(var1[0])) && DownLoadListenerImpl.this.a != null) {
             String var2 = var1[0];
-            ImageUtils var3 = ImageUtils.aaaaaa(a);
+            AppAdViewHolder var3 = AppAdViewHolder.aaaaaa(a);
             return var3.aaaaaa(var2);
         } else {
             return null;
@@ -588,31 +589,31 @@ private boolean k()
         super.onPostExecute(var1);
         if (!this.isCancelled()) {
             try {
-                if (var1 == null || var1.a <= -1L || ImageUtils.aaaaaa(a).aaaaaa(var1) && !r.b(x.this.a, x.this.b.c())) {
-                    if (r.b(x.this.a, x.this.b.c())) {
-                        if (x.this.e != null) {
-                            x.this.a(x.this.e);
+                if (var1 == null || var1.a <= -1L || AppAdViewHolder.aaaaaa(a).aaaaaa(var1) && !ToolUtils.b(DownLoadListenerImpl.this.a, DownLoadListenerImpl.this.b.c())) {
+                    if (ToolUtils.b(DownLoadListenerImpl.this.a, DownLoadListenerImpl.this.b.c())) {
+                        if (DownLoadListenerImpl.this.e != null) {
+                            DownLoadListenerImpl.this.a(DownLoadListenerImpl.this.e);
                         } else {
-                            x.this.e = new y();
-                            x.this.e.b = 8;
-                            x.this.a(x.this.e);
+                            DownLoadListenerImpl.this.e = new y();
+                            DownLoadListenerImpl.this.e.b = 8;
+                            DownLoadListenerImpl.this.a(DownLoadListenerImpl.this.e);
                         }
                     } else {
-                        if (x.this.i != null) {
-                            x.this.i.onIdle();
+                        if (DownLoadListenerImpl.this.i != null) {
+                            DownLoadListenerImpl.this.i.onIdle();
                         }
 
-                        x.this.e = null;
+                        DownLoadListenerImpl.this.e = null;
                     }
                 } else {
-                    if (x.this.e != null && x.this.e.b == 16) {
-                        x.this.e = null;
+                    if (DownLoadListenerImpl.this.e != null && DownLoadListenerImpl.this.e.b == 16) {
+                        DownLoadListenerImpl.this.e = null;
                     } else {
-                        x.this.e = var1;
-                        com.bytedance.sdk.openadsdk.ccccc.g.a(x.this.a).a(x.this.e.a, x.this, x.this.m);
+                        DownLoadListenerImpl.this.e = var1;
+                        DownloadNotifier.a(DownLoadListenerImpl.this.a).a(DownLoadListenerImpl.this.e.a, DownLoadListenerImpl.this, DownLoadListenerImpl.this.m);
                     }
 
-                    x.this.a(var1);
+                    DownLoadListenerImpl.this.a(var1);
                 }
             } catch (Exception var3) {
                 ;
@@ -658,7 +659,7 @@ private boolean k()
 /* 602 */       this.i.onDownloadActive(paramy.c, paramy.d, paramy.e, str);
 /* 603 */       break;
 /*     */     case 8:
-/* 605 */       if (r.b(this.a, this.b.c())) {
+/* 605 */       if (ToolUtils.b(this.a, this.b.c())) {
 /* 606 */         this.i.onInstalled(paramy.e, str);
 /*     */       } else {
 /* 608 */         this.i.onDownloadFinished(paramy.c, paramy.e, str);
@@ -669,7 +670,7 @@ private boolean k()
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\x.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\DownLoadListenerImpl.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

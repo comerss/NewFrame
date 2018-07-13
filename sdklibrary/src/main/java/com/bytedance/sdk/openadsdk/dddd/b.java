@@ -15,13 +15,13 @@
 /*    */ 
 /*    */ public class b<T>
 /*    */ {
-/*    */   private doErrorHelper<T> a;
+/*    */   private HandleInitEvent<T> a;
 /*    */   private Handler b;
 /*    */   private boolean c;
 /*    */   
-/*    */   public b(d<T> paramd, AdNativeListener<T> paramo, doErrorHelper.b paramb, doErrorHelper.a parama)
+/*    */   public b(d<T> paramd, AdNativeListener<T> paramo, HandleInitEvent.b paramb, HandleInitEvent.a parama)
 /*    */   {
-/* 24 */     this.a = new doErrorHelper(paramd, paramo, paramb, parama);
+/* 24 */     this.a = new HandleInitEvent(paramd, paramo, paramb, parama);
 /*    */   }
 /*    */   
 /*    */   public void a() {

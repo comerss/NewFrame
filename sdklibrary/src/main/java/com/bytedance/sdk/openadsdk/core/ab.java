@@ -12,7 +12,7 @@
 /*     */ import android.view.ViewParent;
 /*     */ import android.webkit.WebView;
 /*     */ import android.widget.ImageView;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.r;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */ import java.util.HashSet;
 /*     */ 
 /*     */ 
@@ -35,7 +35,7 @@
 /*     */ public class ab
 /*     */ {
 /*  37 */   private static final boolean d = (Build.VERSION.SDK_INT >= 16) && 
-/*  38 */     (r.c());
+/*  38 */     (ToolUtils.c());
 /*  39 */   private static final boolean e = a();
 /*     */   
 /*  41 */   private static int f = -1;

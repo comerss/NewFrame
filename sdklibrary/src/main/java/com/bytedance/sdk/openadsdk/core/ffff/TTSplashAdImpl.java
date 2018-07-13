@@ -14,13 +14,15 @@ import android.view.View;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTSplashAd;
-import com.bytedance.sdk.openadsdk.ccccc.x;
-import com.bytedance.sdk.openadsdk.core.f;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
+import com.bytedance.sdk.openadsdk.core.SplashManager;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 /*     */
 /*     */
@@ -51,7 +53,7 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class d
+/*     */ public class TTSplashAdImpl
 /*     */   implements TTSplashAd, MineHandler.OnResult
 /*     */ {
 /*  35 */   private static String a = "TTSplashAdImpl";
@@ -67,14 +69,14 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */   
 /*     */   private h d;
 /*     */   
-/*     */   private c e;
+/*     */   private SplashLayout mSplashLayout;
 /*     */   private TTSplashAd.AdInteractionListener f;
 /*     */   private boolean g;
 /*  51 */   private MineHandler h = new MineHandler(Looper.getMainLooper(), this);
 /*     */   
-/*     */   private x i;
+/*     */   private DownLoadListenerImpl i;
 /*     */   
-/*     */   d(@NonNull Context paramContext, @NonNull h paramh)
+/*     */   TTSplashAdImpl(@NonNull Context paramContext, @NonNull h paramh)
 /*     */   {
 /*  57 */     this.c = paramContext;
 /*  58 */     this.d = paramh;
@@ -82,8 +84,8 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */   }
 /*     */   
 /*     */   void a() {
-/*  63 */     this.e = new c(this.c);
-/*  64 */     com.bytedance.sdk.openadsdk.dddd.c.a(this.d);
+/*  63 */     this.mSplashLayout = new SplashLayout(this.c);
+/*  64 */     AdEvent.a(this.d);
 /*     */     
 /*     */ 
 /*  67 */     if (this.d.s() <= 0) {
@@ -97,15 +99,15 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */   }
 /*     */   
 /*     */   void a(Drawable paramDrawable) {
-/*  78 */     this.e.setDrawable(paramDrawable);
+/*  78 */     this.mSplashLayout.setDrawable(paramDrawable);
 /*     */   }
 /*     */   
 /*     */   private void c() {
 /*  82 */     this.i = a(this.d);
-/*  83 */     f localf = new f(this.c, this.e);
+/*  83 */     SplashManager localf = new SplashManager(this.c, this.mSplashLayout);
 /*  84 */     localf.setAdType(3);
-/*  85 */     this.e.addView(localf);
-/*  86 */     localf.setCallback(new com.bytedance.sdk.openadsdk.core.f.a()
+/*  85 */     this.mSplashLayout.addView(localf);
+/*  86 */     localf.setCallback(new SplashManager.SplashListener()
 /*     */     {
 /*     */       public void a(boolean paramAnonymousBoolean) {
 /*  89 */         if (i != null) {
@@ -127,17 +129,17 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */       
 /*     */ 
 /*     */ 
-/*     */       public void a(View paramAnonymousView)
+/*     */       public void onShow(View paramAnonymousView)
 /*     */       {
-/* 110 */         com.bytedance.sdk.openadsdk.dddd.c.a(c, d, "splash_ad");
+/* 110 */         AdEvent.show(c, d, "splash_ad");
 /* 111 */         if (!g) {
 /* 112 */           h.sendEmptyMessage(1);
 /*     */         }
 /* 114 */         if (f != null) {
-/* 115 */          f.onAdShow(e, d.c());
+/* 115 */          f.onAdShow(mSplashLayout, d.c());
 /*     */         }
 /* 117 */         if (d.t()) {
-/* 118 */           r.a(d, paramAnonymousView);
+/* 118 */           ToolUtils.a(d, paramAnonymousView);
 /*     */         }
 /* 120 */         LogUtils.b(d.b(), "开屏广告展示");
 /*     */       }
@@ -146,12 +148,12 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */     
 /*     */ 
 /* 126 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.c, this.d, "splash_ad", 4);
-/* 127 */     locala.a(this.e);
-/* 128 */     locala.b(this.e.getDislikeView());
+/* 127 */     locala.a(this.mSplashLayout);
+/* 128 */     locala.b(this.mSplashLayout.getDislikeView());
 /* 129 */     locala.a(this.i);
-/* 130 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.a.bb()
+/* 130 */     locala.a(new AdClickListenerImpl.OnClick()
 /*     */     {
-/*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
+/*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /* 133 */         if (f != null) {
 /* 134 */           f.onAdClicked(paramAnonymousView, paramAnonymousInt);
 /*     */         }
@@ -165,20 +167,20 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /* 143 */     if (this.i != null) {
 /* 144 */       this.i.a(new com.bytedance.sdk.openadsdk.core.a.c(this.c, this.d, "splash_ad"));
 /*     */     }
-/* 146 */     this.e.setOnClickListenerInternal(locala);
-/* 147 */     this.e.setOnTouchListenerInternal(locala);
-/* 148 */     this.e.setSkipListener(new View.OnClickListener()
+/* 146 */     this.mSplashLayout.setOnClickListenerInternal(locala);
+/* 147 */     this.mSplashLayout.setOnTouchListenerInternal(locala);
+/* 148 */     this.mSplashLayout.setSkipListener(new View.OnClickListener()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView)
 /*     */       {
-/* 152 */       if (!StringUtils.isEmpty(d.this.d.o())) {
-        com.bytedance.sdk.openadsdk.dddd.c.c(d.this.d);
+/* 152 */       if (!StringUtils.isEmpty(TTSplashAdImpl.this.d.o())) {
+        AdEvent.c(TTSplashAdImpl.this.d);
     }
 
-    if (d.this.f != null) {
-        d.this.h.removeCallbacksAndMessages((Object)null);
-        d.this.b = 0;
-        d.this.f.onAdSkip();
+    if (TTSplashAdImpl.this.f != null) {
+        TTSplashAdImpl.this.h.removeCallbacksAndMessages((Object)null);
+        TTSplashAdImpl.this.b = 0;
+        TTSplashAdImpl.this.f.onAdSkip();
     }
 /*     */       }
 /*     */     });
@@ -187,7 +189,7 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */   @NonNull
 /*     */   public View getSplashView()
 /*     */   {
-/* 167 */     return this.e;
+/* 167 */     return this.mSplashLayout;
 /*     */   }
 /*     */   
 /*     */   public int getInteractionType()
@@ -207,9 +209,9 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private x a(h paramh) {
+/*     */   private DownLoadListenerImpl a(h paramh) {
 /* 188 */     if (paramh.c() == 4) {
-/* 189 */       return new x(this.c, paramh, "splash_ad");
+/* 189 */       return new DownLoadListenerImpl(this.c, paramh, "splash_ad");
 /*     */     }
 /* 191 */     return null;
 /*     */   }
@@ -217,14 +219,14 @@ import com.bytedance.sdk.openadsdk.ggg.r;
 /*     */   public void setNotAllowSdkCountdown()
 /*     */   {
 /* 196 */     this.g = true;
-/* 197 */     this.e.setSkipIconVisibility(8);
+/* 197 */     this.mSplashLayout.setSkipIconVisibility(8);
 /* 198 */     this.h.removeCallbacksAndMessages(null);
 /*     */   }
 /*     */   
 /*     */   private void a(int paramInt) {
-/* 202 */     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramInt + "s | 跳过");
+/* 202 */     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramInt + "ViewWather | 跳过");
 /* 203 */     localSpannableStringBuilder.setSpan(new ForegroundColorSpan(this.c.getResources().getColor(R.color.tt_skip_red)), 0, 2, 33);
-/* 204 */     this.e.setSkipText(localSpannableStringBuilder);
+/* 204 */     this.mSplashLayout.setSkipText(localSpannableStringBuilder);
 /*     */   }
 /*     */   
 /*     */   public void doResult(Message paramMessage)

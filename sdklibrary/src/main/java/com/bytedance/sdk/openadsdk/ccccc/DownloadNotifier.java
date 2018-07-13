@@ -30,7 +30,8 @@ import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
 import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 import com.bytedance.sdk.openadsdk.service.TTDownloadHandlerService;
 
 import java.text.ParseException;
@@ -110,22 +111,22 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */
 
 @SuppressLint({"UseSparseArrays"})
-public class g {
-    private Map<Long, WeakHashMap<e, Boolean>> a = new ConcurrentHashMap();
+public class DownloadNotifier {
+    private Map<Long, WeakHashMap<DownLoadListener, Boolean>> a = new ConcurrentHashMap();
     private Map<Long, com.bytedance.sdk.openadsdk.core.nibuguan.e> b = new ConcurrentHashMap();
     private Map<Long, y> c = new ConcurrentHashMap();
     private AQuery2 d;
     private LruCache<String, Bitmap> e;
     private final Context f;
     private final NotificationManager g;
-    private static g h;
+    private static DownloadNotifier h;
     private final Set<String> i = new HashSet();
     private static final Object j = new Object();
     private final HashMap<String, Long> k = new HashMap();
     private final q l = new q();
     private final q m = new q();
 
-    public void a(Long var1, e var2, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
+    public void a(Long var1, DownLoadListener var2, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
         WeakHashMap var4 = (WeakHashMap)this.a.get(var1);
         if (var4 == null) {
             var4 = new WeakHashMap();
@@ -173,8 +174,8 @@ public class g {
                 public void callback(String var1, Bitmap var2, AjaxStatus var3) {
                     super.callback(var1, var2, var3);
                     if (var3 != null && var2 != null && var3.getCode() == 200) {
-                        float var4 = s.a(g.this.f, 44.0F);
-                        g.this.a(var1, com.bytedance.sdk.openadsdk.ggg.f.a(var2, var4, var4));
+                        float var4 = ViewWather.a(DownloadNotifier.this.f, 44.0F);
+                        DownloadNotifier.this.a(var1, com.bytedance.sdk.openadsdk.ggg.f.a(var2, var4, var4));
                     }
 
                 }
@@ -184,7 +185,7 @@ public class g {
         return this.b(var1);
     }
 
-    public void a(Long var1, e var2) {
+    public void a(Long var1, DownLoadListener var2) {
         WeakHashMap var3 = (WeakHashMap)this.a.get(var1);
         if (var3 != null) {
             var3.remove(var2);
@@ -197,16 +198,16 @@ public class g {
 
     }
 
-    public static synchronized g a(Context var0) {
+    public static synchronized DownloadNotifier a(Context var0) {
         if (h == null) {
-            h = new g(var0);
+            h = new DownloadNotifier(var0);
         }
 
         return h;
     }
 
     @SuppressLint("WrongConstant")
-    private g(Context var1) {
+    private DownloadNotifier(Context var1) {
         this.f = var1.getApplicationContext();
         this.g = (NotificationManager)this.f.getSystemService("notification");
         this.e();
@@ -414,7 +415,7 @@ public class g {
                     }
 
                     try {
-                        var20.setTextViewText(R.id.tt_download_time, com.bytedance.sdk.openadsdk.ggg.r.a(var41, "HH:mm"));
+                        var20.setTextViewText(R.id.tt_download_time, ToolUtils.a(var41, "HH:mm"));
                     } catch (ParseException var28) {
                         var28.printStackTrace();
                     }
@@ -436,7 +437,7 @@ public class g {
                         if (!com.bytedance.sdk.openadsdk.ccccc.m.a.b(var34.j) && !b(var34)) {
                             if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(var34.j)) {
                                 var24 = this.f.getResources().getString(R.string.tt_download_finish);
-                                if (com.bytedance.sdk.openadsdk.ggg.r.c(this.f, var34.e)) {
+                                if (ToolUtils.c(this.f, var34.e)) {
                                     var42 = this.f.getResources().getString(R.string.tt_download_open);
                                 } else {
                                     var42 = this.f.getResources().getString(R.string.tt_download_install);
@@ -516,7 +517,7 @@ public class g {
             }
 
             var6.a = var1.a;
-            var6.b = ImageUtils.aaaaaa(var1.j);
+            var6.b = AppAdViewHolder.aaaaaa(var1.j);
             var6.c = var1.s;
             var6.d = var1.t;
             var6.e = var1.e;
@@ -533,7 +534,7 @@ public class g {
                     Iterator var8 = var11.iterator();
 
                     while(var8.hasNext()) {
-                        e var9 = (e)var8.next();
+                        DownLoadListener var9 = (DownLoadListener)var8.next();
                         if (var9 != null) {
                             var9.a(var6, var2, var1.s, var1.t, var3);
                         }
@@ -751,10 +752,10 @@ public class g {
 
                     String[] var3 = var2.split("\\|");
                     if (var3 != null) {
-                        synchronized(com.bytedance.sdk.openadsdk.ccccc.g.j) {
+                        synchronized(DownloadNotifier.j) {
                             for(int var5 = 0; var5 < var3.length; ++var5) {
                                 if (TextUtils.isEmpty(var3[var5])) {
-                                    g.this.i.add(var3[var5]);
+                                    DownloadNotifier.this.i.add(var3[var5]);
                                 }
                             }
                         }

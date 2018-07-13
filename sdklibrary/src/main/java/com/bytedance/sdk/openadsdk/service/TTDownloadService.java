@@ -21,9 +21,9 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
 import com.bytedance.sdk.openadsdk.ccccc.SsDownloadManager;
 import com.bytedance.sdk.openadsdk.ccccc.d;
-import com.bytedance.sdk.openadsdk.ccccc.g;
 import com.bytedance.sdk.openadsdk.ccccc.i;
 import com.bytedance.sdk.openadsdk.ccccc.j;
 import com.bytedance.sdk.openadsdk.ccccc.p;
@@ -110,7 +110,7 @@ public class TTDownloadService extends Service {
     private AlarmManager b;
     private v c;
     private TTDownloadService.a d;
-    private g e;
+    private DownloadNotifier e;
     @SuppressLint({"UseSparseArrays"})
     private final Map<Long, d> f = new HashMap();
     private final ExecutorService g = a();
@@ -212,7 +212,7 @@ public class TTDownloadService extends Service {
         this.i.start();
         this.j = new Handler(this.i.getLooper(), this.l);
         this.h = new j(this);
-        this.e = com.bytedance.sdk.openadsdk.ccccc.g.a(this);
+        this.e = DownloadNotifier.a(this);
         this.e.a();
         this.d = new TTDownloadService.a();
         this.getContentResolver().registerContentObserver(com.bytedance.sdk.openadsdk.ccccc.m.a.a, true, this.d);
@@ -305,7 +305,7 @@ public class TTDownloadService extends Service {
                     this.f.remove(var10.a);
                     this.a(var10.e);
                     var8.a(var10.d(), (String)null, (String[])null);
-                    this.e.a(com.bytedance.sdk.openadsdk.ccccc.g.a(var10));
+                    this.e.a(DownloadNotifier.a(var10));
                 } else {
                     var10.c();
                     boolean var15 = var10.a(this.g);
@@ -319,7 +319,7 @@ public class TTDownloadService extends Service {
                 this.f.remove(var10.a);
                 this.a(var10.e);
                 var8.a(var10.d(), (String)null, (String[])null);
-                this.e.a(com.bytedance.sdk.openadsdk.ccccc.g.a(var10));
+                this.e.a(DownloadNotifier.a(var10));
             }
 
             var27.printStackTrace();
@@ -393,7 +393,7 @@ public class TTDownloadService extends Service {
             this.a(var3.e);
         }
 
-        this.e.a(com.bytedance.sdk.openadsdk.ccccc.g.a(var3));
+        this.e.a(DownloadNotifier.a(var3));
         this.f.remove(var3.a);
     }
 

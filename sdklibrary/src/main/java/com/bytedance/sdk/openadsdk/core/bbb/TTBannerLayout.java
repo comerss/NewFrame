@@ -15,7 +15,7 @@ import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.s;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 /*     */
 /*     */
@@ -45,7 +45,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ class d
+/*     */ class TTBannerLayout
 /*     */   extends FrameLayout
 /*     */ {
 /*     */   private Context a;
@@ -57,7 +57,7 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */   private boolean g;
 /*  42 */   private boolean h = false;
 /*     */   
-/*     */   public d(@NonNull Context paramContext) {
+/*     */   public TTBannerLayout(@NonNull Context paramContext) {
 /*  45 */     super(paramContext);
 /*  46 */     this.a = paramContext;
 /*  47 */     g();
@@ -95,23 +95,23 @@ import com.bytedance.sdk.openadsdk.ggg.s;
 /*     */         
 /*     */       }
 /*  81 */     });
-/*  82 */     int i = (int)s.a(this.a, 15.0F);
-/*  83 */     int j = (int)s.a(this.a, 10.0F);
+/*  82 */     int i = (int) ViewWather.a(this.a, 15.0F);
+/*  83 */     int j = (int) ViewWather.a(this.a, 10.0F);
 /*  84 */     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
 /*  85 */     localLayoutParams.gravity = 53;
 /*  86 */     localLayoutParams.topMargin = j;
 /*  87 */     localLayoutParams.rightMargin = j;
 /*  88 */     addView(this.d, localLayoutParams);
 /*     */     
-/*  90 */     s.a(this.d, i, i, i, i);
+/*  90 */     ViewWather.a(this.d, i, i, i, i);
 /*     */   }
 /*     */   
 /*     */   private void i() {
 /*  94 */     ImageView localImageView = new ImageView(this.a);
 /*  95 */     localImageView.setImageResource(R.drawable.tt_ad_logo_small);
 /*  96 */     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-/*  97 */     int i = (int)s.a(this.a, 20.0F);
-/*  98 */     int j = (int)s.a(this.a, 10.0F);
+/*  97 */     int i = (int) ViewWather.a(this.a, 20.0F);
+/*  98 */     int j = (int) ViewWather.a(this.a, 10.0F);
 /*  99 */     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i);
 /* 100 */     localLayoutParams.gravity = 85;
 /* 101 */     localLayoutParams.rightMargin = j;

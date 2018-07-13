@@ -9,12 +9,13 @@
 /*    */ import android.webkit.WebResourceResponse;
 /*    */ import android.webkit.WebView;
 /*    */ import android.webkit.WebViewClient;
-/*    */ import com.bytedance.sdk.openadsdk.core.n;
-/*    */ import com.bytedance.sdk.openadsdk.core.v;
+/*    */ import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
+import com.bytedance.sdk.openadsdk.core.n;
+/*    */
 /*    */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-import com.bytedance.sdk.openadsdk.ggg.j;
+import com.bytedance.sdk.openadsdk.ggg.WebViewHelper;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.l;
 /*    */
 
@@ -31,11 +32,11 @@ import com.bytedance.sdk.openadsdk.ggg.j;
 /*    */   extends WebViewClient
 /*    */ {
 /* 29 */   private static final String a = WebChromeClient.class.getSimpleName();
-/*    */   private v b;
+/*    */   private TTAndroidObject b;
 /*    */   private Context c;
 /*    */   private String d;
 /*    */   
-/*    */   public MineWebViewClient(Context paramContext, v paramv, String paramString) {
+/*    */   public MineWebViewClient(Context paramContext, TTAndroidObject paramv, String paramString) {
 /* 35 */     this.c = paramContext;
 /* 36 */     this.b = paramv;
 /* 37 */     this.d = paramString;
@@ -64,7 +65,7 @@ import com.bytedance.sdk.openadsdk.ggg.j;
 /* 60 */       Uri localUri = Uri.parse(paramString);
 /* 61 */       String str = localUri.getScheme().toLowerCase();
 /* 62 */       if ("bytedance".equals(str)) {
-/* 63 */         j.a(localUri, this.b);
+/* 63 */         WebViewHelper.a(localUri, this.b);
 /* 64 */         return true;
 /*    */       }
 /* 66 */       if (!PhoneUtils.isAccess(paramString)) {

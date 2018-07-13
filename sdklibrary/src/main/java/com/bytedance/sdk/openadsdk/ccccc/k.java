@@ -83,10 +83,10 @@ import java.net.URLConnection;
 /*     */   private final d b;
 /*     */   private final w c;
 /*     */   private final v d;
-/*     */   private final g e;
+/*     */   private final DownloadNotifier e;
 /*     */   private volatile boolean f;
 /*     */   
-/*     */   public k(Context paramContext, w paramw, d paramd, v paramv, g paramg)
+/*     */   public k(Context paramContext, w paramw, d paramd, v paramv, DownloadNotifier paramg)
 /*     */   {
 /*  64 */     this.a = paramContext;
 /*  65 */     this.c = paramw;
@@ -115,7 +115,7 @@ import java.net.URLConnection;
 /*     */     //   5: aload_0
 /*     */     //   6: invokespecial 223	com/bytedance/sdk/openadsdk/cdsss/LogUtils:Result	()V
 /*     */     //   9: aload_0
-/*     */     //   10: getfield 164	com/bytedance/sdk/openadsdk/cdsss/LogUtils:eee	Lcom/bytedance/sdk/openadsdk/cdsss/ApiException;
+/*     */     //   10: getfield 164	com/bytedance/sdk/openadsdk/cdsss/LogUtils:TTBannerAdImpl	Lcom/bytedance/sdk/openadsdk/cdsss/ApiException;
 /*     */     //   13: aload_0
 /*     */     //   14: getfield 161	com/bytedance/sdk/openadsdk/cdsss/LogUtils:Result	Lcom/bytedance/sdk/openadsdk/cdsss/LocationUtils;
 /*     */     //   17: getfield 147	com/bytedance/sdk/openadsdk/cdsss/LocationUtils:SslHepler	J
@@ -124,7 +124,7 @@ import java.net.URLConnection;
 /*     */     //   24: goto +21 -> 45
 /*     */     //   27: astore_1
 /*     */     //   28: aload_0
-/*     */     //   29: getfield 164	com/bytedance/sdk/openadsdk/cdsss/LogUtils:eee	Lcom/bytedance/sdk/openadsdk/cdsss/ApiException;
+/*     */     //   29: getfield 164	com/bytedance/sdk/openadsdk/cdsss/LogUtils:TTBannerAdImpl	Lcom/bytedance/sdk/openadsdk/cdsss/ApiException;
 /*     */     //   32: aload_0
 /*     */     //   33: getfield 161	com/bytedance/sdk/openadsdk/cdsss/LogUtils:Result	Lcom/bytedance/sdk/openadsdk/cdsss/LocationUtils;
 /*     */     //   36: getfield 147	com/bytedance/sdk/openadsdk/cdsss/LocationUtils:SslHepler	J
@@ -149,7 +149,7 @@ import java.net.URLConnection;
 /*     */     //   5	9	27	finally
 /*     */   }
 /*     */   
-/*     */   static class a
+/*     */   static class NetHackDbg
 /*     */   {
 /*     */     public String a;
 /*     */     public String b;
@@ -177,7 +177,7 @@ import java.net.URLConnection;
 /*     */     public int s;
 /*     */     public URL t;
 /*     */     
-/*     */     public a(d paramd)
+/*     */     public NetHackDbg(d paramd)
 /*     */     {
 /* 114 */       this.b = paramd.f;
 /* 115 */       this.e = paramd.b;
@@ -214,7 +214,7 @@ import java.net.URLConnection;
 /* 146 */       return;
 /*     */     }
 /*     */     
-/* 149 */     a locala = new a(this.b);
+/* 149 */     NetHackDbg locala = new NetHackDbg(this.b);
 /* 150 */     Object localObject1 = null;
 /* 151 */     int i = 491;
 /* 152 */     int j = this.b.k;
@@ -249,7 +249,7 @@ import java.net.URLConnection;
 /*     */     }
 /*     */     catch (u localu) {
 /* 183 */       str1 = localu.getMessage();
-///* 184 */       str2 = "Aborting request for download " + this.bee.bb + ": " + str1;
+///* 184 */       str2 = "Aborting request for download " + this.bee.OnClick + ": " + str1;
 ///* 185 */       Log.w("SsDownloadManager", str2);
 /* 186 */       if (b.c) {
 ///* 187 */         Log.w("SsDownloadManager", str2, localu);
@@ -294,8 +294,8 @@ import java.net.URLConnection;
 /* 226 */       a(locala, i);
 /* 227 */       a(locala, i, str1, j);
 /*     */       
-///* 229 */       Log.i("SsDownloadManager", "Download " + this.bee.bb + " finished with status " +
-///* 230 */         mM.bb.LocationUtils(i));
+///* 229 */       Log.i("SsDownloadManager", "Download " + this.bee.OnClick + " finished with status " +
+///* 230 */         mM.OnClick.LocationUtils(i));
 /*     */       
 /* 232 */       if (localObject1 != null) {
 /* 233 */         ((PowerManager.WakeLock)localObject1).release();
@@ -307,7 +307,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void a(a parama)
+/*     */   private void a(NetHackDbg parama)
 /*     */     throws u
 /*     */   {
 /* 245 */     parama.a();
@@ -417,7 +417,7 @@ import java.net.URLConnection;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void a(a parama, HttpURLConnection paramHttpURLConnection)
+/*     */   private void a(NetHackDbg parama, HttpURLConnection paramHttpURLConnection)
 /*     */     throws u
 /*     */   {
 /* 331 */     InputStream localInputStream = null;
@@ -509,7 +509,7 @@ import java.net.URLConnection;
 /* 380 */     this.f = false;
 /*     */     
 /* 382 */     com.bytedance.sdk.openadsdk.ccccc.d.aenumse locala = this.b.b();
-/* 383 */     /*if (locala != LocationUtils.bb.bb) {
+/* 383 */     /*if (locala != LocationUtils.OnClick.OnClick) {
 *//* 384 *//*       throw new u(195, locala.name());
 *//*     *//*     }*/
 /*     */   }
@@ -517,7 +517,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void a(a parama, InputStream paramInputStream, OutputStream paramOutputStream)
+/*     */   private void a(NetHackDbg parama, InputStream paramInputStream, OutputStream paramOutputStream)
 /*     */     throws u
 /*     */   {
 /* 394 */     byte[] arrayOfByte = new byte['က'];
@@ -534,7 +534,7 @@ import java.net.URLConnection;
 /* 405 */       d(parama);
 /*     */       
 /* 407 */      /* if (bee.LocationUtils) {
-*//* 408 *//*         Log.v("SsDownloadManager", "downloaded " + parama.ApiException + " for " + this.bee.bee);
+*//* 408 *//*         Log.TTAndroidObject("SsDownloadManager", "downloaded " + parama.ApiException + " for " + this.bee.bee);
 *//*     *//*       }*/
 /*     */       
 /*     */ 
@@ -544,7 +544,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void b(a parama)
+/*     */   private void b(NetHackDbg parama)
 /*     */   {
 /* 420 */     if (parama.a != null)
 /*     */     {
@@ -592,11 +592,11 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void a(a parama, int paramInt)
+/*     */   private void a(NetHackDbg parama, int paramInt)
 /*     */   {
 /* 468 */     if ((parama.a != null) && (com.bytedance.sdk.openadsdk.ccccc.m.a.b(paramInt))) {
 /* 469 */     /*  if (bee.LocationUtils) {
-*//* 470 *//*         Log.LocationUtils("SsDownloadManager", "cleanupDestination() deleting " + parama.bb);
+*//* 470 *//*         Log.LocationUtils("SsDownloadManager", "cleanupDestination() deleting " + parama.OnClick);
 *//*     *//*       }*/
 /* 472 */       new File(parama.a).delete();
 /* 473 */       parama.a = null;
@@ -605,7 +605,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void c(a parama)
+/*     */   private void c(NetHackDbg parama)
 /*     */     throws u
 /*     */   {
 /* 482 */     synchronized (this.b) {
@@ -626,7 +626,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void d(a parama)
+/*     */   private void d(NetHackDbg parama)
 /*     */   {
 /* 502 */     long l1 = SystemClock.elapsedRealtime();
 /*     */     
@@ -664,7 +664,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void a(a parama, byte[] paramArrayOfByte, int paramInt, OutputStream paramOutputStream)
+/*     */   private void a(NetHackDbg parama, byte[] paramArrayOfByte, int paramInt, OutputStream paramOutputStream)
 /*     */     throws u
 /*     */   {
 /* 541 */     this.d.a(this.b.g, parama.a, paramInt);
@@ -691,7 +691,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void e(a parama)
+/*     */   private void e(NetHackDbg parama)
 /*     */     throws u
 /*     */   {
 /* 568 */     ContentValues localContentValues = new ContentValues();
@@ -713,7 +713,7 @@ import java.net.URLConnection;
 /*     */   }
 /*     */   
 /*     */ 
-/*     */   private boolean f(a parama)
+/*     */   private boolean f(NetHackDbg parama)
 /*     */   {
 /* 589 */     return (parama.g > 0L) && (!this.b.c) && (parama.h == null);
 /*     */   }
@@ -722,7 +722,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private int a(a parama, byte[] paramArrayOfByte, InputStream paramInputStream)
+/*     */   private int a(NetHackDbg parama, byte[] paramArrayOfByte, InputStream paramInputStream)
 /*     */     throws u
 /*     */   {
 /*     */     try
@@ -752,7 +752,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void b(a parama, HttpURLConnection paramHttpURLConnection)
+/*     */   private void b(NetHackDbg parama, HttpURLConnection paramHttpURLConnection)
 /*     */     throws u
 /*     */   {
 /* 629 */     c(parama, paramHttpURLConnection);
@@ -776,7 +776,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void g(a parama)
+/*     */   private void g(NetHackDbg parama)
 /*     */   {
 /* 652 */     ContentValues localContentValues = new ContentValues();
 /* 653 */     localContentValues.put("_data", parama.a);
@@ -792,7 +792,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void c(a parama, HttpURLConnection paramHttpURLConnection)
+/*     */   private void c(NetHackDbg parama, HttpURLConnection paramHttpURLConnection)
 /*     */     throws u
 /*     */   {
 /* 669 */     parama.q = paramHttpURLConnection.getHeaderField("Content-Disposition");
@@ -822,7 +822,7 @@ import java.net.URLConnection;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void d(a parama, HttpURLConnection paramHttpURLConnection)
+/*     */   private void d(NetHackDbg parama, HttpURLConnection paramHttpURLConnection)
 /*     */   {
 /* 698 */     parama.c = paramHttpURLConnection.getHeaderFieldInt("Retry-After", -1);
 /* 699 */     if (parama.c < 0) {
@@ -840,7 +840,7 @@ import java.net.URLConnection;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   private void h(a parama)
+/*     */   private void h(NetHackDbg parama)
 /*     */     throws u
 /*     */   {
 /* 717 */     if (!TextUtils.isEmpty(parama.a)) {
@@ -865,7 +865,7 @@ import java.net.URLConnection;
 /* 736 */         if (l == 0L)
 /*     */         {
 /* 738 */          /* if (bee.LocationUtils) {
-*//* 739 *//*             Log.LocationUtils("SsDownloadManager", "setupDestinationFile() found fileLength=0, deleting " + parama.bb);
+*//* 739 *//*             Log.LocationUtils("SsDownloadManager", "setupDestinationFile() found fileLength=0, deleting " + parama.OnClick);
 *//*     *//*           }*/
 /*     */           
 /* 742 */           localFile.delete();
@@ -877,7 +877,7 @@ import java.net.URLConnection;
 /* 748 */           if ((this.b.u == null) && (!this.b.c))
 /*     */           {
 /* 750 */            /* if (bee.LocationUtils) {
-*//* 751 *//*               Log.LocationUtils("SsDownloadManager", "setupDestinationFile() unable to resume download, deleting " + parama.bb);
+*//* 751 *//*               Log.LocationUtils("SsDownloadManager", "setupDestinationFile() unable to resume download, deleting " + parama.OnClick);
 *//*     *//*             }*/
 /*     */             
 /* 754 */             localFile.delete();
@@ -908,7 +908,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */   @TargetApi(5)
-/*     */   private void e(a parama, HttpURLConnection paramHttpURLConnection)
+/*     */   private void e(NetHackDbg parama, HttpURLConnection paramHttpURLConnection)
 /*     */   {
 /* 784 */     for (Pair localPair : this.b.a()) {
 /* 785 */       paramHttpURLConnection.addRequestProperty((String)localPair.first, (String)localPair.second);
@@ -934,7 +934,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void a(a parama, int paramInt1, String paramString, int paramInt2)
+/*     */   private void a(NetHackDbg parama, int paramInt1, String paramString, int paramInt2)
 /*     */   {
 /* 810 */     b(parama, paramInt1, paramString, paramInt2);
 /* 811 */     if (com.bytedance.sdk.openadsdk.ccccc.m.a.c(paramInt1)) {
@@ -942,7 +942,7 @@ import java.net.URLConnection;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void b(a parama, int paramInt1, String paramString, int paramInt2)
+/*     */   private void b(NetHackDbg parama, int paramInt1, String paramString, int paramInt2)
 /*     */   {
 /* 818 */     ContentValues localContentValues = new ContentValues();
 /* 819 */     localContentValues.put("status", Integer.valueOf(paramInt1));

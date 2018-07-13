@@ -6,7 +6,7 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 import com.bytedance.sdk.openadsdk.core.video.a.c;
 
@@ -30,7 +30,7 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */   private c b;
 /*    */   private h c;
 /*    */   private TTRewardVideoAd.RewardAdInteractionListener d;
-/*    */   private x e;
+/*    */   private DownLoadListenerImpl e;
 /*    */   
 /*    */   @MainThread
 /*    */   public static s a()
@@ -67,11 +67,11 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /* 58 */     this.d = paramRewardAdInteractionListener;
 /*    */   }
 /*    */   
-/*    */   public x e() {
+/*    */   public DownLoadListenerImpl e() {
 /* 62 */     return this.e;
 /*    */   }
 /*    */   
-/*    */   public void a(x paramx) {
+/*    */   public void a(DownLoadListenerImpl paramx) {
 /* 66 */     this.e = paramx;
 /*    */   }
 /*    */   
@@ -84,7 +84,7 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\s.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\ViewWather.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

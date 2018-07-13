@@ -26,7 +26,7 @@ public class c {
     private long i;
     private long j;
 
-    private c(@NonNull c.a var1) {
+    private c(@NonNull innera var1) {
         this.a = var1.h;
         this.b = var1.i;
         this.d = var1.j;
@@ -67,7 +67,7 @@ public class c {
         return var1;
     }
 
-    public static class a {
+    public static class innera {
         private long a;
         private long b;
         private int c;
@@ -79,55 +79,55 @@ public class c {
         private int[] i;
         private int[] j;
 
-        public a() {
+        public innera() {
         }
 
-        public c.a a(long var1) {
+        public innera a(long var1) {
             this.a = var1;
             return this;
         }
 
-        public c.a b(long var1) {
+        public innera b(long var1) {
             this.b = var1;
             return this;
         }
 
-        public c.a a(int var1) {
+        public innera a(int var1) {
             this.c = var1;
             return this;
         }
 
-        public c.a b(int var1) {
+        public innera b(int var1) {
             this.d = var1;
             return this;
         }
 
-        public c.a c(int var1) {
+        public innera c(int var1) {
             this.e = var1;
             return this;
         }
 
-        public c.a d(int var1) {
+        public innera d(int var1) {
             this.f = var1;
             return this;
         }
 
-        public c.a a(int[] var1) {
+        public innera a(int[] var1) {
             this.g = var1;
             return this;
         }
 
-        public c.a b(int[] var1) {
+        public innera b(int[] var1) {
             this.h = var1;
             return this;
         }
 
-        public c.a c(int[] var1) {
+        public innera c(int[] var1) {
             this.i = var1;
             return this;
         }
 
-        public c.a d(int[] var1) {
+        public innera d(int[] var1) {
             this.j = var1;
             return this;
         }

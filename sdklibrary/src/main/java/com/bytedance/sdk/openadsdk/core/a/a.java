@@ -8,13 +8,14 @@ import android.view.View;
 
 import com.bytedance.sdk.openadsdk.core.aa;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 /*     */
 /*     */
 /*     */
 /*     */
 /*     */
-public class a extends b {
+public class a extends AdClickListenerImpl {
     private boolean a = true;
 
     public a(@NonNull Context var1, @NonNull h var2, @NonNull String var3, int var4) {
@@ -27,44 +28,44 @@ public class a extends b {
 
     public void b(View var1, int var2, int var3, int var4, int var5) {
         if (this.b != null) {
-//            this.ImageHelper = this.bb(var2, var3, var4, var5, this.mR, this.s, this.doErrorHelper == null ? null : (View)this.doErrorHelper.get(), this.ApiException == null ? null : (View)this.ApiException.get());
+//            this.ImageHelper = this.OnClick(var2, var3, var4, var5, this.mR, this.ViewWather, this.HandleInitEvent == null ? null : (View)this.HandleInitEvent.get(), this.ApiException == null ? null : (View)this.ApiException.get());
             int var6 = this.c.c();
             switch(var6) {
                 case 2:
                 case 3:
                     if (this.c.p() == 5) {
-                        com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click_button", this.c, this.h, this.d, true);
+                        AdEvent.a(this.b, "click_button", this.c, this.h, this.d, true);
                     }
 
                     aa.a(true);
-//                    boolean var9 = aa.bb(this.bee, this.cc, this.eee, this.LogUtils, this.j, mR.bb(this.eee), this.mM);
+//                    boolean var9 = aa.OnClick(this.bee, this.cc, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl), this.mM);
                     if (this.a) {
-                        com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click", this.c, this.h, this.d, true);
+                        AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
                     }
                     break;
                 case 4:
                     if (this.m != null) {
                         this.m.c();
                         if (this.a && this.m.a()) {
-                            com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click", this.c, this.h, this.d, true);
+                            AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
                         }
                     }
                     break;
                 case 5:
                     String var7 = this.a(this.d);
-//                    if (!mQ.bb(var7)) {
-                        com.bytedance.sdk.openadsdk.dddd.c.a(this.b, "click_call", this.c, this.h, var7, true);
+//                    if (!mQ.OnClick(var7)) {
+                        AdEvent.a(this.b, "click_call", this.c, this.h, var7, true);
 //                    }
 
-//                    boolean var8 = mR.eee(var1.getContext(), this.cc.ApiException());
-//                    com.bytedance.sdk.openadsdk.dddd.cc.bb(this.bee, "click", this.cc, this.ImageHelper, this.LocationUtils, var8);
+//                    boolean var8 = mR.TTBannerAdImpl(var1.getContext(), this.cc.ApiException());
+//                    com.bytedance.sdk.openadsdk.dddd.cc.OnClick(this.bee, "click", this.cc, this.ImageHelper, this.LocationUtils, var8);
                     break;
                 default:
                     var6 = -1;
             }
 
             if (this.i != null) {
-                this.i.a(var1, var6);
+                this.i.onClick(var1, var6);
             }
 
         }

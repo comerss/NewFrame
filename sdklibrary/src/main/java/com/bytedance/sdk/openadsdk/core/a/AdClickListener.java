@@ -13,7 +13,7 @@ import android.view.View;
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public abstract class d
+/*    */ public abstract class AdClickListener
 /*    */   implements View.OnClickListener, View.OnTouchListener
 /*    */ {
 /*    */   protected int mM;

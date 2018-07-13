@@ -39,11 +39,11 @@
 /*     */ 
 /*     */   public static String a()
 /*     */   {
-/*  42 */     if (r.c()) {
+/*  42 */     if (ToolUtils.c()) {
 /*  43 */       return j();
 /*     */     }
 /*     */     
-/*  46 */     if (r.d()) {
+/*  46 */     if (ToolUtils.d()) {
 /*  47 */       return l();
 /*     */     }
 /*     */     
@@ -130,7 +130,7 @@
 /*     */ 
 /*     */   public static String j()
 /*     */   {
-/* 133 */     if (r.c()) {
+/* 133 */     if (ToolUtils.c()) {
 /* 134 */       return "miui_" + a("ro.miui.ui.version.name") + "_" + Build.VERSION.INCREMENTAL;
 /*     */     }
 /*     */     
@@ -141,7 +141,7 @@
 /*     */ 
 /*     */   public static String k()
 /*     */   {
-/* 144 */     String str = r.b();
+/* 144 */     String str = ToolUtils.b();
 /* 145 */     if ((str != null) && (str.toLowerCase().contains("emotionui"))) {
 /* 146 */       return str + "_" + Build.DISPLAY;
 /*     */     }

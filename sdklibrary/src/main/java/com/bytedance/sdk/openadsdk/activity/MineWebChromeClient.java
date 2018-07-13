@@ -4,9 +4,9 @@
 /*    */ import android.support.annotation.NonNull;
 /*    */ import android.webkit.ConsoleMessage;
 /*    */ import android.webkit.WebChromeClient;
-/*    */ import com.bytedance.sdk.openadsdk.core.v;
+/*    */ import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
 /*    */ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-import com.bytedance.sdk.openadsdk.ggg.j;
+import com.bytedance.sdk.openadsdk.ggg.WebViewHelper;
 /*    */
 
 /*    */
@@ -18,9 +18,9 @@ import com.bytedance.sdk.openadsdk.ggg.j;
 /*    */   extends WebChromeClient
 /*    */ {
 /* 18 */   private static final String a = WebChromeClient.class.getSimpleName();
-/*    */   private v b;
+/*    */   private TTAndroidObject b;
 /*    */   
-/*    */   public MineWebChromeClient(v paramv) {
+/*    */   public MineWebChromeClient(TTAndroidObject paramv) {
 /* 22 */     this.b = paramv;
 /*    */   }
 /*    */   
@@ -48,7 +48,7 @@ import com.bytedance.sdk.openadsdk.ggg.j;
 /* 46 */       Uri localUri = Uri.parse(paramString);
 /* 47 */       String str = localUri.getScheme().toLowerCase();
 /* 48 */       if ("bytedance".equals(str)) {
-/* 49 */         j.a(localUri, this.b);
+/* 49 */         WebViewHelper.a(localUri, this.b);
 /* 50 */         return true;
 /*    */       }
 /*    */     }

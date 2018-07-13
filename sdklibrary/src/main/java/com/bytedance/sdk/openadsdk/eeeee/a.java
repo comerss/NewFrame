@@ -6,11 +6,12 @@ import android.support.annotation.Nullable;
 
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +44,7 @@ import java.util.Map;
 /*     */   private static volatile c b;
 /*     */   
 /*     */   private com.bytedance.sdk.openadsdk.eeeee.b c;
-/*  30 */   private final Map<String, x> d = new HashMap();
+/*  30 */   private final Map<String, DownLoadListenerImpl> d = new HashMap();
 /*     */   
 /*     */   private a(com.bytedance.sdk.openadsdk.eeeee.b paramb) {
 /*  33 */     this.c = paramb;
@@ -67,7 +68,7 @@ import java.util.Map;
 /*     */   
 /*     */   public void b()
 /*     */   {
-/*  54 */     for (x localx : this.d.values()) {
+/*  54 */     for (DownLoadListenerImpl localx : this.d.values()) {
 /*  55 */       if (localx != null) {
 /*  56 */         localx.e();
 /*     */       }
@@ -76,7 +77,7 @@ import java.util.Map;
 /*     */   
 /*     */   public void c()
 /*     */   {
-/*  63 */     for (x localx : this.d.values()) {
+/*  63 */     for (DownLoadListenerImpl localx : this.d.values()) {
 /*  64 */       if (localx != null) {
 /*  65 */         localx.f();
 /*     */       }
@@ -109,11 +110,11 @@ import java.util.Map;
 /*     */     {
 /*  94 */       return;
 /*     */     }
-/*  96 */     x localx = (x)this.d.get(paramh.m().a());
+/*  96 */     DownLoadListenerImpl localx = (DownLoadListenerImpl)this.d.get(paramh.m().a());
 /*  97 */     if (localx != null) {
 /*  98 */       return;
 /*     */     }
-/* 100 */     String str = r.a(paramInt);
+/* 100 */     String str = ToolUtils.a(paramInt);
 /* 101 */     if (StringUtils.isEmpty(str)) {
 /* 102 */       return;
 /*     */     }
@@ -138,7 +139,7 @@ import java.util.Map;
 /* 122 */     if ((paramContext == null) || (paramh == null) || (paramh.m() == null)) {
 /* 123 */       return;
 /*     */     }
-/* 125 */     x localx = (x)this.d.get(paramh.m().a());
+/* 125 */     DownLoadListenerImpl localx = (DownLoadListenerImpl)this.d.get(paramh.m().a());
 /*     */     
 /* 127 */     if (localx != null) {
 /* 128 */       localx.c();
@@ -189,7 +190,7 @@ import java.util.Map;
 /* 173 */     if (localJSONObject != null) {
 /* 174 */       h localh = new h();
 /* 175 */       localh.a(localJSONObject);
-/* 176 */       x localx = (x)this.d.get(localh.m().a());
+/* 176 */       DownLoadListenerImpl localx = (DownLoadListenerImpl)this.d.get(localh.m().a());
 /* 177 */       if (localx != null) {
 /* 178 */         localx.g();
 /*     */       }
@@ -201,14 +202,14 @@ import java.util.Map;
 /* 185 */     if ((StringUtils.isEmpty(paramString)) || (this.d == null)) {
 /* 186 */       return;
 /*     */     }
-/* 188 */     x localx = (x)this.d.get(paramString);
+/* 188 */     DownLoadListenerImpl localx = (DownLoadListenerImpl)this.d.get(paramString);
 /* 189 */     if (localx != null) {
 /* 190 */       localx.d();
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private x a(@NonNull final Context paramContext, @NonNull final h paramh, @NonNull final JSONObject paramJSONObject, @NonNull final String paramString, boolean paramBoolean) {
-/* 195 */     x localx = new x(paramContext, paramh, paramString);
+/*     */   private DownLoadListenerImpl a(@NonNull final Context paramContext, @NonNull final h paramh, @NonNull final JSONObject paramJSONObject, @NonNull final String paramString, boolean paramBoolean) {
+/* 195 */     DownLoadListenerImpl localx = new DownLoadListenerImpl(paramContext, paramh, paramString);
 /* 196 */     localx.a(new TTAppDownloadListener()
 /*     */     {
 /*     */       public void onIdle() {
@@ -298,28 +299,28 @@ import java.util.Map;
 /* 281 */     if (!paramBoolean) {
 /* 282 */       return localx;
 /*     */     }
-/* 284 */     localx.a(new x.b()
+/* 284 */     localx.a(new DownLoadListenerImpl.b()
 /*     */     {
 /*     */       public void a() {
-/* 287 */         com.bytedance.sdk.openadsdk.dddd.c.a(paramContext, paramh, paramString, "click_start_detail");
+/* 287 */         AdEvent.a(paramContext, paramh, paramString, "click_start_detail");
 /* 288 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadStart");
 /*     */       }
 /*     */       
 /*     */       public void b()
 /*     */       {
-/* 293 */         com.bytedance.sdk.openadsdk.dddd.c.b(paramContext, paramh, paramString, "click_pause");
+/* 293 */         AdEvent.b(paramContext, paramh, paramString, "click_pause");
 /* 294 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadPause");
 /*     */       }
 /*     */       
 /*     */       public void c()
 /*     */       {
-/* 299 */         com.bytedance.sdk.openadsdk.dddd.c.c(paramContext, paramh, paramString, "click_continue");
+/* 299 */         AdEvent.c(paramContext, paramh, paramString, "click_continue");
 /* 300 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, " js onClickDownloadContinue");
 /*     */       }
 /*     */       
 /*     */       public void d()
 /*     */       {
-/* 305 */         com.bytedance.sdk.openadsdk.dddd.c.h(paramContext, paramh, paramString, "click_open");
+/* 305 */         AdEvent.h(paramContext, paramh, paramString, "click_open");
 /* 306 */         LogUtils.b(com.bytedance.sdk.openadsdk.eeeee.a.a, "onClickOpenAdApp");
 /*     */       }
 /* 308 */     });
@@ -328,7 +329,7 @@ import java.util.Map;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\eee\SslHepler.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\TTBannerAdImpl\SslHepler.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

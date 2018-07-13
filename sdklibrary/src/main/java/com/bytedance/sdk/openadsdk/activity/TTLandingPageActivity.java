@@ -15,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.ccccc.MyDownloadManager;
+import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
 import com.bytedance.sdk.openadsdk.core.ab;
-import com.bytedance.sdk.openadsdk.core.v;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+import com.bytedance.sdk.openadsdk.ggg.WebViewHelper;
 
 /*     */
 /*     */
@@ -80,7 +82,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*     */   private ViewStub j;
 /*     */   private String k;
 /*     */   private String l;
-/*     */   protected v a;
+/*     */   protected TTAndroidObject a;
 /*     */   private int m;
 /*     */   
 /*     */   protected void onCreate(@Nullable Bundle paramBundle)
@@ -103,7 +105,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*  87 */     final String str3 = localIntent.getStringExtra("icon_url");
 /*  88 */     b();
 /*  89 */     this.c.setWebViewClient(new MineWebViewClient(this.g, this.a, this.k));
-/*  90 */     this.c.getSettings().setUserAgentString(com.bytedance.sdk.openadsdk.ggg.j.a(this.c, this.h));
+/*  90 */     this.c.getSettings().setUserAgentString(WebViewHelper.a(this.c, this.h));
 /*     */
 /*  92 */     if (Build.VERSION.SDK_INT >= 21) {
 /*  93 */       this.c.getSettings().setMixedContentMode(0);
@@ -113,7 +115,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*  97 */     this.c.setDownloadListener(new DownloadListener()
 /*     */     {
 /*     */       public void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong) {
-/* 100 */         com.bytedance.sdk.openadsdk.ccccc.l.a(g, paramAnonymousString1, str2, str3);
+/* 100 */         MyDownloadManager.a(g, paramAnonymousString1, str2, str3);
 /*     */       }
 /*     */     });
 /* 103 */     if (this.f != null) {
@@ -165,7 +167,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*     */
 /*     */   private void b()
 /*     */   {
-/* 152 */     this.a = new v(this);
+/* 152 */     this.a = new TTAndroidObject(this);
 /* 153 */     this.a.a(this.c)
 /* 154 */       .a(this.k)
 /* 155 */       .b(this.l)

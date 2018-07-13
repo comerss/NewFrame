@@ -1,14 +1,26 @@
 /*     */ package com.bytedance.sdk.openadsdk.dddd;
 /*     */ 
-/*     */ import android.os.Handler;
 /*     */
-/*     */ import android.os.HandlerThread;
-/*     */ import android.os.Message;
-/*     */ import com.bytedance.sdk.openadsdk.core.AdNativeListener;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.k;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-/*     */ import java.util.LinkedList;
-/*     */ import java.util.List;
+
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+
+import com.bytedance.sdk.openadsdk.core.AdNativeListener;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.k;
+
+import java.util.LinkedList;
+import java.util.List;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -30,7 +42,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class doErrorHelper<T>
+/*     */ public class HandleInitEvent<T>
 /*     */   extends HandlerThread
 /*     */   implements Handler.Callback
 /*     */ {
@@ -44,7 +56,7 @@
 /*     */   private a h;
 /*     */   private b i;
 /*     */   
-/*     */   doErrorHelper(d<T> paramd, AdNativeListener<T> paramo, b paramb, a parama)
+/*     */   HandleInitEvent(d<T> paramd, AdNativeListener<T> paramo, b paramb, a parama)
 /*     */   {
 /*  49 */     super("ttad_bk");
 /*  50 */     this.i = paramb;
@@ -61,27 +73,26 @@
 /*  61 */     this.g = new Handler(getLooper(), this);
 /*     */   }
 /*     */   
-/*     */   public boolean handleMessage(Message paramMessage)
-/*     */   {
-/*  66 */     switch (paramMessage.what) {
-/*     */     /*case 1:
-*//*  68 *//*       OnAdLoad((g)paramMessage.obj);
-*//*  69 *//*       break;
-*//*     *//*     case 2:
-*//*  71 *//*       d();
-*//*  72 *//*       break;
-*//*     *//*     case 3:
-*//*  74 *//*       fccc();
-*//*  75 *//*       break;
-*//*     *//*     case 4:
-*//*  77 *//*       fbbb();
-*//*  78 *//*       break;
-*//*     *//*     case 5:
-*//*  80 *//*       OnAdLoad();*/
-/*     */     }
-/*     */     
-/*  83 */     return true;
-/*     */   }
+/*     */        public boolean handleMessage(Message var1) {
+    switch(var1.what) {
+        case 1:
+            this.a((T)var1.obj);
+            break;
+        case 2:
+            this.d();
+            break;
+        case 3:
+            this.c();
+            break;
+        case 4:
+            this.b();
+            break;
+        case 5:
+            this.a();
+    }
+
+    return true;
+}
 /*     */   
 /*     */   private void a() {
 /*  87 */     this.a.a(this.i.d, this.i.e);
@@ -372,7 +383,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\LocationUtils\doErrorHelper.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\LocationUtils\HandleInitEvent.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

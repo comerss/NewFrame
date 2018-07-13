@@ -277,10 +277,10 @@ public class WebImage extends WebViewClient{
     	
     	if(width <= 0 || height <= 0 || url == null) return false;
     	
-    	AQUtility.debug("webview", width + "x" + height);
+    	AQUtility.debug("webview", width + "DownLoadListenerImpl" + height);
     	
     	View parent = (View) wv.getParent();
-    	AQUtility.debug("parent", parent.getWidth() + "x" + parent.getHeight());
+    	AQUtility.debug("parent", parent.getWidth() + "DownLoadListenerImpl" + parent.getHeight());
     	
     	String html = getSource(wv.getContext());
     	html = html.replaceAll("@width", width + "").replaceAll("@height", height + "").replaceAll("@src", url);

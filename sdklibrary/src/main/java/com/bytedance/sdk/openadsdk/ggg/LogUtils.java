@@ -14,10 +14,10 @@
 /*     */ {
 /*  15 */   public static boolean isDebug = true;
 /*     */   
-/*  17 */   static int b = 4;
+/*  17 */   static int b = 1;
 /*     */   
 /*     */   public static void a(int paramInt) {
-/*  20 */     b = paramInt;
+///*  20 */     AdClickListenerImpl = paramInt;
 /*     */   }
 /*     */   
 /*     */ 
@@ -178,7 +178,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\LogUtils.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\DownloadNotifier\LogUtils.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

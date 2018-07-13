@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ import android.content.Context;
 /*    */ import com.bytedance.sdk.openadsdk.core.eeee.c;
-import com.bytedance.sdk.openadsdk.dddd.doErrorHelper;
+import com.bytedance.sdk.openadsdk.dddd.HandleInitEvent;
 /*    */
 /*    */
 
@@ -72,12 +72,12 @@ import com.bytedance.sdk.openadsdk.dddd.doErrorHelper;
 /* 70 */     return c;
 /*    */   }
 /*    */   
-/*    */   private static doErrorHelper.b f() {
-/* 74 */     return doErrorHelper.b.a();
+/*    */   private static HandleInitEvent.b f() {
+/* 74 */     return HandleInitEvent.b.a();
 /*    */   }
 /*    */   
-/*    */   private static doErrorHelper.a b(final Context paramContext) {
-/* 78 */    return new doErrorHelper.a()
+/*    */   private static HandleInitEvent.a b(final Context paramContext) {
+/* 78 */    return new HandleInitEvent.a()
 /*    */     {
 /*    */       public boolean a() {
 /* 81 */         return com.bytedance.sdk.openadsdk.ggg.n.a(paramContext);

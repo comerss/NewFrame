@@ -4,8 +4,9 @@
 
 import android.content.Context;
 
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 /*    */
 /*    */
@@ -18,7 +19,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*    */ 
 /*    */ 
 /*    */ public class c
-/*    */   implements x.b
+/*    */   implements DownLoadListenerImpl.b
 /*    */ {
 /*    */   private Context c;
 /*    */   protected h a;
@@ -33,22 +34,22 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /*    */   
 /*    */   public void a()
 /*    */   {
-/* 30 */     com.bytedance.sdk.openadsdk.dddd.c.a(this.c, this.a, this.b, "click_start");
+/* 30 */     AdEvent.a(this.c, this.a, this.b, "click_start");
 /*    */   }
 /*    */   
 /*    */   public void b()
 /*    */   {
-/* 35 */     com.bytedance.sdk.openadsdk.dddd.c.b(this.c, this.a, this.b, "click_pause");
+/* 35 */     AdEvent.b(this.c, this.a, this.b, "click_pause");
 /*    */   }
 /*    */   
 /*    */   public void c()
 /*    */   {
-/* 40 */     com.bytedance.sdk.openadsdk.dddd.c.c(this.c, this.a, this.b, "click_continue");
+/* 40 */     AdEvent.c(this.c, this.a, this.b, "click_continue");
 /*    */   }
 /*    */   
 /*    */   public void d()
 /*    */   {
-/* 45 */     com.bytedance.sdk.openadsdk.dddd.c.h(this.c, this.a, this.b, "click_open");
+/* 45 */     AdEvent.h(this.c, this.a, this.b, "click_open");
 /*    */   }
 /*    */ }
 

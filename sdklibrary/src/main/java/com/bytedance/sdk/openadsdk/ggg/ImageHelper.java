@@ -45,7 +45,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */   public static Drawable a(byte[] paramArrayOfByte, int paramInt)
+/*    */   public static Drawable loadImage(byte[] paramArrayOfByte, int paramInt)
 /*    */   {
 /* 52 */     DrawableAjaxCallback localDrawableAjaxCallback = new DrawableAjaxCallback();
 /* 53 */     localDrawableAjaxCallback.targetWidth(paramInt);
@@ -61,7 +61,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\g\ImageHelper.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\DownloadNotifier\ImageHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

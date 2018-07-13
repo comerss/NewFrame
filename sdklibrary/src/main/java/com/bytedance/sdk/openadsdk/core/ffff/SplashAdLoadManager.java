@@ -17,6 +17,7 @@ import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.SplashNative;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.ImageHelper;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
@@ -141,7 +142,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                 if (var1 != null && var1.b() != null && !var1.b().isEmpty()) {
                     final com.bytedance.sdk.openadsdk.core.nibuguan.h var6x = var1.b().get(0);
                     if (var6x.v()) {
-                        com.bytedance.sdk.openadsdk.dddd.c.a(var6x, "splash_ad", "load_ad_duration", System.currentTimeMillis() - SplashAdLoadManager.this.i);
+                        AdEvent.a(var6x, "splash_ad", "load_ad_duration", System.currentTimeMillis() - SplashAdLoadManager.this.i);
                         SplashAdLoadManager.this.i = 0L;
                         var3x = (var6x.f().get(0)).a();
                         SplashAdLoadManager.this.j = System.currentTimeMillis();
@@ -149,15 +150,15 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                         ImageHelper.loadImage(SplashAdLoadManager.this.f, var3x, new ImageHelper.OnLoadImage() {
                             @MainThread
                             public void onsuccess(@NonNull byte[] var1x) {
-                                com.bytedance.sdk.openadsdk.dddd.c.a(var6x, "splash_ad", "download_creative_duration", System.currentTimeMillis() - SplashAdLoadManager.this.j);
+                                AdEvent.a(var6x, "splash_ad", "download_creative_duration", System.currentTimeMillis() - SplashAdLoadManager.this.j);
                                 SplashAdLoadManager.this.j = 0L;
                                 if (!var3 && !SplashAdLoadManager.this.h) {
                                     SplashAdLoadManager.this.h = true;
                                     int var2x = (var6x.f().get(0)).b();
-                                    Drawable drawable = ImageHelper.a(var1x, var2x);
+                                    Drawable drawable = ImageHelper.loadImage(var1x, var2x);
                                     if (drawable != null) {
                                         com.bytedance.sdk.openadsdk.hhh.a().c(var6);
-                                        d var4x = new d(SplashAdLoadManager.this.f, var6x);
+                                        TTSplashAdImpl var4x = new TTSplashAdImpl(SplashAdLoadManager.this.f, var6x);
                                         var4x.a(drawable);
                                         adListener.onSplashAdLoad(var4x);
                                         LogUtils.b("SplashAdLoadManager", "从网络加载成功并回调出去");
@@ -227,10 +228,10 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                     public void a(@NonNull final com.bytedance.sdk.openadsdk.core.nibuguan.j var1x) {
                         if (var1x.a() != null && var1x.a().v() && var1x.b() != null && var1x.b().length != 0) {
                             int var2 = (var1x.a().f().get(0)).b();
-                            final Drawable var3 = ImageHelper.a(var1x.b(), var2);
+                            final Drawable var3 = ImageHelper.loadImage(var1x.b(), var2);
                             if (var3 != null) {
                                 var1x.a().b(true);
-                                final d var4 = new d(SplashAdLoadManager.this.f, var1x.a());
+                                final TTSplashAdImpl var4 = new TTSplashAdImpl(SplashAdLoadManager.this.f, var1x.a());
                                 n.c().a(var1x.a().l(), var1x.a().o(), new SplashAdLoadManager.a() {
                                     public void a(boolean var1xx) {
                                         if (var1xx && !SplashAdLoadManager.this.h) {

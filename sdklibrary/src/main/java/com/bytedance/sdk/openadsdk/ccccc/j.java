@@ -84,7 +84,7 @@
 /*     */ 
 /*     */   public void a(d paramd)
 /*     */   {
-///*  86 */     if (bee.cc) Log.v("SsDownloadManager", "requestScan() for " + paramd.eee);
+///*  86 */     if (bee.cc) Log.TTAndroidObject("SsDownloadManager", "requestScan() for " + paramd.TTBannerAdImpl);
 /*  87 */     synchronized (this.c) {
 /*  88 */       a locala = new a(paramd.a, paramd.e, paramd.f);
 /*  89 */       this.d.put(locala.b, locala);
@@ -166,7 +166,7 @@
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\j.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\mTTFeedAd.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -24,13 +24,15 @@ import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AQuery2;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.m;
 import com.bytedance.sdk.openadsdk.core.video.renderview.SSRenderSurfaceView;
 import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
+import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
@@ -105,7 +107,7 @@ import java.util.Locale;
 /*      */ 
 /*      */ 
 /*      */
-public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a, com.bytedance.sdk.openadsdk.core.widget.a.ao, com.bytedance.sdk.openadsdk.core.widget.b.bbb, MineHandler.OnResult {
+public class NewLiveViewLayout implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a, com.bytedance.sdk.openadsdk.core.widget.a.ao, com.bytedance.sdk.openadsdk.core.widget.b.bbb, MineHandler.OnResult {
     private View a;
     private com.bytedance.sdk.openadsdk.core.video.renderview.b b;
     private TextView c;
@@ -168,7 +170,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     private AQuery2 ah;
     private final com.bytedance.sdk.openadsdk.core.nibuguan.h ai;
     private boolean aj = true;
-    private x ak;
+    private DownLoadListenerImpl ak;
     private c al;
     private com.bytedance.sdk.openadsdk.core.a.a am;
     private boolean an = false;
@@ -183,9 +185,9 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                     break;
                 case 1:
                     if (Math.abs(this.b - var2.getX()) < 10.0F) {
-                        h.this.an = true;
+                        NewLiveViewLayout.this.an = true;
                     } else {
-                        h.this.an = false;
+                        NewLiveViewLayout.this.an = false;
                     }
                     break;
                 case 2:
@@ -211,7 +213,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     private boolean az;
     private int aA = this.x();
 
-    public h(Context var1, View var2, boolean var3, EnumSet<com.bytedance.sdk.openadsdk.core.video.a.b.a> var4, com.bytedance.sdk.openadsdk.core.nibuguan.h var5, c var6) {
+    public NewLiveViewLayout(Context var1, View var2, boolean var3, EnumSet<com.bytedance.sdk.openadsdk.core.video.a.b.a> var4, com.bytedance.sdk.openadsdk.core.nibuguan.h var5, c var6) {
         this.ae = var1 instanceof Activity ? ((Activity)var1).getWindowManager() : null;
         this.B = com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext();
         this.a = var2;
@@ -233,24 +235,24 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
     private void r() {
         if (this.ai.c() == 4) {
-            this.ak = new x(this.B, this.ai, "embeded_ad");
-            this.ak.a(new com.bytedance.sdk.openadsdk.ccccc.x.b() {
+            this.ak = new DownLoadListenerImpl(this.B, this.ai, "embeded_ad");
+            this.ak.a(new DownLoadListenerImpl.b() {
                 public void a() {
-                    String var1 = h.this.aj ? "click_start" : "click_start_detail";
-                    com.bytedance.sdk.openadsdk.dddd.c.a(h.this.B, h.this.ai, "embeded_ad", var1);
+                    String var1 = NewLiveViewLayout.this.aj ? "click_start" : "click_start_detail";
+                    AdEvent.a(NewLiveViewLayout.this.B, NewLiveViewLayout.this.ai, "embeded_ad", var1);
                 }
 
                 public void b() {
-                    com.bytedance.sdk.openadsdk.dddd.c.b(h.this.B, h.this.ai, "embeded_ad", "click_pause");
+                    AdEvent.b(NewLiveViewLayout.this.B, NewLiveViewLayout.this.ai, "embeded_ad", "click_pause");
                 }
 
                 public void c() {
-                    com.bytedance.sdk.openadsdk.dddd.c.c(h.this.B, h.this.ai, "embeded_ad", "click_continue");
+                    AdEvent.c(NewLiveViewLayout.this.B, NewLiveViewLayout.this.ai, "embeded_ad", "click_continue");
                 }
 
                 public void d() {
-                    String var1 = h.this.aj ? "click_open" : "click_open_detail";
-                    com.bytedance.sdk.openadsdk.dddd.c.h(h.this.B, h.this.ai, "embeded_ad", var1);
+                    String var1 = NewLiveViewLayout.this.aj ? "click_open" : "click_open_detail";
+                    AdEvent.h(NewLiveViewLayout.this.B, NewLiveViewLayout.this.ai, "embeded_ad", var1);
                 }
             });
         }
@@ -354,8 +356,8 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.d.setVisibility(!this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a) ? View.VISIBLE : View.GONE);
         this.d.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                if (h.this.t()) {
-                    h.this.aa.c(h.this, var1);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.c(NewLiveViewLayout.this, var1);
                 }
 
             }
@@ -363,43 +365,43 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.c.setVisibility(this.H && !this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.b) ?View.VISIBLE : View.GONE);
         this.c.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                if (h.this.t()) {
-                    h.this.aa.d(h.this, var1);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.d(NewLiveViewLayout.this, var1);
                 }
 
             }
         });
         this.j.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                if (h.this.t()) {
-                    h.this.aa.e(h.this, var1);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.e(NewLiveViewLayout.this, var1);
                 }
 
             }
         });
         this.e.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                if (h.this.t()) {
-                    h.this.aa.a(h.this, var1);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.a(NewLiveViewLayout.this, var1);
                 }
 
             }
         });
         this.n.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                h.this.a(false, true);
-                h.this.i();
-                h.this.e();
-                if (h.this.t()) {
-                    h.this.aa.f(h.this, var1);
+                NewLiveViewLayout.this.a(false, true);
+                NewLiveViewLayout.this.i();
+                NewLiveViewLayout.this.e();
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.f(NewLiveViewLayout.this, var1);
                 }
 
             }
         });
         this.z.setOnClickListener(new View.OnClickListener() {
             public void onClick(View var1) {
-                if (h.this.t()) {
-                    h.this.aa.b(h.this, var1);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.b(NewLiveViewLayout.this, var1);
                 }
 
             }
@@ -407,32 +409,32 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.P.setThumbOffset(0);
         this.P.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onStopTrackingTouch(SeekBar var1) {
-                if (!h.this.G && h.this.B != null) {
+                if (!NewLiveViewLayout.this.G && NewLiveViewLayout.this.B != null) {
                     var1.setThumb(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext().getResources().getDrawable(com.bytedance.sdk.openadsdk.R.drawable.tt_seek_thumb_normal));
                 }
 
-                if (h.this.t()) {
+                if (NewLiveViewLayout.this.t()) {
                     var1.setThumbOffset(0);
-                    h.this.aa.a(h.this, var1.getProgress());
+                    NewLiveViewLayout.this.aa.a(NewLiveViewLayout.this, var1.getProgress());
                 }
 
             }
 
             public void onStartTrackingTouch(SeekBar var1) {
-                if (!h.this.G && h.this.B != null) {
+                if (!NewLiveViewLayout.this.G && NewLiveViewLayout.this.B != null) {
                     var1.setThumb(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext().getResources().getDrawable(com.bytedance.sdk.openadsdk.R.drawable.tt_seek_thumb_press));
                 }
 
-                if (h.this.t()) {
+                if (NewLiveViewLayout.this.t()) {
                     var1.setThumbOffset(0);
-                    h.this.aa.b(h.this, var1.getProgress());
+                    NewLiveViewLayout.this.aa.b(NewLiveViewLayout.this, var1.getProgress());
                 }
 
             }
 
             public void onProgressChanged(SeekBar var1, int var2, boolean var3) {
-                if (h.this.t()) {
-                    h.this.aa.a(h.this, var2, var3);
+                if (NewLiveViewLayout.this.t()) {
+                    NewLiveViewLayout.this.aa.a(NewLiveViewLayout.this, var2, var3);
                 }
 
             }
@@ -595,9 +597,9 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
     public void b(int var1) {
         if (this.y != null && this.y.getVisibility() == View.VISIBLE) {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.Q, 8);
+            ViewWather.a(this.Q, 8);
         } else {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.Q, 0);
+            ViewWather.a(this.Q, 0);
             this.P.setProgress(var1);
             this.Q.setProgress(var1);
         }
@@ -627,7 +629,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.l.setVisibility(View.VISIBLE);
         this.mView1.setVisibility(View.GONE);
         if (this.w != null && this.mImageView != null && this.ai != null) {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.w, 0);
+            ViewWather.a(this.w, 0);
             ((AQuery)this.ah.id(this.mImageView)).image(this.ai.a().c());
         }
 
@@ -647,7 +649,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     }
 
     public void g() {
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.a, 0);
+        ViewWather.a(this.a, 0);
         if (this.b != null) {
             View var1 = this.b.getView();
             if (var1 instanceof TextureView) {
@@ -667,21 +669,21 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
     }
 
     private void u() {
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.p, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.q, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.r, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.s, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.mView, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.u, 8);
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.v, 8);
+        ViewWather.a(this.p, 8);
+        ViewWather.a(this.q, 8);
+        ViewWather.a(this.r, 8);
+        ViewWather.a(this.s, 8);
+        ViewWather.a(this.mView, 8);
+        ViewWather.a(this.u, 8);
+        ViewWather.a(this.v, 8);
     }
 
     public void a(com.bytedance.sdk.openadsdk.core.nibuguan.h var1, WeakReference<Context> var2, boolean var3) {
         if (var1 != null) {
             this.b(false, this.H);
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.p, 0);
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.q, 0);
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.r, 0);
+            ViewWather.a(this.p, 0);
+            ViewWather.a(this.q, 0);
+            ViewWather.a(this.r, 0);
             String var4 = "";
             if (!StringUtils.isEmpty(var1.b())) {
                 var4 = var1.b();
@@ -692,14 +694,14 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             }
 
             if (this.ai != null && this.ai.d() != null && this.ai.d().a() != null) {
-                com.bytedance.sdk.openadsdk.ggg.s.a(this.s, 0);
-                com.bytedance.sdk.openadsdk.ggg.s.a(this.mView, 4);
+                ViewWather.a(this.s, 0);
+                ViewWather.a(this.mView, 4);
                 ((AQuery)this.ah.id(this.s)).image(this.ai.d().a());
                 this.s.setOnClickListener(this.am);
                 this.s.setOnTouchListener(this.am);
             } else if (!StringUtils.isEmpty(var4)) {
-                com.bytedance.sdk.openadsdk.ggg.s.a(this.s, 4);
-                com.bytedance.sdk.openadsdk.ggg.s.a(this.mView, 0);
+                ViewWather.a(this.s, 4);
+                ViewWather.a(this.mView, 0);
                 this.mView.setText(var4.substring(0, 1));
                 this.mView.setOnClickListener(this.am);
                 this.mView.setOnTouchListener(this.am);
@@ -709,8 +711,8 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 this.u.setText(var4);
             }
 
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.u, 0);
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.v, 0);
+            ViewWather.a(this.u, 0);
+            ViewWather.a(this.v, 0);
             switch(var1.c()) {
                 case 2:
                 case 3:
@@ -735,7 +737,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
         this.k.setVisibility(View.GONE);
         this.l.setVisibility(View.GONE);
         if (this.w != null) {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.w, 8);
+            ViewWather.a(this.w, 8);
         }
 
     }
@@ -849,7 +851,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 if (var3 instanceof ViewGroup.MarginLayoutParams) {
                     ViewGroup.MarginLayoutParams var6 = (ViewGroup.MarginLayoutParams)var3;
                     this.O.set(var6.leftMargin, var6.topMargin, var6.rightMargin, var6.bottomMargin);
-                    com.bytedance.sdk.openadsdk.ggg.s.b(var1, 0, 0, 0, 0);
+                    ViewWather.a(var1, 0, 0, 0, 0);
                 }
 
                 this.b(true);
@@ -863,7 +865,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                     this.d.setVisibility(View.GONE);
                     this.c.setVisibility(View.GONE);
                 } else if (this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a)) {
-                    com.bytedance.sdk.openadsdk.ggg.s.a(this.d, 8);
+                    ViewWather.a(this.d, 8);
                 }
 
             }
@@ -889,7 +891,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 }
 
                 if (var3 instanceof ViewGroup.MarginLayoutParams) {
-                    com.bytedance.sdk.openadsdk.ggg.s.b(var1, this.O.left, this.O.top, this.O.right, this.O.bottom);
+                    ViewWather.a(var1, this.O.left, this.O.top, this.O.right, this.O.bottom);
                 }
 
                 this.b(true);
@@ -930,12 +932,12 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
             this.ar = this.S.getAlpha();
             this.S.setAlpha(0.85F);
-            this.S.setShadowLayer(0.0F, com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 0.5F), com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 0.5F), this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shaoow_color_fullscreen));
+            this.S.setShadowLayer(0.0F, ViewWather.a(this.B, 0.5F), ViewWather.a(this.B, 0.5F), this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shaoow_color_fullscreen));
             var2 = this.S.getLayoutParams();
             if (var2 instanceof ViewGroup.MarginLayoutParams) {
                 var3 = (ViewGroup.MarginLayoutParams)var2;
                 this.as.set(var3.leftMargin, var3.topMargin, var3.rightMargin, var3.bottomMargin);
-                com.bytedance.sdk.openadsdk.ggg.s.b(this.S, (int) TypedValue.applyDimension(1, 16.0F, var1), this.as.top, (int)TypedValue.applyDimension(1, 14.0F, var1), this.as.bottom);
+                ViewWather.a(this.S, (int) TypedValue.applyDimension(1, 16.0F, var1), this.as.top, (int)TypedValue.applyDimension(1, 14.0F, var1), this.as.bottom);
             }
         }
 
@@ -949,12 +951,12 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
             this.av = this.R.getAlpha();
             this.R.setAlpha(0.85F);
-            this.R.setShadowLayer(0.0F, com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 0.5F), com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 0.5F), this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shaoow_color_fullscreen));
+            this.R.setShadowLayer(0.0F, ViewWather.a(this.B, 0.5F), ViewWather.a(this.B, 0.5F), this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shaoow_color_fullscreen));
             var2 = this.R.getLayoutParams();
             if (var2 instanceof ViewGroup.MarginLayoutParams) {
                 var3 = (ViewGroup.MarginLayoutParams)var2;
                 this.aw.set(var3.leftMargin, var3.topMargin, var3.rightMargin, var3.bottomMargin);
-                com.bytedance.sdk.openadsdk.ggg.s.b(this.R, (int)TypedValue.applyDimension(1, 14.0F, var1), this.aw.top, this.aw.right, this.aw.bottom);
+                ViewWather.a(this.R, (int)TypedValue.applyDimension(1, 14.0F, var1), this.aw.top, this.aw.right, this.aw.bottom);
             }
         }
 
@@ -963,7 +965,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             if (var2 instanceof ViewGroup.MarginLayoutParams) {
                 var3 = (ViewGroup.MarginLayoutParams)var2;
                 this.ax.set(var3.leftMargin, var3.topMargin, var3.rightMargin, var3.bottomMargin);
-                com.bytedance.sdk.openadsdk.ggg.s.b(this.z, this.ax.left, this.ax.top, (int)TypedValue.applyDimension(1, 16.0F, var1), this.ax.bottom);
+                ViewWather.a(this.z, this.ax.left, this.ax.top, (int)TypedValue.applyDimension(1, 16.0F, var1), this.ax.bottom);
             }
         }
 
@@ -983,7 +985,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             if (var2 instanceof ViewGroup.MarginLayoutParams) {
                 var3 = (ViewGroup.MarginLayoutParams)var2;
                 this.V.set(var3.leftMargin, var3.topMargin, var3.rightMargin, var3.bottomMargin);
-                com.bytedance.sdk.openadsdk.ggg.s.b(this.h, (int)TypedValue.applyDimension(1, 1.0F, var1), this.aw.top, this.aw.right, this.aw.bottom);
+                ViewWather.a(this.h, (int)TypedValue.applyDimension(1, 1.0F, var1), this.aw.top, this.aw.right, this.aw.bottom);
             }
         }
 
@@ -1006,8 +1008,8 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             }
 
             this.S.setAlpha(this.ar);
-            this.S.setShadowLayer(com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 1.0F), 0.0F, 0.0F, this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shadow_color));
-            com.bytedance.sdk.openadsdk.ggg.s.b(this.S, this.as.left, this.as.top, this.as.right, this.as.bottom);
+            this.S.setShadowLayer(ViewWather.a(this.B, 1.0F), 0.0F, 0.0F, this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shadow_color));
+            ViewWather.a(this.S, this.as.left, this.as.top, this.as.right, this.as.bottom);
         }
 
         if (this.R != null) {
@@ -1017,12 +1019,12 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             }
 
             this.R.setAlpha(this.av);
-            this.R.setShadowLayer(com.bytedance.sdk.openadsdk.ggg.s.a(this.B, 1.0F), 0.0F, 0.0F, this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shadow_color));
-            com.bytedance.sdk.openadsdk.ggg.s.b(this.R, this.aw.left, this.aw.top, this.aw.right, this.aw.bottom);
+            this.R.setShadowLayer(ViewWather.a(this.B, 1.0F), 0.0F, 0.0F, this.B.getResources().getColor(com.bytedance.sdk.openadsdk.R.color.tt_video_shadow_color));
+            ViewWather.a(this.R, this.aw.left, this.aw.top, this.aw.right, this.aw.bottom);
         }
 
         if (this.z != null) {
-            com.bytedance.sdk.openadsdk.ggg.s.b(this.z, this.ax.left, this.ax.top, this.ax.right, this.ax.bottom);
+            ViewWather.a(this.z, this.ax.left, this.ax.top, this.ax.right, this.ax.bottom);
         }
 
         if (this.z != null) {
@@ -1035,7 +1037,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
             }
 
             this.h.setAlpha(this.U);
-            com.bytedance.sdk.openadsdk.ggg.s.b(this.h, this.aw.left, this.aw.top, this.aw.right, this.aw.bottom);
+            ViewWather.a(this.h, this.aw.left, this.aw.top, this.aw.right, this.aw.bottom);
         }
 
         if (this.f != null) {
@@ -1107,12 +1109,12 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
                 this.c.setVisibility(View.GONE);
             }
         } else if (this.ad.contains(com.bytedance.sdk.openadsdk.core.video.a.b.a.a)) {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.d, 8);
+            ViewWather.a(this.d, 8);
         }
 
         if (var2) {
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.d, 8);
-            com.bytedance.sdk.openadsdk.ggg.s.a(this.c, 8);
+            ViewWather.a(this.d, 8);
+            ViewWather.a(this.c, 8);
         }
 
         this.c(false);
@@ -1143,7 +1145,7 @@ public class h implements b, com.bytedance.sdk.openadsdk.core.video.renderview.a
 
     public void d(int var1) {
         this.ac = var1;
-        com.bytedance.sdk.openadsdk.ggg.s.a(this.a, var1);
+        ViewWather.a(this.a, var1);
         if (var1 != 0) {
             this.az = false;
         } else if (this.ay) {

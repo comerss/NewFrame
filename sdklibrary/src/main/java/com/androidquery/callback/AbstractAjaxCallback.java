@@ -506,7 +506,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	 * Set http POST params. If params are set, http POST method will be used. 
 	 * The UTF-8 encoded value.toString() will be sent with POST. 
 	 * 
-	 * Header field "Content-Type: application/x-www-form-urlencoded;charset=UTF-8" will be added if no Content-Type header field presents.
+	 * Header field "Content-Type: application/DownLoadListenerImpl-www-form-urlencoded;charset=UTF-8" will be added if no Content-Type header field presents.
 	 *
 	 * @param name the name
 	 * @param value the value
@@ -1525,7 +1525,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 		
 		
 		if(headers != null  && !headers.containsKey("Content-Type")){
-			headers.put("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+			headers.put("Content-Type", "application/DownLoadListenerImpl-www-form-urlencoded;charset=UTF-8");
 		}
 		
 		req.setEntity(entity);
@@ -1909,7 +1909,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	 */
 	public K auth(Activity act, String type, String account){
 		
-		if(android.os.Build.VERSION.SDK_INT >= 5 && type.startsWith("g.")){		
+		if(android.os.Build.VERSION.SDK_INT >= 5 && type.startsWith("DownloadNotifier.")){
 			ah = new GoogleHandle(act, type, account);
 		}
 		

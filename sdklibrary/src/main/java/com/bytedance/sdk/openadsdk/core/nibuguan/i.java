@@ -1,12 +1,12 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.nibuguan;
 
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 /*    */
 /*    */ 
 /*    */ public class i
 /*    */ {
-/*    */    public String a = r.f();
+/*    */    public String a = ToolUtils.f();
 
     public i() {
     }

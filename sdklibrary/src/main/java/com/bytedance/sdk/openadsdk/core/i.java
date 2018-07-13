@@ -13,7 +13,7 @@ import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -374,13 +374,13 @@ public static void j(Context paramContext)
 /*     */ 
 /*     */     try
 /*     */     {
-/* 350 */       if (r.c()) {
+/* 350 */       if (ToolUtils.c()) {
 /* 351 */         localStringBuilder.append("MIUI-");
-/* 352 */       } else if (r.d()) {
+/* 352 */       } else if (ToolUtils.d()) {
 /* 353 */         localStringBuilder.append("FLYME-");
 /*     */       } else {
-/* 355 */         String str = r.b();
-/* 356 */         if (r.a(str)) {
+/* 355 */         String str = ToolUtils.b();
+/* 356 */         if (ToolUtils.a(str)) {
 /* 357 */           localStringBuilder.append("EMUI-");
 /*     */         }
 /* 359 */         if (!TextUtils.isEmpty(str)) {
@@ -410,7 +410,7 @@ public static void j(Context paramContext)
 /*     */       }
 /* 384 */       localBufferedReader.close();
 /* 385 */       String str2 = localStringBuilder.toString().trim();
-/* 386 */       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", Locale.US);
+/* 386 */       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE MMM TTSplashAdImpl HH:mm:ss z yyyy", Locale.US);
 /* 387 */       localSimpleDateFormat.parse(str2);
 /* 388 */       return str2;
 /*     */     } catch (Exception localException) {

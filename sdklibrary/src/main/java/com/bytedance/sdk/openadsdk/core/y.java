@@ -15,8 +15,9 @@ import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 import java.io.File;
 
@@ -51,7 +52,7 @@ import java.io.File;
 /*     */   private h c;
 /*     */   private AdSlot d;
 /*     */   private TTRewardVideoAd.RewardAdInteractionListener e;
-/*     */   private x f;
+/*     */   private DownLoadListenerImpl f;
 /*  36 */   private boolean g = true;
 /*     */   
 /*     */   AQuery2 a;
@@ -69,9 +70,9 @@ import java.io.File;
 /*     */   }
 /*     */   
 /*     */   public void a() {
-/*  53 */     com.bytedance.sdk.openadsdk.dddd.c.a(this.c);
+/*  53 */     AdEvent.a(this.c);
 /*  54 */     if (getInteractionType() == 4) {
-/*  55 */       this.f = new x(this.b, this.c, "embeded_ad");
+/*  55 */       this.f = new DownLoadListenerImpl(this.b, this.c, "embeded_ad");
 /*     */     }
 /*  57 */     this.a = new AQuery2(this.b);
 /*  58 */     this.a.download(this.c.a().d(), a(this.b, "/reward_video_cache/", "tt_reward_video_cache"), new AjaxCallback()

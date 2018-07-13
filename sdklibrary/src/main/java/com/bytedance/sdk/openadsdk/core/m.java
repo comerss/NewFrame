@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTFeedAd;
-import com.bytedance.sdk.openadsdk.ccccc.x;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-import com.bytedance.sdk.openadsdk.ggg.r;
+import com.bytedance.sdk.openadsdk.dddd.AdEvent;
+import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -49,7 +51,7 @@ import java.util.List;
 /*     */ class m
 /*     */ {
 /*     */   private h b;
-/*     */   private x c;
+/*     */   private DownLoadListenerImpl c;
 /*     */   private a d;
 /*     */   protected Context a;
 /*     */   private TTFeedAd e;
@@ -62,7 +64,7 @@ import java.util.List;
 /*     */     
 /*  46 */     if (this.b.c() == 4) {
 /*  47 */       this.d = new a();
-/*  48 */       this.c = new x(this.a, this.b, "embeded_ad");
+/*  48 */       this.c = new DownLoadListenerImpl(this.a, this.b, "embeded_ad");
 /*     */       
 /*  50 */       this.c.a(new com.bytedance.sdk.openadsdk.core.a.c(this.a, this.b, "embeded_ad"));
 /*     */     }
@@ -74,7 +76,7 @@ import java.util.List;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   x a() {
+/*     */   DownLoadListenerImpl a() {
 /*  61 */     return this.c;
 /*     */   }
 /*     */   
@@ -83,10 +85,10 @@ import java.util.List;
 /*  66 */     if (this.c != null) {
 /*  67 */       this.c.e();
 /*     */     }
-/*  69 */     com.bytedance.sdk.openadsdk.dddd.c.a(this.b);
-/*  70 */     f localf = a(paramViewGroup);
+/*  69 */     AdEvent.a(this.b);
+/*  70 */     SplashManager localf = a(paramViewGroup);
 /*  71 */     if (localf == null) {
-/*  72 */       localf = new f(this.a, paramViewGroup);
+/*  72 */       localf = new SplashManager(this.a, paramViewGroup);
 /*  73 */       paramViewGroup.addView(localf);
 /*     */     }
 /*  75 */     localf.a();
@@ -94,12 +96,12 @@ import java.util.List;
 /*  77 */     localf.setRefCreativeViews(paramList2);
 /*     */
 /*     */ 
-/*  80 */     com.bytedance.sdk.openadsdk.core.a.b localb = new com.bytedance.sdk.openadsdk.core.a.b(this.a, this.b, "embeded_ad", 1);
+/*  80 */     AdClickListenerImpl localb = new AdClickListenerImpl(this.a, this.b, "embeded_ad", 1);
 /*  81 */     localb.a(paramViewGroup);
 /*  82 */     localb.a(this.e);
-/*  83 */     localb.a(new com.bytedance.sdk.openadsdk.core.a.b.bb()
+/*  83 */     localb.a(new AdClickListenerImpl.OnClick()
 /*     */     {
-/*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
+/*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /*  86 */         if (paramAdInteractionListener != null) {
 /*  87 */           paramAdInteractionListener.onAdClicked(paramAnonymousView,e);
 /*     */         }
@@ -110,9 +112,9 @@ import java.util.List;
 /*  93 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.a, this.b, "embeded_ad", 1);
 /*  94 */     locala.a(paramViewGroup);
 /*  95 */     locala.a(this.c);
-/*  96 */     locala.a(new com.bytedance.sdk.openadsdk.core.a.a.bb()
+/*  96 */     locala.a(new AdClickListenerImpl.OnClick()
 /*     */     {
-/*     */       public void a(View paramAnonymousView, int paramAnonymousInt) {
+/*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /*  99 */         if (paramAdInteractionListener != null) {
 /* 100 */           paramAdInteractionListener.onAdCreativeClick(paramAnonymousView, e);
 /*     */         }
@@ -122,7 +124,7 @@ import java.util.List;
 /* 105 */     localf.a(paramList1, localb);
 /* 106 */     localf.a(paramList2, locala);
 /*     */     
-/* 108 */     localf.setCallback(new com.bytedance.sdk.openadsdk.core.f.a()
+/* 108 */     localf.setCallback(new SplashManager.SplashListener()
 /*     */     {
 /*     */       public void a(boolean paramAnonymousBoolean) {
 /* 111 */         if (c!= null) {
@@ -142,26 +144,26 @@ import java.util.List;
 /*     */       public void b() {}
 /*     */       
 /*     */ 
-/*     */       public void a(View paramAnonymousView)
+/*     */       public void onShow(View paramAnonymousView)
 /*     */       {
-/* 130 */         com.bytedance.sdk.openadsdk.dddd.c.a(a, b, "embeded_ad");
+/* 130 */         AdEvent.show(a, b, "embeded_ad");
 /* 131 */         if (paramAdInteractionListener != null) {
 /* 132 */           paramAdInteractionListener.onAdShow(e);
 /*     */         }
 /* 134 */         if (b.t()) {
-/* 135 */           r.a(b, paramAnonymousView);
+/* 135 */           ToolUtils.a(b, paramAnonymousView);
 /*     */         }
 /*     */       }
 /* 138 */     });
 /* 139 */     localf.setNeedCheckingShow(true);
 /*     */   }
 /*     */   
-/*     */   private f a(ViewGroup paramViewGroup)
+/*     */   private SplashManager a(ViewGroup paramViewGroup)
 /*     */   {
 /* 144 */     for (int i = 0; i < paramViewGroup.getChildCount(); i++) {
 /* 145 */       View localView = paramViewGroup.getChildAt(i);
-/* 146 */       if ((localView instanceof f)) {
-/* 147 */         return (f)localView;
+/* 146 */       if ((localView instanceof SplashManager)) {
+/* 147 */         return (SplashManager)localView;
 /*     */       }
 /*     */     }
 /* 150 */     return null;
