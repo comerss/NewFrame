@@ -1,5 +1,7 @@
 package com.donews.frame.sdk;
 
+import com.baidu.mobads.AdSettings;
+import com.baidu.mobads.AdView;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdManager;
 import com.bytedance.sdk.openadsdk.TTAdManagerFactory;
@@ -21,6 +23,8 @@ public class DoApplication extends GlobalApplication {
                 .setAllowShowNotifiFromSDK(true)
                 .setAllowLandingPageShowWhenScreenLock(true)
                 .setDirectDownloadNetworkType(TTAdConstant.NETWORK_STATE_WIFI, TTAdConstant.NETWORK_STATE_3G);
+        AdView.setAppSid(this,"b792a33a");
+        AdSettings.setSupportHttps(true);
     }
     public static TTAdManager getManage(){
         return manager;

@@ -6,6 +6,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +20,8 @@
         android:supportsRtl="true"
         android:name=".sdk.DoApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".sdk.SdkActivity">
+        <meta-data android:name="BaiduMobAd_APP_ID" android:value="b792a33a" />
+        <activity android:name=".camera.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,7 +30,7 @@
         </activity>
         <activity android:name=".camera.CameraActivity"/>
 
-        <!--<activity android:name=".sdk.SdkActivity"/>-->
+        <activity android:name=".sdk.SdkActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -34,6 +41,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths"/>
         </provider>
+        <activity android:name="com.baidu.mobads.AppActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>
