@@ -23,6 +23,7 @@ public class DoApplication extends GlobalApplication {
                 .setAllowShowNotifiFromSDK(true)
                 .setAllowLandingPageShowWhenScreenLock(true)
                 .setDirectDownloadNetworkType(TTAdConstant.NETWORK_STATE_WIFI, TTAdConstant.NETWORK_STATE_3G);
+//        BaiduManager.init(this);
         AdView.setAppSid(this,"b792a33a");
         AdSettings.setSupportHttps(true);
     }
