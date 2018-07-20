@@ -18,8 +18,15 @@ import okhttp3.RequestBody;
  */
 
 public class PostRequest extends BaseRequest<PostRequest> {
+    String content;
+
     public PostRequest(@NonNull String url) {
         super(url);
+    }
+
+    public PostRequest(@NonNull String url, @NonNull String content) {
+        super(url);
+        this.content = content;
     }
 
     public PostRequest add(String key, Object value) {
@@ -34,27 +41,17 @@ public class PostRequest extends BaseRequest<PostRequest> {
         return this;
     }
 
-    public <T> void execute(String jsonBody, BaseCallBack<T> callBack) {
-        if (TextUtils.isEmpty(mURI)) {
-            //提示输入URL
-            return;
-        }
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonBody);
-        final Request request = new Request.Builder()
-                .url(mURI)
-                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
-                .post(body)
-                .build();
-        perform(request, callBack);
-    }
     public <T> void execute(BaseCallBack<T> callBack) {
         if (TextUtils.isEmpty(mURI)) {
             //提示输入URL
             return;
         }
-        String json = JsonParseHelper.parse(mObjectMaps);
+        String json;
+        if (!mObjectMaps.isEmpty()) {
+            json = JsonParseHelper.parse(mObjectMaps);
+        } else {
+            json = content;
+        }
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         final Request request = new Request.Builder()
                 .url(mURI)

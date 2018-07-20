@@ -1,6 +1,7 @@
 package com.donews.frame.sdk
 
 import android.content.Context
+import android.view.View
 import com.baidu.mobad.feeds.NativeResponse
 import com.bumptech.glide.Glide
 import com.comers.baselibrary.baseAdapter.BaseQuickAdapter
@@ -32,5 +33,15 @@ class FeedAdapter(context: Context,list:List<NativeResponse>) : BaseQuickAdapter
         val text = if (item!!.isDownloadApp) "下载" else "查看"
         helper.setText(R.id.native_cta,text)
         item.recordImpression(helper.itemView)
+//        item.handleClick(helper.itemView)
+        getItemView?.getView(helper.adapterPosition,helper.itemView)
     }
+     var getItemView:GetItemView?=null
+    interface GetItemView{
+        fun getView(int: Int,view: View)
+    }
+    fun setOnGetView(getItemView:GetItemView){
+        this.getItemView=getItemView
+    }
+
 }

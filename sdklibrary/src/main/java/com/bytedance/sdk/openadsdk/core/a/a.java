@@ -44,9 +44,9 @@ public class a extends AdClickListenerImpl {
                     }
                     break;
                 case 4:
-                    if (this.m != null) {
-                        this.m.c();
-                        if (this.a && this.m.a()) {
+                    if (this.mDownLoadListener != null) {
+                        this.mDownLoadListener.c();
+                        if (this.a && this.mDownLoadListener.a()) {
                             AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
                         }
                     }

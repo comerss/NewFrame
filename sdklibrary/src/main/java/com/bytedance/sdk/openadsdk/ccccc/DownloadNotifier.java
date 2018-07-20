@@ -112,14 +112,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @SuppressLint({"UseSparseArrays"})
 public class DownloadNotifier {
-    private Map<Long, WeakHashMap<DownLoadListener, Boolean>> a = new ConcurrentHashMap();
-    private Map<Long, com.bytedance.sdk.openadsdk.core.nibuguan.e> b = new ConcurrentHashMap();
-    private Map<Long, y> c = new ConcurrentHashMap();
+    private Map<Long, WeakHashMap<DownLoadListener, Boolean>> mMap = new ConcurrentHashMap();
+    private Map<Long, com.bytedance.sdk.openadsdk.core.nibuguan.e> mLongeMap = new ConcurrentHashMap();
+    private Map<Long, y> mHashMap = new ConcurrentHashMap();
     private AQuery2 d;
-    private LruCache<String, Bitmap> e;
-    private final Context f;
-    private final NotificationManager g;
-    private static DownloadNotifier h;
+    private LruCache<String, Bitmap> mLruCache;
+    private final Context mContext;
+    private final NotificationManager mManager;
+    private static DownloadNotifier sNotifier;
     private final Set<String> i = new HashSet();
     private static final Object j = new Object();
     private final HashMap<String, Long> k = new HashMap();
@@ -127,45 +127,45 @@ public class DownloadNotifier {
     private final q m = new q();
 
     public void a(Long var1, DownLoadListener var2, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
-        WeakHashMap var4 = (WeakHashMap)this.a.get(var1);
+        WeakHashMap var4 = (WeakHashMap)this.mMap.get(var1);
         if (var4 == null) {
             var4 = new WeakHashMap();
-            this.a.put(var1, var4);
+            this.mMap.put(var1, var4);
         }
 
         if (var2 != null) {
             var2.a(var1);
             var4.put(var2, Boolean.TRUE);
             y var5 = new y();
-            this.c.put(var1, var5);
+            this.mHashMap.put(var1, var5);
         }
 
         if (var3 != null && var3.c()) {
-            this.b.put(var1, var3);
+            this.mLongeMap.put(var1, var3);
         }
 
     }
 
     public com.bytedance.sdk.openadsdk.core.nibuguan.e a(long var1) {
-        return this.b != null ? (com.bytedance.sdk.openadsdk.core.nibuguan.e)this.b.get(var1) : null;
+        return this.mLongeMap != null ? (com.bytedance.sdk.openadsdk.core.nibuguan.e)this.mLongeMap.get(var1) : null;
     }
 
     public void b(long var1) {
-        if (this.b != null) {
-            this.b.remove(var1);
+        if (this.mLongeMap != null) {
+            this.mLongeMap.remove(var1);
         }
 
     }
 
     private void a(String var1, Bitmap var2) {
         if (this.b(var1) == null) {
-            this.e.put(var1, var2);
+            this.mLruCache.put(var1, var2);
         }
 
     }
 
     private Bitmap b(String var1) {
-        return (Bitmap)this.e.get(var1);
+        return (Bitmap)this.mLruCache.get(var1);
     }
 
     private Bitmap c(String var1) {
@@ -174,7 +174,7 @@ public class DownloadNotifier {
                 public void callback(String var1, Bitmap var2, AjaxStatus var3) {
                     super.callback(var1, var2, var3);
                     if (var3 != null && var2 != null && var3.getCode() == 200) {
-                        float var4 = ViewWather.a(DownloadNotifier.this.f, 44.0F);
+                        float var4 = ViewWather.a(DownloadNotifier.this.mContext, 44.0F);
                         DownloadNotifier.this.a(var1, com.bytedance.sdk.openadsdk.ggg.f.a(var2, var4, var4));
                     }
 
@@ -186,35 +186,35 @@ public class DownloadNotifier {
     }
 
     public void a(Long var1, DownLoadListener var2) {
-        WeakHashMap var3 = (WeakHashMap)this.a.get(var1);
+        WeakHashMap var3 = (WeakHashMap)this.mMap.get(var1);
         if (var3 != null) {
             var3.remove(var2);
-            this.c.remove(var1);
+            this.mHashMap.remove(var1);
         }
 
         if (var3 == null || var3.isEmpty()) {
-            this.a.remove(var1);
+            this.mMap.remove(var1);
         }
 
     }
 
     public static synchronized DownloadNotifier a(Context var0) {
-        if (h == null) {
-            h = new DownloadNotifier(var0);
+        if (sNotifier == null) {
+            sNotifier = new DownloadNotifier(var0);
         }
 
-        return h;
+        return sNotifier;
     }
 
     @SuppressLint("WrongConstant")
     private DownloadNotifier(Context var1) {
-        this.f = var1.getApplicationContext();
-        this.g = (NotificationManager)this.f.getSystemService("notification");
+        this.mContext = var1.getApplicationContext();
+        this.mManager = (NotificationManager)this.mContext.getSystemService("notification");
         this.e();
-        this.d = new AQuery2(this.f);
+        this.d = new AQuery2(this.mContext);
         long var2 = Runtime.getRuntime().maxMemory();
         int var4 = (int)(var2 / 8L);
-        this.e = new LruCache<String, Bitmap>(var4) {
+        this.mLruCache = new LruCache<String, Bitmap>(var4) {
             protected int a(String var1, Bitmap var2) {
                 return var2.getByteCount();
             }
@@ -228,7 +228,7 @@ public class DownloadNotifier {
 
             while(var2.hasNext()) {
                 String var3 = (String)var2.next();
-                this.g.cancel(var3, 0);
+                this.mManager.cancel(var3, 0);
                 var2.remove();
             }
 
@@ -257,7 +257,7 @@ public class DownloadNotifier {
     }
 
     private void b(Collection<d> var1, boolean var2) {
-        Resources var3 = this.f.getResources();
+        Resources var3 = this.mContext.getResources();
         HashMap var4 = new HashMap();
         Iterator var5 = var1.iterator();
 
@@ -304,7 +304,7 @@ public class DownloadNotifier {
             int var32 = d(var31);
             d var34 = (d)var4.get(var31);
             if (var34 != null) {
-                r var9 = new r(this.f);
+                r var9 = new r(this.mContext);
                 long var10;
                 if (this.k.containsKey(var31)) {
                     var10 = (Long)this.k.get(var31);
@@ -318,16 +318,16 @@ public class DownloadNotifier {
                 int var14 = 0;
                 if (var32 == 1) {
                     var12 = 17301633;
-                    var13 = this.f.getResources().getColor(R.color.tt_download_action_active);
+                    var13 = this.mContext.getResources().getColor(R.color.tt_download_action_active);
                     var14 = R.drawable.tt_download_active;
                 } else if (var32 == 2) {
                     var12 = 17301642;
-                    var13 = this.f.getResources().getColor(R.color.tt_download_action_pause);
+                    var13 = this.mContext.getResources().getColor(R.color.tt_download_action_pause);
                     var14 = R.drawable.tt_download_pause;
                     this.a(var34, 2, 0L);
                 } else if (var32 == 3) {
                     var12 = 17301634;
-                    var13 = this.f.getResources().getColor(R.color.tt_download_action_active);
+                    var13 = this.mContext.getResources().getColor(R.color.tt_download_action_active);
                     var14 = R.drawable.tt_download_active;
                     this.a(var34, 3, 0L);
                 }
@@ -345,16 +345,16 @@ public class DownloadNotifier {
                             var36 = "android.ss.intent.action.DOWNLOAD_DELETE";
                         }
 
-                        Intent var17 = new Intent(var36, var15, this.f, TTDownloadHandlerService.class);
+                        Intent var17 = new Intent(var36, var15, this.mContext, TTDownloadHandlerService.class);
                         var17.putExtra("extra_click_download_ids", var34.a);
-                        var9.a(PendingIntent.getService(this.f, 0, var17, 134217728));
-                        var18 = new Intent("android.ss.intent.action.DOWNLOAD_HIDE", var15, this.f, TTDownloadHandlerService.class);
-                        var9.b(PendingIntent.getService(this.f, 0, var18, 0));
+                        var9.a(PendingIntent.getService(this.mContext, 0, var17, 134217728));
+                        var18 = new Intent("android.ss.intent.action.DOWNLOAD_HIDE", var15, this.mContext, TTDownloadHandlerService.class);
+                        var9.b(PendingIntent.getService(this.mContext, 0, var18, 0));
                     }
                 } else {
                     var15 = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, var34.a);
-                    Intent var16 = new Intent("android.ss.intent.action.DOWNLOAD_DELETE", var15, this.f, TTDownloadHandlerService.class);
-                    var9.a(PendingIntent.getService(this.f, 0, var16, 134217728));
+                    Intent var16 = new Intent("android.ss.intent.action.DOWNLOAD_DELETE", var15, this.mContext, TTDownloadHandlerService.class);
+                    var9.a(PendingIntent.getService(this.mContext, 0, var16, 134217728));
                     if (var32 == 1) {
                         var9.a(true);
                     } else {
@@ -365,7 +365,7 @@ public class DownloadNotifier {
                 int var35 = 0;
                 Uri var37 = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, var34.a);
                 String var38 = "android.ss.intent.action.DOWNLOAD_CLICK";
-                var18 = new Intent(var38, var37, this.f, TTDownloadHandlerService.class);
+                var18 = new Intent(var38, var37, this.mContext, TTDownloadHandlerService.class);
                 var18.putExtra("extra_click_download_ids", var34.a);
                 var18.putExtra("extra_notification_tag", var31);
                 if (var32 == 1 || var32 == 2) {
@@ -395,70 +395,70 @@ public class DownloadNotifier {
                 if (!var2) {
                     var9.a(var10);
                     var9.a(var12);
-                    RemoteViews var20 = new RemoteViews(this.f.getPackageName(), R.layout.tt_ttopenad_download_notification_layout);
+                    RemoteViews remoteViews = new RemoteViews(this.mContext.getPackageName(), R.layout.tt_ttopenad_download_notification_layout);
                     String var40 = null;
                     String var22 = null;
                     Long var41 = var34.m;
                     var40 = var34.C;
                     if (TextUtils.isEmpty(com.bytedance.sdk.openadsdk.core.h.a().c())) {
-                        var22 = this.f.getResources().getString(R.string.tt_download_source) + this.f.getResources().getString(R.string.tt_open_ad_sdk_source);
+                        var22 = this.mContext.getResources().getString(R.string.tt_download_source) + this.mContext.getResources().getString(R.string.tt_open_ad_sdk_source);
                     } else {
-                        var22 = this.f.getResources().getString(R.string.tt_download_source) + com.bytedance.sdk.openadsdk.core.h.a().c();
+                        var22 = this.mContext.getResources().getString(R.string.tt_download_source) + com.bytedance.sdk.openadsdk.core.h.a().c();
                     }
 
                     if (TextUtils.isEmpty(var40)) {
-                        var20.setImageViewResource(R.id.icon, var12);
+                        remoteViews.setImageViewResource(R.id.icon, var12);
                     } else if (this.c(var40) != null) {
-                        var20.setImageViewBitmap(R.id.icon, this.c(var40));
+                        remoteViews.setImageViewBitmap(R.id.icon, this.c(var40));
                     } else {
-                        var20.setImageViewResource(R.id.icon, R.drawable.tt_ad_logo_small);
+                        remoteViews.setImageViewResource(R.id.icon, R.drawable.tt_ad_logo_small);
                     }
 
                     try {
-                        var20.setTextViewText(R.id.tt_download_time, ToolUtils.a(var41, "HH:mm"));
+                        remoteViews.setTextViewText(R.id.tt_download_time, ToolUtils.a(var41, "HH:mm"));
                     } catch (ParseException var28) {
                         var28.printStackTrace();
                     }
 
-                    var20.setProgressBar(R.id.tt_download_progress, 100, var35, false);
-                    var20.setImageViewResource(R.id.action_download_img, var14);
-                    var20.setTextViewText(R.id.tt_download_source, var22);
-                    var20.setOnClickPendingIntent(R.id.ll_action, PendingIntent.getService(this.f, 0, var18, 134217728));
-                    var20.setTextViewText(R.id.desc, this.c(var34));
+                    remoteViews.setProgressBar(R.id.tt_download_progress, 100, var35, false);
+                    remoteViews.setImageViewResource(R.id.action_download_img, var14);
+                    remoteViews.setTextViewText(R.id.tt_download_source, var22);
+                    remoteViews.setOnClickPendingIntent(R.id.ll_action, PendingIntent.getService(this.mContext, 0, var18, 134217728));
+                    remoteViews.setTextViewText(R.id.desc, this.c(var34));
                     String var24 = "";
                     String var42 = "";
                     if (var32 == 1) {
                         var24 = StringUtils.isEmpty(var34.t) + "/" + StringUtils.isEmpty(var34.s);
-                        var42 = this.f.getResources().getString(R.string.tt_downloading);
+                        var42 = this.mContext.getResources().getString(R.string.tt_downloading);
                     } else if (var32 == 2) {
                         var24 = StringUtils.isEmpty(var34.t) + "/" + StringUtils.isEmpty(var34.s);
-                        var42 = this.f.getResources().getString(R.string.tt_download_pause);
+                        var42 = this.mContext.getResources().getString(R.string.tt_download_pause);
                     } else if (var32 == 3) {
                         if (!com.bytedance.sdk.openadsdk.ccccc.m.a.b(var34.j) && !b(var34)) {
                             if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(var34.j)) {
-                                var24 = this.f.getResources().getString(R.string.tt_download_finish);
-                                if (ToolUtils.c(this.f, var34.e)) {
-                                    var42 = this.f.getResources().getString(R.string.tt_download_open);
+                                var24 = this.mContext.getResources().getString(R.string.tt_download_finish);
+                                if (ToolUtils.c(this.mContext, var34.e)) {
+                                    var42 = this.mContext.getResources().getString(R.string.tt_download_open);
                                 } else {
-                                    var42 = this.f.getResources().getString(R.string.tt_download_install);
+                                    var42 = this.mContext.getResources().getString(R.string.tt_download_install);
                                 }
                             }
                         } else {
-                            var24 = this.f.getResources().getString(R.string.tt_download_failed);
+                            var24 = this.mContext.getResources().getString(R.string.tt_download_failed);
                             if (b(var34)) {
-                                var42 = this.f.getResources().getString(R.string.tt_download_size_off);
+                                var42 = this.mContext.getResources().getString(R.string.tt_download_size_off);
                             } else {
-                                var42 = this.f.getResources().getString(R.string.tt_download_restart);
+                                var42 = this.mContext.getResources().getString(R.string.tt_download_restart);
                             }
                         }
                     }
 
-                    var20.setTextViewText(R.id.download_size, var24);
-                    var20.setTextViewText(R.id.action, var42);
-                    var20.setTextColor(R.id.action, var13);
+                    remoteViews.setTextViewText(R.id.download_size, var24);
+                    remoteViews.setTextViewText(R.id.action, var42);
+                    remoteViews.setTextColor(R.id.action, var13);
                     Notification var39 = var9.a();
-                    var39.contentView = var20;
-                    this.g.notify(var31, 0, var39);
+                    var39.contentView = remoteViews;
+                    this.mManager.notify(var31, 0, var39);
                 }
             }
         }
@@ -475,7 +475,7 @@ public class DownloadNotifier {
                     var31 = (String)var5.next();
                 } while(var4.containsKey(var31));
 
-                this.g.cancel(var31, 0);
+                this.mManager.cancel(var31, 0);
                 Object var33 = j;
                 synchronized(j) {
                     if (this.i.contains(var31)) {
@@ -490,12 +490,12 @@ public class DownloadNotifier {
     }
 
     private CharSequence c(d var1) {
-        return !TextUtils.isEmpty(var1.A) ? var1.A : this.f.getResources().getString(R.string.tt_download_title_unnamed);
+        return !TextUtils.isEmpty(var1.A) ? var1.A : this.mContext.getResources().getString(R.string.tt_download_title_unnamed);
     }
 
     public void a(String var1) {
         if (!TextUtils.isEmpty(var1)) {
-            this.g.cancel(var1, 0);
+            this.mManager.cancel(var1, 0);
             Object var2 = j;
             synchronized(j) {
                 if (this.i.contains(var1)) {
@@ -508,12 +508,12 @@ public class DownloadNotifier {
     }
 
     private void a(d var1, int var2, long var3) {
-        if (this.a.get(var1.a) != null) {
-            Map var5 = (Map)this.a.get(var1.a);
-            y var6 = (y)this.c.get(var1.a);
+        if (this.mMap.get(var1.a) != null) {
+            Map var5 = (Map)this.mMap.get(var1.a);
+            y var6 = (y)this.mHashMap.get(var1.a);
             if (var6 == null) {
                 var6 = new y();
-                this.c.put(var1.a, var6);
+                this.mHashMap.put(var1.a, var6);
             }
 
             var6.a = var1.a;
@@ -574,7 +574,7 @@ public class DownloadNotifier {
                     break;
                 case 3:
                     var3.onDownloadFinished(var2);
-                    c(this.f, var2.getId());
+                    c(this.mContext, var2.getId());
                     break;
                 case 4:
                     var3.onDownloadFailed(var2);
@@ -725,7 +725,7 @@ public class DownloadNotifier {
                 }
 
                 final String var9 = var1.toString();
-                com.bytedance.sdk.openadsdk.ccccc.h.a(this.f, new com.bytedance.sdk.openadsdk.ccccc.h.b() {
+                com.bytedance.sdk.openadsdk.ccccc.h.a(this.mContext, new com.bytedance.sdk.openadsdk.ccccc.h.b() {
                     public void a(SharedPreferences.Editor var1) {
                         if (LogUtils.a()) {
                             LogUtils.b("DownloadNotifier saveToMiscConfig", var9);
@@ -743,7 +743,7 @@ public class DownloadNotifier {
 
     private void e() {
         try {
-            com.bytedance.sdk.openadsdk.ccccc.h.a(this.f, new com.bytedance.sdk.openadsdk.ccccc.h.a() {
+            com.bytedance.sdk.openadsdk.ccccc.h.a(this.mContext, new com.bytedance.sdk.openadsdk.ccccc.h.a() {
                 public void a(SharedPreferences var1) {
                     String var2 = var1.getString("notifs_string", "");
                     if (LogUtils.a()) {

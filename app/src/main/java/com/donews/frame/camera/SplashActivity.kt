@@ -12,8 +12,8 @@ import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.donews.frame.R
 import com.donews.frame.sdk.FeedListActivity
 import com.nontindu.Switch
+import com.trello.rxlifecycle2.android.ActivityEvent
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 
 
@@ -29,8 +29,8 @@ class SplashActivity: RxBaseActivity() {
     override fun initView() {
         Switch.setModAPPConfirmPolicy(true)
         Switch.setModCopyBuiltin(true)
-        Switch.setModStartActivity(true)
-      var splashAd= SplashAd(this, LinearLayout(this), object :SplashAdListener{
+//        Switch.setModStartActivity(true)
+      var splashAd= SplashAd(this, LinearLayout(this), object :  SplashAdListener {
             override fun onAdFailed(p0: String?) {
                 showToast(p0)
             }
@@ -67,20 +67,32 @@ class SplashActivity: RxBaseActivity() {
         val requestParameters = RequestParameters.Builder()
                 .downloadAppConfirmPolicy(RequestParameters.DOWNLOAD_APP_CONFIRM_ONLY_MOBILE)
                 .build()
-        baidu.makeRequest(requestParameters)
+//        baidu.makeRequest(requestParameters)
     }
 
     override fun initListener() {
     }
 
     override fun initData() {
-        Observable.timer(5, TimeUnit.SECONDS)
+        var count=0
+        Observable.interval(1,TimeUnit.SECONDS)
+                .compose(bindUntilEvent(ActivityEvent.PAUSE))
+                .subscribe {
+                    count++
+                    showToast("倒数中${6-count}")
+                    if(count==5){
+                        toActivity(FeedListActivity::class.java)
+                        finish()
+                    }
+                }
+       /* Observable.timer(5, TimeUnit.SECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     toActivity(FeedListActivity::class.java)
-                    showToast("剩余时间$it}")
-                }
+                    finish()
+//                    showToast("剩余时间$it}")
+                }*/
 
     }
 }

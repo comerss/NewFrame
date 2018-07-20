@@ -17,58 +17,58 @@ import android.support.v4.app.NotificationCompat;
 /*     */ 
 /*     */ 
 /*     */ class r
-/*     */   implements o
+/*     */   implements NotificationListener
 /*     */ {
-/*  15 */   private NotificationCompat.Builder a = null;
+    /*  15 */   private NotificationCompat.Builder mBuilder = null;
 /*     */   
 /*     */   public r(Context paramContext) {
-/*  18 */     this.a = new NotificationCompat.Builder(paramContext);
+/*  18 */     this.mBuilder = new NotificationCompat.Builder(paramContext);
 /*     */   }
 /*     */   
-/*     */   public o a(PendingIntent paramPendingIntent)
+/*     */   public NotificationListener a(PendingIntent paramPendingIntent)
 /*     */   {
-/*  23 */     if (this.a != null) {
-/*  24 */       this.a.setContentIntent(paramPendingIntent);
+/*  23 */     if (this.mBuilder != null) {
+/*  24 */       this.mBuilder.setContentIntent(paramPendingIntent);
 /*     */     }
 /*  26 */     return this;
 /*     */   }
 /*     */   
-/*     */   public o a(boolean paramBoolean)
+/*     */   public NotificationListener a(boolean paramBoolean)
 /*     */   {
-/*  31 */     if (this.a != null) {
-/*  32 */       this.a.setOngoing(paramBoolean);
+/*  31 */     if (this.mBuilder != null) {
+/*  32 */       this.mBuilder.setOngoing(paramBoolean);
 /*     */     }
 /*  34 */     return this;
 /*     */   }
 /*     */   
-/*     */   public o b(boolean paramBoolean)
+/*     */   public NotificationListener b(boolean paramBoolean)
 /*     */   {
-/*  39 */     if (this.a != null) {
-/*  40 */       this.a.setAutoCancel(paramBoolean);
+/*  39 */     if (this.mBuilder != null) {
+/*  40 */       this.mBuilder.setAutoCancel(paramBoolean);
 /*     */     }
 /*  42 */     return this;
 /*     */   }
 /*     */   
-/*     */   public o b(PendingIntent paramPendingIntent)
+/*     */   public NotificationListener b(PendingIntent paramPendingIntent)
 /*     */   {
-/*  47 */     if (this.a != null) {
-/*  48 */       this.a.setDeleteIntent(paramPendingIntent);
+/*  47 */     if (this.mBuilder != null) {
+/*  48 */       this.mBuilder.setDeleteIntent(paramPendingIntent);
 /*     */     }
 /*  50 */     return this;
 /*     */   }
 /*     */   
-/*     */   public o a(long paramLong)
+/*     */   public NotificationListener a(long paramLong)
 /*     */   {
-/*  55 */     if (this.a != null) {
-/*  56 */       this.a.setWhen(paramLong);
+/*  55 */     if (this.mBuilder != null) {
+/*  56 */       this.mBuilder.setWhen(paramLong);
 /*     */     }
 /*  58 */     return this;
 /*     */   }
 /*     */   
-/*     */   public o a(int paramInt)
+/*     */   public NotificationListener a(int paramInt)
 /*     */   {
-/*  63 */     if (this.a != null) {
-/*  64 */       this.a.setSmallIcon(paramInt);
+/*  63 */     if (this.mBuilder != null) {
+/*  64 */       this.mBuilder.setSmallIcon(paramInt);
 /*     */     }
 /*  66 */     return this;
 /*     */   }
@@ -115,8 +115,8 @@ import android.support.v4.app.NotificationCompat;
 /*     */ 
 /*     */   public Notification a()
 /*     */   {
-/* 111 */     if (this.a != null) {
-/* 112 */       return this.a.build();
+/* 111 */     if (this.mBuilder != null) {
+/* 112 */       return this.mBuilder.build();
 /*     */     }
 /* 114 */     return null;
 /*     */   }

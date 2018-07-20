@@ -14,11 +14,7 @@ import com.bytedance.sdk.openadsdk.AdSlot
 import com.bytedance.sdk.openadsdk.TTAdNative
 import com.bytedance.sdk.openadsdk.TTSplashAd
 import com.comers.baselibrary.base.UpdateService
-import com.comers.baselibrary.http.HttpHelper
-import com.comers.baselibrary.http.HttpResult
-import com.comers.baselibrary.http.ICallBack
 import com.comers.baselibrary.retrofit.RxBaseActivity
-import com.comers.market.base.Data
 import com.donews.frame.R
 import com.donews.frame.sdk.Utils.c
 import kotlinx.android.synthetic.main.activity_sdk.*
@@ -94,12 +90,13 @@ class SdkActivity : RxBaseActivity() {
     //获取广告的方法
     private fun getAd() {
         var url = "https://i.snssdk.com/api/ad/union/sdk/get_ads/"
-        HttpHelper.doPost(url)//这里只存在  3或者 4
+        /*HttpHelper.doPost(url)//这里只存在  3或者 4
                 .execute(getParams(3).toString(), object : ICallBack<Data>() {
                     override fun onSuccess(sResult: HttpResult<Data>?, json: String?) {
                         showToast(json)
                     }
-                })
+                })*/
+
     }
 
 

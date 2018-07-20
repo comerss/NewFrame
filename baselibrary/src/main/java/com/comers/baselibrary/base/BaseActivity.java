@@ -54,7 +54,12 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param
      */
     public void showToast(final String content) {
-        ToastUtils.showToast(content);
+        UIUtils.getMainHandler().post(new Runnable() {
+            @Override
+            public void run() {
+                ToastUtils.showToast(content);
+            }
+        });
     }
 
     /**

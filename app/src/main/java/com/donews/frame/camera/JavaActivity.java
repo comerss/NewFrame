@@ -44,7 +44,7 @@ public class JavaActivity extends AppCompatActivity {
 
     private void initData() {
 //        sendReport();
-        ex();
+//        ex();
     }
 
     private void ex() {

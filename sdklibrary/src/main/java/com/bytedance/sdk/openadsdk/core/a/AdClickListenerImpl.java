@@ -54,10 +54,10 @@ import java.lang.ref.WeakReference;
 /*     */   protected TTFeedAd mTTFeedAd;
 /*     */   protected com.bytedance.sdk.openadsdk.core.video.a.c k;
     protected boolean l = false;
-    protected DownLoadListenerImpl m;
+    protected DownLoadListenerImpl mDownLoadListener;
 
     public void a(DownLoadListenerImpl var1) {
-        this.m = var1;
+        this.mDownLoadListener = var1;
     }
 /*     */   public void a(TTFeedAd paramTTFeedAd) {
 /*  45 */     this.mTTFeedAd = paramTTFeedAd;

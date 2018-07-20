@@ -171,7 +171,7 @@ import java.util.List;
                 ", mTTFeedAd='" + j + '\'' +
                 ", k=" + k +
                 ", MyDownloadManager=" + l +
-                ", m=" + m +
+                ", mDownLoadListener=" + m +
                 ", n='" + n + '\'' +
                 ", o='" + o + '\'' +
                 ", p=" + p +

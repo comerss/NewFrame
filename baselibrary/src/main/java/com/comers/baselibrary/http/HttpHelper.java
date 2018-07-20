@@ -2,10 +2,19 @@ package com.comers.baselibrary.http;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Comers on 2017/10/24.
@@ -40,7 +49,10 @@ public class HttpHelper {
     public static GetRequest doGet(@NonNull String url) {
         return new GetRequest(url);
     }
-    public static void init(String baseUrl){
+    public static PostRequest doPostStr(String url ,String content){
+        return new PostRequest(url,content);
+    }
+    public  void init(String baseUrl){
         HttpConfig.baseUrl=baseUrl;
     }
     public static OkHttpClient getClient() {
@@ -73,4 +85,48 @@ public class HttpHelper {
         READ_TIME_OUT = readTimeout;
         return this;
     }
+    public static void downLoad(String url, final String filePath, final ProgressResponseListener listener){
+        if(listener==null)
+            throw new IllegalArgumentException("ProgressResponseListener may not be null");
+        if(TextUtils.isEmpty(filePath)||TextUtils.isEmpty(url)){
+            throw new IllegalArgumentException("url or filePath  may not be null");
+        }
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url(url).build();
+        ProgressHelper.addProgressResponseListener(listener).newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                listener.onFail(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                File file1 = new File(filePath);
+                long totalLength=response.body().contentLength();
+                if (file1.exists()) {
+                    if (totalLength == file1.length()) {
+                        // 下载完成
+                        listener.onLoad(file1,true);
+                        return;
+                    } else {
+                        file1.delete();
+                    }
+                } else {
+                    file1.createNewFile();
+                }
+                int len;
+                byte[] buf = new byte[1024*1024];
+                InputStream inputStream = response.body().byteStream();
+                FileOutputStream fileOutputStream = new FileOutputStream(file1);
+                while ((len = inputStream.read(buf)) != -1) {
+                    fileOutputStream.write(buf, 0, len);
+                }
+                fileOutputStream.flush();
+                fileOutputStream.close();
+                inputStream.close();
+                listener.onLoad(file1,false);
+            }
+        });
+    }
+
 }
