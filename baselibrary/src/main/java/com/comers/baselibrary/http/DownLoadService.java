@@ -31,7 +31,7 @@ import java.util.TimerTask;
  * Created by 79653 on 2018/7/17.
  * 描述：
  */
-public class DownloadService extends Service {
+public class DownLoadService extends Service {
     NotificationManager notificationManager;
     NotificationBroadcastReceiver mReceiver;
 

@@ -1,6 +1,5 @@
 package com.comers.baselibrary.utils;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -12,12 +11,6 @@ import android.widget.Toast;
  */
 
 public class ToastUtils {
-    public static void toast(Context context, String str) {
-        Toast toast = Toast.makeText(context, str, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-    }
-
     private static Toast mToast;
 
     public static void showToast(String content) {
