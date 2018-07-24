@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,12 +55,16 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @param
      */
     public void showToast(final String content) {
-        UIUtils.getMainHandler().post(new Runnable() {
-            @Override
-            public void run() {
-                ToastUtils.showToast(content);
-            }
-        });
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+            ToastUtils.showToast(content);
+        }else{
+            UIUtils.getMainHandler().post(new Runnable() {
+                @Override
+                public void run() {
+                    ToastUtils.showToast(content);
+                }
+            });
+        }
     }
 
     /**
@@ -89,6 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * activity跳转(返回结果)
+     *
      * @param activity
      * @param <E>
      */
@@ -131,18 +137,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 关闭软键盘
      */
-    public  void closeKeybord(EditText mEditText, Context mContext) {
-        UIUtils.closeKeybord(mEditText,mContext);
+    public void closeKeybord(EditText mEditText, Context mContext) {
+        UIUtils.closeKeybord(mEditText, mContext);
     }
 
     /**
      * 打卡软键盘
      */
-    public  void openKeybord(EditText mEditText, Context mContext) {
-       UIUtils.openKeybord(mEditText,mContext);
+    public void openKeybord(EditText mEditText, Context mContext) {
+        UIUtils.openKeybord(mEditText, mContext);
     }
 
-    public  void hideKeyboard(Activity activity) {
+    public void hideKeyboard(Activity activity) {
         UIUtils.closeKeybord(activity);
     }
 

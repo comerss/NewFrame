@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
+    signingConfigs {
+        config {
+            keyAlias 'shenwu'
+            keyPassword '123456'
+            storeFile file('C:/Users/79653/Desktop/shenwu.jks')
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 27
     buildToolsVersion("27.0.3")
     defaultConfig {
@@ -15,7 +23,11 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            signingConfig signingConfigs.config
         }
     }
     repositories {
@@ -24,14 +36,17 @@ android {
         }
     }
 }
-
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation project(':baselibrary')
     implementation project(':sdklibrary')
-//    implementation (name: 'open_ad_sdk', ext:'aar')
-//    implementation 'com.comers:BaseLibrary:1.0.0'
-//    implementation (name:"BaseLibrary",ext:'aar')
-
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
+    //    implementation 'com.comers:BaseLibrary:1.0.0'
+    //    implementation (name:"BaseLibrary",ext:'aar')
 }

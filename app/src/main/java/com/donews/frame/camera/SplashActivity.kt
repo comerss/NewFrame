@@ -2,6 +2,7 @@ package com.donews.frame.camera
 
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.baidu.mobad.feeds.BaiduNative
 import com.baidu.mobad.feeds.NativeErrorCode
 import com.baidu.mobad.feeds.NativeResponse
@@ -29,6 +30,7 @@ class SplashActivity: RxBaseActivity() {
     override fun initView() {
         Switch.setModAPPConfirmPolicy(true)
         Switch.setModCopyBuiltin(true)
+        Toast.makeText(this,"99999999999999999999999999",Toast.LENGTH_SHORT).show()
 //        Switch.setModStartActivity(true)
       var splashAd= SplashAd(this, LinearLayout(this), object :  SplashAdListener {
             override fun onAdFailed(p0: String?) {
@@ -85,14 +87,6 @@ class SplashActivity: RxBaseActivity() {
                         finish()
                     }
                 }
-       /* Observable.timer(5, TimeUnit.SECONDS)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    toActivity(FeedListActivity::class.java)
-                    finish()
-//                    showToast("剩余时间$it}")
-                }*/
 
     }
 }

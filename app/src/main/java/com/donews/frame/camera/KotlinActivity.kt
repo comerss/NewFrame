@@ -11,9 +11,14 @@ import android.support.v7.app.AppCompatActivity
 class KotlinActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initData()
+//       initData(2,getData(2))
     }
 
-    private fun initData() {
+    private fun initData(data:Int,method:(data:Int)->String) {
+        method(data)
+//        showToast(getData)
+    }
+    fun getData(data:Int) {
+         "ddd"
     }
 }
