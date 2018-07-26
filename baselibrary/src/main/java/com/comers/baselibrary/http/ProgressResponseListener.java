@@ -9,5 +9,6 @@ import java.io.File;
 public interface ProgressResponseListener {
     void onResponseProgress(long totalBytesRead, long contentLength, boolean done);
     void onFail(String msg);
-    void onLoad(File file,boolean isExist);
+    void onLoad(File file);
+    void onPause();
 }

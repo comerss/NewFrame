@@ -1,4 +1,4 @@
-package com.comers.baselibrary.http;
+package com.comers.baselibrary.download;
 
 import android.text.TextUtils;
 
@@ -33,9 +33,11 @@ public enum UrlManager {
         if (contains(url))
             return;
         mHashSet.add(url);
-        int notifyId=mIntegerHashMap.size() + 1;
-        mIntegerHashMap.put(url, notifyId);
-        mStrHashMap.put(notifyId,url );
+        if(!mIntegerHashMap.containsKey(url)){
+            int notifyId=mIntegerHashMap.size() + 1;
+            mIntegerHashMap.put(url, notifyId);
+            mStrHashMap.put(notifyId,url );
+        }
     }
 
     public void addCall(String url, Call call) {
@@ -49,8 +51,13 @@ public enum UrlManager {
     }
 
     public void cancelCall(String url) {
-        if (mCallHashMap.containsKey(url))
+        if (mCallHashMap.containsKey(url)){
             mCallHashMap.get(url).cancel();
+//            ToastUtil.showToast(DonewsApp.mContext,"取消下载");
+        }
+        if(contains(url)){
+            mHashSet.remove(url);
+        }
     }
 
     public void remove(String url) {

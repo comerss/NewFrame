@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'org.greenrobot.greendao'
 //apply from: '../bintray.gradle' //用来发布版本的，如果报错可以屏蔽
 android {
     compileSdkVersion 27
@@ -38,6 +39,7 @@ android {
         sourceCompatibility 1.7
     }
 }
+
 // 版本号想要统一管理的去主项目配置ext
 dependencies {
     fileTree(include: ['*.jar'], dir: 'libs')
@@ -50,7 +52,7 @@ dependencies {
     //rxjava
     api 'io.reactivex.rxjava2:rxjava:2.1.14'
     api 'io.reactivex.rxjava2:rxandroid:2.0.2'
-//    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    //    api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     // If you want to use Android Lifecycle for providers
     api 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.1'
     // If you want to use Kotlin syntax with Android Lifecycle
@@ -72,9 +74,21 @@ dependencies {
     //retrofit
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
-//    api files('libs/Baidu_MobAds_SDK.jar')
-//    api(name:'open_ad_sdk' , ext:'aar')
+    //    api files('libs/Baidu_MobAds_SDK.jar')
+    //    api(name:'open_ad_sdk' , ext:'aar')
     api 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    //eventbus
+    api 'org.greenrobot:eventbus:3.1.1'
+    annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+    //dagger
+    api 'com.google.dagger:dagger:2.4'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.4'
+    api 'org.greenrobot:greendao:3.2.2'
+    api 'org.greenrobot:greendao-generator:3.2.2'
+
+}
+greendao {
+    schemaVersion 1
 }
 repositories {
     mavenCentral()
