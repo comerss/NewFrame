@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.bytedance.sdk.openadsdk.core.aa;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 /*     */
@@ -15,10 +15,10 @@ import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 /*     */
 /*     */
 /*     */
-public class a extends AdClickListenerImpl {
+public class AdClickListerReal extends AdClickListenerImpl {
     private boolean a = true;
 
-    public a(@NonNull Context var1, @NonNull h var2, @NonNull String var3, int var4) {
+    public AdClickListerReal(@NonNull Context var1, @NonNull NativeAdData var2, @NonNull String var3, int var4) {
         super(var1, var2, var3, var4);
     }
 
@@ -64,8 +64,8 @@ public class a extends AdClickListenerImpl {
                     var6 = -1;
             }
 
-            if (this.i != null) {
-                this.i.onClick(var1, var6);
+            if (this.mOnClick != null) {
+                this.mOnClick.onClick(var1, var6);
             }
 
         }

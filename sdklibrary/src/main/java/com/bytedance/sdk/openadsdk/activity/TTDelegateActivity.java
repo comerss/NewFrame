@@ -30,55 +30,6 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import java.net.URL;
 
 /*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
 /*     */ public class TTDelegateActivity
 /*     */   extends Activity
 /*     */ {
@@ -139,7 +90,7 @@ import java.net.URL;
 /*     */     }
 /*     */   }
 /*     */
-/*     */   private void a(final String paramString1, String paramString2)
+/*     */   private void a(final String url, String paramString2)
 /*     */   {
 /* 116 */     int i = Build.VERSION.SDK_INT >= 21 ? R.style.Theme_Dialog_TTDownload : R.style.Theme_Dialog_TTDownloadOld;
 /*     */
@@ -150,28 +101,13 @@ import java.net.URL;
 /*     */     } else {
 /* 123 */       str = getString(R.string.tt_confirm_download);
 /*     */     }
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
+
 /*     */
 /* 142 */     localBuilder.setTitle(getString(R.string.tt_tip)).setMessage(str).setPositiveButton(getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
 /*     */     {
 /*     */       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
 /*     */       {
-/* 130 */         DownLoadListenerImpl.a(paramString1, 1);
+/* 130 */         DownLoadListenerImpl.a(url, 1);
 /* 131 */         TTDelegateActivity.this.finish();
 /*     */       }
 /*     */
@@ -186,7 +122,7 @@ import java.net.URL;
 /* 142 */       ).setNegativeButton(getString(R.string.tt_label_cancel), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 137 */           DownLoadListenerImpl.a(paramString1, 2);
+/* 137 */           DownLoadListenerImpl.a(url, 2);
 /* 138 */           TTDelegateActivity.this.finish(); } })
 /*     */
 /*     */
@@ -198,7 +134,7 @@ import java.net.URL;
 /*     */         public void onCancel(DialogInterface paramAnonymousDialogInterface)
 /*     */         {
 /*     */
-/* 145 */           DownLoadListenerImpl.a(paramString1, 2);
+/* 145 */           DownLoadListenerImpl.a(url, 2);
 /* 146 */           TTDelegateActivity.this.finish();
 /*     */         }
 /*     */
@@ -233,33 +169,7 @@ import java.net.URL;
 /* 177 */       LogUtils.b("TT_AD_SDK", "已经有Read phone state权限");
 /*     */     }
 /*     */   }
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
+
 /*     */   private void d()
 /*     */   {
 /* 209 */     boolean bool = e();
@@ -332,7 +242,7 @@ import java.net.URL;
 /* 261 */       .setPositiveButton(getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 264 */           AppAdViewHolder.aaaaaa(TTDelegateActivity.this).d(new long[] { l });
+/* 264 */           AppAdViewHolder.getInstance(TTDelegateActivity.this).d(new long[] { l });
 /* 265 */           if (com.bytedance.sdk.openadsdk.eeeee.a.a() != null) {
 /* 266 */             com.bytedance.sdk.openadsdk.eeeee.a.a().a(str2);
 /*     */           }

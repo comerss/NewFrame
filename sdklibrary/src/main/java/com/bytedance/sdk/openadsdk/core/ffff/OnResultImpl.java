@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 
 import com.bytedance.sdk.openadsdk.core.AdNativeListenerImpl;
 import com.bytedance.sdk.openadsdk.core.n;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.j;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
@@ -65,27 +65,27 @@ import java.util.concurrent.ScheduledExecutorService;
 /*     */ 
 /*     */ 
 /*     */
-class afff implements MineHandler.OnResult {
-    private static volatile afff a;
+class OnResultImpl implements MineHandler.OnResult {
+    private static volatile OnResultImpl a;
     private Context mContext;
     private MineHandler c = new MineHandler(Looper.getMainLooper(), this);
-    private afff.a d;
-    private afff.b e;
-    private afff.c f;
+    private OnResultImpl.a d;
+    private OnResultImpl.b e;
+    private OnResultImpl.c f;
     private ScheduledExecutorService g = Executors.newSingleThreadScheduledExecutor();
 
-    private afff(Context var1) {
+    private OnResultImpl(Context var1) {
         if (var1 != null) {
             this.mContext = var1.getApplicationContext();
         }
 
     }
 
-    static afff a(Context var0) {
+    static OnResultImpl getDefault(Context var0) {
         if (a == null) {
             synchronized(a.class) {
                 if (a == null) {
-                    a = new afff(var0);
+                    a = new OnResultImpl(var0);
                 }
             }
         }
@@ -105,7 +105,7 @@ class afff implements MineHandler.OnResult {
 
     private void a(com.bytedance.sdk.openadsdk.core.nibuguan.j var1, File var2) {
         if (this.f == null) {
-            this.f = new afff.c(var1, var2);
+            this.f = new OnResultImpl.c(var1, var2);
         } else {
             this.f.a(var1);
             this.f.a(var2);
@@ -120,7 +120,7 @@ class afff implements MineHandler.OnResult {
         var4.putLong("expiration", var1).putLong("update", System.currentTimeMillis() / 1000L).putBoolean("has_ad_cache", true).apply();
     }
 
-    void a(@NonNull afff.a var1) {
+    void a(@NonNull OnResultImpl.a var1) {
         File var2 = this.a(this.mContext, "/splash_ad_cache/", "tt_splash_image_cache");
         if (var2 == null) {
             var1.a();
@@ -132,7 +132,7 @@ class afff implements MineHandler.OnResult {
 
     private Runnable a(File var1) {
         if (this.e == null) {
-            this.e = new afff.b(var1);
+            this.e = new OnResultImpl.b(var1);
         } else {
             this.e.a(var1);
         }
@@ -255,7 +255,7 @@ class afff implements MineHandler.OnResult {
             var1.what = 1;
 
             try {
-                h var2 = this.a();
+                NativeAdData var2 = this.a();
                 if (var2 != null) {
                     byte[] var3 = this.b(this.b);
                     if (var3 != null && var3.length != 0) {
@@ -306,14 +306,14 @@ class afff implements MineHandler.OnResult {
             return var2.toByteArray();
         }
 
-        private h a() {
+        private NativeAdData a() {
             SharedPreferences var1 = mContext.getSharedPreferences("tt_materialMeta", 0);
             String var2 = var1.getString("materialMeta", (String)null);
             if (!StringUtils.isEmpty(var2)) {
                 try {
                     AdNativeListenerImpl.aClass var3 = AdNativeListenerImpl.aClass.a(new JSONObject(var2));
                     if (var3 != null && var3.d != null && var3.d.b() != null && !var3.d.b().isEmpty()) {
-                        h var4 = (h)var3.d.b().get(0);
+                        NativeAdData var4 = (NativeAdData)var3.d.b().get(0);
                         if (var4.v()) {
                             return var4;
                         }

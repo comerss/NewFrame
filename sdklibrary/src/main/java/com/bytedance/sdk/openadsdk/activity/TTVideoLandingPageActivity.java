@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
-import com.bytedance.sdk.openadsdk.core.video.a.f;
+import com.bytedance.sdk.openadsdk.core.video.a.ADViewLayout;
 import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 
 /*     */
@@ -84,7 +84,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 /*     */   private RelativeLayout l;
 /*     */   private FrameLayout m;
 /*     */   private int n;
-/*     */   private f o;
+/*     */   private ADViewLayout o;
 /*     */   private Long p;
 /*     */   private com.bytedance.sdk.openadsdk.core.video.a.c r;
 /*  73 */   private int s = 0;
@@ -218,7 +218,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 202 *//*           this.mO.getNativeVideoController().intera(this.E);
 *//* 203 *//*           if (this.mR != null) {
 *//* 204 *//*             this.mO.getNativeVideoController().TTAdDislikeImpl(this.mR.TTBannerAdImpl());
-*//* 205 *//*             this.mO.getNativeVideoController().TTAdDislikeImpl(this.mR.i());
+*//* 205 *//*             this.mO.getNativeVideoController().TTAdDislikeImpl(this.mR.mOnClick());
 *//*     *//*           }
 *//*     *//*         }
 *//*     *//*       } catch (Exception localException) {
@@ -298,7 +298,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 282 *//*     this.mTTFeedAd = new TTAndroidObject(this);
 *//* 283 *//*     this.mTTFeedAd.intera(this.TTAdDislikeImpl)
 *//* 284 *//*       .intera(this.ImageHelper)
-*//* 285 *//*       .TTAdDislikeImpl(this.i)
+*//* 285 *//*       .TTAdDislikeImpl(this.mOnClick)
 *//* 286 *//*       .intera(this.LogUtils);
 *//*     *//*   }
 *//*     *//*
@@ -340,7 +340,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 324 *//*           localMarginLayoutParams.width = TTVideoLandingPageActivity.doErrorHelper(TTVideoLandingPageActivity.this);
 *//* 325 *//*           localMarginLayoutParams.height = TTVideoLandingPageActivity.ApiException(TTVideoLandingPageActivity.this);
 *//* 326 *//*           localMarginLayoutParams.leftMargin = TTVideoLandingPageActivity.ImageHelper(TTVideoLandingPageActivity.this);
-*//* 327 *//*           localMarginLayoutParams.topMargin = TTVideoLandingPageActivity.i(TTVideoLandingPageActivity.this);
+*//* 327 *//*           localMarginLayoutParams.topMargin = TTVideoLandingPageActivity.mOnClick(TTVideoLandingPageActivity.this);
 *//* 328 *//*           TTVideoLandingPageActivity.TTBannerAdImpl(TTVideoLandingPageActivity.this).setLayoutParams(localMarginLayoutParams);
 *//*     *//*         }
 *//*     *//*       }

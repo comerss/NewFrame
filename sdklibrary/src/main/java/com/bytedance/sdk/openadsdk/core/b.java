@@ -5,7 +5,7 @@
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.d;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.g;
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.m;
 /*     */
 /*     */ import org.json.JSONArray;
@@ -31,7 +31,7 @@
 /*  31 */       JSONArray localJSONArray = paramJSONObject.optJSONArray("creatives");
 /*  32 */       if (localJSONArray != null) {
 /*  33 */         for (int i = 0; i < localJSONArray.length(); i++) {
-/*  34 */           h localh = b(localJSONArray.optJSONObject(i));
+/*  34 */           NativeAdData localh = b(localJSONArray.optJSONObject(i));
 /*  35 */           if (localh != null) {
 /*  36 */             locala.a(localh);
 /*     */           }
@@ -45,12 +45,12 @@
 /*     */   }
 /*     */   
 /*     */   @Nullable
-/*     */   private static h b(JSONObject paramJSONObject)
+/*     */   private static NativeAdData b(JSONObject paramJSONObject)
 /*     */   {
 /*  50 */     if (paramJSONObject == null) {
 /*  51 */       return null;
 /*     */     }
-/*  53 */     h localh = new h();
+/*  53 */     NativeAdData localh = new NativeAdData();
 /*  54 */     localh.a(paramJSONObject.optInt("interaction_type"));
 /*  55 */     localh.b(paramJSONObject.optString("target_url"));
 /*  56 */     localh.f(paramJSONObject.optString("ad_id"));

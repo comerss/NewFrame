@@ -428,7 +428,7 @@ public class XmlDom {
 				text = n.getNodeValue();
 				break;
 			default:
-				//AQUtility.debug("unknown", n);
+				//AQUtility.debug("unknown", NetUtils);
 		}
 		
 		if(text == null) text = "";

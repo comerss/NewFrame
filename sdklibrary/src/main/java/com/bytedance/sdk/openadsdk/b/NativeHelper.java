@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ import android.support.annotation.NonNull;
 /*    */ import com.bytedance.sdk.openadsdk.core.AdNativeListener;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*    */ import com.bytedance.sdk.openadsdk.core.n;
 /*    */
 
@@ -32,7 +32,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
 /* 30 */     return a;
 /*    */   }
 /*    */   
-/*    */   public void a(@NonNull h paramh) {
+/*    */   public void a(@NonNull NativeAdData paramh) {
 /* 34 */     this.b.a(paramh);
 /*    */   }
 /*    */ }

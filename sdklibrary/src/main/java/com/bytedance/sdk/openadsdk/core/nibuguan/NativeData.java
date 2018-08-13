@@ -12,7 +12,7 @@
 /*    */   private String a;
 /*    */   private int b;
 /*    */   private String c;
-/* 15 */   private List<h> d = new ArrayList();
+/* 15 */   private List<NativeAdData> d = new ArrayList();
 /*    */   
 /*    */ 
 /*    */   private String e;
@@ -41,11 +41,11 @@
 /* 41 */     this.c = paramString;
 /*    */   }
 /*    */   
-/*    */   public List<h> b() {
+/*    */   public List<NativeAdData> b() {
 /* 45 */     return this.d;
 /*    */   }
 /*    */   
-/*    */   public void a(h paramh) {
+/*    */   public void a(NativeAdData paramh) {
 /* 49 */     this.d.add(paramh);
 /*    */   }
 /*    */   

@@ -55,18 +55,18 @@ public interface Constants {
 	
 	public static final String ACTIVE_ACCOUNT = "aq.account";
 	
-	public static final String AUTH_READER = "g.reader";
-	public static final String AUTH_PICASA = "g.lh2";
-	public static final String AUTH_SPREADSHEETS = "g.wise";
-	public static final String AUTH_DOC_LIST = "g.writely";
-	public static final String AUTH_YOUTUBE = "g.youtube";
-	public static final String AUTH_ANALYTICS = "g.analytics";
-	public static final String AUTH_BLOGGER = "g.blogger";
-	public static final String AUTH_CALENDAR = "g.cl";
-	//public static final String AUTH_BUZZ = "g.buzz";
-	public static final String AUTH_CONTACTS = "g.cp";
-	//public static final String AUTH_FINANCE = "g.finance";
-	public static final String AUTH_MAPS = "g.local";
+	public static final String AUTH_READER = "TouchDelegateImpl.reader";
+	public static final String AUTH_PICASA = "TouchDelegateImpl.lh2";
+	public static final String AUTH_SPREADSHEETS = "TouchDelegateImpl.wise";
+	public static final String AUTH_DOC_LIST = "TouchDelegateImpl.writely";
+	public static final String AUTH_YOUTUBE = "TouchDelegateImpl.youtube";
+	public static final String AUTH_ANALYTICS = "TouchDelegateImpl.analytics";
+	public static final String AUTH_BLOGGER = "TouchDelegateImpl.blogger";
+	public static final String AUTH_CALENDAR = "TouchDelegateImpl.cl";
+	//public static final String AUTH_BUZZ = "TouchDelegateImpl.buzz";
+	public static final String AUTH_CONTACTS = "TouchDelegateImpl.cp";
+	//public static final String AUTH_FINANCE = "TouchDelegateImpl.finance";
+	public static final String AUTH_MAPS = "TouchDelegateImpl.local";
 
 	public static final String POST_ENTITY = "%entity";
 	

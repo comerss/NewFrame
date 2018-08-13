@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.g;
 
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public abstract interface AdNativeListener<T>
   
   public abstract g a(List<T> paramList);
   
-  public abstract void a(h paramh);
+  public abstract void a(NativeAdData paramh);
   void a(JSONObject var1);
 
   public abstract void a(JSONObject paramJSONObject, b paramb);

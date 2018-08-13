@@ -15,13 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.video.a.NewLiveViewLayout;
 import com.bytedance.sdk.openadsdk.core.video.a.b;
 import com.bytedance.sdk.openadsdk.core.video.a.e;
 import com.bytedance.sdk.openadsdk.core.video.c.SSMediaPlayeWrapper;
+import com.bytedance.sdk.openadsdk.core.widget.VedioManager;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.lang.ref.WeakReference;
@@ -89,7 +92,7 @@ import java.util.List;
 /*  61 */   private boolean q = false;
 /*  62 */   private boolean r = false;
 /*  63 */   private boolean s = false;
-/*     */   private final com.bytedance.sdk.openadsdk.core.nibuguan.h t;
+/*     */   private final NativeAdData t;
 /*  65 */   private boolean u = true;
 /*  66 */   private boolean v = false;
 /*     */   
@@ -111,7 +114,7 @@ import java.util.List;
 /*  83 */     this.d.a(this);
 /*     */   }
 /*     */   
-/*     */   public a(Context paramContext, ViewGroup paramViewGroup, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh) {
+/*     */   public a(Context paramContext, ViewGroup paramViewGroup, NativeAdData paramh) {
 /*  87 */     this.e = paramViewGroup;
 /*  88 */     this.p = new WeakReference(paramContext);
 /*  89 */     this.t = paramh;
@@ -841,7 +844,7 @@ import java.util.List;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public void a(com.bytedance.sdk.openadsdk.core.widget.b.enume parama, String paramString)
+/*     */   public void a(VedioManager.enume parama, String paramString)
 /*     */   {
 /* 818 */     switch (parama.ordinal()) {
 /*     */     case 1: 
@@ -859,15 +862,15 @@ import java.util.List;
 /*     */   
 /*     */   protected boolean b(int paramInt)
 /*     */   {
-/* 834 */     com.bytedance.sdk.openadsdk.ggg.n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a());
-/* 835 */     if ((locala != com.bytedance.sdk.openadsdk.ggg.n.a.e) && (locala != com.bytedance.sdk.openadsdk.ggg.n.a.a)) {
+/* 834 */     NetUtils.a locala = NetUtils.b(com.bytedance.sdk.openadsdk.core.n.a());
+/* 835 */     if ((locala != NetUtils.a.e) && (locala != NetUtils.a.a)) {
 /* 836 */       a();
 /* 837 */       this.y = true;
 /* 838 */       this.z = false;
 /* 839 */       if ((this.d != null) && (this.t != null)) {
 /* 840 */         return this.d.a(paramInt, this.t.a());
 /*     */       }
-/* 842 */     } else if (locala == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
+/* 842 */     } else if (locala == NetUtils.a.e) {
 /* 843 */       this.y = false;
 /* 844 */       if (this.d != null) {
 /* 845 */         this.d.a();
@@ -891,13 +894,13 @@ import java.util.List;
 /*     */     }
 /*     */   };
 /*     */   
-/* 866 */   private com.bytedance.sdk.openadsdk.ggg.n.a F = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+/* 866 */   private NetUtils.a F = NetUtils.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
 /*     */   
 /*     */   protected void a(Context paramContext) {
 /* 869 */     if (!s()) {
 /* 870 */       return;
 /*     */     }
-/* 872 */     com.bytedance.sdk.openadsdk.ggg.n.a locala = com.bytedance.sdk.openadsdk.ggg.n.b(paramContext);
+/* 872 */     NetUtils.a locala = NetUtils.b(paramContext);
 /*     */     
 /* 874 */     if (this.F == locala) {
 /* 875 */       return;

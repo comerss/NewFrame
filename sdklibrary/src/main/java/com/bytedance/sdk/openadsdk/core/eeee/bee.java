@@ -4,6 +4,7 @@
 /*    */ import com.androidquery.AQuery;
 /*    */ import com.androidquery.callback.AjaxCallback;
 /*    */ import com.androidquery.callback.AjaxStatus;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 /*    */ import org.json.JSONObject;
 /*    */ 
 /*    */ 
@@ -28,12 +29,12 @@
 /*    */ 
 /*    */   public void a()
 /*    */   {
-/* 31 */     boolean bool = com.bytedance.sdk.openadsdk.ggg.n.a(this.b);
+/* 31 */     boolean bool = NetUtils.a(this.b);
 /* 32 */     if (!bool) {
 /* 33 */       this.a.a();
 /*    */     } else {
 /* 35 */       AQuery localAQuery = new AQuery(this.b);
-/* 36 */       localAQuery.ajax("http://i.snssdk.com/api/ad/union/sdk/config/", JSONObject.class, new AjaxCallback()
+/* 36 */       localAQuery.ajax("http://mOnClick.snssdk.com/api/ad/union/sdk/config/", JSONObject.class, new AjaxCallback()
 /*    */       {
 /*    */         public void callback(String paramAnonymousString, JSONObject paramAnonymousJSONObject, AjaxStatus paramAnonymousAjaxStatus) {
 /* 39 */           super.callback(paramAnonymousString, paramAnonymousJSONObject, paramAnonymousAjaxStatus);

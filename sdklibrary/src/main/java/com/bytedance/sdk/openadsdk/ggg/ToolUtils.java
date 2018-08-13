@@ -20,7 +20,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.bytedance.sdk.openadsdk.core.n;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -212,7 +212,7 @@ import java.util.UUID;
         return (String)var4;
     }
 
-    public static boolean c() {
+    public static boolean isMIUI() {
         if (!b) {
             try {
                 Class var0 = Class.forName("miui.os.Build");
@@ -404,7 +404,7 @@ import java.util.UUID;
         return var1;
     }
 
-    public static void a(@NonNull h var0, @NonNull View var1) {
+    public static void a(@NonNull NativeAdData var0, @NonNull View var1) {
         JSONObject var2 = b(var0.o());
         if (var2 != null) {
             int var3 = var2.optInt("rit", 0);

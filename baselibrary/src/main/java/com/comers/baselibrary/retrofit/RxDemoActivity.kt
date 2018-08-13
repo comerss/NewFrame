@@ -24,6 +24,7 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
                 .subscribe(object : HttpSubscriber<List<Data>>(){
                     override fun onSuccess(t: List<Data>) {
                         //TODO异常处理
+
                     }
                 })
     }

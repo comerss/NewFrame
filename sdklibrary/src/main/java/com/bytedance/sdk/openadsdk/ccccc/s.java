@@ -91,7 +91,7 @@ import java.io.File;
 /*     */ 
 /*     */   private static Intent a(Context paramContext, long paramLong, String paramString)
 /*     */   {
-/*  78 */     AppAdViewHolder localf = AppAdViewHolder.aaaaaa(paramContext);
+/*  78 */     AppAdViewHolder localf = AppAdViewHolder.getInstance(paramContext);
 /*  79 */     Cursor localCursor = localf.aaaaaa(new AppAdViewHolder.fbbb().a(new long[] { paramLong }));
 /*     */     try {
 /*  81 */       if (!localCursor.moveToFirst()) {

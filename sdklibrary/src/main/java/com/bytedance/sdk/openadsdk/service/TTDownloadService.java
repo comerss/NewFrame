@@ -212,7 +212,7 @@ public class TTDownloadService extends Service {
         this.i.start();
         this.j = new Handler(this.i.getLooper(), this.l);
         this.h = new j(this);
-        this.e = DownloadNotifier.a(this);
+        this.e = DownloadNotifier.getDefault(this);
         this.e.a();
         this.d = new TTDownloadService.a();
         this.getContentResolver().registerContentObserver(com.bytedance.sdk.openadsdk.ccccc.m.a.a, true, this.d);

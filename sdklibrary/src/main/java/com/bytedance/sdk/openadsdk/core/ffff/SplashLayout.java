@@ -16,26 +16,6 @@ import com.bytedance.sdk.openadsdk.ggg.o;
 
 import pl.droidsonroids.gif.GifImageView;
 
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
 /*    */ public class SplashLayout
 /*    */   extends FrameLayout
 /*    */ {
@@ -49,17 +29,7 @@ import pl.droidsonroids.gif.GifImageView;
 /* 34 */     this.a = paramContext;
 /* 35 */     a();
 /*    */   }
-/*    */   
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
+
 /*    */ 
 /*    */   private void a()
 /*    */   {

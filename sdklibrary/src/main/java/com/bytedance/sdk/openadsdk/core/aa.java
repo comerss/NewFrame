@@ -10,8 +10,8 @@
 /*     */ import com.bytedance.sdk.openadsdk.activity.TTVideoLandingPageActivity;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.d;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
-/*     */ import com.bytedance.sdk.openadsdk.core.video.a.f;
+/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
+/*     */ import com.bytedance.sdk.openadsdk.core.video.a.ADViewLayout;
 /*     */ import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.PhoneUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
@@ -30,7 +30,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*     */   
 /*  28 */   public static void a(boolean paramBoolean) { a = paramBoolean; }
 /*     */   
-/*     */   public static boolean a(Context paramContext, h paramh, int paramInt, @Nullable com.bytedance.sdk.openadsdk.core.video.a.c paramc, @Nullable TTFeedAd paramTTFeedAd, String paramString)
+/*     */   public static boolean a(Context paramContext, NativeAdData paramh, int paramInt, @Nullable com.bytedance.sdk.openadsdk.core.video.a.c paramc, @Nullable TTFeedAd paramTTFeedAd, String paramString)
 /*     */   {
 /*  32 */     if ((paramContext == null) || (paramh == null) || (paramInt == -1)) {
 /*  33 */       return false;
@@ -88,7 +88,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /*  85 */     return false;
 /*     */   }
 /*     */   
-/*     */   private static Intent a(Context paramContext, String paramString, h paramh, int paramInt, @Nullable com.bytedance.sdk.openadsdk.core.video.a.c paramc, @Nullable TTFeedAd paramTTFeedAd)
+/*     */   private static Intent a(Context paramContext, String paramString, NativeAdData paramh, int paramInt, @Nullable com.bytedance.sdk.openadsdk.core.video.a.c paramc, @Nullable TTFeedAd paramTTFeedAd)
 /*     */   {
 /*  90 */     Intent localIntent = null;
 /*  91 */     if ((paramh.p() == 5) && (!a)) {
@@ -115,7 +115,7 @@ import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 /* 112 */         s.a().a(paramh);
 /* 113 */         s.a().a(paramc);
 /* 114 */       } else if ((paramTTFeedAd != null) && (paramTTFeedAd.getAdView() != null)) {
-/* 115 */         com.bytedance.sdk.openadsdk.core.video.a.c localc = ((f)paramTTFeedAd.getAdView()).getNativeVideoController();
+/* 115 */         com.bytedance.sdk.openadsdk.core.video.a.c localc = ((ADViewLayout)paramTTFeedAd.getAdView()).getNativeVideoController();
 /* 116 */         if (localc != null) {
 /* 117 */           localIntent.putExtra("video_play_position", localc.d());
 /*     */         }

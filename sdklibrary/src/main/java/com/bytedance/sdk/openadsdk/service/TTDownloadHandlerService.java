@@ -104,9 +104,9 @@ public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*     */         
 /*     */ 
 /*     */ 
-/*  88 */         if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(j)) {
-/*  89 */           DownloadNotifier.a(paramContext).a(paramContext, l);
-/*  90 */           DownloadNotifier.a(paramContext).a(str2);
+/*  88 */         if (com.bytedance.sdk.openadsdk.ccccc.m.a.isSuccess(j)) {
+/*  89 */           DownloadNotifier.getDefault(paramContext).a(paramContext, l);
+/*  90 */           DownloadNotifier.getDefault(paramContext).a(str2);
 /*     */         }
 /*  92 */       } else if (str1.equals("android.ss.intent.action.DOWNLOAD_COMPLETE")) {
 /*  93 */         l = paramIntent.getLongExtra("extra_download_id", -1L);
@@ -116,7 +116,7 @@ public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
 /*  97 */         if (l > -1L) {
 /*  98 */           s.a(paramContext, l, 268435456);
 /*  99 */           localObject1 = n.a();
-/* 100 */           if ((localObject1 != null) && (com.bytedance.sdk.openadsdk.ccccc.m.a.a(i))) {
+/* 100 */           if ((localObject1 != null) && (com.bytedance.sdk.openadsdk.ccccc.m.a.isSuccess(i))) {
 /* 101 */             localObject2 = paramIntent.getStringExtra("extra_app_package");
 /* 102 */             ((b)localObject1).a(l, 1, (String)localObject2);
 /*     */           }
@@ -138,14 +138,14 @@ private void b(Context paramContext, Intent paramIntent)
 /* 118 */         localIntent.addFlags(268435456);
 /* 119 */         paramContext.startActivity(localIntent);
 /* 120 */         long l2 = ContentUris.parseId(paramIntent.getData());
-/* 121 */         DownloadNotifier.a(paramContext).a(paramContext, l2); } else { long l1;
+/* 121 */         DownloadNotifier.getDefault(paramContext).a(paramContext, l2); } else { long l1;
 /* 122 */         if ("android.ss.intent.action.DOWNLOAD_OPEN".equals(str)) {
 /* 123 */           l1 = ContentUris.parseId(paramIntent.getData());
 /* 124 */           s.a(paramContext, l1, 268435456);
-/* 125 */           DownloadNotifier.a(paramContext).a(paramContext, l1);
+/* 125 */           DownloadNotifier.getDefault(paramContext).a(paramContext, l1);
 /* 126 */         } else if ("android.ss.intent.action.DOWNLOAD_HIDE".equals(str)) {
 /* 127 */           l1 = ContentUris.parseId(paramIntent.getData());
-/* 128 */           DownloadNotifier.a(paramContext).a(paramContext, l1);
+/* 128 */           DownloadNotifier.getDefault(paramContext).a(paramContext, l1);
 /*     */         }
 /*     */       }
 /* 131 */     } catch (Exception localException) { localException.printStackTrace();

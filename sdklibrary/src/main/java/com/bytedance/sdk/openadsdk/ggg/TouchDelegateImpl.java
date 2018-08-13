@@ -65,7 +65,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class g
+/*     */ public class TouchDelegateImpl
 /*     */   extends TouchDelegate
 /*     */ {
 /*     */   private View a;
@@ -74,9 +74,10 @@
 /*     */   private boolean d;
 /*     */   private int e;
 /*     */   
-/*     */   public g(Rect paramRect, View paramView)
+/*     */   public TouchDelegateImpl(Rect paramRect, View paramView)
 /*     */   {
 /*  79 */     super(paramRect, paramView);
+
 /*  80 */     this.b = paramRect;
 /*     */     
 /*  82 */     this.e = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
@@ -140,7 +141,7 @@
 /* 140 */         int m = this.e;
 /* 141 */         paramMotionEvent.setLocation(-(m * 2), -(m * 2));
 /*     */       }
-/* 143 */       if (((View)localObject).getVisibility() == 0) {
+/* 143 */       if (((View)localObject).getVisibility() == View.VISIBLE) {
 /* 144 */         bool2 = ((View)localObject).dispatchTouchEvent(paramMotionEvent);
 /*     */       }
 /*     */     }

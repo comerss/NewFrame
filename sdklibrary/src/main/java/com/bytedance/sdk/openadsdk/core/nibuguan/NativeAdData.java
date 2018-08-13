@@ -15,7 +15,7 @@ import java.util.List;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class h
+/*     */ public class NativeAdData
 /*     */ {
 /*     */   private int a;
 /*     */   private g b;
@@ -167,12 +167,12 @@ import java.util.List;
                 ", AppAdViewHolder=" + f +
                 ", DownloadNotifier=" + g +
                 ", ImageHelper='" + h + '\'' +
-                ", i='" + i + '\'' +
+                ", mOnClick='" + i + '\'' +
                 ", mTTFeedAd='" + j + '\'' +
                 ", k=" + k +
                 ", MyDownloadManager=" + l +
                 ", mDownLoadListener=" + m +
-                ", n='" + n + '\'' +
+                ", NetUtils='" + n + '\'' +
                 ", o='" + o + '\'' +
                 ", p=" + p +
                 ", q=" + q +
@@ -257,7 +257,7 @@ import java.util.List;
 /* 225 */     if (this == paramObject) return true;
 /* 226 */     if ((paramObject == null) || (getClass() != paramObject.getClass())) { return false;
 /*     */     }
-/* 228 */     h localh = (h)paramObject;
+/* 228 */     NativeAdData localh = (NativeAdData)paramObject;
 /*     */     
 /* 230 */     if (!this.j.equals(localh.j)) return false;
 /* 231 */     return this.o.equals(localh.o);

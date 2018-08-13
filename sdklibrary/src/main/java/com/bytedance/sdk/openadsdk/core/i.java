@@ -374,7 +374,7 @@ public static void j(Context paramContext)
 /*     */ 
 /*     */     try
 /*     */     {
-/* 350 */       if (ToolUtils.c()) {
+/* 350 */       if (ToolUtils.isMIUI()) {
 /* 351 */         localStringBuilder.append("MIUI-");
 /* 352 */       } else if (ToolUtils.d()) {
 /* 353 */         localStringBuilder.append("FLYME-");
@@ -410,7 +410,7 @@ public static void j(Context paramContext)
 /*     */       }
 /* 384 */       localBufferedReader.close();
 /* 385 */       String str2 = localStringBuilder.toString().trim();
-/* 386 */       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE MMM TTSplashAdImpl HH:mm:ss z yyyy", Locale.US);
+/* 386 */       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE MMM TTSplashAdImpl HH:mm:ss ViewHelper yyyy", Locale.US);
 /* 387 */       localSimpleDateFormat.parse(str2);
 /* 388 */       return str2;
 /*     */     } catch (Exception localException) {
@@ -421,7 +421,7 @@ public static void j(Context paramContext)
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\i.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\mOnClick.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

@@ -115,7 +115,7 @@
             android:layout_marginStart="5dp"
             android:ellipsize="marquee"
             android:gravity="left"
-            android:maxLines="1" />
+            android:singleLine="true" />
     </RelativeLayout>
 
     <com.bytedance.sdk.openadsdk.activity.SSWebView

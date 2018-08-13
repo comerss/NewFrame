@@ -7,7 +7,7 @@
 /*    */
 /*    */ import android.widget.ImageView;
 /*    */
-/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -17,7 +17,7 @@
 /*    */ {
 /*    */   private ImageView a;
 /*    */   private Context b;
-/*    */   private h c;
+/*    */   private NativeAdData c;
 /*    */   
 /*    */   public c(@NonNull Context paramContext)
 /*    */   {
@@ -46,11 +46,11 @@
 /* 46 */     addView(this.a);
 /*    */   }
 /*    */   
-/*    */   h a() {
+/*    */   NativeAdData a() {
 /* 50 */     return this.c;
 /*    */   }
 /*    */   
-/*    */   void a(h paramh) {
+/*    */   void a(NativeAdData paramh) {
 /* 54 */     this.c = paramh;
 /*    */   }
 /*    */   

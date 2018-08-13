@@ -22,8 +22,9 @@ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTInteractionAd;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListerReal;
 import com.bytedance.sdk.openadsdk.core.nibuguan.g;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
@@ -66,7 +67,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   implements TTInteractionAd
 /*     */ {
 /*     */   private Context a;
-/*     */   private h b;
+/*     */   private NativeAdData b;
 /*     */   private Dialog c;
 /*     */   private TTInteractionAd.AdInteractionListener d;
 /*     */   private DownLoadListenerImpl e;
@@ -75,7 +76,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   private ImageView h;
 /*     */   private static boolean i;
 /*     */   
-/*     */   TTInteractionAdImpl(Context paramContext, h paramh)
+/*     */   TTInteractionAdImpl(Context paramContext, NativeAdData paramh)
 /*     */   {
 /*  51 */     this.a = paramContext;
 /*  52 */     this.b = paramh;
@@ -118,7 +119,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*  89 */     this.c.setContentView(R.layout.tt_insert_ad_layout);
 /*  90 */     this.h = ((ImageView)this.c.findViewById(R.id.insert_ad_img));
 /*     */     
-/*  92 */     int j = ViewWather.a(this.a);
+/*  92 */     int j = ViewWather.visibleWidth(this.a);
 /*  93 */     int k = j / 3;
 /*  94 */     this.h.setMaxWidth(j);
 /*  95 */     this.h.setMinimumWidth(k);
@@ -126,8 +127,8 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */     
 /*  98 */     this.g = ((ImageView)this.c.findViewById(R.id.insert_dislike_icon_img));
 /*     */     
-/* 100 */     int m = (int) ViewWather.a(this.a, 15.0F);
-/* 101 */     ViewWather.a(this.g, m, m, m, m);
+/* 100 */     int m = (int) ViewWather.dp2px(this.a, 15.0F);
+/* 101 */     ViewWather.setTouchDelegate(this.g, m, m, m, m);
 /*     */     
 /* 103 */     b();
 /*     */     
@@ -139,11 +140,11 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */ 
 /*     */   private void b()
 /*     */   {
-/* 113 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.a, this.b, "interaction", 3);
+/* 113 */     AdClickListerReal locala = new AdClickListerReal(this.a, this.b, "interaction", 3);
 /* 114 */     locala.a(this.h);
 /* 115 */     locala.b(this.g);
 /* 116 */     locala.a(this.e);
-/* 117 */     locala.a(new AdClickListenerImpl.OnClick()
+/* 117 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /* 120 */         if (d != null) {

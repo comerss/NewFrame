@@ -29,7 +29,7 @@
 /*     */   }
 /*     */   
 /*     */   public static void b() {
-/*  32 */     isDebug = true;
+/*  32 */
 /*  33 */     a(3);
 /*     */   }
 /*     */   
@@ -38,12 +38,7 @@
 /*     */ 
 /*     */   public static void a(String paramString1, String paramString2)
 /*     */   {
-/*  41 */     if (!isDebug) {
-/*  42 */       return;
-/*     */     }
-/*  44 */     if (paramString2 == null) {
-/*  45 */       return;
-/*     */     }
+/*  41 */
 /*  47 */     if (b <= 2) {
 /*  48 */       Log.v(paramString1, paramString2);
 /*     */     }
@@ -60,16 +55,12 @@
 /*     */ 
 /*     */   public static void a(String paramString)
 /*     */   {
-/*  63 */     if (!isDebug) {
-/*  64 */       return;
-/*     */     }
+/*  63 */
 /*  66 */     b("Logger", paramString);
 /*     */   }
 /*     */   
 /*     */   public static void b(String paramString1, String paramString2) {
-/*  70 */     if (!isDebug) {
-/*  71 */       return;
-/*     */     }
+/*  70 */
 /*  73 */     if (paramString2 == null) {
 /*  74 */       return;
 /*     */     }

@@ -9,9 +9,10 @@
 /*     */ import com.androidquery.callback.AjaxCallback;
 /*     */ import com.androidquery.callback.AjaxStatus;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 import com.bytedance.sdk.openadsdk.ggg.k;
 /*     */
-/*     */ import com.bytedance.sdk.openadsdk.ggg.n;
+/*     */
 /*     */ import java.util.List;
 /*     */ import java.util.Random;
 /*     */ import java.util.UUID;
@@ -138,7 +139,7 @@ import com.bytedance.sdk.openadsdk.ggg.k;
 /* 137 */         if (this.b.d() == 5) {
 /* 138 */           b.a();
 /*     */         }
-/* 140 */         if (!n.a(a)) {
+/* 140 */         if (!NetUtils.a(a)) {
 /*     */           break;
 /*     */         }
 /*     */         

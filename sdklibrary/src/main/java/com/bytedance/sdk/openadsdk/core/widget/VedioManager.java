@@ -49,7 +49,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class b
+/*     */ public class VedioManager
 /*     */ {
 /*     */   private View a;
 /*     */   private TextView b;
@@ -180,7 +180,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /* 167 */       str = this.d.getResources().getString(R.string.video_without_wifi_tips) + this.d.getResources().getString(R.string.video_bytesize);
 /*     */     }
 /*     */     
-/* 170 */     ViewWather.a(this.a, 0);
+/* 170 */     ViewWather.setVisible(this.a, 0);
 /* 171 */     ViewWather.a(this.b, str);
 /*     */     
 /* 173 */     if (ViewWather.isVisible(this.a)) {

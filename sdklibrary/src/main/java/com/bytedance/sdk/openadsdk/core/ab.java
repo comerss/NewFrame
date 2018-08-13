@@ -35,7 +35,7 @@
 /*     */ public class ab
 /*     */ {
 /*  37 */   private static final boolean d = (Build.VERSION.SDK_INT >= 16) && 
-/*  38 */     (ToolUtils.c());
+/*  38 */     (ToolUtils.isMIUI());
 /*  39 */   private static final boolean e = a();
 /*     */   
 /*  41 */   private static int f = -1;

@@ -112,6 +112,7 @@ public class HttpHelper {
         final long finalStartPoint = startPoint;
         Call call = ProgressHelper.addProgressResponseListener(listener).newCall(request);
         UrlManager.INSTANCE.addCall(url, call);
+        listener.onStart();
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

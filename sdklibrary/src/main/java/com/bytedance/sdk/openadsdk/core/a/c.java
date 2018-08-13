@@ -5,7 +5,7 @@
 import android.content.Context;
 
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 /*    */
@@ -22,10 +22,10 @@ import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 /*    */   implements DownLoadListenerImpl.b
 /*    */ {
 /*    */   private Context c;
-/*    */   protected h a;
+/*    */   protected NativeAdData a;
 /*    */   protected String b;
 /*    */   
-/*    */   public c(Context paramContext, h paramh, String paramString)
+/*    */   public c(Context paramContext, NativeAdData paramh, String paramString)
 /*    */   {
 /* 23 */     this.c = paramContext.getApplicationContext();
 /* 24 */     this.a = paramh;

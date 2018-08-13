@@ -1,4 +1,4 @@
-package com.comers.baselibrary.download;
+package com.donews.frame.sdk;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,34 +8,123 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.comers.baselibrary.R;
+import com.comers.baselibrary.download.DownDbHelper;
+import com.comers.baselibrary.download.DownLoadInfo;
+import com.comers.baselibrary.download.UrlManager;
 import com.comers.baselibrary.http.HttpHelper;
 import com.comers.baselibrary.http.ProgressResponseListener;
 import com.comers.baselibrary.utils.ConstantsPool;
-import com.comers.baselibrary.utils.LogUtil;
 import com.comers.baselibrary.utils.ToastUtils;
 import com.comers.baselibrary.utils.UIUtils;
+import com.donews.frame.R;
 
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.UUID;
 
 /**
- * Created by 79653 on 2018/7/17.
+ * Created by 79653 on 2018/7/26.
  * 描述：
  */
-public class DownloadService extends Service {
-    NotificationManager notificationManager;
-    NotificationBroadcastReceiver mReceiver;
+public class DeadService extends Service {
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String url=intent.getStringExtra("url");
+        download(url);
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    private void download(final String url) {
+        String filePath= ConstantsPool.FILE_ROOT+ File.separator+System.currentTimeMillis();
+        HttpHelper.downLoad(url, filePath, new ProgressResponseListener() {
+            Notification notification;
+            long clickFilter=0;
+            @Override
+            public void onStart() {
+                 notification = new Notification(R.mipmap.ic_launcher, "下载进度条...",
+                        System.currentTimeMillis());
+                notification.contentView = new RemoteViews(getApplication()
+                        .getPackageName(), R.layout.progress_update);
+                notification.contentView.setProgressBar(R.id.progress_update, 100, 0,
+                        false);
+                notification.contentView.setTextViewText(R.id.progress_pro, "进度"
+                        + 0 + "%");
+
+                notification.flags = Notification.FLAG_AUTO_CANCEL;
+                String filename = getFilePath(url);
+                String filePath = ConstantsPool.FILE_ROOT + File.separator + filename;
+
+                IntentFilter filter_click = new IntentFilter();
+                filter_click.addAction("click");
+                //注册广播
+                NotificationBroadcastReceiver  mReceiver = new NotificationBroadcastReceiver();
+                registerReceiver(mReceiver, filter_click);
+                Intent Intent_pre = new Intent("click");
+                Intent_pre.putExtra("path", filePath);
+                Intent_pre.putExtra("url", url);
+                //得到PendingIntent
+                PendingIntent pendIntent_click = PendingIntent.getService(DeadService.this, UUID.randomUUID().hashCode(), Intent_pre, PendingIntent.FLAG_UPDATE_CURRENT);
+                //设置监听
+                notification.contentView.setOnClickPendingIntent(R.id.click, pendIntent_click);
+//        notification.contentIntent=pendIntent_click;
+                DownLoadInfo info = DownDbHelper.instance().getInfo(url);
+                if (info != null) {
+                    File file = new File(info.filePath);
+                    if (file.exists() && info.currentLength == info.totoalLength && info.totoalLength > 0) {
+                        install(file);
+                        UrlManager.INSTANCE.remove(url);
+                        return;
+                    }
+                    info.fileName = filename;
+                    info.filePath = filePath;
+                    String text="进度" + getNetFileSizeDescription( info.currentLength) + "/" + getNetFileSizeDescription(info.totoalLength);
+                    notification.contentView.setTextViewText(
+                            R.id.txSizeInfo, text);
+                    DownDbHelper.instance().update(info);
+                } else {
+                    info = new DownLoadInfo();
+                    info.fileName = filename;
+                    info.filePath = filePath;
+                    info.url = url;
+                    info.notifyID = UrlManager.INSTANCE.get(url);
+                    DownDbHelper.instance().inserOrReplace(info);
+                }
+                final long[] watchDog = {0};
+//                ToastUtil.showToast(DonewsApp.mContext, "开始下载");
+            }
+
+            @Override
+            public void onResponseProgress(long totalBytesRead, long contentLength, boolean done) {
+                if(System.currentTimeMillis()-clickFilter>1000){
+                    int progree=(int) (totalBytesRead* 100 / contentLength);
+                    updateProgress(notification, totalBytesRead, contentLength, progree, "进度" + getNetFileSizeDescription( totalBytesRead) + "/" + getNetFileSizeDescription(contentLength), url);
+                }
+            }
+
+            @Override
+            public void onPause() {
+
+            }
+
+            @Override
+            public void onLoad(File file) {
+                install(file);
+                UrlManager.INSTANCE.remove(url);
+            }
+
+            @Override
+            public void onFail(String msg) {
+
+            }
+        });
+    }
 
     @Nullable
     @Override
@@ -43,147 +132,13 @@ public class DownloadService extends Service {
         return null;
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null) {
-            String url = intent.getStringExtra("updateservice");
-            boolean exist = intent.getBooleanExtra("exist", false);
-            Log.i("url------>", url + "");
-            if (!TextUtils.isEmpty(url)) {
-                notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                if (UrlManager.INSTANCE.contains(url)) {
-//                    Toast.makeText(DonewsApp.mContext, "正在下载中", Toast.LENGTH_SHORT).show();
-                } else {
-                    mReceiver = new NotificationBroadcastReceiver();
-                    UrlManager.INSTANCE.add(url);
-                    buildDown(url);
-                }
-            }
-        }
-        return super.onStartCommand(intent, flags, startId);
-    }
 
-    private void buildDown(final String url) {
-        final Notification notification = new Notification(getIcon(), "下载进度条...",
-                System.currentTimeMillis());
-        notification.contentView = new RemoteViews(getApplication()
-                .getPackageName(), R.layout.progress_update);
-        notification.contentView.setProgressBar(R.id.progress_update, 100, 0,
-                false);
-        notification.contentView.setTextViewText(R.id.progress_pro, "进度"
-                + 0 + "%");
-
-
-        notification.flags = Notification.FLAG_AUTO_CANCEL;
-        String filename = getFilePath(url);
-        String filePath = ConstantsPool.FILE_ROOT + File.separator + filename;
-
-        IntentFilter filter_click = new IntentFilter();
-        filter_click.addAction("click");
-        //注册广播
-        registerReceiver(mReceiver, filter_click);
-        Intent Intent_pre = new Intent("click");
-        Intent_pre.putExtra("path", filePath);
-        Intent_pre.putExtra("url", url);
-        //得到PendingIntent
-        PendingIntent pendIntent_click = PendingIntent.getBroadcast(this, UrlManager.INSTANCE.get(url), Intent_pre, PendingIntent.FLAG_UPDATE_CURRENT);
-        //设置监听
-        notification.contentView.setOnClickPendingIntent(R.id.click, pendIntent_click);
-//        notification.contentIntent=pendIntent_click;
-        DownLoadInfo info = DownDbHelper.instance().getInfo(url);
-        if (info != null) {
-            File file = new File(info.filePath);
-            if (file.exists() && info.currentLength == info.totoalLength && info.totoalLength > 0) {
-                install(file);
-                UrlManager.INSTANCE.remove(url);
-                return;
-            }
-            info.fileName = filename;
-            info.filePath = filePath;
-            String text="进度" + getNetFileSizeDescription( info.currentLength) + "/" + getNetFileSizeDescription(info.totoalLength);
-            notification.contentView.setTextViewText(
-                    R.id.txSizeInfo, text);
-            DownDbHelper.instance().update(info);
-        } else {
-            info = new DownLoadInfo();
-            info.fileName = filename;
-            info.filePath = filePath;
-            info.url = url;
-            info.notifyID = UrlManager.INSTANCE.get(url);
-            DownDbHelper.instance().inserOrReplace(info);
-        }
-        final long[] watchDog = {0};
-        ToastUtils.showToast( "开始下载");
-        HttpHelper.downLoad(url, filePath, new ProgressResponseListener() {
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onResponseProgress(long totalBytesRead, long contentLength, boolean done) {
-//                LogUtils.i("onResponseProgress","totalBytesRead--"+totalBytesRead+"---contentLength"+contentLength);
-
-                int progree=(int) (totalBytesRead* 100 / contentLength);
-                if(System.currentTimeMillis()- watchDog[0] >1000){
-                    watchDog[0] =System.currentTimeMillis();
-                    updateProgress(notification, totalBytesRead, contentLength, progree, "进度" + getNetFileSizeDescription( totalBytesRead) + "/" + getNetFileSizeDescription(contentLength), url);
-                }
-
-                if (totalBytesRead > 0 &&  totalBytesRead == contentLength) {
-                    updateProgress(notification, totalBytesRead, contentLength, progree, "进度" + getNetFileSizeDescription( totalBytesRead) + "/" + getNetFileSizeDescription(contentLength), url);
-                    notification.contentView.setTextViewText(
-                            R.id.progress_pro, "点击安装");
-                    notificationManager.notify(UrlManager.INSTANCE.get(url), notification);
-                    UrlManager.INSTANCE.remove(url);
-                }
-            }
-
-            @Override
-            public void onLoad(File file) {
-
-                install(file);
-                UrlManager.INSTANCE.remove(url);
-//                notificationManager.cancel(mStringHashMap.get(url));
-            }
-
-            @Override
-            public void onPause() {
-            }
-
-            @Override
-            public void onFail(String msg) {
-                Log.i("TAG", "下载失败了");
-                ToastUtils.showToast( msg);
-                notification.contentView.setTextViewText(
-                        R.id.progress_pro, "下载失败");
-                UrlManager.INSTANCE.remove(url);
-//                notificationManager.cancel(mStringHashMap.get(url));
-            }
-        });
-    }
-
-    private int getIcon() {
-        PackageManager packageManager = null;
-        ApplicationInfo applicationInfo = null;
-        try {
-            packageManager = getApplicationContext()
-                    .getPackageManager();
-            applicationInfo = packageManager.getApplicationInfo(
-                    getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            applicationInfo = null;
-        }
-        if(applicationInfo!=null){
-            return applicationInfo.icon;
-        }
-        return 0;
-    }
 
     private void updateProgress(Notification notification, long totalBytesRead, long contentLength, int currentProgress, String text, String url) {
 
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-//        LogUtils.i("DownLoad",totalBytesRead+ "--------"+ contentLength+ "-----"+ currentProgress);
+//        LogUtils.mOnClick("DownLoad",totalBytesRead+ "--------"+ contentLength+ "-----"+ currentProgress);
 
         notification.contentView.setProgressBar(
                 R.id.progress_update, 100, currentProgress, false);
@@ -209,7 +164,7 @@ public class DownloadService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mReceiver);
+//        unregisterReceiver(mReceiver);
     }
 
     @NonNull
@@ -264,14 +219,14 @@ public class DownloadService extends Service {
         return bytes.toString();
 
     }
-
     public static class NotificationBroadcastReceiver extends BroadcastReceiver {
         public boolean isFinished = false;
-
+        long clickFilter=0;
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (action.equals("click")) {
+            if (action.equals("click")&&(System.currentTimeMillis()-clickFilter)>1000) {
+                clickFilter=System.currentTimeMillis();
                 String url = intent.getStringExtra("url");
                 String path = intent.getStringExtra("path");
                 DownLoadInfo info = DownDbHelper.instance().getInfo(url);
@@ -279,13 +234,13 @@ public class DownloadService extends Service {
                     return;
                 isFinished = info.currentLength == info.totoalLength && info.totoalLength > 0;
                 //处理点击事件
-                LogUtil.i("onReceive",url);
-                LogUtil.i("onReceive",info.toString());
+//                LogUtils.mOnClick("onReceive",url);
+//                LogUtils.mOnClick("onReceive",info.toString());
                 if (!TextUtils.isEmpty(path) && isFinished) {
                     File file = new File(path);
                     if (file.exists()) {
                         install(file);
-//                        ToastUtil.showToast(context, "安装");
+                        ToastUtils.showToast("安装");
                     }
                     if (!TextUtils.isEmpty(url)) {
                         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -294,7 +249,7 @@ public class DownloadService extends Service {
                     return;
                 }
                 if (info.isLoading) {
-                    Intent intent1 = new Intent(context, DownloadService.class);
+                    Intent intent1 = new Intent(context, DeadService.class);
                     intent1.putExtra("updateservice", info.url);
                     intent1.putExtra("exist", true);
                     context.startService(intent1);

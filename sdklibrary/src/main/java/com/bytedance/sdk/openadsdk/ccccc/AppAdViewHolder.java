@@ -710,7 +710,7 @@ import java.util.List;
 /*      */     ContentValues b(String paramString)
 /*      */     {
 /*  687 */       ContentValues localContentValues = new ContentValues();
-///*  688 */       if ((!aaaaaa) && (this.bee == null)) throw new AssertionError();
+///*  688 */       if ((!getInstance) && (this.bee == null)) throw new AssertionError();
 /*  689 */       localContentValues.put("uri", this.b.toString());
 /*  690 */       localContentValues.put("notificationpackage", paramString);
 /*      */       
@@ -945,13 +945,13 @@ import java.util.List;
 /*      */ 
 /*      */ 
 /*  922 */   private Uri f = com.bytedance.sdk.openadsdk.ccccc.m.a.a;
-/*      */   private static AppAdViewHolder g;
+/*      */   private static AppAdViewHolder sHolder;
 /*      */   
-/*      */   public static synchronized AppAdViewHolder aaaaaa(Context paramContext) {
-/*  926 */     if (g == null) {
-/*  927 */       g = new AppAdViewHolder(paramContext, paramContext.getPackageName());
+/*      */   public static synchronized AppAdViewHolder getInstance(Context paramContext) {
+/*  926 */     if (sHolder == null) {
+/*  927 */       sHolder = new AppAdViewHolder(paramContext, paramContext.getPackageName());
 /*      */     }
-/*  929 */     return g;
+/*  929 */     return sHolder;
 /*      */   }
 /*      */   
 /*      */   private AppAdViewHolder(Context paramContext, String paramString) {
@@ -1156,7 +1156,7 @@ return null;
 /* 1102 */         Log.w("DownloadManager", "Missing details for download " + paramLong);
 /* 1103 */         return;
 /*      */       }
-/* 1105 */       if ((com.bytedance.sdk.openadsdk.ccccc.m.a.a(i)) &&
+/* 1105 */       if ((com.bytedance.sdk.openadsdk.ccccc.m.a.isSuccess(i)) &&
 /* 1106 */         (aaaaaa(str, paramLong))) {
 /* 1107 */         ContentValues localContentValues = new ContentValues();
 /* 1108 */         localContentValues.put("visibility", 
@@ -1718,20 +1718,20 @@ return null;
 /* 1658 */           if (!h.a().j()) {
 /* 1659 */             j = 2;
 /*      */           }
-/* 1661 */           aaaaaa(paramContext).aaaaaa(j, new long[] { paramLong });
+/* 1661 */           getInstance(paramContext).aaaaaa(j, new long[] { paramLong });
 /* 1662 */           i = 1; }
 /* 1663 */         break;
 /*      */       
 /*      */       case 4: 
 /* 1666 */         if (paramLong >= 0L) {
-/* 1667 */           aaaaaa(paramContext).c(new long[] { paramLong });
+/* 1667 */           getInstance(paramContext).c(new long[] { paramLong });
 /* 1668 */           i = 2;
 /*      */         }
 /*      */         break;
 /*      */       case 1: 
 /*      */       case 2: 
 /* 1673 */         if (paramLong >= 0L) {
-/* 1674 */           aaaaaa(paramContext).b(new long[] { paramLong });
+/* 1674 */           getInstance(paramContext).b(new long[] { paramLong });
 /* 1675 */           i = 4;
 /*      */         }
 /*      */         break;

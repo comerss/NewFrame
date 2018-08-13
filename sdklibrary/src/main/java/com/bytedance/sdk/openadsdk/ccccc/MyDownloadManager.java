@@ -62,7 +62,7 @@ import com.bytedance.sdk.openadsdk.ggg.e;
 /*     */     }
 /*     */     try
 /*     */     {
-/*  63 */       AppAdViewHolder localf = AppAdViewHolder.aaaaaa(paramContext);
+/*  63 */       AppAdViewHolder localf = AppAdViewHolder.getInstance(paramContext);
 /*  64 */       if (localf == null)
 /*  65 */         return -1L;
 /*  66 */       Uri localUri = Uri.parse(paramString1);

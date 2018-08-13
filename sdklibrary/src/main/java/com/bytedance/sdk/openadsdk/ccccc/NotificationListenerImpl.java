@@ -16,16 +16,16 @@ import android.support.v4.app.NotificationCompat;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ class r
+/*     */ class NotificationListenerImpl
 /*     */   implements NotificationListener
 /*     */ {
     /*  15 */   private NotificationCompat.Builder mBuilder = null;
 /*     */   
-/*     */   public r(Context paramContext) {
+/*     */   public NotificationListenerImpl(Context paramContext) {
 /*  18 */     this.mBuilder = new NotificationCompat.Builder(paramContext);
 /*     */   }
 /*     */   
-/*     */   public NotificationListener a(PendingIntent paramPendingIntent)
+/*     */   public NotificationListener setContentIntent(PendingIntent paramPendingIntent)
 /*     */   {
 /*  23 */     if (this.mBuilder != null) {
 /*  24 */       this.mBuilder.setContentIntent(paramPendingIntent);
@@ -33,7 +33,7 @@ import android.support.v4.app.NotificationCompat;
 /*  26 */     return this;
 /*     */   }
 /*     */   
-/*     */   public NotificationListener a(boolean paramBoolean)
+/*     */   public NotificationListener setOngoing(boolean paramBoolean)
 /*     */   {
 /*  31 */     if (this.mBuilder != null) {
 /*  32 */       this.mBuilder.setOngoing(paramBoolean);
@@ -41,7 +41,7 @@ import android.support.v4.app.NotificationCompat;
 /*  34 */     return this;
 /*     */   }
 /*     */   
-/*     */   public NotificationListener b(boolean paramBoolean)
+/*     */   public NotificationListener setAutoCancel(boolean paramBoolean)
 /*     */   {
 /*  39 */     if (this.mBuilder != null) {
 /*  40 */       this.mBuilder.setAutoCancel(paramBoolean);
@@ -49,7 +49,7 @@ import android.support.v4.app.NotificationCompat;
 /*  42 */     return this;
 /*     */   }
 /*     */   
-/*     */   public NotificationListener b(PendingIntent paramPendingIntent)
+/*     */   public NotificationListener setDeleteIntent(PendingIntent paramPendingIntent)
 /*     */   {
 /*  47 */     if (this.mBuilder != null) {
 /*  48 */       this.mBuilder.setDeleteIntent(paramPendingIntent);
@@ -57,7 +57,7 @@ import android.support.v4.app.NotificationCompat;
 /*  50 */     return this;
 /*     */   }
 /*     */   
-/*     */   public NotificationListener a(long paramLong)
+/*     */   public NotificationListener setWhen(long paramLong)
 /*     */   {
 /*  55 */     if (this.mBuilder != null) {
 /*  56 */       this.mBuilder.setWhen(paramLong);
@@ -65,7 +65,7 @@ import android.support.v4.app.NotificationCompat;
 /*  58 */     return this;
 /*     */   }
 /*     */   
-/*     */   public NotificationListener a(int paramInt)
+/*     */   public NotificationListener setSmallIcon(int paramInt)
 /*     */   {
 /*  63 */     if (this.mBuilder != null) {
 /*  64 */       this.mBuilder.setSmallIcon(paramInt);
@@ -113,7 +113,7 @@ import android.support.v4.app.NotificationCompat;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public Notification a()
+/*     */   public Notification build()
 /*     */   {
 /* 111 */     if (this.mBuilder != null) {
 /* 112 */       return this.mBuilder.build();
@@ -123,7 +123,7 @@ import android.support.v4.app.NotificationCompat;
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\r.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\NotificationListenerImpl.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

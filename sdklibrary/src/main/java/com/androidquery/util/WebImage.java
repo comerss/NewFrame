@@ -106,7 +106,7 @@ public class WebImage extends WebViewClient{
     	wv.setBackgroundColor(color);
     	
     	if(progress != null){
-    		//progress.setVisibility(View.VISIBLE);
+    		//load.setVisibility(View.VISIBLE);
     		Common.showProgress(progress, url, true);
     	}
     	
@@ -156,7 +156,7 @@ public class WebImage extends WebViewClient{
 	
     private void done(WebView view){
     	if(progress != null){
-			//progress.setVisibility(View.GONE);
+			//load.setVisibility(View.GONE);
 			view.setVisibility(View.VISIBLE);
     		Common.showProgress(progress, url, false);
 		}
@@ -188,7 +188,7 @@ public class WebImage extends WebViewClient{
 	}
 	
 	/*
-    public static void webImage(WebView wv, String url, final View progress){
+    public static void webImage(WebView wv, String url, final View load){
     	
     	if(url.equals(wv.getTag(AQuery.TAG_URL))){
     		return;
@@ -233,8 +233,8 @@ public class WebImage extends WebViewClient{
 		});
     		
     	
-    	if(progress != null){
-    		progress.setVisibility(View.VISIBLE);
+    	if(load != null){
+    		load.setVisibility(View.VISIBLE);
     	}
     	
     	
@@ -247,8 +247,8 @@ public class WebImage extends WebViewClient{
     			AQUtility.debug("fin", view.getTag(AQuery.TAG_LAYOUT));
     			
     			if(("fetch".equals(view.getTag(AQuery.TAG_LAYOUT)))){
-    				if(progress != null){
-    					progress.setVisibility(View.GONE);
+    				if(load != null){
+    					load.setVisibility(View.GONE);
     				}
     				view.setWebViewClient(null);
     			}
@@ -258,8 +258,8 @@ public class WebImage extends WebViewClient{
     		@Override
     		public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
     			
-    			if(progress != null){
-    				progress.setVisibility(View.GONE);
+    			if(load != null){
+    				load.setVisibility(View.GONE);
     			}
     			
     		}

@@ -2,7 +2,7 @@ package com.comers.baselibrary.retrofit
 
 import com.comers.baselibrary.http.HttpResult
 import com.comers.market.base.Data
-import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 
 /**
@@ -11,5 +11,5 @@ import retrofit2.http.GET
  */
 interface ApiService {
     @GET("kkk")
-    fun getData(): Observable<HttpResult<List<Data>>>
+    fun getData(): Single<HttpResult<List<Data>>>
 }

@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
@@ -98,14 +98,14 @@ import java.util.Map;
 /*     */     }
 /*  82 */     JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
 /*  83 */     if (localJSONObject != null) {
-/*  84 */       h localh = new h();
+/*  84 */       NativeAdData localh = new NativeAdData();
 /*  85 */       localh.a(localJSONObject);
 /*  86 */       localh.g(paramString);
 /*  87 */       a(paramContext, localh, localJSONObject, paramInt, paramBoolean);
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void a(Context paramContext, h paramh, JSONObject paramJSONObject, int paramInt, boolean paramBoolean) {
+/*     */   private void a(Context paramContext, NativeAdData paramh, JSONObject paramJSONObject, int paramInt, boolean paramBoolean) {
 /*  92 */     if ((paramContext == null) || (paramh == null) || (paramh.m() == null) || (paramJSONObject == null) || (this.c == null))
 /*     */     {
 /*  94 */       return;
@@ -129,13 +129,13 @@ import java.util.Map;
 /*     */     }
 /* 113 */     JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
 /* 114 */     if (localJSONObject != null) {
-/* 115 */       h localh = new h();
+/* 115 */       NativeAdData localh = new NativeAdData();
 /* 116 */       localh.a(localJSONObject);
 /* 117 */       a(paramContext, localh);
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void a(Context paramContext, h paramh) {
+/*     */   private void a(Context paramContext, NativeAdData paramh) {
 /* 122 */     if ((paramContext == null) || (paramh == null) || (paramh.m() == null)) {
 /* 123 */       return;
 /*     */     }
@@ -156,13 +156,13 @@ import java.util.Map;
 /*     */     }
 /* 140 */     JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
 /* 141 */     if (localJSONObject != null) {
-/* 142 */       h localh = new h();
+/* 142 */       NativeAdData localh = new NativeAdData();
 /* 143 */       localh.a(localJSONObject);
 /* 144 */       a(localh, localJSONObject);
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private void a(h paramh, JSONObject paramJSONObject) {
+/*     */   private void a(NativeAdData paramh, JSONObject paramJSONObject) {
 /* 149 */     if ((this.c == null) || (paramh == null) || (paramh.m() == null)) {
 /* 150 */       return;
 /*     */     }
@@ -188,7 +188,7 @@ import java.util.Map;
 /*     */     }
 /* 172 */     JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
 /* 173 */     if (localJSONObject != null) {
-/* 174 */       h localh = new h();
+/* 174 */       NativeAdData localh = new NativeAdData();
 /* 175 */       localh.a(localJSONObject);
 /* 176 */       DownLoadListenerImpl localx = (DownLoadListenerImpl)this.d.get(localh.m().a());
 /* 177 */       if (localx != null) {
@@ -208,7 +208,7 @@ import java.util.Map;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private DownLoadListenerImpl a(@NonNull final Context paramContext, @NonNull final h paramh, @NonNull final JSONObject paramJSONObject, @NonNull final String paramString, boolean paramBoolean) {
+/*     */   private DownLoadListenerImpl a(@NonNull final Context paramContext, @NonNull final NativeAdData paramh, @NonNull final JSONObject paramJSONObject, @NonNull final String paramString, boolean paramBoolean) {
 /* 195 */     DownLoadListenerImpl localx = new DownLoadListenerImpl(paramContext, paramh, paramString);
 /* 196 */     localx.a(new TTAppDownloadListener()
 /*     */     {

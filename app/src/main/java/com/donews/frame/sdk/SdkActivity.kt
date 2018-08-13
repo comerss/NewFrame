@@ -14,9 +14,13 @@ import com.bytedance.sdk.openadsdk.AdSlot
 import com.bytedance.sdk.openadsdk.TTAdNative
 import com.bytedance.sdk.openadsdk.TTSplashAd
 import com.comers.baselibrary.base.UpdateService
+import com.comers.baselibrary.http.HttpResult
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.donews.frame.R
 import com.donews.frame.sdk.Utils.c
+import io.reactivex.Single
+import io.reactivex.SingleObserver
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_sdk.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -43,7 +47,34 @@ class SdkActivity : RxBaseActivity() {
     override fun initData() {
 //        getAd()
 //        downLoad()
-        getDas()
+//        getDas()
+//        Download()
+        Single.just(0).subscribe({
+
+        },{
+
+        })
+        Single.just(HttpResult<ListData>()).subscribe { t1, t2 ->
+            t1.data
+            t2.message
+        }
+        Single.just(HttpResult<ListData>()).subscribe(object :SingleObserver<HttpResult<ListData>>{
+            override fun onSuccess(t: HttpResult<ListData>) {
+
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onError(e: Throwable) {
+
+            }
+
+        })
+    }
+
+    private fun Download() {
+
     }
 
     private fun getDas() {// kai  801622501   xinxi  901622650
@@ -80,7 +111,7 @@ class SdkActivity : RxBaseActivity() {
     }
 
     private fun downLoad() {
-        UpdateService.Builder.create("https://lf.snssdk.com/api/ad/union/redirect/?req_id=a94454afb8f642cfee91d48f0326199bu8592&use_pb=1&rit=900968743&call_back=n%2FmTWOdTRcvpcUZ2m6%2FyuqAQOs42RnUL4A9L5hSA2gE%3D&extra=ck4f4MfSIVuhuQsax%2FrP%2Byeub5gCm3bnm6TbTmBMZtpmAzkBBtpGW48YGh7M9cWlqxCayY1bmNJzvXyhWDypv3qvhgtyh3Yt0Tc7FZs2%2BzxZvt31UnVgiJCJLLCA01X8bclKRubNNTFNvj1abW7yetztFRziAY3X%2BmGzH6PohaCgRU20FbtrZ46HBd5%2BRBoKuO6l9iCRtaoN1A1i1G03ywMmwX5zgbbi3OgDGB5WueyPkD0E3TKVGhjw3BGmhXuWAbjD5DgUmPZ%2F0d4spMfN18hnRLaPK5%2Bs3YM3LR%2BJs%2Fpquvd29vBV07FgZgNWtbF%2F%2B11adJMH8ZuhXhFOeCDTWhJu7HJHFiH%2B2WI%2FYVn38yoovVb5kwgBWxAtB4wuJaM%2FUI6ydVc9CoqSE9YCckE%2FYAqG%2BxarZDhz3ijgfNHNO3gjwDUswMkiCEul%2BryQasAL3xZDcD1imRtEToQzAMXecDuGpV3jxVWGSfQoR1Sl5%2FadxuYxbPshwv65wAau5Xb8ZSDJxmbBJFysVuoFww0Jmrq2S7GzzAcZJXsBIlOTCRY%3D&source_type=1&pack_time=1528420852.59&active_extra=tPUbpyiQQvHxTvpVqWgcdg9%2BtE2Jdoo1PHJDkEJFi5Cz9dvCwD0YYBG%2BYxH6LHY%2FM2xh4ucDCHu8RPAbh7cFEw%3D%3D")//获取下载路径url
+        UpdateService.Builder.create("https://lf.snssdk.com/api/ad/union/redirect/?req_id=a94454afb8f642cfee91d48f0326199bu8592&use_pb=1&rit=900968743&call_back=NetUtils%2FmTWOdTRcvpcUZ2m6%2FyuqAQOs42RnUL4A9L5hSA2gE%3D&extra=ck4f4MfSIVuhuQsax%2FrP%2Byeub5gCm3bnm6TbTmBMZtpmAzkBBtpGW48YGh7M9cWlqxCayY1bmNJzvXyhWDypv3qvhgtyh3Yt0Tc7FZs2%2BzxZvt31UnVgiJCJLLCA01X8bclKRubNNTFNvj1abW7yetztFRziAY3X%2BmGzH6PohaCgRU20FbtrZ46HBd5%2BRBoKuO6l9iCRtaoN1A1i1G03ywMmwX5zgbbi3OgDGB5WueyPkD0E3TKVGhjw3BGmhXuWAbjD5DgUmPZ%2F0d4spMfN18hnRLaPK5%2Bs3YM3LR%2BJs%2Fpquvd29vBV07FgZgNWtbF%2F%2B11adJMH8ZuhXhFOeCDTWhJu7HJHFiH%2B2WI%2FYVn38yoovVb5kwgBWxAtB4wuJaM%2FUI6ydVc9CoqSE9YCckE%2FYAqG%2BxarZDhz3ijgfNHNO3gjwDUswMkiCEul%2BryQasAL3xZDcD1imRtEToQzAMXecDuGpV3jxVWGSfQoR1Sl5%2FadxuYxbPshwv65wAau5Xb8ZSDJxmbBJFysVuoFww0Jmrq2S7GzzAcZJXsBIlOTCRY%3D&source_type=1&pack_time=1528420852.59&active_extra=tPUbpyiQQvHxTvpVqWgcdg9%2BtE2Jdoo1PHJDkEJFi5Cz9dvCwD0YYBG%2BYxH6LHY%2FM2xh4ucDCHu8RPAbh7cFEw%3D%3D")//获取下载路径url
                 .setStoreDir("update/flag")//设置存储路径
                 .setDownloadSuccessNotificationFlag(Notification.DEFAULT_ALL)//设置下载成功的提醒
                 .setDownloadErrorNotificationFlag(Notification.DEFAULT_ALL)//设置下载失败的提醒
@@ -89,7 +120,7 @@ class SdkActivity : RxBaseActivity() {
 
     //获取广告的方法
     private fun getAd() {
-        var url = "https://i.snssdk.com/api/ad/union/sdk/get_ads/"
+        var url = "https://mOnClick.snssdk.com/api/ad/union/sdk/get_ads/"
         /*HttpHelper.doPost(url)//这里只存在  3或者 4
                 .execute(getParams(3).toString(), object : ICallBack<Data>() {
                     override fun onSuccess(sResult: HttpResult<Data>?, json: String?) {
@@ -287,7 +318,7 @@ class SdkActivity : RxBaseActivity() {
             var1.put("gender", 1)
             var1.put("phone_nub", getPhoneNub())
 //            var1.put( "keywords", com.bytedance.sdk.openadsdk.core.ImageHelper.UIUtils().ApiException())
-            /* val var2 = com.bytedance.sdk.openadsdk.ImageHelper.i.UIUtils(this.UIUtils, this.PhoneUtils)
+            /* val var2 = com.bytedance.sdk.openadsdk.ImageHelper.mOnClick.UIUtils(this.UIUtils, this.PhoneUtils)
              if (var2 != null) {
                  var1.put("app_list", var2)//已经装的app  集合
              }*/

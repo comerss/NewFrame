@@ -34,8 +34,10 @@ import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 import com.bytedance.sdk.openadsdk.core.AdNativeListenerImpl;
 import com.bytedance.sdk.openadsdk.core.ab;
 import com.bytedance.sdk.openadsdk.core.TTAndroidObject;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 import com.bytedance.sdk.openadsdk.ggg.WebViewHelper;
 
@@ -117,7 +119,7 @@ import java.util.UUID;
 /*     */   private RatingBar l;
 /*     */   private TextView m;
 /*     */   private TextView n;
-/*     */   private com.bytedance.sdk.openadsdk.core.nibuguan.h o;
+/*     */   private NativeAdData o;
 /*     */   private TTRewardVideoAd.RewardAdInteractionListener mListener;
 /*     */   private DownLoadListenerImpl q;
 /*     */   private String r;
@@ -195,10 +197,10 @@ import java.util.UUID;
 /* 153 */       this.n.setVisibility(View.GONE);
 /* 154 */       this.g.setVisibility(View.VISIBLE);
 /* 155 */       this.m.setVisibility(View.VISIBLE);
-/* 156 */       this.f.setMaxWidth((int) ViewWather.a(this, 120.0F));
+/* 156 */       this.f.setMaxWidth((int) ViewWather.dp2px(this, 120.0F));
 /* 157 */       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.l.getLayoutParams();
-/* 158 */       localLayoutParams.leftMargin = ((int) ViewWather.a(this, 89.0F));
-/* 159 */       localLayoutParams.topMargin = ((int) ViewWather.a(this, 2.0F));
+/* 158 */       localLayoutParams.leftMargin = ((int) ViewWather.dp2px(this, 89.0F));
+/* 159 */       localLayoutParams.topMargin = ((int) ViewWather.dp2px(this, 2.0F));
 /* 160 */       this.l.setLayoutParams(localLayoutParams);
 /*     */     }
 /*     */   }
@@ -403,7 +405,7 @@ import java.util.UUID;
 /*     */       {
 /* 362 */         TTRewardVideoActivity.this.A = (int)(TTRewardVideoActivity.this.o.a().b() - (double)(paramAnonymousLong1 / 1000L));
     if (TTRewardVideoActivity.this.A >= 0) {
-        ViewWather.a(TTRewardVideoActivity.this.h, 0);
+        ViewWather.setVisible(TTRewardVideoActivity.this.h, 0);
         TTRewardVideoActivity.this.h.setText(String.valueOf(TTRewardVideoActivity.this.A));
     }
 /*     */       }
@@ -460,7 +462,7 @@ import java.util.UUID;
 /*     */     try {
 /* 420 */       localJSONObject.put("reward_name", this.M);
 /* 421 */       localJSONObject.put("reward_amount", this.N);
-/* 422 */       localJSONObject.put("network", com.bytedance.sdk.openadsdk.ggg.n.b(this.a).a());
+/* 422 */       localJSONObject.put("network", NetUtils.b(this.a).a());
 /* 423 */       localJSONObject.put("latitude", f1);
 /* 424 */       localJSONObject.put("longitude", f2);
 /* 425 */       localJSONObject.put("sdk_version", "1.9.0");

@@ -3,6 +3,7 @@
 /*    */ import android.content.Context;
 /*    */ import com.bytedance.sdk.openadsdk.core.eeee.c;
 import com.bytedance.sdk.openadsdk.dddd.HandleInitEvent;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 /*    */
 /*    */
 
@@ -80,7 +81,7 @@ import com.bytedance.sdk.openadsdk.dddd.HandleInitEvent;
 /* 78 */    return new HandleInitEvent.a()
 /*    */     {
 /*    */       public boolean a() {
-/* 81 */         return com.bytedance.sdk.openadsdk.ggg.n.a(paramContext);
+/* 81 */         return NetUtils.a(paramContext);
 /*    */       }
 /*    */     };
 /*    */   }

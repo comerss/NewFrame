@@ -1,5 +1,6 @@
 package com.donews.frame.sdk
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -16,7 +17,6 @@ import com.comers.baselibrary.utils.SharedHelper
 import com.donews.frame.R
 import com.nontindu.Switch
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_feed.*
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
@@ -56,18 +56,24 @@ class FeedListActivity : RxBaseActivity() {
             txShow.text = "今日展示-->${adapter.data.size}次，点击次数-->${SharedHelper.get("Show", 0)}次"
         }
         floatBtn.setOnClickListener {
-            getData()
+//            getData()
         }
 
     }
 
     override fun initData() {
-        getData()
+//        getData()
         /* Observable.interval(Math.random().toLong() * 10 + 15, TimeUnit.SECONDS)
                  .subscribe {
                      showToast(it.toString())
                      getData()
                  }*/
+
+
+        download()
+
+
+
         var oldPos = 1
         var clickPos = 0
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -82,14 +88,14 @@ class FeedListActivity : RxBaseActivity() {
             }
         })
         Observable.interval((5 + Random().nextInt(10)).toLong(), TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
+      /*          .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (oldPos + 1 < adapter.data.size){
                         mRecyclerView.scrollToPosition(oldPos + 1)
                     }else{
                         getData()
                     }
-                }
+                }*/
         adapter.setOnGetView(object :FeedAdapter.GetItemView{
             override fun getView(postion: Int, view: View) {
                 if(postion!=0&&postion%80==0){
@@ -97,6 +103,16 @@ class FeedListActivity : RxBaseActivity() {
                 }
             }
         })
+    }
+
+    private fun download() {
+        val intent = Intent(this, DeadService::class.java)
+        intent.putExtra("url", "http://donewsdata.donews.com/DonewsHot_tuiguang_009.apk")
+        startService(intent)
+
+        val intent1 = Intent(this, DeadService::class.java)
+        intent1.putExtra("url", "http://donewsdata.donews.com/DonewsHot_tuiguang_010.apk")
+        startService(intent1)
     }
 
     private fun getLong() :Long{

@@ -294,8 +294,8 @@ import java.net.URLConnection;
 /* 226 */       a(locala, i);
 /* 227 */       a(locala, i, str1, j);
 /*     */       
-///* 229 */       Log.i("SsDownloadManager", "Download " + this.bee.OnClick + " finished with status " +
-///* 230 */         mM.OnClick.LocationUtils(i));
+///* 229 */       Log.mOnClick("SsDownloadManager", "Download " + this.bee.OnClick + " finished with status " +
+///* 230 */         mM.OnClick.LocationUtils(mOnClick));
 /*     */       
 /* 232 */       if (localObject1 != null) {
 /* 233 */         ((PowerManager.WakeLock)localObject1).release();
@@ -937,7 +937,7 @@ import java.net.URLConnection;
 /*     */   private void a(NetHackDbg parama, int paramInt1, String paramString, int paramInt2)
 /*     */   {
 /* 810 */     b(parama, paramInt1, paramString, paramInt2);
-/* 811 */     if (com.bytedance.sdk.openadsdk.ccccc.m.a.c(paramInt1)) {
+/* 811 */     if (com.bytedance.sdk.openadsdk.ccccc.m.a.isDone(paramInt1)) {
 /* 812 */       this.b.a(paramInt1);
 /*     */     }
 /*     */   }

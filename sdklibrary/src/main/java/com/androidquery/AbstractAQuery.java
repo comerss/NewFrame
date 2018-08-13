@@ -341,14 +341,14 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Find the progress bar and show the progress for the next ajax/image request. 
-	 * Once ajax or image is called, current progress view is consumed.
-	 * Subsequent ajax/image calls won't show progress view unless progress is called again.
+	 * Find the load bar and show the load for the next ajax/image request.
+	 * Once ajax or image is called, current load view is consumed.
+	 * Subsequent ajax/image calls won't show load view unless load is called again.
 	 *
-	 * If isEmpty file or network requests is required, the progress bar is set to be "VISIBLE".
-	 * Once the requests completes, progress bar is set to "GONE".
+	 * If isEmpty file or network requests is required, the load bar is set to be "VISIBLE".
+	 * Once the requests completes, load bar is set to "GONE".
 	 *
-	 * @param id the id of the progress bar to be shown
+	 * @param id the id of the load bar to be shown
 	 * @return self
 	 */
 	public T progress(int id){
@@ -358,15 +358,15 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	
 	
 	/**
-	 * Set the progress bar and show the progress for the next ajax/image request. 
+	 * Set the load bar and show the load for the next ajax/image request.
 	 * 
-	 * Once ajax or image is called, current progress view is consumed.
-	 * Subsequent ajax/image calls won't show progress view unless progress is called again.
+	 * Once ajax or image is called, current load view is consumed.
+	 * Subsequent ajax/image calls won't show load view unless load is called again.
 	 *
-	 * If isEmpty file or network requests is required, the progress bar is set to be "VISIBLE".
-	 * Once the requests completes, progress bar is set to "GONE".
+	 * If isEmpty file or network requests is required, the load bar is set to be "VISIBLE".
+	 * Once the requests completes, load bar is set to "GONE".
 	 *
-	 * @param view the progress bar to be shown
+	 * @param view the load bar to be shown
 	 * @return self
 	 */
 	
@@ -376,7 +376,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Set the progress dialog and show the progress for the next ajax/image request. 
+	 * Set the load dialog and show the load for the next ajax/image request.
 	 * 
 	 * Progress dialogs cannot be reused. They are dismissed on ajax callback.
 	 *
@@ -1219,7 +1219,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	}
 	
 	/**
-	 * Gets the current view as an progress bar.
+	 * Gets the current view as an load bar.
 	 *
 	 * @return ProgressBar
 	 */

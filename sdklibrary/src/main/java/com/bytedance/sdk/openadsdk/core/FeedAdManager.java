@@ -11,7 +11,8 @@ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTFeedAd;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListerReal;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 
@@ -48,114 +49,114 @@ import java.util.List;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ class m
+/*     */ class FeedAdManager
 /*     */ {
-/*     */   private h b;
-/*     */   private DownLoadListenerImpl c;
+/*     */   private NativeAdData b;
+/*     */   private DownLoadListenerImpl mDownLoadListener;
 /*     */   private a d;
-/*     */   protected Context a;
-/*     */   private TTFeedAd e;
+/*     */   protected Context mContext;
+/*     */   private TTFeedAd mTTFeedAd;
 /*     */   
-/*     */   m(Context paramContext, TTFeedAd paramTTFeedAd, h paramh)
+/*     */   FeedAdManager(Context paramContext, TTFeedAd paramTTFeedAd, NativeAdData paramh)
 /*     */   {
-/*  42 */     this.e = paramTTFeedAd;
+/*  42 */     this.mTTFeedAd = paramTTFeedAd;
 /*  43 */     this.b = paramh;
-/*  44 */     this.a = paramContext;
+/*  44 */     this.mContext = paramContext;
 /*     */     
 /*  46 */     if (this.b.c() == 4) {
 /*  47 */       this.d = new a();
-/*  48 */       this.c = new DownLoadListenerImpl(this.a, this.b, "embeded_ad");
+/*  48 */       this.mDownLoadListener = new DownLoadListenerImpl(this.mContext, this.b, "embeded_ad");
 /*     */       
-/*  50 */       this.c.a(new com.bytedance.sdk.openadsdk.core.a.c(this.a, this.b, "embeded_ad"));
+/*  50 */       this.mDownLoadListener.a(new com.bytedance.sdk.openadsdk.core.a.c(this.mContext, this.b, "embeded_ad"));
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   void a(@NonNull Activity paramActivity) {
-/*  55 */     if (this.c != null) {
-/*  56 */       this.c.a(paramActivity);
+/*  55 */     if (this.mDownLoadListener != null) {
+/*  56 */       this.mDownLoadListener.a(paramActivity);
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   DownLoadListenerImpl a() {
-/*  61 */     return this.c;
+/*  61 */     return this.mDownLoadListener;
 /*     */   }
 /*     */   
-/*     */   void a(@NonNull ViewGroup paramViewGroup, List<View> paramList1, @Nullable List<View> paramList2, final TTFeedAd.AdInteractionListener paramAdInteractionListener)
+/*     */   void registerViewForInteraction(@NonNull ViewGroup paramViewGroup, List<View> paramList1, @Nullable List<View> paramList2, final TTFeedAd.AdInteractionListener paramAdInteractionListener)
 /*     */   {
-/*  66 */     if (this.c != null) {
-/*  67 */       this.c.e();
+/*  66 */     if (this.mDownLoadListener != null) {
+/*  67 */       this.mDownLoadListener.e();
 /*     */     }
 /*  69 */     AdEvent.a(this.b);
-/*  70 */     SplashManager localf = a(paramViewGroup);
-/*  71 */     if (localf == null) {
-/*  72 */       localf = new SplashManager(this.a, paramViewGroup);
-/*  73 */       paramViewGroup.addView(localf);
+/*  70 */     SplashManager splashManager = a(paramViewGroup);
+/*  71 */     if (splashManager == null) {
+/*  72 */       splashManager = new SplashManager(this.mContext, paramViewGroup);
+/*  73 */       paramViewGroup.addView(splashManager);
 /*     */     }
-/*  75 */     localf.a();
-/*  76 */     localf.setRefClickViews(paramList1);
-/*  77 */     localf.setRefCreativeViews(paramList2);
+/*  75 */     splashManager.a();
+/*  76 */     splashManager.setRefClickViews(paramList1);
+/*  77 */     splashManager.setRefCreativeViews(paramList2);
 /*     */
 /*     */ 
-/*  80 */     AdClickListenerImpl localb = new AdClickListenerImpl(this.a, this.b, "embeded_ad", 1);
-/*  81 */     localb.a(paramViewGroup);
-/*  82 */     localb.a(this.e);
-/*  83 */     localb.a(new AdClickListenerImpl.OnClick()
+/*  80 */     AdClickListenerImpl adClickListener = new AdClickListenerImpl(this.mContext, this.b, "embeded_ad", 1);
+/*  81 */     adClickListener.a(paramViewGroup);
+/*  82 */     adClickListener.a(this.mTTFeedAd);
+/*  83 */     adClickListener.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /*  86 */         if (paramAdInteractionListener != null) {
-/*  87 */           paramAdInteractionListener.onAdClicked(paramAnonymousView,e);
+/*  87 */           paramAdInteractionListener.onAdClicked(paramAnonymousView, mTTFeedAd);
 /*     */         }
 /*     */         
 /*     */       }
 /*     */       
 /*  92 */     });
-/*  93 */     com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.a, this.b, "embeded_ad", 1);
+/*  93 */     AdClickListerReal locala = new AdClickListerReal(this.mContext, this.b, "embeded_ad", 1);
 /*  94 */     locala.a(paramViewGroup);
-/*  95 */     locala.a(this.c);
-/*  96 */     locala.a(new AdClickListenerImpl.OnClick()
+/*  95 */     locala.a(this.mDownLoadListener);
+/*  96 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /*  99 */         if (paramAdInteractionListener != null) {
-/* 100 */           paramAdInteractionListener.onAdCreativeClick(paramAnonymousView, e);
+/* 100 */           paramAdInteractionListener.onAdCreativeClick(paramAnonymousView, mTTFeedAd);
 /*     */         }
 /*     */         
 /*     */       }
 /* 104 */     });
-/* 105 */     localf.a(paramList1, localb);
-/* 106 */     localf.a(paramList2, locala);
+/* 105 */     splashManager.onClick(paramList1, adClickListener);
+/* 106 */     splashManager.onClick(paramList2, locala);
 /*     */     
-/* 108 */     localf.setCallback(new SplashManager.SplashListener()
+/* 108 */     splashManager.setCallback(new SplashManager.SplashListener()
 /*     */     {
-/*     */       public void a(boolean paramAnonymousBoolean) {
-/* 111 */         if (c!= null) {
+/*     */       public void onWindowFocusChanged(boolean paramAnonymousBoolean) {
+/* 111 */         if (mDownLoadListener != null) {
 /* 112 */           if (paramAnonymousBoolean) {
-/* 113 */           c.e();
+/* 113 */           mDownLoadListener.e();
 /*     */           } else {
-/* 115 */           c.f();
+/* 115 */           mDownLoadListener.f();
 /*     */           }
 /*     */         }
 /*     */       }
 /*     */       
 /*     */ 
 /*     */ 
-/*     */       public void a() {}
+/*     */       public void onAttachedToWindow() {}
 /*     */       
 /*     */ 
-/*     */       public void b() {}
+/*     */       public void onDetachedFromWindow() {}
 /*     */       
 /*     */ 
 /*     */       public void onShow(View paramAnonymousView)
 /*     */       {
-/* 130 */         AdEvent.show(a, b, "embeded_ad");
+/* 130 */         AdEvent.show(mContext, b, "embeded_ad");
 /* 131 */         if (paramAdInteractionListener != null) {
-/* 132 */           paramAdInteractionListener.onAdShow(e);
+/* 132 */           paramAdInteractionListener.onAdShow(mTTFeedAd);
 /*     */         }
 /* 134 */         if (b.t()) {
 /* 135 */           ToolUtils.a(b, paramAnonymousView);
 /*     */         }
 /*     */       }
 /* 138 */     });
-/* 139 */     localf.setNeedCheckingShow(true);
+/* 139 */     splashManager.setNeedCheckingShow(true);
 /*     */   }
 /*     */   
 /*     */   private SplashManager a(ViewGroup paramViewGroup)
@@ -171,12 +172,12 @@ import java.util.List;
 /*     */   
 /*     */   void a(TTAppDownloadListener paramTTAppDownloadListener)
 /*     */   {
-/* 155 */     if (this.c != null) {
+/* 155 */     if (this.mDownLoadListener != null) {
 /* 156 */       if (this.d == null) {
 /* 157 */         this.d = new a();
 /*     */       }
 /* 159 */       this.d.a(paramTTAppDownloadListener);
-/* 160 */       this.c.a(paramTTAppDownloadListener);
+/* 160 */       this.mDownLoadListener.a(paramTTAppDownloadListener);
 /*     */     }
 /*     */   }
 /*     */   

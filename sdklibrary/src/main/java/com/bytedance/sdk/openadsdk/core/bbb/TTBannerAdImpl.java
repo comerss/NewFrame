@@ -14,7 +14,8 @@ import com.bytedance.sdk.openadsdk.b.TTAdDislikeImpl;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.SplashManager;
 import com.bytedance.sdk.openadsdk.core.a.AdClickListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.a.AdClickListerReal;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
@@ -63,7 +64,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */   private Context c;
 /*     */   private MineHandler d;
 /*     */   private int e;
-/*     */   private h f;
+/*     */   private NativeAdData f;
 /*     */   private TTBannerAd.AdInteractionListener g;
 /*     */   private TTAppDownloadListener h;
 /*     */   private TTAdDislikeImpl i;
@@ -90,27 +91,27 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*  71 */     this.a.addView(localf);
 /*  72 */     localf.setCallback(new SplashManager.SplashListener()
 /*     */     {
-/*     */       public void a(boolean paramAnonymousBoolean) {
+/*     */       public void onWindowFocusChanged(boolean paramAnonymousBoolean) {
 /*  75 */         if (paramAnonymousBoolean) {
-/*  76 */           a();
+/*  76 */           onAttachedToWindow();
 /*  77 */           LogUtils.b("TTBannerAd", "获得焦点，开始计时");
 /*     */         } else {
 /*  79 */           LogUtils.b("TTBannerAd", "失去焦点，停止计时");
-/*  80 */           b();
+/*  80 */           onDetachedFromWindow();
 /*     */         }
 /*     */       }
 /*     */       
 /*     */ 
 /*     */ 
-/*     */       public void a() {}
+/*     */       public void onAttachedToWindow() {}
 /*     */       
 /*     */ 
-/*     */       public void b() {}
+/*     */       public void onDetachedFromWindow() {}
 /*     */       
 /*     */ 
 /*     */       public void onShow(View paramAnonymousView)
 /*     */       {
-/*  94 */         a();
+/*  94 */         onAttachedToWindow();
 /*  95 */         LogUtils.b("TTBannerAd", "BANNER SHOW");
 /*     */       }
 /*  97 */     });
@@ -248,7 +249,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private DownLoadListenerImpl a(h paramh) {
+/*     */   private DownLoadListenerImpl a(NativeAdData paramh) {
 /* 233 */     if (paramh.c() == 4) {
 /* 234 */       return new DownLoadListenerImpl(this.c, paramh, this.l);
 /*     */     }
@@ -260,7 +261,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */   private void a(@NonNull c paramc, @NonNull com.bytedance.sdk.openadsdk.core.bbb.a parama)
 /*     */   {
 /* 243 */     paramc.a(parama.a());
-/* 244 */     final h localh = parama.b();
+/* 244 */     final NativeAdData localh = parama.b();
 /* 245 */     this.f = localh;
 /* 246 */     this.i = new TTAdDislikeImpl(this.c, this.f);
 /* 247 */     paramc.a(localh);
@@ -273,7 +274,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */     }
 /* 255 */     localf.setCallback(new SplashManager.SplashListener()
 /*     */     {
-/*     */       public void a(boolean paramAnonymousBoolean) {
+/*     */       public void onWindowFocusChanged(boolean paramAnonymousBoolean) {
 /* 258 */         if (k != null) {
 /* 259 */           if (paramAnonymousBoolean) {
 /* 260 */             k.e();
@@ -285,11 +286,11 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */       
 /*     */ 
 /*     */ 
-/*     */       public void a() {}
+/*     */       public void onAttachedToWindow() {}
 /*     */       
 /*     */ 
 /*     */ 
-/*     */       public void b() {}
+/*     */       public void onDetachedFromWindow() {}
 /*     */       
 /*     */ 
 /*     */ 
@@ -306,11 +307,11 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */       }
 /*     */       
 /* 289 */     });
-/* 290 */      com.bytedance.sdk.openadsdk.core.a.a locala = new com.bytedance.sdk.openadsdk.core.a.a(this.c, localh, this.l, 2);
+/* 290 */      AdClickListerReal locala = new AdClickListerReal(this.c, localh, this.l, 2);
 /* 291 */     locala.a(paramc);
 /* 292 */     locala.b(this.a.d());
 /* 293 */     locala.a(this.k);
-/* 294 */     locala.a(new AdClickListenerImpl.OnClick()
+/* 294 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
 /* 297 */         if (g != null) {

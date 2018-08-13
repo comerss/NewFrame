@@ -21,6 +21,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
@@ -226,7 +227,7 @@ import java.util.concurrent.Executors;
                     };
                     var7.timeout(5000);
                     AjaxCallback.setAgent(com.bytedance.sdk.openadsdk.core.r.a);
-                    var6.post("https://i.snssdk.com/api/ad/union/sdk/get_ads/", var5, String.class, var7);
+                    var6.post("https://mOnClick.snssdk.com/api/ad/union/sdk/get_ads/", var5, String.class, var7);
                 }
             }
         }
@@ -368,7 +369,7 @@ import java.util.concurrent.Executors;
     /*     */
     /*     */
     /*     */
-    public void a(@NonNull com.bytedance.sdk.openadsdk.core.nibuguan.h paramh)
+    public void a(@NonNull NativeAdData paramh)
     /*     */ {
         /* 290 */
         JSONObject localJSONObject = b(paramh);
@@ -385,14 +386,14 @@ import java.util.concurrent.Executors;
         /* 296 */
         AQuery localAQuery = new AQuery(this.a);
         /* 297 */
-        localAQuery.post("https://i.snssdk.com/api/ad/union/dislike_event/", localJSONObject, String.class, localAjaxCallback);
+        localAQuery.post("https://mOnClick.snssdk.com/api/ad/union/dislike_event/", localJSONObject, String.class, localAjaxCallback);
         /*     */
     }
 
     /*     */
     /*     */
     @Nullable
-    /*     */ private JSONObject b(@NonNull com.bytedance.sdk.openadsdk.core.nibuguan.h paramh) {
+    /*     */ private JSONObject b(@NonNull NativeAdData paramh) {
         /* 302 */
         JSONObject localJSONObject1 = new JSONObject();
         /* 303 */
@@ -472,7 +473,7 @@ import java.util.concurrent.Executors;
 
     /*     */
     /*     */
-    private JSONArray c(com.bytedance.sdk.openadsdk.core.nibuguan.h paramh) {
+    private JSONArray c(NativeAdData paramh) {
         /* 344 */
         if (paramh == null) {
             /* 345 */
@@ -978,7 +979,7 @@ import java.util.concurrent.Executors;
         try
             /*     */ {
             /* 633 */
-            if (ToolUtils.c()) {
+            if (ToolUtils.isMIUI()) {
                 /* 634 */
                 localStringBuilder.append("MIUI-");
                 /* 635 */
@@ -1391,7 +1392,7 @@ import java.util.concurrent.Executors;
             /* 853 */
         };
         /* 854 */
-        local3.url("https://i.snssdk.com/union/service/sdk/upload/");
+        local3.url("https://mOnClick.snssdk.com/union/service/sdk/upload/");
         /* 855 */
         local3.type(String.class);
         /* 856 */
@@ -1499,7 +1500,7 @@ import java.util.concurrent.Executors;
                     /*     */
                     try {
                         /* 920 */
-                        Result localb = Result.a(new JSONObject(paramAnonymousString2));
+                        Result localb = Result.parseResult(new JSONObject(paramAnonymousString2));
                         /* 921 */
                         if ((localb.a == 0) && (!localb.b)) {
                             /* 922 */
@@ -1545,7 +1546,7 @@ import java.util.concurrent.Executors;
 
         /*     */
         /*     */
-        public static Result a(JSONObject paramJSONObject) {
+        public static Result parseResult(JSONObject paramJSONObject) {
             /* 946 */
             if (paramJSONObject == null) {
                 /* 947 */

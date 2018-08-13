@@ -11,7 +11,7 @@
 /*     */
 /*     */ import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
-/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+/*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
 /*     */ 
@@ -41,11 +41,11 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  42 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
-/*  43 */           List<h> localList = paramAnonymousa.b();
+/*  43 */           List<NativeAdData> localList = paramAnonymousa.b();
 /*  44 */           ArrayList localArrayList = new ArrayList(localList.size());
-/*  45 */           for (h localh : localList) {
+/*  45 */           for (NativeAdData localh : localList) {
 /*  46 */             if (localh.v()) {
-/*  47 */               localArrayList.add(new w(b, localh));
+/*  47 */               localArrayList.add(new TTFeedAdImpl(b, localh));
 /*     */             }
 /*     */           }
 /*  50 */           if (!localArrayList.isEmpty()) {
@@ -79,7 +79,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  80 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
-/*  81 */           h localh = (h)paramAnonymousa.b().get(0);
+/*  81 */           NativeAdData localh = (NativeAdData)paramAnonymousa.b().get(0);
 /*  82 */           if (localh.v()) {
 /*  83 */             final TTInteractionAdImpl localx = new TTInteractionAdImpl(b, localh);
 /*  84 */             localx.a(new j()
@@ -129,7 +129,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /* 130 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
-/* 131 */           h localh = (h)paramAnonymousa.b().get(0);
+/* 131 */           NativeAdData localh = (NativeAdData)paramAnonymousa.b().get(0);
 /* 132 */           if (localh.v()) {
 /* 133 */             y localy = new y(b, localh, paramAdSlot, paramRewardVideoAdListener);
 /* 134 */             localy.a();

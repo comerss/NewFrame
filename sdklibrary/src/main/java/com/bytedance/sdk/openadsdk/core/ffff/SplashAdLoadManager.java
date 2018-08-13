@@ -14,6 +14,7 @@ import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.core.ApiException;
 import com.bytedance.sdk.openadsdk.core.n;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 import com.bytedance.sdk.openadsdk.core.nibuguan.SplashNative;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
@@ -127,7 +128,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                 LogUtils.b("SplashAdLoadManager", var1.toString());
                 String var3x;
                 if (var1 != null && var1.b() != null && !var1.b().isEmpty() && var1.b().get(0) != null && !TextUtils.isEmpty((var1.b().get(0)).o())) {
-                    var6.f(((com.bytedance.sdk.openadsdk.core.nibuguan.h)var1.b().get(0)).o());
+                    var6.f(((NativeAdData)var1.b().get(0)).o());
                     var6.c((var1.b().get(0)).l());
 
                     try {
@@ -140,7 +141,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                 }
 
                 if (var1 != null && var1.b() != null && !var1.b().isEmpty()) {
-                    final com.bytedance.sdk.openadsdk.core.nibuguan.h var6x = var1.b().get(0);
+                    final NativeAdData var6x = var1.b().get(0);
                     if (var6x.v()) {
                         AdEvent.a(var6x, "splash_ad", "load_ad_duration", System.currentTimeMillis() - SplashAdLoadManager.this.i);
                         SplashAdLoadManager.this.i = 0L;
@@ -172,7 +173,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                                     SplashAdLoadManager.this.a();
                                 } else {
                                     LogUtils.b("SplashAdLoadManager", "加载的广告缓存到本地");
-                                    com.bytedance.sdk.openadsdk.core.ffff.afff.a(f).a(new com.bytedance.sdk.openadsdk.core.nibuguan.j(var1, var6x, var1x));
+                                    OnResultImpl.getDefault(f).a(new com.bytedance.sdk.openadsdk.core.nibuguan.j(var1, var6x, var1x));
                                 }
 
                             }
@@ -215,7 +216,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
     private void c() {
         final TTAdNative.SplashAdListener adListener = this.d == null ? null : (TTAdNative.SplashAdListener)this.d.get();
         if (adListener != null) {
-            com.bytedance.sdk.openadsdk.core.ffff.afff var2 = com.bytedance.sdk.openadsdk.core.ffff.afff.a(this.f);
+            OnResultImpl var2 = OnResultImpl.getDefault(this.f);
             if (!var2.a()) {
                 LogUtils.b("SplashAdLoadManager", "缓存中没有开屏广告");
                 this.a(this.b, adListener, false, false);
@@ -224,7 +225,7 @@ public class SplashAdLoadManager implements MineHandler.OnResult {
                 LogUtils.b("SplashAdLoadManager", "缓存过期");
                 this.a(this.b, adListener, false, false);
             } else {
-                var2.a(new com.bytedance.sdk.openadsdk.core.ffff.afff.a() {
+                var2.a(new OnResultImpl.a() {
                     public void a(@NonNull final com.bytedance.sdk.openadsdk.core.nibuguan.j var1x) {
                         if (var1x.a() != null && var1x.a().v() && var1x.b() != null && var1x.b().length != 0) {
                             int var2 = (var1x.a().f().get(0)).b();

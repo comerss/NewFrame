@@ -1,7 +1,7 @@
 package com.bytedance.sdk.openadsdk.core.video.a;
 
 
-import com.bytedance.sdk.openadsdk.core.widget.b;
+import com.bytedance.sdk.openadsdk.core.widget.VedioManager;
 
 public abstract interface d
   extends com.bytedance.sdk.openadsdk.core.video.a.a
@@ -10,7 +10,7 @@ public abstract interface d
   
   public abstract void a(com.bytedance.sdk.openadsdk.core.widget.a parama, float paramFloat, boolean paramBoolean);
   
-  public abstract void a(b.enume parama, String paramString);
+  public abstract void a(VedioManager.enume parama, String paramString);
 }
 
 

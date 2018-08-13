@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ import android.content.Context;
 
-import com.bytedance.sdk.openadsdk.ggg.n;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +67,7 @@ import java.util.UUID;
 /* 58 */         localJSONObject.putOpt("value", Long.valueOf(0L));
 /*    */       }
 /* 60 */       localJSONObject.putOpt("is_ad_event", "1");
-/* 61 */       localJSONObject.putOpt("nt", Integer.valueOf(n.b(paramContext).a()));
+/* 61 */       localJSONObject.putOpt("nt", Integer.valueOf(NetUtils.b(paramContext).a()));
 /* 62 */       if (paramJSONObject != null) {
 /* 63 */         Iterator localIterator = paramJSONObject.keys();
 /* 64 */         while (localIterator.hasNext()) {

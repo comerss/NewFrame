@@ -152,7 +152,7 @@ public class MarketService{
 	}
 	
 	/**
-	 * Display isEmpty progress view during version check.
+	 * Display isEmpty load view during version check.
 	 *
 	 * @param id view id
 	 * @return self

@@ -115,27 +115,27 @@ public class DownloadNotifier {
     private Map<Long, WeakHashMap<DownLoadListener, Boolean>> mMap = new ConcurrentHashMap();
     private Map<Long, com.bytedance.sdk.openadsdk.core.nibuguan.e> mLongeMap = new ConcurrentHashMap();
     private Map<Long, y> mHashMap = new ConcurrentHashMap();
-    private AQuery2 d;
+    private AQuery2 mQuery2;
     private LruCache<String, Bitmap> mLruCache;
     private final Context mContext;
     private final NotificationManager mManager;
     private static DownloadNotifier sNotifier;
     private final Set<String> i = new HashSet();
     private static final Object j = new Object();
-    private final HashMap<String, Long> k = new HashMap();
+    private final HashMap<String, Long> mStringLongHashMap = new HashMap();
     private final q l = new q();
     private final q m = new q();
 
-    public void a(Long var1, DownLoadListener var2, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
-        WeakHashMap var4 = (WeakHashMap)this.mMap.get(var1);
-        if (var4 == null) {
-            var4 = new WeakHashMap();
-            this.mMap.put(var1, var4);
+    public void a(Long var1, DownLoadListener listener, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
+        WeakHashMap weakHashMap = (WeakHashMap)this.mMap.get(var1);
+        if (weakHashMap == null) {
+            weakHashMap = new WeakHashMap();
+            this.mMap.put(var1, weakHashMap);
         }
 
-        if (var2 != null) {
-            var2.a(var1);
-            var4.put(var2, Boolean.TRUE);
+        if (listener != null) {
+            listener.load(var1);
+            weakHashMap.put(listener, Boolean.TRUE);
             y var5 = new y();
             this.mHashMap.put(var1, var5);
         }
@@ -150,39 +150,39 @@ public class DownloadNotifier {
         return this.mLongeMap != null ? (com.bytedance.sdk.openadsdk.core.nibuguan.e)this.mLongeMap.get(var1) : null;
     }
 
-    public void b(long var1) {
+    public void remove(long var1) {
         if (this.mLongeMap != null) {
             this.mLongeMap.remove(var1);
         }
 
     }
 
-    private void a(String var1, Bitmap var2) {
-        if (this.b(var1) == null) {
+    private void add(String var1, Bitmap var2) {
+        if (this.getBitmap(var1) == null) {
             this.mLruCache.put(var1, var2);
         }
 
     }
 
-    private Bitmap b(String var1) {
+    private Bitmap getBitmap(String var1) {
         return (Bitmap)this.mLruCache.get(var1);
     }
 
     private Bitmap c(String var1) {
-        if (this.b(var1) == null) {
-            this.d.ajax(var1, Bitmap.class, new AjaxCallback<Bitmap>() {
+        if (this.getBitmap(var1) == null) {
+            this.mQuery2.ajax(var1, Bitmap.class, new AjaxCallback<Bitmap>() {
                 public void callback(String var1, Bitmap var2, AjaxStatus var3) {
                     super.callback(var1, var2, var3);
                     if (var3 != null && var2 != null && var3.getCode() == 200) {
-                        float var4 = ViewWather.a(DownloadNotifier.this.mContext, 44.0F);
-                        DownloadNotifier.this.a(var1, com.bytedance.sdk.openadsdk.ggg.f.a(var2, var4, var4));
+                        float var4 = ViewWather.dp2px(DownloadNotifier.this.mContext, 44.0F);
+                        DownloadNotifier.this.add(var1, com.bytedance.sdk.openadsdk.ggg.f.a(var2, var4, var4));
                     }
 
                 }
             });
         }
 
-        return this.b(var1);
+        return this.getBitmap(var1);
     }
 
     public void a(Long var1, DownLoadListener var2) {
@@ -198,7 +198,7 @@ public class DownloadNotifier {
 
     }
 
-    public static synchronized DownloadNotifier a(Context var0) {
+    public static synchronized DownloadNotifier getDefault(Context var0) {
         if (sNotifier == null) {
             sNotifier = new DownloadNotifier(var0);
         }
@@ -211,7 +211,7 @@ public class DownloadNotifier {
         this.mContext = var1.getApplicationContext();
         this.mManager = (NotificationManager)this.mContext.getSystemService("notification");
         this.e();
-        this.d = new AQuery2(this.mContext);
+        this.mQuery2 = new AQuery2(this.mContext);
         long var2 = Runtime.getRuntime().maxMemory();
         int var4 = (int)(var2 / 8L);
         this.mLruCache = new LruCache<String, Bitmap>(var4) {
@@ -250,23 +250,23 @@ public class DownloadNotifier {
     }
 
     public void a(Collection<d> var1, boolean var2) {
-        HashMap var3 = this.k;
-        synchronized(this.k) {
+        HashMap var3 = this.mStringLongHashMap;
+        synchronized(this.mStringLongHashMap) {
             this.b(var1, var2);
         }
     }
 
     private void b(Collection<d> var1, boolean var2) {
-        Resources var3 = this.mContext.getResources();
-        HashMap var4 = new HashMap();
-        Iterator var5 = var1.iterator();
+        Resources resources = this.mContext.getResources();
+        HashMap hashMap = new HashMap();
+        Iterator iterator = var1.iterator();
 
-        while(var5.hasNext()) {
-            d var6 = (d)var5.next();
+        while(iterator.hasNext()) {
+            d var6 = (d)iterator.next();
             String var7 = a(var6);
             byte var8 = 0;
             if (var7 != null) {
-                var4.put(var7, var6);
+                hashMap.put(var7, var6);
             }
 
             if (var6.j == 192) {
@@ -274,7 +274,7 @@ public class DownloadNotifier {
                 var8 = 1;
             } else if (var6.j != 196 && var6.j != 193 && var6.j != 194 && var6.j != 195) {
                 if (var6.j != 199 && var6.j != 198) {
-                    if (com.bytedance.sdk.openadsdk.ccccc.m.a.c(var6.j)) {
+                    if (com.bytedance.sdk.openadsdk.ccccc.m.a.isDone(var6.j)) {
                         this.a(var6, 3, 0L);
                         var8 = 3;
                     }
@@ -292,25 +292,25 @@ public class DownloadNotifier {
             }
         }
 
-        var5 = var4.keySet().iterator();
+        iterator = hashMap.keySet().iterator();
 
         String var31;
-        while(var5.hasNext()) {
-            var31 = (String)var5.next();
+        while(iterator.hasNext()) {
+            var31 = (String)iterator.next();
             if (!com.bytedance.sdk.openadsdk.core.h.a().j()) {
                 return;
             }
 
             int var32 = d(var31);
-            d var34 = (d)var4.get(var31);
+            d var34 = (d)hashMap.get(var31);
             if (var34 != null) {
-                r var9 = new r(this.mContext);
+                NotificationListenerImpl notificationListener = new NotificationListenerImpl(this.mContext);
                 long var10;
-                if (this.k.containsKey(var31)) {
-                    var10 = (Long)this.k.get(var31);
+                if (this.mStringLongHashMap.containsKey(var31)) {
+                    var10 = (Long)this.mStringLongHashMap.get(var31);
                 } else {
                     var10 = System.currentTimeMillis();
-                    this.k.put(var31, var10);
+                    this.mStringLongHashMap.put(var31, var10);
                 }
 
                 int var12 = 0;
@@ -337,7 +337,7 @@ public class DownloadNotifier {
                 if (var32 != 1 && var32 != 2) {
                     if (var32 == 3) {
                         var15 = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, var34.a);
-                        var9.b(true);
+                        notificationListener.setAutoCancel(true);
                         String var36;
                         if (!com.bytedance.sdk.openadsdk.ccccc.m.a.b(var34.j) && !b(var34)) {
                             var36 = "android.ss.intent.action.DOWNLOAD_OPEN";
@@ -347,18 +347,18 @@ public class DownloadNotifier {
 
                         Intent var17 = new Intent(var36, var15, this.mContext, TTDownloadHandlerService.class);
                         var17.putExtra("extra_click_download_ids", var34.a);
-                        var9.a(PendingIntent.getService(this.mContext, 0, var17, 134217728));
+                        notificationListener.setContentIntent(PendingIntent.getService(this.mContext, 0, var17, 134217728));
                         var18 = new Intent("android.ss.intent.action.DOWNLOAD_HIDE", var15, this.mContext, TTDownloadHandlerService.class);
-                        var9.b(PendingIntent.getService(this.mContext, 0, var18, 0));
+                        notificationListener.setDeleteIntent(PendingIntent.getService(this.mContext, 0, var18, 0));
                     }
                 } else {
                     var15 = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, var34.a);
                     Intent var16 = new Intent("android.ss.intent.action.DOWNLOAD_DELETE", var15, this.mContext, TTDownloadHandlerService.class);
-                    var9.a(PendingIntent.getService(this.mContext, 0, var16, 134217728));
+                    notificationListener.setContentIntent(PendingIntent.getService(this.mContext, 0, var16, 134217728));
                     if (var32 == 1) {
-                        var9.a(true);
+                        notificationListener.setOngoing(true);
                     } else {
-                        var9.b(true);
+                        notificationListener.setAutoCancel(true);
                     }
                 }
 
@@ -393,8 +393,8 @@ public class DownloadNotifier {
                 }
 
                 if (!var2) {
-                    var9.a(var10);
-                    var9.a(var12);
+                    notificationListener.setWhen(var10);
+                    notificationListener.setSmallIcon(var12);
                     RemoteViews remoteViews = new RemoteViews(this.mContext.getPackageName(), R.layout.tt_ttopenad_download_notification_layout);
                     String var40 = null;
                     String var22 = null;
@@ -435,7 +435,7 @@ public class DownloadNotifier {
                         var42 = this.mContext.getResources().getString(R.string.tt_download_pause);
                     } else if (var32 == 3) {
                         if (!com.bytedance.sdk.openadsdk.ccccc.m.a.b(var34.j) && !b(var34)) {
-                            if (com.bytedance.sdk.openadsdk.ccccc.m.a.a(var34.j)) {
+                            if (com.bytedance.sdk.openadsdk.ccccc.m.a.isSuccess(var34.j)) {
                                 var24 = this.mContext.getResources().getString(R.string.tt_download_finish);
                                 if (ToolUtils.c(this.mContext, var34.e)) {
                                     var42 = this.mContext.getResources().getString(R.string.tt_download_open);
@@ -456,24 +456,24 @@ public class DownloadNotifier {
                     remoteViews.setTextViewText(R.id.download_size, var24);
                     remoteViews.setTextViewText(R.id.action, var42);
                     remoteViews.setTextColor(R.id.action, var13);
-                    Notification var39 = var9.a();
-                    var39.contentView = remoteViews;
-                    this.mManager.notify(var31, 0, var39);
+                    Notification notification = notificationListener.build();
+                    notification.contentView = remoteViews;
+                    this.mManager.notify(var31, 0, notification);
                 }
             }
         }
 
         if (!var2) {
-            var5 = this.k.keySet().iterator();
+            iterator = this.mStringLongHashMap.keySet().iterator();
 
             while(true) {
                 do {
-                    if (!var5.hasNext()) {
+                    if (!iterator.hasNext()) {
                         return;
                     }
 
-                    var31 = (String)var5.next();
-                } while(var4.containsKey(var31));
+                    var31 = (String)iterator.next();
+                } while(hashMap.containsKey(var31));
 
                 this.mManager.cancel(var31, 0);
                 Object var33 = j;
@@ -484,7 +484,7 @@ public class DownloadNotifier {
                     }
                 }
 
-                var5.remove();
+                iterator.remove();
             }
         }
     }
@@ -536,7 +536,7 @@ public class DownloadNotifier {
                     while(var8.hasNext()) {
                         DownLoadListener var9 = (DownLoadListener)var8.next();
                         if (var9 != null) {
-                            var9.a(var6, var2, var1.s, var1.t, var3);
+                            var9.progress(var6, var2, var1.s, var1.t, var3);
                         }
                     }
                 }
@@ -622,7 +622,7 @@ public class DownloadNotifier {
     }
 
     static boolean b(int var0, int var1) {
-        return com.bytedance.sdk.openadsdk.ccccc.m.a.c(var0) && a(var1);
+        return com.bytedance.sdk.openadsdk.ccccc.m.a.isDone(var0) && a(var1);
     }
 
     static boolean a(int var0) {

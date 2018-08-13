@@ -1,20 +1,21 @@
 package com.donews.frame.camera
 
 import android.util.Log
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.baidu.mobad.feeds.BaiduNative
 import com.baidu.mobad.feeds.NativeErrorCode
 import com.baidu.mobad.feeds.NativeResponse
 import com.baidu.mobad.feeds.RequestParameters
-import com.baidu.mobads.SplashAd
-import com.baidu.mobads.SplashAdListener
+import com.comers.baselibrary.http.HttpResult
+import com.comers.baselibrary.retrofit.RetrofitHelper
 import com.comers.baselibrary.retrofit.RxBaseActivity
+import com.comers.market.base.Data
 import com.donews.frame.R
 import com.donews.frame.sdk.FeedListActivity
 import com.nontindu.Switch
 import com.trello.rxlifecycle2.android.ActivityEvent
 import io.reactivex.Observable
+import io.reactivex.functions.Consumer
 import java.util.concurrent.TimeUnit
 
 
@@ -30,9 +31,13 @@ class SplashActivity: RxBaseActivity() {
     override fun initView() {
         Switch.setModAPPConfirmPolicy(true)
         Switch.setModCopyBuiltin(true)
+        RetrofitHelper.create().getData()
+                .subscribe(Consumer<HttpResult<List<Data>>> {
+
+                })
         Toast.makeText(this,"99999999999999999999999999",Toast.LENGTH_SHORT).show()
 //        Switch.setModStartActivity(true)
-      var splashAd= SplashAd(this, LinearLayout(this), object :  SplashAdListener {
+     /* var splashAd= SplashAd(this, LinearLayout(this), object :  SplashAdListener {
             override fun onAdFailed(p0: String?) {
                 showToast(p0)
             }
@@ -50,7 +55,7 @@ class SplashActivity: RxBaseActivity() {
             }
 
         }, "5846395", true)
-
+*/
         val baidu = BaiduNative(this, "5853714",
                 object : BaiduNative.BaiduNativeNetworkListener {
                     override fun onNativeFail(arg0: NativeErrorCode) {

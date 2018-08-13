@@ -28,7 +28,7 @@
 /* 28 */     localAjaxCallback.timeout(10000);
 /* 29 */     AQuery localAQuery = new AQuery(paramContext);
 /*    */     
-/* 31 */     localAQuery.post("https://i.snssdk.com/api/ad/union/sdk/stats/", localJSONObject, String.class, localAjaxCallback);
+/* 31 */     localAQuery.post("https://mOnClick.snssdk.com/api/ad/union/sdk/stats/", localJSONObject, String.class, localAjaxCallback);
 /*    */   }
 /*    */   
 /*    */ 

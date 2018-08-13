@@ -15,7 +15,7 @@ import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.core.ApiException;
 import com.bytedance.sdk.openadsdk.core.n;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 
@@ -91,7 +91,7 @@ import java.lang.ref.WeakReference;
         @Override
         public void onSuccess(NativeData paramAnonymousa) {
             if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
-                         h localh = (h)paramAnonymousa.b().get(0);
+                         NativeAdData localh = (NativeAdData)paramAnonymousa.b().get(0);
                            if (localh.v()) {
                                asss(localh, parama);
                              } else {
@@ -120,7 +120,7 @@ import java.lang.ref.WeakReference;
 /*     */       public void onSuccess(NativeData paramAnonymousa)
 /*     */       {
 /*  98 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
-/*  99 */           h localh = (h)paramAnonymousa.b().get(0);
+/*  99 */           NativeAdData localh = (NativeAdData)paramAnonymousa.b().get(0);
 /* 100 */           if (localh.v()) {
 /* 101 */             assssss local1 = new assssss()
 /*     */             {
@@ -150,7 +150,7 @@ import java.lang.ref.WeakReference;
 /*     */     });
 /*     */   }
 /*     */   
-/*     */   private void asss(@NonNull final h paramh, @Nullable final assssss parama) {
+/*     */   private void asss(@NonNull final NativeAdData paramh, @Nullable final assssss parama) {
 /* 130 */     String str = ((com.bytedance.sdk.openadsdk.core.nibuguan.g)paramh.f().get(0)).a();
 /*     */     
 /* 132 */     this.f.ajax(str, Bitmap.class, new AjaxCallback()

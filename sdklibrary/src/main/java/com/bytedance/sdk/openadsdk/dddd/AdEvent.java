@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.bytedance.sdk.openadsdk.b.NativeHelper;
 import com.bytedance.sdk.openadsdk.core.i;
 import com.bytedance.sdk.openadsdk.core.n;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.d;
 
@@ -18,46 +19,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /*     */ public class AdEvent
 /*     */ {
-/*  34 */   private static Map<com.bytedance.sdk.openadsdk.core.nibuguan.h, h> a = new WeakHashMap();
+/*  34 */   private static Map<NativeAdData, h> a = new WeakHashMap();
 /*     */   
-/*     */   public static void a(com.bytedance.sdk.openadsdk.core.nibuguan.h paramh) {
+/*     */   public static void a(NativeAdData paramh) {
 /*  37 */     if (a.containsKey(paramh)) {
 /*  38 */       return;
 /*     */     }
 /*  40 */     a.put(paramh, new h());
 /*     */   }
 /*     */   
-/*     */   public static boolean b(com.bytedance.sdk.openadsdk.core.nibuguan.h paramh) {
+/*     */   public static boolean b(NativeAdData paramh) {
 /*  44 */     h localh = (h)a.get(paramh);
 /*  45 */     return (localh != null) && (localh.b());
 /*     */   }
@@ -66,7 +39,7 @@ import java.util.WeakHashMap;
 /*     */ 
 /*     */ 
 /*     */
-public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.h var1, String var2) {
+public static void show(Context var0, NativeAdData var1, String var2) {
     var0 = n.a();
     com.bytedance.sdk.openadsdk.dddd.h var3 = a.get(var1);
     boolean var4 = false;
@@ -99,7 +72,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
     }
 
 }/*     */
-/*     */   public static void a(com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2, long paramLong) {
+/*     */   public static void a(NativeAdData paramh, String paramString1, String paramString2, long paramLong) {
 /*  84 */     JSONObject localJSONObject1 = new JSONObject();
 /*     */     try {
 /*  86 */       JSONObject localJSONObject2 = new JSONObject();
@@ -121,7 +94,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void a(Context paramContext, String paramString1, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, com.bytedance.sdk.openadsdk.core.nibuguan.c paramc, String paramString2, boolean paramBoolean)
+/*     */   public static void a(Context paramContext, String paramString1, NativeAdData paramh, com.bytedance.sdk.openadsdk.core.nibuguan.c paramc, String paramString2, boolean paramBoolean)
 /*     */   {
 /* 107 */     paramContext = n.a();
 /* 108 */     h localh = (h)a.get(paramh);
@@ -153,17 +126,17 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public static void a(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2) {
+/*     */   public static void a(Context paramContext, NativeAdData paramh, String paramString1, String paramString2) {
 /* 138 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
 /*     */   
-/*     */   public static void b(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2) {
+/*     */   public static void b(Context paramContext, NativeAdData paramh, String paramString1, String paramString2) {
 /* 142 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   public static void c(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void c(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 149 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
@@ -172,21 +145,21 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void d(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void d(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 158 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   public static void e(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void e(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 165 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
 /*     */   
 /*     */ 
 /*     */ 
-/*     */   public static void c(@NonNull com.bytedance.sdk.openadsdk.core.nibuguan.h paramh)
+/*     */   public static void c(@NonNull NativeAdData paramh)
 /*     */   {
 /* 172 */     NativeHelper.a().a(paramh);
 /* 173 */     if (LogUtils.isDebug) {
@@ -201,7 +174,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void f(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void f(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 187 */     a locala =com.bytedance.sdk.openadsdk.dddd.a.a(paramContext, paramString1, paramString2, paramh.l(), paramh.o());
 /* 188 */     n.b().a(locala);
@@ -216,7 +189,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void a(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2, long paramLong, int paramInt)
+/*     */   public static void a(Context paramContext, NativeAdData paramh, String paramString1, String paramString2, long paramLong, int paramInt)
 /*     */   {
 /* 202 */     JSONObject localJSONObject = new JSONObject();
 /*     */     try {
@@ -234,7 +207,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void g(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void g(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 220 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
@@ -245,12 +218,12 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void h(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2)
+/*     */   public static void h(Context paramContext, NativeAdData paramh, String paramString1, String paramString2)
 /*     */   {
 /* 231 */     i(paramContext, paramh, paramString1, paramString2);
 /*     */   }
 /*     */   
-/*     */   private static void i(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2) {
+/*     */   private static void i(Context paramContext, NativeAdData paramh, String paramString1, String paramString2) {
 /* 235 */     JSONObject localJSONObject = new JSONObject();
 /*     */     try {
 /* 237 */       localJSONObject.putOpt("log_extra", paramh.o());
@@ -269,7 +242,7 @@ public static void show(Context var0, com.bytedance.sdk.openadsdk.core.nibuguan.
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private static void a(Context paramContext, com.bytedance.sdk.openadsdk.core.nibuguan.h paramh, String paramString1, String paramString2, JSONObject paramJSONObject)
+/*     */   private static void a(Context paramContext, NativeAdData paramh, String paramString1, String paramString2, JSONObject paramJSONObject)
 /*     */   {
 /*     */     try
 /*     */     {

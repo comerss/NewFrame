@@ -534,9 +534,9 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Set the progress view (can be isEmpty progress bar or any view) to be shown (VISIBLE) and hide (GONE) depends on progress.
+	 * Set the load view (can be isEmpty load bar or any view) to be shown (VISIBLE) and hide (GONE) depends on load.
 	 *
-	 * @param view the progress view
+	 * @param view the load view
 	 * @return self
 	 */
 	public K progress(View view){
@@ -544,7 +544,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Set the dialog to be shown and dismissed depends on progress.
+	 * Set the dialog to be shown and dismissed depends on load.
 	 *
 	 * @param dialog
 	 * @return self

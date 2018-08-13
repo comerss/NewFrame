@@ -15,10 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.R;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.video.c.SSMediaPlayeWrapper;
+import com.bytedance.sdk.openadsdk.core.widget.VedioManager;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
+import com.bytedance.sdk.openadsdk.ggg.NetUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 
 import java.lang.ref.WeakReference;
@@ -29,23 +32,23 @@ import java.util.List;
 
 public class g implements c, d, MineHandler.OnResult {
     private static final String c = g.class.getSimpleName();
-    private NewLiveViewLayout d;
+    private NewLiveViewLayout mLiveViewLayout;
     private ViewGroup e;
-    private MineHandler f = new MineHandler(this);
+    private MineHandler mMineHandler = new MineHandler(this);
     private long g = 0L;
     private long h = 0L;
-    private SSMediaPlayeWrapper i;
+    private SSMediaPlayeWrapper mPlayeWrapper;
     private com.bytedance.sdk.openadsdk.core.video.a.c.a j;
     private long k = 0L;
     private long l = 0L;
     private long m;
-    private ArrayList<Runnable> n;
+    private ArrayList<Runnable> mRunnableArrayList;
     private boolean o;
-    private WeakReference<Context> p;
+    private WeakReference<Context> mContextWeakReference;
     private boolean q = false;
     private boolean r = false;
     private boolean s = false;
-    private final com.bytedance.sdk.openadsdk.core.nibuguan.h t;
+    private final NativeAdData t;
     private boolean u = true;
     private boolean v = false;
     private WeakReference<e> w;
@@ -55,8 +58,8 @@ public class g implements c, d, MineHandler.OnResult {
     private boolean A = false;
     private Runnable B = new Runnable() {
         public void run() {
-            if (g.this.i != null) {
-                g.this.i.d();
+            if (g.this.mPlayeWrapper != null) {
+                g.this.mPlayeWrapper.d();
             }
 
         }
@@ -71,15 +74,15 @@ public class g implements c, d, MineHandler.OnResult {
     };
     private Runnable D = new Runnable() {
         public void run() {
-            if (g.this.i != null) {
+            if (g.this.mPlayeWrapper != null) {
                 if (g.this.m <= 0L) {
-                    g.this.i.d();
+                    g.this.mPlayeWrapper.d();
                 }
 
-                g.this.i.e();
+                g.this.mPlayeWrapper.e();
             }
 
-            g.this.f.postDelayed(this, 200L);
+            g.this.mMineHandler.postDelayed(this, 200L);
         }
     };
     protected boolean a = false;
@@ -95,20 +98,20 @@ public class g implements c, d, MineHandler.OnResult {
 
         }
     };
-    private com.bytedance.sdk.openadsdk.ggg.n.a F = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
+    private NetUtils.a F = NetUtils.b(com.bytedance.sdk.openadsdk.core.n.a().getApplicationContext());
     private boolean G = false;
 
     private void b(Context var1) {
         EnumSet var2 = EnumSet.noneOf(com.bytedance.sdk.openadsdk.core.video.a.b.a.class);
         var2.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.a);
         var2.add(com.bytedance.sdk.openadsdk.core.video.a.b.a.e);
-        this.d = new NewLiveViewLayout(var1, LayoutInflater.from(var1.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, (ViewGroup)null, false), true, var2, this.t, this);
-        this.d.a(this);
+        this.mLiveViewLayout = new NewLiveViewLayout(var1, LayoutInflater.from(var1.getApplicationContext()).inflate(R.layout.tt_video_play_layout_for_live, (ViewGroup)null, false), true, var2, this.t, this);
+        this.mLiveViewLayout.a(this);
     }
 
-    public g(Context var1, ViewGroup var2, com.bytedance.sdk.openadsdk.core.nibuguan.h var3) {
+    public g(Context var1, ViewGroup var2, NativeAdData var3) {
         this.e = var2;
-        this.p = new WeakReference(var1);
+        this.mContextWeakReference = new WeakReference(var1);
         this.t = var3;
         this.b(var1);
         this.q = Build.VERSION.SDK_INT >= 17;
@@ -126,16 +129,16 @@ public class g implements c, d, MineHandler.OnResult {
                 this.l = this.l > this.k ? this.l : this.k;
             }
 
-            if (this.d != null) {
-                this.d.f();
-                this.d.e();
-                this.d.c(var3, var4);
-                this.d.a(this.e);
-                this.d.a(var3, var4);
+            if (this.mLiveViewLayout != null) {
+                this.mLiveViewLayout.f();
+                this.mLiveViewLayout.e();
+                this.mLiveViewLayout.c(var3, var4);
+                this.mLiveViewLayout.a(this.e);
+                this.mLiveViewLayout.a(var3, var4);
             }
 
-            if (this.i == null) {
-                this.i = new SSMediaPlayeWrapper(this.f);
+            if (this.mPlayeWrapper == null) {
+                this.mPlayeWrapper = new SSMediaPlayeWrapper(this.mMineHandler);
             }
 
             this.h = 0L;
@@ -150,7 +153,7 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public SSMediaPlayeWrapper h() {
-        return this.i;
+        return this.mPlayeWrapper;
     }
 
     public long d() {
@@ -164,7 +167,7 @@ public class g implements c, d, MineHandler.OnResult {
 
     public void a(boolean var1) {
         this.u = var1;
-        this.d.a(var1);
+        this.mLiveViewLayout.a(var1);
     }
 
     public boolean g() {
@@ -184,7 +187,7 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public long e() {
-        return this.i == null ? 0L : this.i.p() + this.x;
+        return this.mPlayeWrapper == null ? 0L : this.mPlayeWrapper.p() + this.x;
     }
 
     public boolean i() {
@@ -193,8 +196,8 @@ public class g implements c, d, MineHandler.OnResult {
 
     public void b(boolean var1) {
         this.v = var1;
-        if (this.i != null) {
-            this.i.a(var1);
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a(var1);
         }
 
     }
@@ -208,26 +211,26 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     private void a(String var1) throws Exception {
-        if (this.i != null) {
-            this.i.a(var1);
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a(var1);
         }
 
         this.g = System.currentTimeMillis();
         if (!StringUtils.isEmpty(var1)) {
-            this.d.a(8);
-            this.d.a(0);
+            this.mLiveViewLayout.a(8);
+            this.mLiveViewLayout.a(0);
             this.a(new Runnable() {
                 public void run() {
                     g.this.g = System.currentTimeMillis();
-                    g.this.d.d(0);
-                    if (g.this.i != null && g.this.k == 0L) {
-                        g.this.i.a(true, 0L, !g.this.v);
-                    } else if (g.this.i != null) {
-                        g.this.i.a(true, g.this.k, !g.this.v);
+                    g.this.mLiveViewLayout.d(0);
+                    if (g.this.mPlayeWrapper != null && g.this.k == 0L) {
+                        g.this.mPlayeWrapper.a(true, 0L, !g.this.v);
+                    } else if (g.this.mPlayeWrapper != null) {
+                        g.this.mPlayeWrapper.a(true, g.this.k, !g.this.v);
                     }
 
-                    if (g.this.f != null) {
-                        g.this.f.postDelayed(g.this.B, 100L);
+                    if (g.this.mMineHandler != null) {
+                        g.this.mMineHandler.postDelayed(g.this.B, 100L);
                     }
 
                     g.this.l();
@@ -240,11 +243,11 @@ public class g implements c, d, MineHandler.OnResult {
 
     public void l() {
         this.m();
-        this.f.postDelayed(this.D, 800L);
+        this.mMineHandler.postDelayed(this.D, 800L);
     }
 
     public void m() {
-        this.f.removeCallbacks(this.D);
+        this.mMineHandler.removeCallbacks(this.D);
     }
 
     public void a(e var1) {
@@ -253,23 +256,23 @@ public class g implements c, d, MineHandler.OnResult {
 
     private void c(int var1) {
         if (this.s()) {
-            if (this.d != null) {
-                this.d.h();
+            if (this.mLiveViewLayout != null) {
+                this.mLiveViewLayout.h();
                 if (this.j != null) {
                     this.j.a(this.h, com.bytedance.sdk.openadsdk.core.video.d.a.a(this.k, this.m));
                 }
 
                 this.h = System.currentTimeMillis() - this.g;
-                this.d.a(this.t, this.p, true);
+                this.mLiveViewLayout.a(this.t, this.mContextWeakReference, true);
                 if (!this.s) {
-                    AdEvent.a((Context)this.p.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
+                    AdEvent.a((Context)this.mContextWeakReference.get(), this.t, "embeded_ad", "feed_over", this.e(), 100);
                     this.s = true;
                     this.a(this.m, this.m);
                     this.l = this.k = this.m;
                 }
 
                 if (!this.u && this.a) {
-                    this.e(this.d, (View)null);
+                    this.e(this.mLiveViewLayout, (View)null);
                 }
 
                 this.A = true;
@@ -278,12 +281,12 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     private boolean s() {
-        return this.p != null && this.p.get() != null;
+        return this.mContextWeakReference != null && this.mContextWeakReference.get() != null;
     }
 
     public void a(Runnable var1) {
         if (var1 != null) {
-            if (this.d.n() && this.o) {
+            if (this.mLiveViewLayout.n() && this.o) {
                 var1.run();
             } else {
                 this.b(var1);
@@ -292,17 +295,18 @@ public class g implements c, d, MineHandler.OnResult {
         }
     }
 
-    private void b(Runnable var1) {
-        if (this.n == null) {
-            this.n = new ArrayList();
+    private void
+    b(Runnable var1) {
+        if (this.mRunnableArrayList == null) {
+            this.mRunnableArrayList = new ArrayList();
         }
 
-        this.n.add(var1);
+        this.mRunnableArrayList.add(var1);
     }
 
     private void t() {
-        if (this.n != null && !this.n.isEmpty()) {
-            ArrayList var1 = new ArrayList(this.n);
+        if (this.mRunnableArrayList != null && !this.mRunnableArrayList.isEmpty()) {
+            ArrayList var1 = new ArrayList(this.mRunnableArrayList);
             Iterator var2 = var1.iterator();
 
             while(var2.hasNext()) {
@@ -310,7 +314,7 @@ public class g implements c, d, MineHandler.OnResult {
                 var3.run();
             }
 
-            this.n.clear();
+            this.mRunnableArrayList.clear();
         }
     }
 
@@ -319,23 +323,23 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public void a() {
-        if (this.i != null) {
-            this.i.a();
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a();
         }
 
     }
 
     public void b() {
-        if (this.d != null) {
-            this.d.f();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.f();
         }
 
-        if (this.d != null) {
-            this.d.g();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.g();
         }
 
-        if (this.i != null) {
-            this.i.a(false, this.k, !this.v);
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a(false, this.k, !this.v);
             this.l();
         }
 
@@ -344,39 +348,39 @@ public class g implements c, d, MineHandler.OnResult {
     public void e(long var1) {
         this.k = var1;
         this.l = this.l > this.k ? this.l : this.k;
-        if (this.d != null) {
-            this.d.f();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.f();
         }
 
-        if (this.i != null) {
-            this.i.a(true, this.k, !this.v);
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a(true, this.k, !this.v);
             this.l();
         }
 
     }
 
     public void c() {
-        if (this.i != null) {
-            this.i.b();
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.b();
         }
 
-        this.d.a(this.t, this.p, true);
-        if (this.f != null) {
-            this.f.removeCallbacks(this.C);
-            this.f.removeCallbacks(this.B);
+        this.mLiveViewLayout.a(this.t, this.mContextWeakReference, true);
+        if (this.mMineHandler != null) {
+            this.mMineHandler.removeCallbacks(this.C);
+            this.mMineHandler.removeCallbacks(this.B);
         }
 
         this.m();
         this.r();
         if (!this.s && this.r) {
-            AdEvent.a(p.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
+            AdEvent.a(mContextWeakReference.get(), this.t, "embeded_ad", "feed_break", this.e(), this.k());
             this.s = true;
         }
 
     }
 
     public void doResult(Message var1) {
-        if (this.d != null && var1 != null && this.p != null && this.p.get() != null) {
+        if (this.mLiveViewLayout != null && var1 != null && this.mContextWeakReference != null && this.mContextWeakReference.get() != null) {
             switch(var1.what) {
                 case 108:
                     if (var1.obj instanceof Long && (Long)((Long)var1.obj) > 0L) {
@@ -394,8 +398,8 @@ public class g implements c, d, MineHandler.OnResult {
                     this.c(var1.what);
                     break;
                 case 303:
-                    if (this.d != null) {
-                        this.d.h();
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.h();
                     }
 
                     if (this.j != null) {
@@ -404,42 +408,42 @@ public class g implements c, d, MineHandler.OnResult {
                     break;
                 case 304:
                     int var2 = var1.arg1;
-                    if (this.d != null) {
-                        this.d.h();
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.h();
                     }
 
                     if (this.q && var2 == 3 && !this.r) {
                         if (this.u) {
-                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            AdEvent.f((Context)this.mContextWeakReference.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            AdEvent.f((Context)this.mContextWeakReference.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;
                     }
                     break;
                 case 305:
-                    if (this.f != null) {
-                        this.f.removeCallbacks(this.C);
+                    if (this.mMineHandler != null) {
+                        this.mMineHandler.removeCallbacks(this.C);
                     }
 
                     if (!this.q && !this.r) {
                         if (this.u) {
-                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_auto_play");
+                            AdEvent.f((Context)this.mContextWeakReference.get(), this.t, "embeded_ad", "feed_auto_play");
                         } else {
-                            AdEvent.f((Context)this.p.get(), this.t, "embeded_ad", "feed_play");
+                            AdEvent.f((Context)this.mContextWeakReference.get(), this.t, "embeded_ad", "feed_play");
                         }
 
                         this.r = true;
                     }
 
-                    if (this.d != null) {
-                        this.d.h();
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.h();
                     }
                     break;
                 case 306:
-                    if (this.d != null) {
-                        this.d.h();
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.h();
                     }
             }
 
@@ -447,24 +451,24 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public void a(b var1, View var2) {
-        if (this.i != null && this.s()) {
-            if (this.i.f()) {
+        if (this.mPlayeWrapper != null && this.s()) {
+            if (this.mPlayeWrapper.f()) {
                 this.a();
-                this.d.a(true, false);
-                this.d.d();
-            } else if (!this.i.h()) {
-                if (this.d != null) {
-                    this.d.a(this.e);
+                this.mLiveViewLayout.a(true, false);
+                this.mLiveViewLayout.d();
+            } else if (!this.mPlayeWrapper.h()) {
+                if (this.mLiveViewLayout != null) {
+                    this.mLiveViewLayout.a(this.e);
                 }
 
                 this.e(this.k);
-                if (this.d != null) {
-                    this.d.a(false, false);
+                if (this.mLiveViewLayout != null) {
+                    this.mLiveViewLayout.a(false, false);
                 }
             } else {
                 this.b();
-                if (this.d != null) {
-                    this.d.a(false, false);
+                if (this.mLiveViewLayout != null) {
+                    this.mLiveViewLayout.a(false, false);
                 }
             }
 
@@ -472,26 +476,26 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public void a(b var1, int var2) {
-        if (this.i != null) {
+        if (this.mPlayeWrapper != null) {
             this.l();
             this.a(this.b, this.d(var2));
         }
     }
 
     public void b(b var1, int var2) {
-        if (this.i != null) {
+        if (this.mPlayeWrapper != null) {
             this.m();
         }
 
-        if (this.d != null) {
-            this.d.d();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.d();
         }
 
     }
 
     public void a(b var1, int var2, boolean var3) {
         if (this.s()) {
-            Context var4 = (Context)this.p.get();
+            Context var4 = (Context)this.mContextWeakReference.get();
             long var5 = (long)((float)((long)var2 * this.m) * 1.0F / (float)var4.getResources().getInteger(R.integer.video_progress_max));
             if (this.m > 0L) {
                 this.b = (long)((int)var5);
@@ -499,8 +503,8 @@ public class g implements c, d, MineHandler.OnResult {
                 this.b = 0L;
             }
 
-            if (this.d != null) {
-                this.d.a(this.b);
+            if (this.mLiveViewLayout != null) {
+                this.mLiveViewLayout.a(this.b);
             }
 
         }
@@ -509,9 +513,9 @@ public class g implements c, d, MineHandler.OnResult {
     public void a(long var1, long var3) {
         this.k = var1;
         this.m = var3;
-        this.d.a(var1, var3);
+        this.mLiveViewLayout.a(var1, var3);
         int var5 = com.bytedance.sdk.openadsdk.core.video.d.a.a(var1, var3);
-        this.d.b(var5);
+        this.mLiveViewLayout.b(var5);
     }
 
     public void b(b var1, View var2) {
@@ -521,20 +525,20 @@ public class g implements c, d, MineHandler.OnResult {
     public void a(b var1, View var2, boolean var3, boolean var4) {
         if (this.s()) {
             this.c(!this.a);
-            if (!(this.p.get() instanceof Activity)) {
+            if (!(this.mContextWeakReference.get() instanceof Activity)) {
                 LogUtils.b(c, "context is not activity, not support this function.");
             } else {
                 if (this.a) {
                     this.a(var3 ? 8 : 0);
-                    if (this.d != null) {
-                        this.d.b(this.e);
-                        this.d.c(false);
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.b(this.e);
+                        this.mLiveViewLayout.c(false);
                     }
                 } else {
                     this.a(1);
-                    if (this.d != null) {
-                        this.d.c(this.e);
-                        this.d.c(false);
+                    if (this.mLiveViewLayout != null) {
+                        this.mLiveViewLayout.c(this.e);
+                        this.mLiveViewLayout.c(false);
                     }
                 }
 
@@ -550,7 +554,7 @@ public class g implements c, d, MineHandler.OnResult {
     public void a(int var1) {
         if (this.s()) {
             boolean var2 = var1 == 0 || var1 == 8;
-            Context var3 = (Context)this.p.get();
+            Context var3 = (Context)this.mContextWeakReference.get();
             if (var3 instanceof Activity) {
                 Activity var4 = (Activity)var3;
 
@@ -560,8 +564,8 @@ public class g implements c, d, MineHandler.OnResult {
                     ;
                 }
 
-                if (this.d != null) {
-                    this.d.p();
+                if (this.mLiveViewLayout != null) {
+                    this.mLiveViewLayout.p();
                 }
 
                 if (!var2) {
@@ -575,8 +579,8 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public void c(b var1, View var2) {
-        if (this.d != null) {
-            this.d.j();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.j();
         }
 
         this.c();
@@ -588,15 +592,15 @@ public class g implements c, d, MineHandler.OnResult {
         }
 
         if (var3 && !this.u && !this.n()) {
-            this.d.a(!this.o(), false);
-            this.d.a(var4, true, false);
+            this.mLiveViewLayout.a(!this.o(), false);
+            this.mLiveViewLayout.a(var4, true, false);
         }
 
-        if (this.i != null && this.i.f()) {
-            this.d.d();
-            this.d.c();
+        if (this.mPlayeWrapper != null && this.mPlayeWrapper.f()) {
+            this.mLiveViewLayout.d();
+            this.mLiveViewLayout.c();
         } else {
-            this.d.d();
+            this.mLiveViewLayout.d();
         }
 
     }
@@ -604,8 +608,8 @@ public class g implements c, d, MineHandler.OnResult {
     public void d(b var1, View var2) {
         if (this.a) {
             this.c(false);
-            if (this.d != null) {
-                this.d.c(this.e);
+            if (this.mLiveViewLayout != null) {
+                this.mLiveViewLayout.c(this.e);
             }
 
             this.a(1);
@@ -626,12 +630,12 @@ public class g implements c, d, MineHandler.OnResult {
     private void u() {
         if (this.s()) {
             this.c(!this.a);
-            if (!(this.p.get() instanceof Activity)) {
+            if (!(this.mContextWeakReference.get() instanceof Activity)) {
                 LogUtils.b(c, "context is not activity, not support this function.");
             } else {
-                if (this.d != null) {
-                    this.d.c(this.e);
-                    this.d.c(false);
+                if (this.mLiveViewLayout != null) {
+                    this.mLiveViewLayout.c(this.e);
+                    this.mLiveViewLayout.c(false);
                 }
 
                 this.a(1);
@@ -653,8 +657,8 @@ public class g implements c, d, MineHandler.OnResult {
 
     public void a(b var1, SurfaceHolder var2) {
         this.o = true;
-        if (this.i != null) {
-            this.i.a(var2);
+        if (this.mPlayeWrapper != null) {
+            this.mPlayeWrapper.a(var2);
             this.t();
         }
     }
@@ -667,16 +671,16 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     public boolean n() {
-        return this.i.k();
+        return this.mPlayeWrapper.k();
     }
 
     public boolean o() {
-        return this.i != null ? this.i.f() : false;
+        return this.mPlayeWrapper != null ? this.mPlayeWrapper.f() : false;
     }
 
     public void d(long var1) {
-        if (this.d != null) {
-            if (this.d.p()) {
+        if (this.mLiveViewLayout != null) {
+            if (this.mLiveViewLayout.p()) {
                 if (var1 == this.m || !this.a || this.m <= 0L) {
                     return;
                 }
@@ -689,40 +693,40 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     protected void a(long var1, boolean var3) {
-        if (this.i != null) {
+        if (this.mPlayeWrapper != null) {
             if (var3) {
                 this.p();
             }
 
-            this.i.a(var1);
+            this.mPlayeWrapper.a(var1);
         }
     }
 
     private boolean d(int var1) {
-        return this.d.c(var1);
+        return this.mLiveViewLayout.c(var1);
     }
 
     public void p() {
-        if (this.d != null) {
-            this.d.d(0);
-            this.d.b(false, false);
-            this.d.c(false);
-            this.d.c();
-            this.d.e();
+        if (this.mLiveViewLayout != null) {
+            this.mLiveViewLayout.d(0);
+            this.mLiveViewLayout.b(false, false);
+            this.mLiveViewLayout.c(false);
+            this.mLiveViewLayout.c();
+            this.mLiveViewLayout.e();
         }
 
     }
 
     public void a(com.bytedance.sdk.openadsdk.core.widget.a var1, float var2, boolean var3) {
         if (this.s()) {
-            if (var1 != null && this.i != null && (this.i.f() || this.i.h())) {
-                var1.a((Context)this.p.get(), var2, var3, this.k, this.m);
+            if (var1 != null && this.mPlayeWrapper != null && (this.mPlayeWrapper.f() || this.mPlayeWrapper.h())) {
+                var1.a((Context)this.mContextWeakReference.get(), var2, var3, this.k, this.m);
             }
 
         }
     }
 
-    public void a(com.bytedance.sdk.openadsdk.core.widget.b.enume var1, String var2) {
+    public void a(VedioManager.enume var1, String var2) {
         switch(var1.ordinal()) {
             case 1:
                 this.a();
@@ -739,22 +743,22 @@ public class g implements c, d, MineHandler.OnResult {
     }
 
     protected boolean b(int var1) {
-        com.bytedance.sdk.openadsdk.ggg.n.a var2 = com.bytedance.sdk.openadsdk.ggg.n.b(com.bytedance.sdk.openadsdk.core.n.a());
-        if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.a) {
-            this.d.a(this.t, this.p, false);
+        NetUtils.a var2 = NetUtils.b(com.bytedance.sdk.openadsdk.core.n.a());
+        if (var2 == NetUtils.a.a) {
+            this.mLiveViewLayout.a(this.t, this.mContextWeakReference, false);
         }
 
-        if (var2 != com.bytedance.sdk.openadsdk.ggg.n.a.e && var2 != com.bytedance.sdk.openadsdk.ggg.n.a.a) {
+        if (var2 != NetUtils.a.e && var2 != NetUtils.a.a) {
             this.a();
             this.y = true;
             this.z = false;
-            if (this.d != null && this.t != null) {
-                return this.d.a(var1, this.t.a());
+            if (this.mLiveViewLayout != null && this.t != null) {
+                return this.mLiveViewLayout.a(var1, this.t.a());
             }
-        } else if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
+        } else if (var2 == NetUtils.a.e) {
             this.y = false;
-            if (this.d != null) {
-                this.d.a();
+            if (this.mLiveViewLayout != null) {
+                this.mLiveViewLayout.a();
             }
         }
 
@@ -763,14 +767,14 @@ public class g implements c, d, MineHandler.OnResult {
 
     protected void a(Context var1) {
         if (this.s()) {
-            com.bytedance.sdk.openadsdk.ggg.n.a var2 = com.bytedance.sdk.openadsdk.ggg.n.b(var1);
+            NetUtils.a var2 = NetUtils.b(var1);
             if (this.F != var2) {
                 if (!this.z) {
                     this.b(2);
                 }
 
                 this.F = var2;
-                if (var2 == com.bytedance.sdk.openadsdk.ggg.n.a.e) {
+                if (var2 == NetUtils.a.e) {
                     this.b();
                 }
 

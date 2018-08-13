@@ -6,26 +6,9 @@
 /*     */ import android.view.View;
 /*     */ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */ import java.lang.reflect.Method;
+/*     */
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ class z
+/*     */ class ViewHelper
 /*     */ {
 /*     */   private static boolean a(View paramView, int paramInt)
 /*     */   {
@@ -57,7 +40,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private static boolean a(Context paramContext)
+/*     */   private static boolean isScreenOn(Context paramContext)
 /*     */     throws Exception
 /*     */   {
 /*  63 */     PowerManager localPowerManager = (PowerManager)paramContext.getSystemService("power");
@@ -71,7 +54,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private static boolean a(View paramView)
+/*     */   private static boolean isShown(View paramView)
 /*     */   {
 /*  76 */     if ((paramView != null) && (paramView.isShown())) {
 /*  77 */       return true;
@@ -79,9 +62,9 @@
 /*  79 */     return false;
 /*     */   }
 /*     */   
-/*     */   private static boolean b(View paramView, int paramInt)
+/*     */   private static boolean isValid(View paramView, int paramInt)
 /*     */   {
-/*  84 */     int i = c(paramView, paramInt);
+/*  84 */     int i = validRange(paramView, paramInt);
 /*  85 */     int j = d(paramView, paramInt);
 /*     */     
 /*  87 */     return (paramView.getWidth() > i) && (paramView.getHeight() > j);
@@ -92,10 +75,10 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private static int c(View paramView, int paramInt)
+/*     */   private static int validRange(View paramView, int paramInt)
 /*     */   {
 /*  97 */     if (paramInt == 3) {
-/*  98 */       return (int)(ViewWather.a(paramView.getContext().getApplicationContext()) * 0.7D);
+/*  98 */       return (int)(ViewWather.visibleWidth(paramView.getContext().getApplicationContext()) * 0.7D);
 /*     */     }
 /* 100 */     return 100;
 /*     */   }
@@ -108,7 +91,7 @@
 /*     */   private static int d(View paramView, int paramInt)
 /*     */   {
 /* 110 */     if (paramInt == 3) {
-/* 111 */       return ViewWather.b(paramView.getContext().getApplicationContext()) / 2;
+/* 111 */       return ViewWather.visisbleHeight(paramView.getContext().getApplicationContext()) / 2;
 /*     */     }
 /* 113 */     return 100;
 /*     */   }
@@ -116,11 +99,11 @@
 /*     */   private static int b(View paramView, int paramInt1, int paramInt2) throws Exception
 /*     */   {
 /* 118 */     int i = 0;
-/* 119 */     if (!a(paramView.getContext())) {
+/* 119 */     if (!isScreenOn(paramView.getContext())) {
 /* 120 */       i = 4;
-/* 121 */     } else if (!a(paramView)) {
+/* 121 */     } else if (!isShown(paramView)) {
 /* 122 */       i = 1;
-/* 123 */     } else if (!b(paramView, paramInt2)) {
+/* 123 */     } else if (!isValid(paramView, paramInt2)) {
 /* 124 */       i = 6;
 /* 125 */     } else if (!a(paramView, paramInt1)) {
 /* 126 */       i = 3;
@@ -134,10 +117,11 @@
 /*     */     } catch (Exception localException) {}
 /* 135 */     return false;
 /*     */   }
+
 /*     */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\z.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\core\ViewHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

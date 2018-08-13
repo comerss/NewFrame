@@ -7,15 +7,15 @@
 /*    */ public class e
 /*    */ {
 /*    */   private String a;
-/*    */   private h b;
+/*    */   private NativeAdData b;
 /*    */   
-/*    */   public e(h paramh, String paramString)
+/*    */   public e(NativeAdData paramh, String paramString)
 /*    */   {
 /* 14 */     this.b = paramh;
 /* 15 */     this.a = paramString;
 /*    */   }
 /*    */   
-/*    */   public h a() {
+/*    */   public NativeAdData a() {
 /* 19 */     return this.b;
 /*    */   }
 /*    */   

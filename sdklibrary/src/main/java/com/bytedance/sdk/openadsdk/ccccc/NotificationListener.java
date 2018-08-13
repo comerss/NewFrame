@@ -5,19 +5,19 @@ import android.app.PendingIntent;
 
 abstract interface NotificationListener
 {
-  public abstract NotificationListener a(PendingIntent paramPendingIntent);
+  public abstract NotificationListener setContentIntent(PendingIntent paramPendingIntent);
   
-  public abstract NotificationListener a(boolean paramBoolean);
+  public abstract NotificationListener setOngoing(boolean paramBoolean);
   
-  public abstract NotificationListener b(boolean paramBoolean);
+  public abstract NotificationListener setAutoCancel(boolean paramBoolean);
   
-  public abstract NotificationListener b(PendingIntent paramPendingIntent);
+  public abstract NotificationListener setDeleteIntent(PendingIntent paramPendingIntent);
   
-  public abstract NotificationListener a(long paramLong);
+  public abstract NotificationListener setWhen(long paramLong);
   
-  public abstract NotificationListener a(int paramInt);
+  public abstract NotificationListener setSmallIcon(int paramInt);
   
-  public abstract Notification a();
+  public abstract Notification build();
 }
 
 

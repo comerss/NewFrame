@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.video.a.c;
 
 /*    */
@@ -28,7 +28,7 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */ {
 /*    */   private static s a;
 /*    */   private c b;
-/*    */   private h c;
+/*    */   private NativeAdData c;
 /*    */   private TTRewardVideoAd.RewardAdInteractionListener d;
 /*    */   private DownLoadListenerImpl e;
 /*    */   
@@ -51,11 +51,11 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */   }
 /*    */   
 /*    */   @NonNull
-/*    */   public h c() {
+/*    */   public NativeAdData c() {
 /* 46 */     return this.c;
 /*    */   }
 /*    */   
-/*    */   public void a(h paramh) {
+/*    */   public void a(NativeAdData paramh) {
 /* 50 */     this.c = paramh;
 /*    */   }
 /*    */   

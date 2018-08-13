@@ -39,7 +39,7 @@
 /*     */ 
 /*     */   public static String a()
 /*     */   {
-/*  42 */     if (ToolUtils.c()) {
+/*  42 */     if (ToolUtils.isMIUI()) {
 /*  43 */       return j();
 /*     */     }
 /*     */     
@@ -130,7 +130,7 @@
 /*     */ 
 /*     */   public static String j()
 /*     */   {
-/* 133 */     if (ToolUtils.c()) {
+/* 133 */     if (ToolUtils.isMIUI()) {
 /* 134 */       return "miui_" + a("ro.miui.ui.version.name") + "_" + Build.VERSION.INCREMENTAL;
 /*     */     }
 /*     */     

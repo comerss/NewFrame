@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAdDislike;
 import com.bytedance.sdk.openadsdk.core.nibuguan.f;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 import com.bytedance.sdk.openadsdk.ggg.k;
@@ -59,12 +59,12 @@ import java.util.List;
 /*     */ public class TTAdDislikeImpl implements TTAdDislike
 /*     */ {
 /*     */   private Context a;
-/*     */   private h b;
+/*     */   private NativeAdData b;
 /*     */   private Dialog c;
 /*     */   private a d;
 /*     */   private TTAdDislike.DislikeInteractionCallback e;
 /*     */   
-/*     */   public TTAdDislikeImpl(Context paramContext, h paramh)
+/*     */   public TTAdDislikeImpl(Context paramContext, NativeAdData paramh)
 /*     */   {
 /*  43 */     o.a(paramContext, "Dislike 初始化必须使用activity,请在TTAdManager.createAdNative(activity)中传入");
 /*  44 */     this.a = paramContext;
@@ -116,7 +116,7 @@ import java.util.List;
 /*  89 */     localListView.setAdapter(this.d);
 /*     */     
 /*     */ 
-/*  92 */     int i = ViewWather.a(this.a) - 120;
+/*  92 */     int i = ViewWather.visibleWidth(this.a) - 120;
 /*  93 */     this.c.setContentView(localView, new LinearLayout.LayoutParams(i, -2));
 /*  94 */     Window localWindow = this.c.getWindow();
 /*  95 */     localWindow.setGravity(80);
@@ -133,7 +133,7 @@ import java.util.List;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(h paramh) {
+/*     */   public void a(NativeAdData paramh) {
 /* 110 */     if ((this.d == null) || (paramh == null)) {
 /* 111 */       return;
 /*     */     }

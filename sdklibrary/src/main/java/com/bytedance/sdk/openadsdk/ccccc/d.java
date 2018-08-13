@@ -234,7 +234,7 @@ import java.util.concurrent.Future;
             File var2 = new File(var1);
             if (this.j == 200 && !var2.exists()) {
                 String var3 = DownloadNotifier.a(this);
-                DownloadNotifier.a(this.I).a(var3);
+                DownloadNotifier.getDefault(this.I).a(var3);
                 com.bytedance.sdk.openadsdk.ccccc.i.a(this.I).a(this.d(), (String)null, (String[])null);
             }
         }
@@ -262,7 +262,7 @@ import java.util.concurrent.Future;
         var1.a("mFileName", this.e);
         var1.a("mDestination", this.g);
         var1.println();
-        var1.a("mStatus", com.bytedance.sdk.openadsdk.ccccc.m.a.d(this.j));
+        var1.a("mStatus", com.bytedance.sdk.openadsdk.ccccc.m.a.getMsg(this.j));
         var1.a("mCurrentBytes", this.t);
         var1.a("mTotalBytes", this.s);
         var1.println();
@@ -277,7 +277,7 @@ import java.util.concurrent.Future;
     }
 
     public long b(long var1) {
-        if (com.bytedance.sdk.openadsdk.ccccc.m.a.c(this.j)) {
+        if (com.bytedance.sdk.openadsdk.ccccc.m.a.isDone(this.j)) {
             return 9223372036854775807L;
         } else if (this.j != 194) {
             return 0L;
@@ -288,7 +288,7 @@ import java.util.concurrent.Future;
     }
 
     public boolean e() {
-        return this.v == 0 && (this.g == 0 || this.g == 1) && com.bytedance.sdk.openadsdk.ccccc.m.a.a(this.j);
+        return this.v == 0 && (this.g == 0 || this.g == 1) && com.bytedance.sdk.openadsdk.ccccc.m.a.isSuccess(this.j);
     }
 
     public static int a(i var0, long var1) {

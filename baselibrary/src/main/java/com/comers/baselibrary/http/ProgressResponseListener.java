@@ -7,8 +7,9 @@ import java.io.File;
  */
 
 public interface ProgressResponseListener {
+    void onStart();
     void onResponseProgress(long totalBytesRead, long contentLength, boolean done);
-    void onFail(String msg);
-    void onLoad(File file);
     void onPause();
+    void onLoad(File file);
+    void onFail(String msg);
 }

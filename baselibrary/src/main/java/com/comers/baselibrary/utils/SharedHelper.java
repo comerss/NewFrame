@@ -20,7 +20,9 @@ public class SharedHelper {
 
     //添加属性
     public static <T> void put(String key, T values) {
-        init();
+        if(preferences==null){
+            init();
+        }
         SharedPreferences.Editor edit = preferences.edit();
         if (values instanceof String) {
             edit.putString(key, values.toString());
@@ -38,7 +40,9 @@ public class SharedHelper {
 
     //查询属性
     public static <T> T get(String key, T values) {
-        init();
+        if(preferences==null){
+            init();
+        }
         Object o = null;
         if (values instanceof String) {
             o = preferences.getString(key, values.toString());

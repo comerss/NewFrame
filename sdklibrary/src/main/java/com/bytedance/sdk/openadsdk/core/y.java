@@ -16,7 +16,7 @@ import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity;
 import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 
 import java.io.File;
@@ -49,7 +49,7 @@ import java.io.File;
 /*     */   implements TTRewardVideoAd
 /*     */ {
 /*     */   private Context b;
-/*     */   private h c;
+/*     */   private NativeAdData c;
 /*     */   private AdSlot d;
 /*     */   private TTRewardVideoAd.RewardAdInteractionListener e;
 /*     */   private DownLoadListenerImpl f;
@@ -61,7 +61,7 @@ import java.io.File;
 /*     */   
 /*     */   private TTAdNative.RewardVideoAdListener i;
 /*     */   
-/*     */   y(Context paramContext, h paramh, AdSlot paramAdSlot, TTAdNative.RewardVideoAdListener paramRewardVideoAdListener)
+/*     */   y(Context paramContext, NativeAdData paramh, AdSlot paramAdSlot, TTAdNative.RewardVideoAdListener paramRewardVideoAdListener)
 /*     */   {
 /*  46 */     this.b = paramContext;
 /*  47 */     this.c = paramh;

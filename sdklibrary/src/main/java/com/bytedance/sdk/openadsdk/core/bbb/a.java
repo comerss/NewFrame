@@ -1,7 +1,7 @@
 /*    */ package com.bytedance.sdk.openadsdk.core.bbb;
 /*    */ 
 /*    */ import android.graphics.Bitmap;
-/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -9,9 +9,9 @@
 /*    */ public class a
 /*    */ {
 /*    */   private Bitmap a;
-/*    */   private h b;
+/*    */   private NativeAdData b;
 /*    */   
-/*    */   public a(Bitmap paramBitmap, h paramh)
+/*    */   public a(Bitmap paramBitmap, NativeAdData paramh)
 /*    */   {
 /* 16 */     this.a = paramBitmap;
 /* 17 */     this.b = paramh;
@@ -21,7 +21,7 @@
 /* 21 */     return this.a;
 /*    */   }
 /*    */   
-/*    */   public h b() {
+/*    */   public NativeAdData b() {
 /* 25 */     return this.b;
 /*    */   }
 /*    */ }

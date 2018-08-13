@@ -13,11 +13,12 @@ android {
     compileSdkVersion 27
     buildToolsVersion("27.0.3")
     defaultConfig {
-        applicationId "com.donews.firsthot"
+        applicationId "com.comers.shenwu"
         minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
         versionName "2.0.6"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -50,4 +51,5 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
     //    implementation 'com.comers:BaseLibrary:1.0.0'
     //    implementation (name:"BaseLibrary",ext:'aar')
+//    implementation 'com.maoyan.android.business:movie:1.0.2.3'
 }

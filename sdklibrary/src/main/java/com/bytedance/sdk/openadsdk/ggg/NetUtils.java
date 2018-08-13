@@ -8,7 +8,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class n
+/*    */ public class NetUtils
 /*    */ {
 /*    */   public static boolean a(Context paramContext)
 /*    */   {

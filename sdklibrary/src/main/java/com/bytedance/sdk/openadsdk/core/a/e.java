@@ -3,7 +3,7 @@
 /*    */ import android.content.Context;
 /*    */ import android.support.annotation.NonNull;
 /*    */ import android.view.View;
-/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+/*    */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -18,9 +18,9 @@
 /*    */ 
 /*    */ 
 /*    */ public abstract class e
-/*    */   extends a
+/*    */   extends AdClickListerReal
 /*    */ {
-/*    */   public e(@NonNull Context paramContext, @NonNull h paramh, @NonNull String paramString, int paramInt)
+/*    */   public e(@NonNull Context paramContext, @NonNull NativeAdData paramh, @NonNull String paramString, int paramInt)
 /*    */   {
 /* 25 */     super(paramContext, paramh, paramString, paramInt);
 /*    */   }

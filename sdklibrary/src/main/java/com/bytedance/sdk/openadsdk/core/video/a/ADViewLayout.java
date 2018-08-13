@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import com.androidquery.AQuery;
 import com.androidquery.callback.AQuery2;
 import com.bytedance.sdk.openadsdk.R;
-import com.bytedance.sdk.openadsdk.core.nibuguan.h;
+import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.ggg.MineHandler;
 import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 
@@ -34,56 +34,56 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */
 
 /*     */
-/*     */ public class f extends FrameLayout implements MineHandler.OnResult
+/*     */ public class ADViewLayout extends FrameLayout implements MineHandler.OnResult
 /*     */ {
-/*     */   private Context a;
-/*     */   private final h b;
+/*     */   private Context mContext;
+/*     */   private final NativeAdData b;
 /*     */   private c c;
-/*     */   private ViewGroup d;
-/*     */   private FrameLayout e;
+/*     */   private ViewGroup mGroup;
+/*     */   private FrameLayout mFrameLayout;
 /*  27 */   private boolean f = true;
 /*  28 */   private boolean g = false;
 /*  29 */   private boolean h = false;
 /*     */   
-/*     */   private RelativeLayout i;
+/*     */   private RelativeLayout mLayout;
 /*     */   
-/*     */   private ImageView j;
+/*     */   private ImageView mImageView;
 /*     */   
-/*     */   private AQuery2 k;
+/*     */   private AQuery2 mQuery2;
 /*     */   
 /*  37 */   private boolean l = true;
 /*     */   
 /*     */   private long m;
-/*  40 */   private MineHandler n = new MineHandler(this);
+/*  40 */   private MineHandler mHandler = new MineHandler(this);
 /*     */   
-/*     */   public f(@NonNull Context paramContext, @NonNull h paramh) {
+/*     */   public ADViewLayout(@NonNull Context paramContext, @NonNull NativeAdData paramh) {
 /*  43 */     super(paramContext);
-/*  44 */     this.a = paramContext;
+/*  44 */     this.mContext = paramContext;
 /*  45 */     this.b = paramh;
 /*  46 */     d();
 /*     */   }
 /*     */   
 /*     */   private void d() {
-/*  50 */     inflate(this.a, com.bytedance.sdk.openadsdk.R.layout.tt_native_video_ad_view, this);
-/*  51 */     this.d = ((ViewGroup)findViewById(R.id.native_video_layout));
-/*  52 */     this.e = ((FrameLayout)findViewById(R.id.native_video_frame));
-/*  53 */     this.i = ((RelativeLayout)findViewById(R.id.native_video_img_cover));
-/*  54 */     this.j = ((ImageView)findViewById(R.id.native_video_img_id));
-/*  55 */     this.k = new AQuery2(this.a);
-/*  56 */     ((AQuery)this.k.id(this.j)).image(this.b.a().c());
-/*  57 */     this.c = new g(this.a, this.e, this.b);
+/*  50 */     inflate(this.mContext, com.bytedance.sdk.openadsdk.R.layout.tt_native_video_ad_view, this);
+/*  51 */     this.mGroup = ((ViewGroup)findViewById(R.id.native_video_layout));
+/*  52 */     this.mFrameLayout = ((FrameLayout)findViewById(R.id.native_video_frame));
+/*  53 */     this.mLayout = ((RelativeLayout)findViewById(R.id.native_video_img_cover));
+/*  54 */     this.mImageView = ((ImageView)findViewById(R.id.native_video_img_id));
+/*  55 */     this.mQuery2 = new AQuery2(this.mContext);
+/*  56 */     ((AQuery)this.mQuery2.id(this.mImageView)).image(this.b.a().c());
+/*  57 */     this.c = new g(this.mContext, this.mFrameLayout, this.b);
 /*     */   }
 /*     */   
 /*     */   public boolean a(long paramLong) {
-/*  61 */     this.d.setVisibility(0);
+/*  61 */     this.mGroup.setVisibility(0);
 /*  62 */     if (this.c == null) {
-/*  63 */       this.c = new g(this.a, this.e, this.b);
+/*  63 */       this.c = new g(this.mContext, this.mFrameLayout, this.b);
 /*     */     }
 /*  65 */     this.m = paramLong;
 /*     */     
 /*  67 */     if (c()) {
-/*  68 */       boolean bool = this.c.a(this.b.a().d(), this.b.l(), this.d
-/*  69 */         .getWidth(), this.d.getHeight(), null, this.b.o(), paramLong, b());
+/*  68 */       boolean bool = this.c.a(this.b.a().d(), this.b.l(), this.mGroup
+/*  69 */         .getWidth(), this.mGroup.getHeight(), null, this.b.o(), paramLong, b());
 /*  70 */       return bool;
 /*     */     }
 /*  72 */     return true;
@@ -130,7 +130,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   {
 /* 114 */     boolean bool = ViewWather.isVisible(getContext(), this, 50);
 /* 115 */     a(bool);
-/* 116 */     this.n.obtainMessage(1).sendToTarget();
+/* 116 */     this.mHandler.obtainMessage(1).sendToTarget();
 /*     */   }
 /*     */   
 /*     */   private void a(boolean paramBoolean)
@@ -158,12 +158,12 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /* 141 */       return;
 /*     */     }
 /*     */     
-/* 144 */     if (this.n != null) {
+/* 144 */     if (this.mHandler != null) {
 /* 145 */       if ((paramBoolean) && (this.c != null) && (this.c.h() != null) && 
 /* 146 */         (!this.c.h().h())) {
-/* 147 */         this.n.obtainMessage(1).sendToTarget();
+/* 147 */         this.mHandler.obtainMessage(1).sendToTarget();
 /*     */       } else {
-/* 149 */         this.n.removeMessages(1);
+/* 149 */         this.mHandler.removeMessages(1);
 /* 150 */         a(false);
 /*     */       }
 /*     */     }
@@ -176,15 +176,15 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /* 159 */       return;
 /*     */     }
 /* 161 */     if (this.l) {
-/* 162 */       this.c.a(this.b.a().d(), this.b.l(), this.d
-/* 163 */         .getWidth(), this.d.getHeight(), null, this.b.o(), this.m, b());
+/* 162 */       this.c.a(this.b.a().d(), this.b.l(), this.mGroup
+/* 163 */         .getWidth(), this.mGroup.getHeight(), null, this.b.o(), this.m, b());
 /* 164 */       this.l = false;
-/* 165 */       ViewWather.a(this.i, 8);
+/* 165 */       ViewWather.setVisible(this.mLayout, 8);
 /*     */     }
 /* 167 */     if ((paramInt == 0) && 
-/* 168 */       (this.n != null) && (this.c != null) && (this.c.h() != null) && 
+/* 168 */       (this.mHandler != null) && (this.c != null) && (this.c.h() != null) &&
 /* 169 */       (!this.c.h().h())) {
-/* 170 */       this.n.obtainMessage(1).sendToTarget();
+/* 170 */       this.mHandler.obtainMessage(1).sendToTarget();
 /*     */     }
 /*     */   }
 /*     */   
@@ -204,10 +204,10 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   public void setIsAutoPlay(boolean paramBoolean) {
 /* 188 */     this.f = paramBoolean;
 /* 189 */     if (!paramBoolean) {
-/* 190 */       ViewWather.a(this.i, 0);
-/* 191 */       ((AQuery)this.k.id(this.j)).image(this.b.a().c());
+/* 190 */       ViewWather.setVisible(this.mLayout, 0);
+/* 191 */       ((AQuery)this.mQuery2.id(this.mImageView)).image(this.b.a().c());
 /*     */     } else {
-/* 193 */       ViewWather.a(this.i, 8);
+/* 193 */       ViewWather.setVisible(this.mLayout, 8);
 /*     */     }
 /*     */   }
 /*     */   
