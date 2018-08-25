@@ -1,22 +1,14 @@
 package com.donews.frame.camera
 
-import android.util.Log
-import android.widget.Toast
-import com.baidu.mobad.feeds.BaiduNative
-import com.baidu.mobad.feeds.NativeErrorCode
-import com.baidu.mobad.feeds.NativeResponse
-import com.baidu.mobad.feeds.RequestParameters
-import com.comers.baselibrary.http.HttpResult
-import com.comers.baselibrary.retrofit.RetrofitHelper
+import android.view.View
 import com.comers.baselibrary.retrofit.RxBaseActivity
-import com.comers.market.base.Data
 import com.donews.frame.R
-import com.donews.frame.sdk.FeedListActivity
-import com.nontindu.Switch
-import com.trello.rxlifecycle2.android.ActivityEvent
-import io.reactivex.Observable
-import io.reactivex.functions.Consumer
-import java.util.concurrent.TimeUnit
+import com.donews.sdk.base.LogUtils
+import com.donews.sdk.bean.AdParams
+import com.donews.sdk.interfaces.AdvertiseSplash
+import com.donews.sdk.interfaces.InterfaceManager
+import com.donews.sdk.manager.AdvertiseManager
+import kotlinx.android.synthetic.main.activity_home.*
 
 
 /**
@@ -29,69 +21,63 @@ class SplashActivity: RxBaseActivity() {
     }
 
     override fun initView() {
-        Switch.setModAPPConfirmPolicy(true)
-        Switch.setModCopyBuiltin(true)
-        RetrofitHelper.create().getData()
-                .subscribe(Consumer<HttpResult<List<Data>>> {
 
-                })
-        Toast.makeText(this,"99999999999999999999999999",Toast.LENGTH_SHORT).show()
-//        Switch.setModStartActivity(true)
-     /* var splashAd= SplashAd(this, LinearLayout(this), object :  SplashAdListener {
-            override fun onAdFailed(p0: String?) {
-                showToast(p0)
-            }
-
-            override fun onAdDismissed() {
-                showToast("不可见了")
-            }
-
-            override fun onAdClick() {
-                showToast("点击了")
-            }
-
-            override fun onAdPresent() {
-                showToast("广告可见了")
-            }
-
-        }, "5846395", true)
-*/
-        val baidu = BaiduNative(this, "5853714",
-                object : BaiduNative.BaiduNativeNetworkListener {
-                    override fun onNativeFail(arg0: NativeErrorCode) {
-                        Log.i("FeedListActivity", "onNativeFail reason:" + arg0.name)
-                    }
-
-                    override fun onNativeLoad(arg0: List<NativeResponse>?) {
-                        if (arg0 != null && arg0.size > 0) {
-                            showToast("信息流陈宫 了")
-                        }
-                    }
-                })
-        /**
-         * Step 2. 创建 requestParameters 对象，并将其传给 baidu.makeRequest 来请求广告
-         */
-        val requestParameters = RequestParameters.Builder()
-                .downloadAppConfirmPolicy(RequestParameters.DOWNLOAD_APP_CONFIRM_ONLY_MOBILE)
-                .build()
-//        baidu.makeRequest(requestParameters)
     }
 
     override fun initListener() {
     }
 
     override fun initData() {
-        var count=0
-        Observable.interval(1,TimeUnit.SECONDS)
-                .compose(bindUntilEvent(ActivityEvent.PAUSE))
-                .subscribe {
-                    count++
-                    showToast("倒数中${6-count}")
-                    if(count==5){
-                        toActivity(FeedListActivity::class.java)
-                        finish()
-                    }
-                }
 
+    }
+    private fun getAd() {
+        val adParams = AdParams.Builder()  //
+                .setAdPosition("6790158e2d9e3cca587027aadac943bb")// 开屏 广告位  //必填参数
+                .setAdCount(1)
+                .setContext(this)//必填参数
+                .setImageAcceptedSize(1080, 1920)//必填参数
+                .setSupportDeepLink(false)
+                .build()
+        AdvertiseManager.getInstance().loadSplash(adParams, object : InterfaceManager.OnSplashListener {
+            override fun onLoadSplash(advertiseSplash: AdvertiseSplash) {
+                lyContainer.addView(advertiseSplash.splashView)
+                advertiseSplash.setInteractionListener(object : AdvertiseSplash.AdvertiseInterationListener {
+                    override fun onAdvertiseClicked(view: View, time: Int) {
+//                        doSkip = true
+                        LogUtils.i("info", "开屏广告点击了")
+                    }
+
+                    override fun onAdvertiseShow(view: View, time: Int) {
+                        LogUtils.i("info", "开屏广告展示了")
+                    }
+
+                    override fun onAdvertiseSkip() {
+                        LogUtils.i("info", "开屏广告跳过了")
+                        toMainActivity()
+                    }
+
+                    override fun onAdvertiseTimeOver() {
+                        LogUtils.i("info", "开屏广告倒计时结束")
+                        toMainActivity()
+                    }
+                })
+            }
+
+            override fun onTimeOut() {
+                toMainActivity()
+                LogUtils.i("info", "开屏广告请求超时了")
+            }
+
+            override fun onError(code: Int, msg: String) {
+                toMainActivity()
+                LogUtils.i("info", "开屏广告请求错误" + code + "_" + msg)
+            }
+        })
+    }
+
+    fun toMainActivity() {
+//        val intent = Intent(this, FeedActivity::class.java)
+//        startActivity(intent)
+//        finish()
     }
 }

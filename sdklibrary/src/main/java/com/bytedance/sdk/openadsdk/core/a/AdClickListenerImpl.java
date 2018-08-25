@@ -16,12 +16,12 @@ import java.lang.ref.WeakReference;
 
 
 public class AdClickListenerImpl extends AdClickListener {
-    protected Context b;
-    protected NativeAdData c;
+    protected Context mContext;
+    protected NativeAdData mAdData;
     protected String d;
     protected int e;
-    protected WeakReference<View> f;
-    protected WeakReference<View> g;
+    protected WeakReference<View> mWeakReference;
+    protected WeakReference<View> mReference;
     protected com.bytedance.sdk.openadsdk.core.nibuguan.c h;
     protected OnClick mOnClick;
     protected TTFeedAd mTTFeedAd;
@@ -29,11 +29,11 @@ public class AdClickListenerImpl extends AdClickListener {
     protected boolean l = false;
     protected DownLoadListenerImpl mDownLoadListener;
 
-    public void a(DownLoadListenerImpl var1) {
+    public void setDownLoadListener(DownLoadListenerImpl var1) {
         this.mDownLoadListener = var1;
     }
 
-    public void a(TTFeedAd paramTTFeedAd) {
+    public void setTTFeedAd(TTFeedAd paramTTFeedAd) {
         /*  45 */
         this.mTTFeedAd = paramTTFeedAd;
     }
@@ -50,9 +50,9 @@ public class AdClickListenerImpl extends AdClickListener {
 
     public AdClickListenerImpl(@NonNull Context paramContext, @NonNull NativeAdData paramh, @NonNull String paramString, int paramInt) {
         /*  56 */
-        this.b = paramContext.getApplicationContext();
+        this.mContext = paramContext.getApplicationContext();
         /*  57 */
-        this.c = paramh;
+        this.mAdData = paramh;
         /*  58 */
         this.d = paramString;
         /*  59 */
@@ -66,24 +66,24 @@ public class AdClickListenerImpl extends AdClickListener {
 
     public void a(View paramView) {
         /*  67 */
-        this.f = new WeakReference(paramView);
+        this.mWeakReference = new WeakReference(paramView);
     }
 
     public void b(View paramView) {
         /*  71 */
-        this.f = new WeakReference(paramView);
+        this.mWeakReference = new WeakReference(paramView);
     }
 
     public void b(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
         /*  76 */
-        if (this.b == null) {
+        if (this.mContext == null) {
             /*  77 */
             return;
         }
 
         /*  80 */
-        this.h = a(paramInt1, paramInt2, paramInt3, paramInt4, this.mQ, this.mR, this.f == null ? null :
-                /*  81 */       (View) this.f.get(), this.g == null ? null : (View) this.g.get());
+        this.h = a(paramInt1, paramInt2, paramInt3, paramInt4, this.mQ, this.mR, this.mWeakReference == null ? null :
+                /*  81 */       (View) this.mWeakReference.get(), this.mReference == null ? null : (View) this.mReference.get());
 
         /*  83 */
         if (this.mOnClick != null) {
@@ -92,7 +92,7 @@ public class AdClickListenerImpl extends AdClickListener {
         }
 ///*  86 */     boolean bool = aa.OnClick(this.bee, this.cc, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl));
         /*  87 */
-        AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
+        AdEvent.a(this.mContext, "click", this.mAdData, this.h, this.d, true);
     }
 
 

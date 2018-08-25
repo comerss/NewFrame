@@ -48,6 +48,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation project(':baselibrary')
     implementation project(':sdklibrary')
+    implementation project(':doaar')
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.4'
     //    implementation 'com.comers:BaseLibrary:1.0.0'
     //    implementation (name:"BaseLibrary",ext:'aar')

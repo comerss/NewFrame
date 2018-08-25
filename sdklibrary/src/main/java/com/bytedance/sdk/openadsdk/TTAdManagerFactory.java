@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ import android.content.Context;
 /*    */ import com.bytedance.sdk.openadsdk.core.X509Helper;
-/*    */ import com.bytedance.sdk.openadsdk.core.t;
+/*    */ import com.bytedance.sdk.openadsdk.core.TTAdManagerImpl;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -10,7 +10,7 @@
 /*    */ 
 /*    */ public class TTAdManagerFactory
 /*    */ {
-/* 13 */   private static TTAdManager a = new t();
+/* 13 */   private static TTAdManager a = new TTAdManagerImpl();
 /*    */   
 /*    */ 
 /*    */ 

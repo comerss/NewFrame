@@ -1,13 +1,14 @@
 package com.comers.baselibrary.retrofit
 
-import com.comers.market.base.Data
-import com.trello.rxlifecycle2.android.ActivityEvent
-
 /**
  * Created by 79653 on 2018/6/24.
  * 描述：
  */
 class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
+    override fun getData() {
+
+    }
+
     override fun createPresenter(): HomePresenter {
         return HomePresenter(this,this)
     }
@@ -17,16 +18,7 @@ class RxDemoActivity : RxMvpActivity<HomePresenter>(),HomeView {
     }
 
     override fun initView() {
-        RetrofitHelper.create().getData()
-                .compose(bindUntilEvent(ActivityEvent.DESTROY))
-                .compose(RxHelper.io_main())
-                .compose(RxHelper.handleResult())
-                .subscribe(object : HttpSubscriber<List<Data>>(){
-                    override fun onSuccess(t: List<Data>) {
-                        //TODO异常处理
 
-                    }
-                })
     }
 
     override fun initListener() {

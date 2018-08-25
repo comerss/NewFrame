@@ -1,12 +1,14 @@
 package com.donews.frame.camera
 
-import android.util.Base64
+import android.view.View
 import com.comers.baselibrary.base.BaseActivity
 import com.donews.frame.R
-import okhttp3.*
-import java.io.ByteArrayOutputStream
-import java.nio.charset.Charset
-import java.util.zip.GZIPOutputStream
+import com.donews.sdk.base.LogUtils
+import com.donews.sdk.bean.AdParams
+import com.donews.sdk.interfaces.AdvertiseSplash
+import com.donews.sdk.interfaces.InterfaceManager
+import com.donews.sdk.manager.AdvertiseManager
+import kotlinx.android.synthetic.main.activity_home.*
 
 
 class HomeActivity : BaseActivity() {
@@ -15,7 +17,7 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun initView() {
-
+       getAd()
     }
 
     override fun initListener() {
@@ -27,78 +29,55 @@ class HomeActivity : BaseActivity() {
 
     }
 
-    fun uploadlog() {
-        val username = "cm9vdA=="
-        val password = "ZG9uZXdzMTIz"
-        /*
-        oss_userinfo
-        https://api.g.com.cn/oss_userinfo?appid&version
-        default:
-        {username: "cm9vdA==", password = "ZG9uZXdzMTIz", uploadaddress =  http://minio-db.xy.huijitrans.com/put"}
-        */
-        val busername = Base64.decode(username, Base64.DEFAULT)
-        val bpasword = Base64.decode(password, Base64.DEFAULT)
-        val name = String(busername)
-        val passwd = String(bpasword)
-
-        val client = OkHttpClient.Builder()
-                .authenticator { route, response ->
-                    val credential = Credentials.basic(name, passwd, Charset.forName("UTF-8"))
-                    response.request().newBuilder().header("Authorization", credential).build()
-                }
+    private fun getAd() {
+        val adParams = AdParams.Builder()  //
+                .setAdPosition("6790158e2d9e3cca587027aadac943bb")// 开屏 广告位  //必填参数
+                .setAdCount(1)
+                .setContext(this)//必填参数
+                .setImageAcceptedSize(1080, 1920)//必填参数
+                .setSupportDeepLink(false)
                 .build()
+        AdvertiseManager.getInstance().loadSplash(adParams, object : InterfaceManager.OnSplashListener {
+            override fun onLoadSplash(advertiseSplash: AdvertiseSplash) {
+                lyContainer.addView(advertiseSplash.splashView)
+                advertiseSplash.setInteractionListener(object : AdvertiseSplash.AdvertiseInterationListener {
+                    override fun onAdvertiseClicked(view: View, time: Int) {
+//                        doSkip = true
+                        LogUtils.i("info", "开屏广告点击了")
+                    }
 
-        var sb: StringBuilder? = null
-        try {
-            sb = StringBuilder()
-            for (n in 0..999) {
-                sb.append(n)
-                sb.append(",")
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+                    override fun onAdvertiseShow(view: View, time: Int) {
+                        LogUtils.i("info", "开屏广告展示了")
+                    }
 
-        var response: Response? = null
-        try {
-            //压缩一下，效果更好
-            //Gzip
-            val buffer = gzip(sb!!.toString())
-            val body = RequestBody.create(MediaType.parse("application/octet-stream"), buffer)//file 可以上传一个文件
-            val request = Request.Builder()
-                    .url("http://minio-db.xy.huijitrans.com/put/yinli/2199777/log_yyyyMMddhhmmssSSS.txt")
-                    .put(body)
-                    .build()
-            response = client.newCall(request).execute()
-//            Log.Utils(FragmentActivity.TAG, response!!.code() + ":" + response!!.body().string())
+                    override fun onAdvertiseSkip() {
+                        LogUtils.i("info", "开屏广告跳过了")
+                        toMainActivity()
+                    }
 
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            try {
-                response!!.close()
-            } catch (e: Exception) {
-
+                    override fun onAdvertiseTimeOver() {
+                        LogUtils.i("info", "开屏广告倒计时结束")
+                        toMainActivity()
+                    }
+                })
             }
 
-        }
+            override fun onTimeOut() {
+                toMainActivity()
+                LogUtils.i("info", "开屏广告请求超时了")
+            }
+
+            override fun onError(code: Int, msg: String) {
+                toMainActivity()
+                LogUtils.i("info", "开屏广告请求错误" + code + "_" + msg)
+            }
+        })
     }
 
-    fun gzip(unGzipStr: String): ByteArray? {
-        try {
-            val baos = ByteArrayOutputStream()
-            val gzip = GZIPOutputStream(baos)
-            gzip.write(unGzipStr.toByteArray())
-            gzip.close()
-            val encode = baos.toByteArray()
-            baos.flush()
-            baos.close()
-            return encode
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
-        return null
+    fun toMainActivity() {
+//        val intent = Intent(this, FeedActivity::class.java)
+//        startActivity(intent)
+//        finish()
     }
 
 

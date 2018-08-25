@@ -1,1 +1,1 @@
-include ':app', ':sdklibrary','baselibrary'
+include ':app', ':sdklibrary', ':doaar','baselibrary'

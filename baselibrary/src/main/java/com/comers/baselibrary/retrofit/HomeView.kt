@@ -7,4 +7,5 @@ import com.comers.baselibrary.base.BaseView
  * 描述：
  */
 interface HomeView :BaseView {
+    fun getData()
 }

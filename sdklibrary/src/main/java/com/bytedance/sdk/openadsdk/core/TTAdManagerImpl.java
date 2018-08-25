@@ -18,45 +18,45 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class t implements TTAdManager
+/*     */ public class TTAdManagerImpl implements TTAdManager
 /*     */ {
-/*     */   public t setAppId(String paramString)
+/*     */   public TTAdManagerImpl setAppId(String paramString)
 /*     */   {
 /*  25 */     h.a().a(paramString);
 /*  26 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setName(String paramString)
+/*     */   public TTAdManagerImpl setName(String paramString)
 /*     */   {
 /*  31 */     h.a().b(paramString);
 /*  32 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setPaid(boolean paramBoolean)
+/*     */   public TTAdManagerImpl setPaid(boolean paramBoolean)
 /*     */   {
 /*  37 */     h.a().a(paramBoolean);
 /*  38 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setGender(int paramInt)
+/*     */   public TTAdManagerImpl setGender(int paramInt)
 /*     */   {
 /*  43 */     h.a().b(paramInt);
 /*  44 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setAge(int paramInt)
+/*     */   public TTAdManagerImpl setAge(int paramInt)
 /*     */   {
 /*  49 */     h.a().a(paramInt);
 /*  50 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setKeywords(String paramString)
+/*     */   public TTAdManagerImpl setKeywords(String paramString)
 /*     */   {
 /*  55 */     h.a().c(paramString);
 /*  56 */     return this;
 /*     */   }
 /*     */   
-/*     */   public t setData(String paramString)
+/*     */   public TTAdManagerImpl setData(String paramString)
 /*     */   {
 /*  61 */     h.a().d(paramString);
 /*  62 */     return this;

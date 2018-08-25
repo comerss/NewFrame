@@ -178,7 +178,7 @@ import java.util.List;
                 ", q=" + q +
                 ", ToolUtils=" + r +
                 ", ViewWather=" + s +
-                ", t=" + t +
+                ", TTAdManagerImpl=" + t +
                 ", u=" + u +
                 '}';
     }

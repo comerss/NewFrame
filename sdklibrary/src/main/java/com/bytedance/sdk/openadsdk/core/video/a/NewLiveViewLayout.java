@@ -270,7 +270,7 @@ public class NewLiveViewLayout implements b, com.bytedance.sdk.openadsdk.core.vi
         this.am.a(this.al);
         this.am.b(true);
         if (this.ak != null && this.am != null) {
-            this.am.a(this.ak);
+            this.am.setDownLoadListener(this.ak);
         }
 
     }

@@ -99,7 +99,7 @@ import java.util.List;
 /*     */ 
 /*  80 */     AdClickListenerImpl adClickListener = new AdClickListenerImpl(this.mContext, this.b, "embeded_ad", 1);
 /*  81 */     adClickListener.a(paramViewGroup);
-/*  82 */     adClickListener.a(this.mTTFeedAd);
+/*  82 */     adClickListener.setTTFeedAd(this.mTTFeedAd);
 /*  83 */     adClickListener.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {
@@ -112,7 +112,7 @@ import java.util.List;
 /*  92 */     });
 /*  93 */     AdClickListerReal locala = new AdClickListerReal(this.mContext, this.b, "embeded_ad", 1);
 /*  94 */     locala.a(paramViewGroup);
-/*  95 */     locala.a(this.mDownLoadListener);
+/*  95 */     locala.setDownLoadListener(this.mDownLoadListener);
 /*  96 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {

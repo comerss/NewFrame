@@ -310,7 +310,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /* 290 */      AdClickListerReal locala = new AdClickListerReal(this.c, localh, this.l, 2);
 /* 291 */     locala.a(paramc);
 /* 292 */     locala.b(this.a.d());
-/* 293 */     locala.a(this.k);
+/* 293 */     locala.setDownLoadListener(this.k);
 /* 294 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
 /*     */     {
 /*     */       public void onClick(View paramAnonymousView, int paramAnonymousInt) {

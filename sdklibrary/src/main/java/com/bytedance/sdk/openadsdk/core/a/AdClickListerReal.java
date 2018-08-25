@@ -27,34 +27,34 @@ public class AdClickListerReal extends AdClickListenerImpl {
     }
 
     public void b(View var1, int var2, int var3, int var4, int var5) {
-        if (this.b != null) {
+        if (this.mContext != null) {
 //            this.ImageHelper = this.OnClick(var2, var3, var4, var5, this.mR, this.ViewWather, this.HandleInitEvent == null ? null : (View)this.HandleInitEvent.get(), this.ApiException == null ? null : (View)this.ApiException.get());
-            int var6 = this.c.c();
+            int var6 = this.mAdData.c();
             switch(var6) {
                 case 2:
                 case 3:
-                    if (this.c.p() == 5) {
-                        AdEvent.a(this.b, "click_button", this.c, this.h, this.d, true);
+                    if (this.mAdData.p() == 5) {
+                        AdEvent.a(this.mContext, "click_button", this.mAdData, this.h, this.d, true);
                     }
 
                     aa.a(true);
 //                    boolean var9 = aa.OnClick(this.bee, this.cc, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl), this.mM);
                     if (this.a) {
-                        AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
+                        AdEvent.a(this.mContext, "click", this.mAdData, this.h, this.d, true);
                     }
                     break;
                 case 4:
                     if (this.mDownLoadListener != null) {
                         this.mDownLoadListener.c();
                         if (this.a && this.mDownLoadListener.a()) {
-                            AdEvent.a(this.b, "click", this.c, this.h, this.d, true);
+                            AdEvent.a(this.mContext, "click", this.mAdData, this.h, this.d, true);
                         }
                     }
                     break;
                 case 5:
                     String var7 = this.a(this.d);
 //                    if (!mQ.OnClick(var7)) {
-                        AdEvent.a(this.b, "click_call", this.c, this.h, var7, true);
+                        AdEvent.a(this.mContext, "click_call", this.mAdData, this.h, var7, true);
 //                    }
 
 //                    boolean var8 = mR.TTBannerAdImpl(var1.getContext(), this.cc.ApiException());
