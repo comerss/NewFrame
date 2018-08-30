@@ -34,13 +34,13 @@
 /*    */   {
 /* 35 */     ConnectivityManager localConnectivityManager = (ConnectivityManager)this.a.getSystemService("connectivity");
 /* 36 */     if (localConnectivityManager == null) {
-/* 37 */       Log.w("SsDownloadManager", "couldn'MineHandler get connectivity manager");
+/* 37 */       Log.w("SsAndroidDownloadManager", "couldn'MineHandler get connectivity manager");
 /* 38 */       return null;
 /*    */     }
 /*    */     
 /* 41 */     NetworkInfo localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
 /* 42 */     if ((localNetworkInfo == null) ) {
-/* 43 */       Log.v("SsDownloadManager", "network is not available");
+/* 43 */       Log.v("SsAndroidDownloadManager", "network is not available");
 /*    */     }
 /* 45 */     return localNetworkInfo;
 /*    */   }
@@ -50,7 +50,7 @@
 /*    */   {
 /* 51 */     ConnectivityManager localConnectivityManager = (ConnectivityManager)this.a.getSystemService("connectivity");
 /* 52 */     if (localConnectivityManager == null) {
-/* 53 */       Log.w("SsDownloadManager", "couldn'MineHandler get connectivity manager");
+/* 53 */       Log.w("SsAndroidDownloadManager", "couldn'MineHandler get connectivity manager");
 /* 54 */       return false;
 /*    */     }
 /* 56 */     NetworkInfo localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
@@ -58,7 +58,7 @@
 /* 58 */     TelephonyManager localTelephonyManager = (TelephonyManager)this.a.getSystemService("phone");
 /*    */     
 /* 60 */     boolean bool = (i != 0) && (localTelephonyManager.isNetworkRoaming());
-/* 62 */       Log.v("SsDownloadManager", "network is roaming");
+/* 62 */       Log.v("SsAndroidDownloadManager", "network is roaming");
 /* 64 */     return bool;
 /*    */   }
 /*    */   

@@ -169,8 +169,8 @@ import java.util.Map;
 /*     */ 
 /*     */     public void onCreate(SQLiteDatabase paramSQLiteDatabase)
 /*     */     {
-/* 143 */       if (SsDownloadManager.d) {
-/* 144 */         Log.v("SsDownloadManager", "populating new database");
+/* 143 */       if (SsAndroidDownloadManager.d) {
+/* 144 */         Log.v("SsAndroidDownloadManager", "populating new database");
 /*     */       }
 /* 146 */       onUpgrade(paramSQLiteDatabase, 100, 101);
 /*     */     }
@@ -187,13 +187,13 @@ import java.util.Map;
 /*     */       {
 /* 159 */         if (paramInt1 < 100)
 /*     */         {
-/* 161 */           Log.i("SsDownloadManager", "Upgrading downloads database from version " + paramInt1 + " to version " + paramInt2 + ", which will destroy all old data");
+/* 161 */           Log.i("SsAndroidDownloadManager", "Upgrading downloads database from version " + paramInt1 + " to version " + paramInt2 + ", which will destroy all old data");
 /*     */           
 /* 163 */           paramInt1 = 99;
 /* 164 */         } else if (paramInt1 > paramInt2)
 /*     */         {
 /*     */ 
-/* 167 */           Log.i("SsDownloadManager", "Downgrading downloads database from version " + paramInt1 + " (current version is " + paramInt2 + "), destroying all old data");
+/* 167 */           Log.i("SsAndroidDownloadManager", "Downgrading downloads database from version " + paramInt1 + " (current version is " + paramInt2 + "), destroying all old data");
 /*     */           
 /* 169 */           paramInt1 = 99;
 /*     */         }
@@ -202,7 +202,7 @@ import java.util.Map;
 /* 173 */           a(paramSQLiteDatabase, i);
 /*     */         }
 /*     */       } catch (Throwable localThrowable) {
-/* 176 */         Log.i("SsDownloadManager", "onUpgrade " + paramInt1 + " to " + paramInt2 + " exception: " + localThrowable);
+/* 176 */         Log.i("SsAndroidDownloadManager", "onUpgrade " + paramInt1 + " to " + paramInt2 + " exception: " + localThrowable);
 /*     */       }
 /*     */     }
 /*     */     
@@ -313,7 +313,7 @@ import java.util.Map;
 /*     */ 
 /*     */ 
 /*     */ 
-/* 287 */         Log.e("SsDownloadManager", "couldn'MineHandler create table in downloads database");
+/* 287 */         Log.e("SsAndroidDownloadManager", "couldn'MineHandler create table in downloads database");
 /* 288 */         throw localSQLException;
 /*     */       }
 /*     */     }
@@ -406,7 +406,7 @@ import java.util.Map;
 /*     */ 
 /* 378 */       int i = c.match(paramUri);
 /* 379 */       if (i != 1) {
-/* 380 */         Log.d("SsDownloadManager", "calling insert on an unknown/invalid URI: " + paramUri);
+/* 380 */         Log.d("SsAndroidDownloadManager", "calling insert on an unknown/invalid URI: " + paramUri);
 /* 381 */         throw new IllegalArgumentException("Unknown/Invalid URI " + paramUri);
 /*     */       }
 /*     */       
@@ -488,7 +488,7 @@ import java.util.Map;
 /*     */       
 /* 460 */       long l2 = localSQLiteDatabase.insert("ss_downloads", null, localContentValues);
 /* 461 */       if (l2 == -1L) {
-/* 462 */         Log.d("SsDownloadManager", "couldn'MineHandler insert into downloads database");
+/* 462 */         Log.d("SsAndroidDownloadManager", "couldn'MineHandler insert into downloads database");
 /* 463 */         return null;
 /*     */       }
 /*     */       
@@ -630,8 +630,8 @@ import java.util.Map;
 /*     */       
 /* 602 */       int i = c.match(paramUri);
 /* 603 */       if (i == -1) {
-/* 604 */         if (SsDownloadManager.c) {
-/* 605 */           Log.v("SsDownloadManager", "querying unknown URI: " + paramUri);
+/* 604 */         if (SsAndroidDownloadManager.c) {
+/* 605 */           Log.v("SsAndroidDownloadManager", "querying unknown URI: " + paramUri);
 /*     */         }
 /* 607 */         throw new IllegalArgumentException("Unknown URI: " + paramUri);
 /*     */       }
@@ -646,7 +646,7 @@ import java.util.Map;
 /*     */       
 /* 618 */       b localb = a(paramUri, paramString1, paramArrayOfString2, i);
 /*     */       
-/* 620 */       if (SsDownloadManager.d) {
+/* 620 */       if (SsAndroidDownloadManager.d) {
 /* 621 */         a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, localSQLiteDatabase);
 /*     */       }
 /*     */       
@@ -655,13 +655,13 @@ import java.util.Map;
 /*     */       
 /* 627 */       if (localCursor != null) {
 /* 628 */         localCursor.setNotificationUri(this.b.getContentResolver(), paramUri);
-/* 629 */         if (SsDownloadManager.d) {
-/* 630 */           Log.v("SsDownloadManager", "created cursor " + localCursor + " on behalf of " + 
+/* 629 */         if (SsAndroidDownloadManager.d) {
+/* 630 */           Log.v("SsAndroidDownloadManager", "created cursor " + localCursor + " on behalf of " +
 /* 631 */             Binder.getCallingPid());
 /*     */         }
 /*     */       }
-/* 634 */       else if (SsDownloadManager.c) {
-/* 635 */         Log.v("SsDownloadManager", "query failed in downloads database");
+/* 634 */       else if (SsAndroidDownloadManager.c) {
+/* 635 */         Log.v("SsAndroidDownloadManager", "query failed in downloads database");
 /*     */       }
 /*     */       
 /*     */ 
@@ -712,7 +712,7 @@ import java.util.Map;
 /* 683 */     localStringBuilder.append("sort is ");
 /* 684 */     localStringBuilder.append(paramString2);
 /* 685 */     localStringBuilder.append(".");
-/* 686 */     Log.v("SsDownloadManager", localStringBuilder.toString());
+/* 686 */     Log.v("SsAndroidDownloadManager", localStringBuilder.toString());
 /*     */   }
 /*     */   
 /*     */   private String a(Uri paramUri) {
@@ -855,7 +855,7 @@ import java.util.Map;
 /* 811 */         break;
 /*     */       
 /*     */       default: 
-/* 814 */         Log.d("SsDownloadManager", "updating unknown/invalid URI: " + paramUri);
+/* 814 */         Log.d("SsAndroidDownloadManager", "updating unknown/invalid URI: " + paramUri);
 /* 815 */         throw new UnsupportedOperationException("Cannot update URI: " + paramUri);
 /*     */       }
 /*     */       
@@ -921,7 +921,7 @@ import java.util.Map;
 /* 877 */         break;
 /*     */       
 /*     */       default: 
-/* 880 */         Log.d("SsDownloadManager", "deleting unknown/invalid URI: " + paramUri);
+/* 880 */         Log.d("SsAndroidDownloadManager", "deleting unknown/invalid URI: " + paramUri);
 /* 881 */         throw new UnsupportedOperationException("Cannot delete URI: " + paramUri);
 /*     */       }
 /* 883 */       a(paramUri, j);

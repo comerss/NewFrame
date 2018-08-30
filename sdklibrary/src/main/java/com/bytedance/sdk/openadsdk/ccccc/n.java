@@ -170,7 +170,7 @@ String str;
 /* 174 */     if ((localObject == null) && (paramString3 != null)) {
 /* 175 */       localObject = a(paramString3);
 /* 176 */       if (localObject != null) {
-/* 178 */           Log.v("SsDownloadManager", "getting filename from content-disposition");
+/* 178 */           Log.v("SsAndroidDownloadManager", "getting filename from content-disposition");
 /* 180 */         i = ((String)localObject).lastIndexOf('/') + 1;
 /* 181 */         if (i > 0) {
 /* 182 */           localObject = ((String)localObject).substring(i);
@@ -184,7 +184,7 @@ String str;
 /* 190 */       if ((str != null) && 
 /* 191 */         (!str.endsWith("/")) && 
 /* 192 */         (str.indexOf('?') < 0)) {
-/* 194 */           Log.v("SsDownloadManager", "getting filename from content-location");
+/* 194 */           Log.v("SsAndroidDownloadManager", "getting filename from content-location");
 /* 196 */         j = str.lastIndexOf('/') + 1;
 /* 197 */         if (j > 0) {
 /* 198 */           localObject = str.substring(j);
@@ -201,7 +201,7 @@ String str;
 /* 209 */         (!str.endsWith("/")) && (str.indexOf('?') < 0)) {
 /* 210 */         j = str.lastIndexOf('/') + 1;
 /* 211 */         if (j > 0) {
-/* 213 */             Log.v("SsDownloadManager", "getting filename from uri");
+/* 213 */             Log.v("SsAndroidDownloadManager", "getting filename from uri");
 /* 215 */           localObject = str.substring(j);
 /*     */         }
 /*     */       }
@@ -209,7 +209,7 @@ String str;
 /*     */     
 /*     */ 
 /* 221 */     if (localObject == null) {
-/* 223 */         Log.v("SsDownloadManager", "using default filename");
+/* 223 */         Log.v("SsAndroidDownloadManager", "using default filename");
 /* 225 */       localObject = "downloadfile";
 /*     */     }
 /*     */     
@@ -225,23 +225,23 @@ String str;
 /* 237 */     if (paramString != null) {
 /* 238 */       str = MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString);
 /* 239 */       if (str != null) {
-/* 241 */           Log.v("SsDownloadManager", "adding extension from type");
+/* 241 */           Log.v("SsAndroidDownloadManager", "adding extension from type");
 /* 243 */         str = "." + str;
 /*     */       }
-/* 246 */         Log.v("SsDownloadManager", "couldn'MineHandler find extension for " + paramString);
+/* 246 */         Log.v("SsAndroidDownloadManager", "couldn'MineHandler find extension for " + paramString);
 /*     */     }
 /*     */     
 /* 250 */     if (str == null) {
 /* 251 */       if ((paramString != null) && (paramString.toLowerCase().startsWith("text/"))) {
 /* 252 */         if (paramString.equalsIgnoreCase("text/html")) {
-/* 254 */             Log.v("SsDownloadManager", "adding default html extension");
+/* 254 */             Log.v("SsAndroidDownloadManager", "adding default html extension");
 /* 256 */           str = ".html";
 /* 257 */         } else if (paramBoolean) {
-/* 259 */             Log.v("SsDownloadManager", "adding default text extension");
+/* 259 */             Log.v("SsAndroidDownloadManager", "adding default text extension");
 /* 261 */           str = ".txt";
 /*     */         }
 /* 263 */       } else if (paramBoolean) {
-/* 265 */           Log.v("SsDownloadManager", "adding default binary extension");
+/* 265 */           Log.v("SsAndroidDownloadManager", "adding default binary extension");
 /* 267 */         str = ".bin";
 /*     */       }
 /*     */     }
@@ -259,14 +259,14 @@ String str;
 /* 281 */       if ((str2 == null) || (!str2.equalsIgnoreCase(paramString1))) {
 /* 282 */         str1 = a(paramString1, false);
 /* 283 */         if (str1 != null) {
-/* 285 */             Log.v("SsDownloadManager", "substituting extension from type");
+/* 285 */             Log.v("SsAndroidDownloadManager", "substituting extension from type");
 /*     */         }
-/* 289 */           Log.v("SsDownloadManager", "couldn'MineHandler find extension for " + paramString1);
+/* 289 */           Log.v("SsAndroidDownloadManager", "couldn'MineHandler find extension for " + paramString1);
 /*     */       }
 /*     */     }
 /*     */     
 /* 294 */     if (str1 == null) {
-/* 296 */         Log.v("SsDownloadManager", "keeping extension");
+/* 296 */         Log.v("SsAndroidDownloadManager", "keeping extension");
 /* 298 */       str1 = paramString2.substring(paramInt2);
 /*     */     }
 /* 300 */     return str1;
@@ -301,7 +301,7 @@ String str;
 /* 329 */         if (!new File(str).exists()) {
 /* 330 */           return str;
 /*     */         }
-/* 333 */           Log.v("SsDownloadManager", "file with sequence number " + i + " exists");
+/* 333 */           Log.v("SsAndroidDownloadManager", "file with sequence number " + i + " exists");
 /* 335 */         i += a.nextInt(j) + 1;
 /*     */       }
 /*     */     }
@@ -322,7 +322,7 @@ String str;
 /* 352 */       arrayOfString1 = new String[] {paramFile.getCanonicalPath(), Environment.getDownloadCacheDirectory().getCanonicalPath(), Environment.getExternalStorageDirectory().getCanonicalPath() };
 /*     */     }
 /*     */     catch (IOException localIOException) {
-/* 355 */       Log.w("SsDownloadManager", "Failed to resolve canonical path: " + localIOException);
+/* 355 */       Log.w("SsAndroidDownloadManager", "Failed to resolve canonical path: " + localIOException);
 /* 356 */       return false;
 /*     */     }
 /*     */     

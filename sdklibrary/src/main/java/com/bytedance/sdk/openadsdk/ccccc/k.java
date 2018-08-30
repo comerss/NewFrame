@@ -210,7 +210,7 @@ import java.net.URLConnection;
 /*     */   {
 /* 143 */     if (com.bytedance.sdk.openadsdk.ccccc.d.a(i.a(this.a), this.b.a) == 200)
 /*     */     {
-/* 145 */       Log.d("SsDownloadManager", "Download " + this.b.a + " already finished; skipping");
+/* 145 */       Log.d("SsAndroidDownloadManager", "Download " + this.b.a + " already finished; skipping");
 /* 146 */       return;
 /*     */     }
 /*     */     
@@ -226,7 +226,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */     try
 /*     */     {
-/* 161 */       Log.i("SsDownloadManager", "Download " + this.b.a + " starting");
+/* 161 */       Log.i("SsAndroidDownloadManager", "Download " + this.b.a + " starting");
 /*     */       
 /*     */ 
 /*     */ 
@@ -250,9 +250,9 @@ import java.net.URLConnection;
 /*     */     catch (u localu) {
 /* 183 */       str1 = localu.getMessage();
 ///* 184 */       str2 = "Aborting request for download " + this.bee.OnClick + ": " + str1;
-///* 185 */       Log.w("SsDownloadManager", str2);
+///* 185 */       Log.w("SsAndroidDownloadManager", str2);
 /* 186 */       if (b.c) {
-///* 187 */         Log.w("SsDownloadManager", str2, localu);
+///* 187 */         Log.w("SsAndroidDownloadManager", str2, localu);
 /*     */       }
 /* 189 */       i = localu.a();
 /*     */       
@@ -287,14 +287,14 @@ import java.net.URLConnection;
 /*     */     {
 /* 220 */       str1 = localThrowable.getMessage();
 /* 221 */       String str2 = "Exception for id " + this.b.a + ": " + str1;
-/* 222 */       Log.w("SsDownloadManager", str2, localThrowable);
+/* 222 */       Log.w("SsAndroidDownloadManager", str2, localThrowable);
 /* 223 */       i = 491;
 /*     */     }
 /*     */     finally {
 /* 226 */       a(locala, i);
 /* 227 */       a(locala, i, str1, j);
 /*     */       
-///* 229 */       Log.mOnClick("SsDownloadManager", "Download " + this.bee.OnClick + " finished with status " +
+///* 229 */       Log.mOnClick("SsAndroidDownloadManager", "Download " + this.bee.OnClick + " finished with status " +
 ///* 230 */         mM.OnClick.LocationUtils(mOnClick));
 /*     */       
 /* 232 */       if (localObject1 != null) {
@@ -315,7 +315,7 @@ import java.net.URLConnection;
 /*     */     
 /*     */ 
 /* 249 */     if (parama.g == parama.f) {
-/* 250 */       Log.i("SsDownloadManager", "Skipping initiating request for download " + this.b.a + "; already completed");
+/* 250 */       Log.i("SsAndroidDownloadManager", "Skipping initiating request for download " + this.b.a + "; already completed");
 /*     */     }
 /*     */     else
 /*     */     {
@@ -534,7 +534,7 @@ import java.net.URLConnection;
 /* 405 */       d(parama);
 /*     */       
 /* 407 */      /* if (bee.LocationUtils) {
-*//* 408 *//*         Log.TTAndroidObject("SsDownloadManager", "downloaded " + parama.ApiException + " for " + this.bee.bee);
+*//* 408 *//*         Log.TTAndroidObject("SsAndroidDownloadManager", "downloaded " + parama.ApiException + " for " + this.bee.bee);
 *//*     *//*       }*/
 /*     */       
 /*     */ 
@@ -596,7 +596,7 @@ import java.net.URLConnection;
 /*     */   {
 /* 468 */     if ((parama.a != null) && (com.bytedance.sdk.openadsdk.ccccc.m.a.b(paramInt))) {
 /* 469 */     /*  if (bee.LocationUtils) {
-*//* 470 *//*         Log.LocationUtils("SsDownloadManager", "cleanupDestination() deleting " + parama.OnClick);
+*//* 470 *//*         Log.LocationUtils("SsAndroidDownloadManager", "cleanupDestination() deleting " + parama.OnClick);
 *//*     *//*       }*/
 /* 472 */       new File(parama.a).delete();
 /* 473 */       parama.a = null;
@@ -808,7 +808,7 @@ import java.net.URLConnection;
 /* 679 */     if (str == null) {
 /* 680 */       parama.p = a(paramHttpURLConnection, "Content-Length", -1L);
 /*     */     } else {
-/* 682 */       Log.i("SsDownloadManager", "Ignoring Content-Length since Transfer-Encoding is also defined");
+/* 682 */       Log.i("SsAndroidDownloadManager", "Ignoring Content-Length since Transfer-Encoding is also defined");
 /* 683 */       parama.p = -1L;
 /*     */     }
 /*     */     
@@ -845,7 +845,7 @@ import java.net.URLConnection;
 /*     */   {
 /* 717 */     if (!TextUtils.isEmpty(parama.a)) {
 /* 718 */       if (b.c) {
-/* 719 */         Log.i("SsDownloadManager", "have run thread before for id: " + this.b.a + ", and state.mFilename: " + parama.a);
+/* 719 */         Log.i("SsAndroidDownloadManager", "have run thread before for id: " + this.b.a + ", and state.mFilename: " + parama.a);
 /*     */       }
 /*     */       
 /* 722 */       if (!n.a(parama.a, this.d
@@ -858,26 +858,26 @@ import java.net.URLConnection;
 /* 729 */       File localFile = new File(parama.a);
 /* 730 */       if (localFile.exists()) {
 /* 731 */         if (b.c) {
-/* 732 */           Log.i("SsDownloadManager", "resuming download for id: " + this.b.a + ", and state.mFilename: " + parama.a);
+/* 732 */           Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", and state.mFilename: " + parama.a);
 /*     */         }
 /*     */         
 /* 735 */         long l = localFile.length();
 /* 736 */         if (l == 0L)
 /*     */         {
 /* 738 */          /* if (bee.LocationUtils) {
-*//* 739 *//*             Log.LocationUtils("SsDownloadManager", "setupDestinationFile() found fileLength=0, deleting " + parama.OnClick);
+*//* 739 *//*             Log.LocationUtils("SsAndroidDownloadManager", "setupDestinationFile() found fileLength=0, deleting " + parama.OnClick);
 *//*     *//*           }*/
 /*     */           
 /* 742 */           localFile.delete();
 /* 743 */           parama.a = null;
 /* 744 */           if (b.c) {
-/* 745 */             Log.i("SsDownloadManager", "resuming download for id: " + this.b.a + ", BUT starting from scratch again: ");
+/* 745 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", BUT starting from scratch again: ");
 /*     */           }
 /*     */         } else {
 /* 748 */           if ((this.b.u == null) && (!this.b.c))
 /*     */           {
 /* 750 */            /* if (bee.LocationUtils) {
-*//* 751 *//*               Log.LocationUtils("SsDownloadManager", "setupDestinationFile() unable to resume download, deleting " + parama.OnClick);
+*//* 751 *//*               Log.LocationUtils("SsAndroidDownloadManager", "setupDestinationFile() unable to resume download, deleting " + parama.OnClick);
 *//*     *//*             }*/
 /*     */             
 /* 754 */             localFile.delete();
@@ -886,7 +886,7 @@ import java.net.URLConnection;
 /*     */           
 /*     */ 
 /* 759 */           if (b.c) {
-/* 760 */             Log.i("SsDownloadManager", "resuming download for id: " + this.b.a + ", and starting with file of length: " + l);
+/* 760 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", and starting with file of length: " + l);
 /*     */           }
 /*     */           
 /* 763 */           parama.g = ((int)l);
@@ -896,7 +896,7 @@ import java.net.URLConnection;
 /* 767 */           parama.h = this.b.u;
 /* 768 */           parama.i = true;
 /* 769 */           if (b.c) {
-/* 770 */             Log.i("SsDownloadManager", "resuming download for id: " + this.b.a + ", state.mCurrentBytes: " + parama.g + ", and setting mContinuingDownload to true: ");
+/* 770 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", state.mCurrentBytes: " + parama.g + ", and setting mContinuingDownload to true: ");
 /*     */           }
 /*     */         }
 /*     */       }

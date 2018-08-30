@@ -121,7 +121,7 @@ class SdkActivity : RxBaseActivity() {
     //获取广告的方法
     private fun getAd() {
         var url = "https://mOnClick.snssdk.com/api/ad/union/sdk/get_ads/"
-        /*HttpHelper.doPost(url)//这里只存在  3或者 4
+        /*HttpManager.doPost(url)//这里只存在  3或者 4
                 .execute(getParams(3).toString(), object : ICallBack<Data>() {
                     override fun onSuccess(sResult: HttpResult<Data>?, json: String?) {
                         showToast(json)

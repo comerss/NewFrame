@@ -7,6 +7,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.LinearLayout
+import com.comers.baselibrary.imooc.http.HttpManager
+import com.comers.baselibrary.imooc.service.MoocRequest
+import com.comers.baselibrary.imooc.service.MoocResponse
+import com.comers.baselibrary.imooc.service.WorkStation
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.donews.frame.R
 import kotlinx.android.synthetic.main.activity_recycler.*
@@ -26,12 +30,45 @@ class RecyclerActivity : RxBaseActivity() {
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.adapter = adapter
         adapter.bindToRecyclerView(mRecyclerView)
-        var layout=LinearLayout(this)
+        var layout = LinearLayout(this)
         adapter.addHeaderView(layout)
         adapter.setNewData(dataList)
-        download("http://donewsdata.donews.com/DonewsHot_tuiguang_008.apk")
-        download("http://donewsdata.donews.com/DonewsHot_tuiguang_006.apk")
+//        download("http://donewsdata.donews.com/DonewsHot_tuiguang_008.apk")
+//        download("http://donewsdata.donews.com/DonewsHot_tuiguang_006.apk")
+//        doRequest()
+//        DownLoadHelper.instance().download(this,"http://a.de0.cc/qyiqau")
+        doHttp()
     }
+
+    private fun doHttp() {
+        /*HttpManager.INSTANCE.doGet("http://www.wanandroid.com/friend/json", object : MoocResponse<String>() {
+            override fun success(request: MoocRequest?, data: String?) {
+                Log.i("info", data)
+            }
+
+            override fun fail(errorCode: Int, errorMsg: String?) {
+                Log.i("info", errorMsg)
+            }
+
+        })*/
+        var map = mutableMapOf<String, Any?>()
+        map["username"] = "comers"
+        map["password"] = "123456"
+        map["repassword"]="123456"
+        HttpManager.INSTANCE.doPost("http://www.wanandroid.com/user/register",map, object : MoocResponse<String>() {
+            override fun success(request: MoocRequest?, data: String?) {
+                Log.i("info", data)
+            }
+
+            override fun fail(errorCode: Int, errorMsg: String?) {
+                Log.i("info", errorMsg)
+            }
+
+        })
+    }
+
+    private var sWorkStation = WorkStation()
+
 
     var mDistance = 0
     override fun initListener() {
@@ -80,33 +117,9 @@ class RecyclerActivity : RxBaseActivity() {
             }
         }
         adapter.notifyDataSetChanged()
+
     }
 
-    //下载apk
-    /*public void downloadAPK(String url, String name) {
-
-        Request request = new Request(Uri.parse(url));
-        //移动网络情况下是否允许漫游
-        request.setAllowedOverRoaming(false);
-
-        //在通知栏中显示，默认就是显示的
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-        request.setTitle("新版本Apk");
-        request.setDescription("Apk Downloading");
-        request.setVisibleInDownloadsUi(true);
-
-        //设置下载的路径
-        request.setDestinationInExternalPublicDir(Environment.getExternalStorageDirectory().getAbsolutePath() , name);
-
-        //获取DownloadManager
-        downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
-        //将下载请求加入下载队列，加入下载队列后会给该任务返回一个long型的id，通过该id可以取消任务，重启任务、获取下载的文件等等
-        downloadId = downloadManager.enqueue(request);
-
-        //注册广播接收者，监听下载状态
-        mContext.registerReceiver(receiver,
-                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-    }*/
     fun download(url: String) {
         var request = DownloadManager.Request(Uri.parse(url))
         //移动网络情况下是否允许漫游
@@ -118,9 +131,9 @@ class RecyclerActivity : RxBaseActivity() {
         request.setDescription("Apk Downloading")
         request.setVisibleInDownloadsUi(true)
         //获取DownloadManager
-      var  downloadManager =  getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        var downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         //将下载请求加入下载队列，加入下载队列后会给该任务返回一个long型的id，通过该id可以取消任务，重启任务、获取下载的文件等等
-      var  downloadId = downloadManager.enqueue(request)
+        var downloadId = downloadManager.enqueue(request)
     }
 
 }

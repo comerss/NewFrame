@@ -103,7 +103,7 @@
 /*     */   void b(int paramInt, String paramString, long paramLong) throws u {
 /* 103 */     f();
 /* 104 */     File localFile = null;
-/* 106 */       Log.i("SsDownloadManager", "in verifySpace, destination: " + paramInt + ", path: " + paramString + ", length: " + paramLong);
+/* 106 */       Log.i("SsAndroidDownloadManager", "in verifySpace, destination: " + paramInt + ", path: " + paramString + ", length: " + paramLong);
 /* 109 */     if (paramString == null) {
 /* 110 */       throw new IllegalArgumentException("path can'MineHandler be null");
 /*     */     }
@@ -165,7 +165,7 @@
 /*     */ 
 /*     */ 
 /* 169 */         if (paramFile.equals(this.b)) {
-/* 170 */           Log.w("SsDownloadManager", "System cache dir ('/cache') is running low on space.space available (in bytes): " + l);
+/* 170 */           Log.w("SsAndroidDownloadManager", "System cache dir ('/cache') is running low on space.space available (in bytes): " + l);
 /*     */         }
 /*     */         else {
 /* 173 */           throw new u(198, "space in the filesystem rooted at: " + paramFile + " is below 10% availability. stopping this download.");
@@ -179,7 +179,7 @@
 /* 181 */       l = a(this.c);
 /* 182 */       if (l < 10485760L)
 /*     */       {
-/* 184 */         Log.w("SsDownloadManager", "Downloads data dir: " + paramFile + " is running low on space. space available (in bytes): " + l);
+/* 184 */         Log.w("SsAndroidDownloadManager", "Downloads data dir: " + paramFile + " is running low on space. space available (in bytes): " + l);
 /*     */       }
 /*     */       
 /* 187 */       if (l < paramLong)
@@ -210,7 +210,7 @@
 /* 212 */     for (int j = 0; j < i; j++) {
 /* 213 */       l -= arrayOfFile[j].length();
 /*     */     }
-/* 216 */       Log.i("SsDownloadManager", "available space (in bytes) in downloads data dir: " + l);
+/* 216 */       Log.i("SsAndroidDownloadManager", "available space (in bytes) in downloads data dir: " + l);
 /* 218 */     return l;
 /*     */   }
 /*     */   
@@ -221,7 +221,7 @@
 /* 225 */     long l1 = localStatFs.getAvailableBlocks() - 4L;
 /*     */     
 /* 227 */     long l2 = localStatFs.getBlockSize() * l1;
-/* 229 */       Log.i("SsDownloadManager", "available space (in bytes) in filesystem rooted at: " + paramFile
+/* 229 */       Log.i("SsAndroidDownloadManager", "available space (in bytes) in filesystem rooted at: " + paramFile
 /* 230 */         .getPath() + " is: " + l2);
 /* 232 */     return l2;
 /*     */   }
@@ -230,7 +230,7 @@
 /*     */   {
 /* 237 */     switch (paramInt) {
 /*     */     case 0: 
-/* 239 */       File localFile = new File(this.a.getPath() + SsDownloadManager.a);
+/* 239 */       File localFile = new File(this.a.getPath() + SsAndroidDownloadManager.a);
 /* 240 */       if ((!localFile.isDirectory()) && (!localFile.mkdir()))
 /*     */       {
 /*     */ 
@@ -257,7 +257,7 @@
 /*     */ 
 /*     */   private long a(int paramInt, long paramLong)
 /*     */   {
-/* 267 */       Log.i("SsDownloadManager", "discardPurgeableFiles: destination = " + paramInt + ", targetBytes = " + paramLong);
+/* 267 */       Log.i("SsAndroidDownloadManager", "discardPurgeableFiles: destination = " + paramInt + ", targetBytes = " + paramLong);
 /*     */
 /* 270 */     String str1 = String.valueOf(paramInt);
 /* 271 */     String[] arrayOfString = { str1 };
@@ -280,7 +280,7 @@
 /* 288 */         if (!TextUtils.isEmpty(str2))
 /*     */         {
 /* 290 */           File localFile = new File(str2);
-/* 292 */             Log.d("SsDownloadManager", "purging " + localFile.getAbsolutePath() + " for " + localFile
+/* 292 */             Log.d("SsAndroidDownloadManager", "purging " + localFile.getAbsolutePath() + " for " + localFile
 /* 293 */               .length() + " bytes");
 /* 295 */           l1 += localFile.length();
 /* 296 */           localFile.delete();
@@ -312,7 +312,7 @@
 /*     */     }
 /*     */     
 /*     */ 
-/* 312 */     Log.i("SsDownloadManager", "Purged files, freed " + l1 + " for " + paramLong + " requested");
+/* 312 */     Log.i("SsAndroidDownloadManager", "Purged files, freed " + l1 + " for " + paramLong + " requested");
 /*     */     
 /*     */
 /* 315 */     return l1;
@@ -326,7 +326,7 @@
 /*     */ 
 /*     */   private void d()
 /*     */   {
-/* 327 */       Log.i("SsDownloadManager", "in removeSpuriousFiles");
+/* 327 */       Log.i("SsAndroidDownloadManager", "in removeSpuriousFiles");
 /*     */     try
 /*     */     {
 /* 331 */       ArrayList localArrayList = new ArrayList();
@@ -349,7 +349,7 @@
 /* 348 */           while (localCursor.moveToNext()) {
 /* 349 */             String str = localCursor.getString(0);
 /* 350 */             if (!TextUtils.isEmpty(str)) {
-/* 352 */                 Log.i("SsDownloadManager", "in removeSpuriousFiles, preserving file " + str);
+/* 352 */                 Log.i("SsAndroidDownloadManager", "in removeSpuriousFiles, preserving file " + str);
 /* 355 */               localArrayList.remove(new File(str));
 /*     */             }
 /*     */           }
@@ -374,7 +374,7 @@
 /*     */ 
 /*     */   private void e()
 /*     */   {
-/* 380 */       Log.i("SsDownloadManager", "in trimDatabase");
+/* 380 */       Log.i("SsAndroidDownloadManager", "in trimDatabase");
 /* 382 */     Cursor localCursor = null;
 /*     */     try {
 /* 384 */       localCursor = i.a(this.e).a(m.a.a, new String[] { "_id" }, "status >= '200'", null, "lastmod");
@@ -384,7 +384,7 @@
 /* 388 */       if (localCursor == null)
 /*     */       {
 /*     */ 
-/* 391 */         Log.e("SsDownloadManager", "null cursor in trimDatabase");
+/* 391 */         Log.e("SsAndroidDownloadManager", "null cursor in trimDatabase");
 /* 392 */         return;
 /*     */       }
 /* 394 */       if (localCursor.moveToFirst()) {
@@ -404,7 +404,7 @@
 /*     */     }
 /*     */     catch (SQLiteException localSQLiteException)
 /*     */     {
-/* 411 */       Log.w("SsDownloadManager", "trimDatabase failed with exception: " + localSQLiteException.getMessage());
+/* 411 */       Log.w("SsAndroidDownloadManager", "trimDatabase failed with exception: " + localSQLiteException.getMessage());
 /* 412 */       return;
 /*     */     } finally {
 /*     */       try {

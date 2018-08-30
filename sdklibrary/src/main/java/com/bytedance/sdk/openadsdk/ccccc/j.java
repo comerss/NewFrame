@@ -84,7 +84,7 @@
 /*     */ 
 /*     */   public void a(d paramd)
 /*     */   {
-///*  86 */     if (bee.cc) Log.TTAndroidObject("SsDownloadManager", "requestScan() for " + paramd.TTBannerAdImpl);
+///*  86 */     if (bee.cc) Log.TTAndroidObject("SsAndroidDownloadManager", "requestScan() for " + paramd.TTBannerAdImpl);
 /*  87 */     synchronized (this.c) {
 /*  88 */       a locala = new a(paramd.a, paramd.e, paramd.f);
 /*  89 */       this.d.put(locala.b, locala);
@@ -140,7 +140,7 @@
 /* 139 */       locala = (a)this.d.remove(str1);
 /*     */     }
 /* 141 */     if (locala == null) {
-/* 142 */       Log.w("SsDownloadManager", "Missing request for path " + str1);
+/* 142 */       Log.w("SsAndroidDownloadManager", "Missing request for path " + str1);
 /* 143 */       return;
 /*     */     }
 /*     */     

@@ -1086,7 +1086,7 @@ return null;
                             localHttpURLConnection.setInstanceFollowRedirects(false);
                             localHttpURLConnection.setConnectTimeout(20000);
                             localHttpURLConnection.setReadTimeout(20000);
-                            localHttpURLConnection.addRequestProperty("User-Agent", SsDownloadManager.b);
+                            localHttpURLConnection.addRequestProperty("User-Agent", SsAndroidDownloadManager.b);
                             localHttpURLConnection.setRequestProperty("Accept-Encoding", "identity");
                             localHttpURLConnection.addRequestProperty("If-None-Match", str);
                             int i = localHttpURLConnection.getResponseCode();

@@ -48,7 +48,7 @@ import java.io.File;
 /*     */   {
 /*  33 */     Intent localIntent = a(paramContext, paramLong, paramString);
 /*  34 */     if (localIntent == null) {
-/*  35 */       Log.w("SsDownloadManager", "No intent built for " + paramLong);
+/*  35 */       Log.w("SsAndroidDownloadManager", "No intent built for " + paramLong);
 /*  36 */       return false;
 /*     */     }
 /*     */     
@@ -57,7 +57,7 @@ import java.io.File;
 /*  41 */       paramContext.startActivity(localIntent);
 /*  42 */       return true;
 /*     */     } catch (Throwable localThrowable) {
-/*  44 */       Log.w("SsDownloadManager", "Failed to start " + localIntent + ": " + localThrowable); }
+/*  44 */       Log.w("SsAndroidDownloadManager", "Failed to start " + localIntent + ": " + localThrowable); }
 /*  45 */     return false;
 /*     */   }
 /*     */   
@@ -69,7 +69,7 @@ import java.io.File;
 /*     */   {
 /*  54 */     Intent localIntent = a(paramContext, paramLong, paramString);
 /*  55 */     if (localIntent == null) {
-/*  56 */       Log.w("SsDownloadManager", "No intent built for " + paramLong);
+/*  56 */       Log.w("SsAndroidDownloadManager", "No intent built for " + paramLong);
 /*  57 */       return false;
 /*     */     }
 /*  59 */     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
@@ -81,7 +81,7 @@ import java.io.File;
 /*  65 */       paramContext.startActivity(localIntent);
 /*  66 */       return true;
 /*     */     } catch (Throwable localThrowable) {
-/*  68 */       Log.w("SsDownloadManager", "Failed to start " + localIntent + ": " + localThrowable); }
+/*  68 */       Log.w("SsAndroidDownloadManager", "Failed to start " + localIntent + ": " + localThrowable); }
 /*  69 */     return false;
 /*     */   }
 /*     */   

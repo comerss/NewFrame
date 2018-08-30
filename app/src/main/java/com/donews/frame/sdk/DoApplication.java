@@ -5,8 +5,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.baidu.mobads.AdSettings;
-import com.baidu.mobads.AdView;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdManager;
 import com.bytedance.sdk.openadsdk.TTAdManagerFactory;
@@ -33,9 +31,9 @@ public class DoApplication extends GlobalApplication {
                 .setAllowLandingPageShowWhenScreenLock(true)
                 .setDirectDownloadNetworkType(TTAdConstant.NETWORK_STATE_WIFI, TTAdConstant.NETWORK_STATE_3G);
 //        BaiduManager.init(this);
-        AdView.setAppSid(this, "b792a33a");
-        AdSettings.setSupportHttps(true);
-        SophixManager.getInstance().queryAndLoadNewPatch();
+//        AdView.setAppSid(this, "b792a33a");
+//        AdSettings.setSupportHttps(true);
+//        SophixManager.getInstance().queryAndLoadNewPatch();
 
     }
 

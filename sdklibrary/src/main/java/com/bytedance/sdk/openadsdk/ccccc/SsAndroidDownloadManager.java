@@ -82,7 +82,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ public class SsDownloadManager
+/*     */ public class SsAndroidDownloadManager
 /*     */ {
 /*  87 */   public static final String a = "/" + Environment.DIRECTORY_DOWNLOADS;
 /*     */   
@@ -190,7 +190,7 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/* 193 */   public static final boolean c = Log.isLoggable("SsDownloadManager", 2);
+/* 193 */   public static final boolean c = Log.isLoggable("SsAndroidDownloadManager", 2);
 /*     */   
 /*     */ 
 /*     */ 

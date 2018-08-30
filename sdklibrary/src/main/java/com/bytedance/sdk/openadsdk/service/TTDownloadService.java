@@ -22,7 +22,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
-import com.bytedance.sdk.openadsdk.ccccc.SsDownloadManager;
+import com.bytedance.sdk.openadsdk.ccccc.SsAndroidDownloadManager;
 import com.bytedance.sdk.openadsdk.ccccc.d;
 import com.bytedance.sdk.openadsdk.ccccc.i;
 import com.bytedance.sdk.openadsdk.ccccc.j;
@@ -135,12 +135,12 @@ public class TTDownloadService extends Service {
                 while(var4.hasNext()) {
                     Map.Entry var8 = (Map.Entry)var4.next();
                     if (((Thread)var8.getKey()).getName().startsWith("pool")) {
-                        Log.d("SsDownloadManager", var8.getKey() + ": " + Arrays.toString((Object[])var8.getValue()));
+                        Log.d("SsAndroidDownloadManager", var8.getKey() + ": " + Arrays.toString((Object[])var8.getValue()));
                     }
                 }
 
                 TTDownloadService.this.e.b();
-                Log.w("SsDownloadManager", "Final update pass triggered, isActive=" + var3 + "; someone didn'MineHandler update correctly.");
+                Log.w("SsAndroidDownloadManager", "Final update pass triggered, isActive=" + var3 + "; someone didn'MineHandler update correctly.");
             }
 
             if (var3) {
@@ -198,8 +198,8 @@ public class TTDownloadService extends Service {
     @TargetApi(3)
     public void onCreate() {
         super.onCreate();
-        if (SsDownloadManager.d) {
-            Log.v("SsDownloadManager", "Service onCreate");
+        if (SsAndroidDownloadManager.d) {
+            Log.v("SsAndroidDownloadManager", "Service onCreate");
         }
 
         if (this.a == null) {
@@ -208,7 +208,7 @@ public class TTDownloadService extends Service {
 
         this.b = (AlarmManager)this.getSystemService("alarm");
         this.c = new v(this);
-        this.i = new HandlerThread("SsDownloadManager-UpdateThread");
+        this.i = new HandlerThread("SsAndroidDownloadManager-UpdateThread");
         this.i.start();
         this.j = new Handler(this.i.getLooper(), this.l);
         this.h = new j(this);
@@ -221,8 +221,8 @@ public class TTDownloadService extends Service {
     @TargetApi(5)
     public int onStartCommand(Intent var1, int var2, int var3) {
         int var4 = super.onStartCommand(var1, var2, var3);
-        if (SsDownloadManager.d) {
-            Log.v("SsDownloadManager", "Service onStart");
+        if (SsAndroidDownloadManager.d) {
+            Log.v("SsAndroidDownloadManager", "Service onStart");
         }
 
         this.k = var3;
@@ -254,8 +254,8 @@ public class TTDownloadService extends Service {
                 this.g.shutdown();
             }
 
-            if (SsDownloadManager.d) {
-                Log.v("SsDownloadManager", "Service onDestroy");
+            if (SsAndroidDownloadManager.d) {
+                Log.v("SsAndroidDownloadManager", "Service onDestroy");
             }
         } catch (Exception var2) {
             ;
@@ -343,8 +343,8 @@ public class TTDownloadService extends Service {
 
         this.e.a(this.f.values(), var1);
         if (var5 > 0L && var5 < 9223372036854775807L) {
-            if (SsDownloadManager.c) {
-                Log.v("SsDownloadManager", "scheduling start in " + var5 + "ms");
+            if (SsAndroidDownloadManager.c) {
+                Log.v("SsAndroidDownloadManager", "scheduling start in " + var5 + "ms");
             }
 
             Intent var30 = new Intent("android.ss.intent.action.DOWNLOAD_WAKEUP");
@@ -364,8 +364,8 @@ public class TTDownloadService extends Service {
     private d a(com.bytedance.sdk.openadsdk.ccccc.d.b var1, long var2) {
         d var4 = var1.a(this, this.a, this.c, this.e);
         this.f.put(var4.a, var4);
-        if (SsDownloadManager.d) {
-            Log.v("SsDownloadManager", "processing inserted download " + var4.a);
+        if (SsAndroidDownloadManager.d) {
+            Log.v("SsAndroidDownloadManager", "processing inserted download " + var4.a);
         }
 
         return var4;
@@ -373,8 +373,8 @@ public class TTDownloadService extends Service {
 
     private void a(com.bytedance.sdk.openadsdk.ccccc.d.b var1, d var2, long var3) {
         var1.a(var2);
-        if (SsDownloadManager.d) {
-            Log.v("SsDownloadManager", "processing updated download " + var2.a + ", status: " + var2.j);
+        if (SsAndroidDownloadManager.d) {
+            Log.v("SsAndroidDownloadManager", "processing updated download " + var2.a + ", status: " + var2.j);
         }
 
     }
@@ -386,8 +386,8 @@ public class TTDownloadService extends Service {
         }
 
         if (var3.g != 0 && var3.e != null) {
-            if (SsDownloadManager.d) {
-                Log.d("SsDownloadManager", "deleteDownloadLocked() deleting " + var3.e);
+            if (SsAndroidDownloadManager.d) {
+                Log.d("SsAndroidDownloadManager", "deleteDownloadLocked() deleting " + var3.e);
             }
 
             this.a(var3.e);
@@ -399,13 +399,13 @@ public class TTDownloadService extends Service {
 
     private void a(String var1) {
         if (!TextUtils.isEmpty(var1)) {
-            if (SsDownloadManager.d) {
-                Log.d("SsDownloadManager", "deleteFileIfExists() deleting " + var1);
+            if (SsAndroidDownloadManager.d) {
+                Log.d("SsAndroidDownloadManager", "deleteFileIfExists() deleting " + var1);
             }
 
             File var2 = new File(var1);
             if (var2.exists() && !var2.delete()) {
-                Log.w("SsDownloadManager", "file: '" + var1 + "' couldn'MineHandler be deleted");
+                Log.w("SsAndroidDownloadManager", "file: '" + var1 + "' couldn'MineHandler be deleted");
             }
         }
 
