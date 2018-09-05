@@ -12,6 +12,7 @@
 /*     */ import com.bytedance.sdk.openadsdk.core.ffff.SplashAdLoadManager;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
+import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 /*     */ import java.util.ArrayList;
 /*     */ import java.util.List;
 /*     */ 
@@ -145,8 +146,8 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeData;
 /*     */   }
 /*     */   
 /*     */   private void a(AdSlot paramAdSlot) {
-/* 147 */     com.bytedance.sdk.openadsdk.ggg.o.a(paramAdSlot.getImgAcceptedWidth() > 0, "必须设置图片素材尺寸");
-/* 148 */     com.bytedance.sdk.openadsdk.ggg.o.a(paramAdSlot.getImgAcceptedHeight() > 0, "必须设置图片素材尺寸");
+/* 147 */     ObjectHelper.a(paramAdSlot.getImgAcceptedWidth() > 0, "必须设置图片素材尺寸");
+/* 148 */     ObjectHelper.a(paramAdSlot.getImgAcceptedHeight() > 0, "必须设置图片素材尺寸");
 /*     */   }
 /*     */ }
 

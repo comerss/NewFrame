@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.bytedance.sdk.openadsdk.R;
-import com.bytedance.sdk.openadsdk.ggg.o;
+import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -63,12 +63,12 @@ import pl.droidsonroids.gif.GifImageView;
 /*    */   }
 /*    */   
 /*    */   public final void setOnClickListener(@Nullable View.OnClickListener paramOnClickListener) {
-/* 81 */     o.a("不允许在Splash广告中注册OnClickListener");
+/* 81 */     ObjectHelper.a("不允许在Splash广告中注册OnClickListener");
 /*    */   }
 /*    */   
 /*    */   public final void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
 /*    */   {
-/* 86 */     o.a("不允许在Splash广告中注册OnTouchListener");
+/* 86 */     ObjectHelper.a("不允许在Splash广告中注册OnTouchListener");
 /*    */   }
 /*    */   
 /*    */   final void setOnTouchListenerInternal(View.OnTouchListener paramOnTouchListener) {

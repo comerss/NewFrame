@@ -21,9 +21,9 @@ import com.bytedance.sdk.openadsdk.TTAdDislike;
 import com.bytedance.sdk.openadsdk.core.nibuguan.f;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
+import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 import com.bytedance.sdk.openadsdk.ggg.k;
-import com.bytedance.sdk.openadsdk.ggg.o;
 
 import java.util.List;
 
@@ -66,7 +66,7 @@ import java.util.List;
 /*     */   
 /*     */   public TTAdDislikeImpl(Context paramContext, NativeAdData paramh)
 /*     */   {
-/*  43 */     o.a(paramContext, "Dislike 初始化必须使用activity,请在TTAdManager.createAdNative(activity)中传入");
+/*  43 */     ObjectHelper.a(paramContext, "Dislike 初始化必须使用activity,请在TTAdManager.createAdNative(activity)中传入");
 /*  44 */     this.a = paramContext;
 /*  45 */     this.b = paramh;
 /*  46 */     a();

@@ -34,6 +34,17 @@ import java.util.UUID;
  * 描述：
  */
 public class DeadService extends Service {
+    NotificationBroadcastReceiver  mReceiver;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //注册广播
+        mReceiver = new NotificationBroadcastReceiver();
+        IntentFilter filter_click = new IntentFilter();
+        filter_click.addAction("click");
+        registerReceiver(mReceiver, filter_click);
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String url=intent.getStringExtra("url");
@@ -61,11 +72,8 @@ public class DeadService extends Service {
                 String filename = getFilePath(url);
                 String filePath = ConstantsPool.FILE_ROOT + File.separator + filename;
 
-                IntentFilter filter_click = new IntentFilter();
-                filter_click.addAction("click");
-                //注册广播
-                NotificationBroadcastReceiver  mReceiver = new NotificationBroadcastReceiver();
-                registerReceiver(mReceiver, filter_click);
+
+
                 Intent Intent_pre = new Intent("click");
                 Intent_pre.putExtra("path", filePath);
                 Intent_pre.putExtra("url", url);

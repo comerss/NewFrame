@@ -6,16 +6,16 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class o
+/*    */ public class ObjectHelper
 /*    */ {
-/*    */   public static void a(Object paramObject, String paramString)
+/*    */   public static void checkNull(Object paramObject, String paramString)
 /*    */   {
 /* 13 */     if (paramObject == null) {
 /* 14 */       b(paramString);
 /*    */     }
 /*    */   }
 /*    */   
-/*    */   public static void a(String paramString1, String paramString2) {
+/*    */   public static void checkIllegal(String paramString1, String paramString2) {
 /* 19 */     if (TextUtils.isEmpty(paramString1)) {
 /* 20 */       b(paramString2);
 /*    */     }
@@ -44,7 +44,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\o.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\ApiException\ObjectHelper.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

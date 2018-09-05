@@ -4,7 +4,7 @@
 /*     */ import android.support.annotation.Nullable;
 /*     */ import android.text.TextUtils;
 /*     */ import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.o;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 /*     */ import java.util.HashSet;
 /*     */ 
 /*     */ 
@@ -167,27 +167,27 @@
 /*     */   }
 /*     */   
 /*     */   private static void e(String paramString) {
-/* 170 */     o.a(paramString, "appid不能为空");
+/* 170 */     ObjectHelper.checkIllegal(paramString, "appid不能为空");
 /*     */   }
 /*     */   
 /*     */   private static void f(String paramString) {
-/* 174 */     o.a(paramString, "name不能为空");
+/* 174 */     ObjectHelper.checkIllegal(paramString, "name不能为空");
 /*     */   }
 /*     */   
 /*     */   private static void e(int paramInt) {
-/* 178 */     o.a(paramInt >= 0, "年龄不能为负数");
+/* 178 */     ObjectHelper.a(paramInt >= 0, "年龄不能为负数");
 /*     */   }
 /*     */   
 /*     */   private static void g(String paramString) {
 /* 182 */     if (!TextUtils.isEmpty(paramString)) {
-/* 183 */       o.a(paramString.length() <= 1000, "keyword超长, 最长为1000");
+/* 183 */       ObjectHelper.a(paramString.length() <= 1000, "keyword超长, 最长为1000");
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   private static void h(String paramString)
 /*     */   {
 /* 189 */     if (!TextUtils.isEmpty(paramString)) {
-/* 190 */       o.a(paramString.length() <= 1000, "data超长, 最长为1000");
+/* 190 */       ObjectHelper.a(paramString.length() <= 1000, "data超长, 最长为1000");
 /*     */     }
 /*     */   }
 /*     */ }

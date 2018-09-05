@@ -173,7 +173,7 @@ import java.util.List;
                 ", MyDownloadManager=" + l +
                 ", mDownLoadListener=" + m +
                 ", NetUtils='" + n + '\'' +
-                ", o='" + o + '\'' +
+                ", ObjectHelper='" + o + '\'' +
                 ", p=" + p +
                 ", q=" + q +
                 ", ToolUtils=" + r +

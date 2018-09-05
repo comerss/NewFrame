@@ -99,7 +99,7 @@ public class SplashManager extends View {
         this.g = paramList;
     }
 
-    public void a() {
+    public void noClick() {
         onClick(this.f, null);
         onClick(this.g, null);
     }

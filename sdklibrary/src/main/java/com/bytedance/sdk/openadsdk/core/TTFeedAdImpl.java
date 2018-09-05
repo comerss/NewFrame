@@ -19,14 +19,14 @@ import com.bytedance.sdk.openadsdk.ccccc.DownLoadListenerImpl;
 import com.bytedance.sdk.openadsdk.core.nibuguan.g;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.core.video.a.ADViewLayout;
-import com.bytedance.sdk.openadsdk.ggg.o;
+import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 class TTFeedAdImpl implements TTFeedAd {
-    private final FeedAdManager b;
+    private final FeedAdManager mAdManager;
     private final NativeAdData mAdData;
     protected Context mContext;
     private TTAdDislike mAdDislike;
@@ -35,13 +35,13 @@ class TTFeedAdImpl implements TTFeedAd {
 
     TTFeedAdImpl(@NonNull Context paramContext, @NonNull NativeAdData paramh) {
         /*  40 */
-        o.a(paramh, "materialMeta不能为null");
+        ObjectHelper.checkNull(paramh, "materialMeta不能为null");
         /*  41 */
         this.mAdData = paramh;
         /*  42 */
         this.mContext = paramContext;
         /*  43 */
-        this.b = new FeedAdManager(this.mContext, this, paramh);
+        this.mAdManager = new FeedAdManager(this.mContext, this, paramh);
         /*  44 */
         if (getImageMode() == 5) {
             /*  46 */
@@ -51,9 +51,9 @@ class TTFeedAdImpl implements TTFeedAd {
 
     public void registerViewForInteraction(@NonNull ViewGroup paramViewGroup, @NonNull View paramView, TTFeedAd.AdInteractionListener paramAdInteractionListener) {
         /*  52 */
-        o.a(paramViewGroup, "container不能为null");
+        ObjectHelper.checkNull(paramViewGroup, "container不能为null");
         /*  53 */
-        o.a(paramView, "clickView不能为null");
+        ObjectHelper.checkNull(paramView, "clickView不能为null");
 
         /*  55 */
         ArrayList localArrayList = new ArrayList(1);
@@ -65,21 +65,21 @@ class TTFeedAdImpl implements TTFeedAd {
 
     public void registerViewForInteraction(@NonNull ViewGroup paramViewGroup, @NonNull List<View> paramList1, @Nullable List<View> paramList2, TTFeedAd.AdInteractionListener paramAdInteractionListener) {
         /*  62 */
-        o.a(paramViewGroup, "container不能为null");
+        ObjectHelper.checkNull(paramViewGroup, "container不能为null");
         /*  63 */
-        o.a(paramList1, "clickView不能为null");
+        ObjectHelper.checkNull(paramList1, "clickView不能为null");
         /*  64 */
-        o.a(paramList1.size() > 0, "clickViews数量必须大于等于1");
+        ObjectHelper.a(paramList1.size() > 0, "clickViews数量必须大于等于1");
 
         /*  66 */
-        this.b.registerViewForInteraction(paramViewGroup, paramList1, paramList2, paramAdInteractionListener);
+        this.mAdManager.registerViewForInteraction(paramViewGroup, paramList1, paramList2, paramAdInteractionListener);
     }
 
     public void setDownloadListener(TTAppDownloadListener paramTTAppDownloadListener) {
         /*  71 */
-        o.a(paramTTAppDownloadListener, "downloadListener不能为null");
+        ObjectHelper.checkNull(paramTTAppDownloadListener, "downloadListener不能为null");
         /*  72 */
-        this.b.a(paramTTAppDownloadListener);
+        this.mAdManager.a(paramTTAppDownloadListener);
     }
 
 
@@ -177,9 +177,9 @@ class TTFeedAdImpl implements TTFeedAd {
 
     public DownloadStatusController getDownloadStatusController() {
         /* 152 */
-        if ((this.mStatusController == null) && (this.b != null)) {
+        if ((this.mStatusController == null) && (this.mAdManager != null)) {
             /* 153 */
-            final DownLoadListenerImpl localx = this.b.a();
+            final DownLoadListenerImpl localx = this.mAdManager.a();
             /* 154 */
             if (localx != null) {
                 /* 155 */
@@ -210,7 +210,7 @@ class TTFeedAdImpl implements TTFeedAd {
         /* 177 */
         if ((paramActivity != null) && ((paramActivity instanceof Activity))) {
             /* 178 */
-            this.b.a(paramActivity);
+            this.mAdManager.a(paramActivity);
         }
     }
 

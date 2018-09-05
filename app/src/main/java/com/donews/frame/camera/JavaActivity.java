@@ -6,17 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 
-import com.androidquery.callback.AjaxCallback;
 import com.comers.baselibrary.base.CrashHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPOutputStream;
 
-import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.MediaType;
@@ -37,9 +33,6 @@ public class JavaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         CrashHelper.getDefault().init(this);
         initData();
-        new AjaxCallback(){
-
-        };
     }
 
     private void initData() {
@@ -48,12 +41,6 @@ public class JavaActivity extends AppCompatActivity {
     }
 
     private void ex() {
-        Observable.timer(5, TimeUnit.SECONDS).subscribe(new Consumer<Long>() {
-            @Override
-            public void accept(Long aLong) throws Exception {
-                int a=100/0;
-            }
-        });
     }
 
     private void sendReport() {

@@ -107,7 +107,8 @@ import java.util.zip.GZIPInputStream;
 
 /**
  * The core class of ajax callback handler.
- *
+ *网络框架 的实现的地方， 也就是 HttpUrlConnection 实现的地方
+ * 是网络请求最根本实现的地方
  */
 public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	
