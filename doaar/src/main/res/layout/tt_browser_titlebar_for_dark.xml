@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="@color/tt_titlebar_background_dark">
+
+    <ImageView
+        android:id="@+id/titlebar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:src="@drawable/tt_leftbackicon_selector_for_dark" />
+
+    <ImageView
+        android:id="@+id/titlebar_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/titlebar_back"
+        android:clickable="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:src="@drawable/tt_titlebar_close_seletor_for_dark" />
+
+    <TextView
+        android:id="@+id/titlebar_title"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="85dp"
+        android:layout_toRightOf="@+id/titlebar_close"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:maxLines="1" />
+</RelativeLayout>

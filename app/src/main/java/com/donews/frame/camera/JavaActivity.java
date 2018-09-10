@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.zip.GZIPOutputStream;
 
+import io.reactivex.Single;
+import io.reactivex.functions.Consumer;
 import okhttp3.Authenticator;
 import okhttp3.Credentials;
 import okhttp3.MediaType;
@@ -41,6 +43,21 @@ public class JavaActivity extends AppCompatActivity {
     }
 
     private void ex() {
+        Single.just("999")
+                .subscribe(new Consumer<String>() {
+                               @Override
+                               public void accept(String s) throws Exception {
+
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+
+                            }
+                        }
+                );
+
     }
 
     private void sendReport() {

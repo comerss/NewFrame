@@ -7,8 +7,8 @@ import android.os.HandlerThread;
 import android.os.Message;
 
 import com.bytedance.sdk.openadsdk.core.AdNativeListener;
+import com.bytedance.sdk.openadsdk.ggg.ListUtils;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
-import com.bytedance.sdk.openadsdk.ggg.k;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -119,7 +119,7 @@ import java.util.List;
 /* 108 */       return;
 /*     */     }
 /* 110 */     List localList = this.a.a();
-/* 111 */     if (k.a(localList)) {
+/* 111 */     if (ListUtils.isEmpty(localList)) {
 /* 112 */       a("onHandleServerBusyRetryEvent, empty list start routine");
 /*     */       
 /*     */ 
@@ -203,7 +203,7 @@ import java.util.List;
 /* 192 */     this.g.removeMessages(3);
 /* 193 */     this.g.removeMessages(2);
 /*     */     
-/* 195 */     if (k.a(this.c)) {
+/* 195 */     if (ListUtils.isEmpty(this.c)) {
 /* 196 */       this.d = System.currentTimeMillis();
 /*     */       
 /* 198 */       j();

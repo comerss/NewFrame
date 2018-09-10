@@ -169,7 +169,7 @@ import java.util.List;
                 ", ImageHelper='" + h + '\'' +
                 ", mOnClick='" + i + '\'' +
                 ", mTTFeedAd='" + j + '\'' +
-                ", k=" + k +
+                ", ListUtils=" + k +
                 ", MyDownloadManager=" + l +
                 ", mDownLoadListener=" + m +
                 ", NetUtils='" + n + '\'' +

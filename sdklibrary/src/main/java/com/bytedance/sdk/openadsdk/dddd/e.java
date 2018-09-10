@@ -7,7 +7,7 @@ import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 
 import com.bytedance.sdk.openadsdk.core.SharedHepler;
-import com.bytedance.sdk.openadsdk.ggg.k;
+import com.bytedance.sdk.openadsdk.ggg.ListUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,7 +88,7 @@ import java.util.List;
 /*     */   
 /*     */   public void a(List<a> paramList)
 /*     */   {
-/*  76 */     if (k.a(paramList)) {
+/*  76 */     if (ListUtils.isEmpty(paramList)) {
 /*  77 */       return;
 /*     */     }
 /*  79 */     LinkedList localLinkedList = new LinkedList();
@@ -111,7 +111,7 @@ import java.util.List;
 /*     */   
 /*     */   public void a(List<a> paramList, int paramInt, long paramLong)
 /*     */   {
-/*  99 */     if (k.a(paramList)) {
+/*  99 */     if (ListUtils.isEmpty(paramList)) {
 /* 100 */       return;
 /*     */     }
 /* 102 */     this.a.a().a();

@@ -13,9 +13,9 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class k
+/*    */ public class ListUtils
 /*    */ {
-/*    */   public static boolean a(List<?> paramList)
+/*    */   public static boolean isEmpty(List<?> paramList)
 /*    */   {
 /* 20 */     return (paramList == null) || (paramList.size() == 0);
 /*    */   }
@@ -25,9 +25,9 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */   public static boolean b(List<?> paramList)
+/*    */   public static boolean checkEmpty(List<?> paramList)
 /*    */   {
-/* 30 */     return !a(paramList);
+/* 30 */     return !isEmpty(paramList);
 /*    */   }
 /*    */ }
 

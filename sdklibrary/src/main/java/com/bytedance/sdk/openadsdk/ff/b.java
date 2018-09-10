@@ -8,9 +8,9 @@
 /*     */ import com.androidquery.AQuery;
 /*     */ import com.androidquery.callback.AjaxCallback;
 /*     */ import com.androidquery.callback.AjaxStatus;
-/*     */ import com.bytedance.sdk.openadsdk.ggg.LogUtils;
+/*     */ import com.bytedance.sdk.openadsdk.ggg.ListUtils;
+import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.NetUtils;
-import com.bytedance.sdk.openadsdk.ggg.k;
 /*     */
 /*     */
 /*     */ import java.util.List;
@@ -44,7 +44,7 @@ import com.bytedance.sdk.openadsdk.ggg.k;
 /*     */   
 /*     */   public void a(String paramString, List<String> paramList, boolean paramBoolean)
 /*     */   {
-/*  45 */     if (k.b(paramList)) {
+/*  45 */     if (ListUtils.checkEmpty(paramList)) {
 /*  46 */       for (String str : paramList) {
 /*  47 */         c localc = new c(UUID.randomUUID().toString(), str, paramBoolean, 5);
 /*  48 */         a locala = new a(localc, paramString);
@@ -71,7 +71,7 @@ import com.bytedance.sdk.openadsdk.ggg.k;
 /*     */   }
 /*     */   
 /*     */   private void a(List<c> paramList, String paramString) {
-/*  72 */     if (k.b(paramList)) {
+/*  72 */     if (ListUtils.checkEmpty(paramList)) {
 /*  73 */       for (c localc : paramList) {
 /*  74 */         a locala = new a(localc, paramString);
 /*  75 */         locala.executeOnExecutor(this.c, new Void[0]);

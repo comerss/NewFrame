@@ -4,7 +4,7 @@ package com.comers.baselibrary.origin.service;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.comers.baselibrary.origin.service.convert.Convert;
+import com.donews.sdk.origin.service.convert.Convert;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;

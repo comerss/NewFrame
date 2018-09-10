@@ -8,6 +8,7 @@ import com.donews.sdk.bean.AdParams
 import com.donews.sdk.interfaces.AdvertiseSplash
 import com.donews.sdk.interfaces.InterfaceManager
 import com.donews.sdk.manager.AdvertiseManager
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -21,8 +22,11 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun initListener() {
+        Observable.just("000").doOnNext {
 
+        }.subscribe {
 
+        }
     }
 
     override fun initData() {

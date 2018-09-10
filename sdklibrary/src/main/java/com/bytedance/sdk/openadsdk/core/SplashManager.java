@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.bytedance.sdk.openadsdk.core.a.AdClickListener;
 import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
-import com.bytedance.sdk.openadsdk.ggg.k;
+import com.bytedance.sdk.openadsdk.ggg.ListUtils;
 
 import java.util.List;
 
@@ -64,14 +64,14 @@ public class SplashManager extends View {
         this.splshView = paramView;
         setLayoutParams(new ViewGroup.LayoutParams(0, 0));
     }
-
+    @Override
     public void onWindowFocusChanged(boolean paramBoolean) {
         super.onWindowFocusChanged(paramBoolean);
         if (this.mSplashListener != null) {
             this.mSplashListener.onWindowFocusChanged(paramBoolean);
         }
     }
-
+    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         b();
@@ -80,7 +80,7 @@ public class SplashManager extends View {
             this.mSplashListener.onAttachedToWindow();
         }
     }
-
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         c();
@@ -105,7 +105,7 @@ public class SplashManager extends View {
     }
 
     public void onClick(List<View> paramList, AdClickListener paramd) {
-        if (k.b(paramList)) {
+        if (ListUtils.checkEmpty(paramList)) {
             for (View localView : paramList) {
                 localView.setOnClickListener(paramd);
                 localView.setOnTouchListener(paramd);

@@ -23,7 +23,7 @@ import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 import com.bytedance.sdk.openadsdk.ggg.ViewWather;
-import com.bytedance.sdk.openadsdk.ggg.k;
+import com.bytedance.sdk.openadsdk.ggg.ListUtils;
 
 import java.util.List;
 
@@ -141,7 +141,7 @@ import java.util.List;
 /* 114 */     this.b = paramh;
 /* 115 */     this.d.a();
 /* 116 */     List localList = this.b.q();
-/* 117 */     if (!k.a(localList)) {
+/* 117 */     if (!ListUtils.isEmpty(localList)) {
 /* 118 */       for (int i = 0; i < localList.size(); i++) {
 /* 119 */         this.d.a((f)localList.get(i));
 /*     */       }

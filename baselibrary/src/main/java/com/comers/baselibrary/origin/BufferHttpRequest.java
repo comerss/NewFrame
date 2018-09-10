@@ -5,7 +5,6 @@ import com.comers.baselibrary.origin.http.HttpHeader;
 import com.comers.baselibrary.origin.http.HttpResponse;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
 /**
@@ -20,10 +19,10 @@ public abstract class BufferHttpRequest extends AbstractHttpRequest {
         return mByteArray;
     }
 
-    protected HttpResponse executeInternal(HttpHeader header) throws IOException {
+    protected HttpResponse executeInternal(HttpHeader header) throws Exception {
         byte[] data = mByteArray.toByteArray();
         return executeInternal(header, data);
     }
 
-    protected abstract HttpResponse executeInternal(HttpHeader header, byte[] data) throws IOException;
+    protected abstract HttpResponse executeInternal(HttpHeader header, byte[] data) throws Exception;
 }

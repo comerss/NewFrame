@@ -64,11 +64,11 @@ import android.content.Context;
 /*     */     }
 /*     */     catch (Throwable localThrowable) {}
 /*     */     
-/*  65 */     if (k.a(localList)) {
+/*  65 */     if (ListUtils.isEmpty(localList)) {
 /*  66 */       return null;
 /*     */     }
 /*  68 */     ArrayList localArrayList = new ArrayList();
-/*  69 */     if (k.b(localList)) {
+/*  69 */     if (ListUtils.checkEmpty(localList)) {
 /*  70 */       for (PackageInfo localPackageInfo : localList) {
 /*  71 */         if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
 /*     */         {

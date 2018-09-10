@@ -1,6 +1,5 @@
 package com.comers.baselibrary.origin.http;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
 
@@ -16,6 +15,6 @@ public interface HttpRequest extends Header {
 
     OutputStream getBody();
 
-    HttpResponse execute() throws IOException;
+    HttpResponse execute() throws Exception;
 
 }

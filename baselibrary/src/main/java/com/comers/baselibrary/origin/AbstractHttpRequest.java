@@ -5,7 +5,6 @@ import com.comers.baselibrary.origin.http.HttpHeader;
 import com.comers.baselibrary.origin.http.HttpRequest;
 import com.comers.baselibrary.origin.http.HttpResponse;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.zip.ZipOutputStream;
 
@@ -54,7 +53,7 @@ public abstract class AbstractHttpRequest implements HttpRequest {
     }
 
     @Override
-    public HttpResponse execute() throws IOException {
+    public HttpResponse execute() throws Exception {
         if (mZip != null) {
             mZip.close();
         }
@@ -63,7 +62,7 @@ public abstract class AbstractHttpRequest implements HttpRequest {
         return response;
     }
 
-    protected abstract HttpResponse executeInternal(HttpHeader mHeader) throws IOException;
+    protected abstract HttpResponse executeInternal(HttpHeader mHeader) throws Exception;
 
     protected abstract OutputStream getBodyOutputStream();
 }

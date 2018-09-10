@@ -1,0 +1,550 @@
+package com.donews.sdk.utils;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.donews.sdk.interfaces.DownLoadListener;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+/**
+ * Created by Sun on 2016/6/12.
+ */
+public class DownLoadService extends Service {
+    public static final String TAG =  "UpdateService";
+    public static boolean DEBUG = false;
+
+    //下载大小通知频率
+    public static final int UPDATE_NUMBER_SIZE = 1;
+    public static final int DEFAULT_RES_ID = -1;
+
+    //params
+    private static final String URL = "downloadUrl";
+    private static final String ICO_RES_ID = "icoResId";
+    private static final String ICO_SMALL_RES_ID = "icoSmallResId";
+    private static final String UPDATE_PROGRESS = "updateProgress";
+    private static final String STORE_DIR = "storeDir";
+    private static final String DOWNLOAD_NOTIFICATION_FLAG = "downloadNotificationFlag";
+    private static final String DOWNLOAD_SUCCESS_NOTIFICATION_FLAG = "downloadSuccessNotificationFlag";
+    private static final String DOWNLOAD_ERROR_NOTIFICATION_FLAG = "downloadErrorNotificationFlag";
+
+
+    private String downloadUrl;
+    private int icoResId;             //default app ico
+    private int icoSmallResId;
+    private int updateProgress;   //update notification progress when it add number
+    private String storeDir;          //default sdcard/Android/package/update
+    private int downloadNotificationFlag;
+    private int downloadSuccessNotificationFlag;
+    private int downloadErrorNotificationFlag;
+
+
+    private boolean startDownload;//开始下载
+    private int lastProgressNumber;
+    private Notification.Builder builder;
+    private NotificationManager manager;
+    private int notifyId;
+    private String appName;
+    private static Handler mHandler= new Handler(Looper.getMainLooper());
+    /**
+     * whether debug
+     */
+    public static void debug(){
+        DEBUG = true;
+    }
+
+    private static Intent installIntent(String path){
+        Uri uri = Uri.fromFile(new File(path));
+        Intent installIntent = new Intent(Intent.ACTION_VIEW);
+        installIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        installIntent.setDataAndType(uri, "application/vnd.android.package-archive");
+        return installIntent;
+    }
+    private static Intent webLauncher(String downloadUrl){
+        Uri download = Uri.parse(downloadUrl);
+        Intent intent = new Intent(Intent.ACTION_VIEW, download);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
+
+    private static String getSaveFileName(String downloadUrl) {
+        if (downloadUrl == null || TextUtils.isEmpty(downloadUrl)) {
+            return "noName.apk";
+        }
+        return downloadUrl.substring(downloadUrl.lastIndexOf("/"));
+    }
+
+    private static File getDownloadDir(DownLoadService service){
+        File downloadDir = null;
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+            if (service.storeDir != null){
+                downloadDir = new File(Environment.getExternalStorageDirectory(), service.storeDir);
+            }else {
+                downloadDir = new File(service.getExternalCacheDir(), "update");
+            }
+        } else {
+            downloadDir = new File(service.getCacheDir(), "update");
+        }
+        if (!downloadDir.exists()) {
+            downloadDir.mkdirs();
+        }
+        return downloadDir;
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        appName = getApplicationName();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (!startDownload && intent != null){
+            startDownload = true;
+            downloadUrl = intent.getStringExtra(URL);
+            icoResId = intent.getIntExtra(ICO_RES_ID, DEFAULT_RES_ID);
+            icoSmallResId = intent.getIntExtra(ICO_SMALL_RES_ID, DEFAULT_RES_ID);
+            storeDir = intent.getStringExtra(STORE_DIR);
+            updateProgress = intent.getIntExtra(UPDATE_PROGRESS, UPDATE_NUMBER_SIZE);
+            downloadNotificationFlag = intent.getIntExtra(DOWNLOAD_NOTIFICATION_FLAG, 0);
+            downloadErrorNotificationFlag = intent.getIntExtra(DOWNLOAD_ERROR_NOTIFICATION_FLAG, 0);
+            downloadSuccessNotificationFlag = intent.getIntExtra(DOWNLOAD_SUCCESS_NOTIFICATION_FLAG, 0);
+
+
+            if (DEBUG){
+                Log.d(TAG, "downloadUrl: " + downloadUrl);
+                Log.d(TAG, "icoResId: " + icoResId);
+                Log.d(TAG, "icoSmallResId: " + icoSmallResId);
+                Log.d(TAG, "storeDir: " + storeDir);
+                Log.d(TAG, "updateProgress: " + updateProgress);
+                Log.d(TAG, "downloadNotificationFlag: " + downloadNotificationFlag);
+                Log.d(TAG, "downloadErrorNotificationFlag: " + downloadErrorNotificationFlag);
+                Log.d(TAG, "downloadSuccessNotificationFlag: " + downloadSuccessNotificationFlag);
+            }
+
+            notifyId = startId;
+            buildNotification();
+            new DownloadApk(this).execute(downloadUrl);
+        }
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    public String getApplicationName() {
+        PackageManager packageManager = null;
+        ApplicationInfo applicationInfo = null;
+        try {
+            packageManager = getApplicationContext().getPackageManager();
+            applicationInfo = packageManager.getApplicationInfo(getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            applicationInfo = null;
+        }
+        String applicationName =
+                (String) packageManager.getApplicationLabel(applicationInfo);
+        return applicationName;
+    }
+
+    private void buildNotification(){
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        builder = new Notification.Builder(this);
+        builder.setContentTitle("准备下载")
+                .setWhen(System.currentTimeMillis())
+                .setProgress(100, 1, false)
+                .setSmallIcon(icoSmallResId)
+                .setLargeIcon(BitmapFactory.decodeResource(
+                        getResources(), icoResId))
+                .setDefaults(downloadNotificationFlag);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            manager.notify(notifyId, builder.build());
+        }else{
+            manager.notify(notifyId, builder.getNotification());
+        }
+    }
+
+    private void start(){
+        builder.setContentTitle(appName);
+        builder.setContentText("准备下载");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            manager.notify(notifyId, builder.build());
+        }else{
+            manager.notify(notifyId, builder.getNotification());
+        }
+    }
+
+    /**
+     *
+     * @param progress download percent , max 100
+     */
+    private void update(int progress){
+        if (progress - lastProgressNumber > updateProgress){
+            lastProgressNumber = progress;
+            builder.setProgress(100, progress, false);
+            builder.setContentText("正在下载"+ progress+ "%");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                manager.notify(notifyId, builder.build());
+            }else{
+                manager.notify(notifyId, builder.getNotification());
+            }
+            if(mLoadListener!=null)
+                mLoadListener.onDownloadFinished(progress,"","");
+        }
+    }
+
+    private void success(String path) {
+        builder.setProgress(0, 0, false);
+        builder.setContentText("下载成功(点击安装)");
+        if(mLoadListener!=null)
+            mLoadListener.onDownloadFinished(10,"","");
+        Intent i = installIntent(path);
+        PendingIntent intent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(intent);
+        builder.setDefaults(downloadSuccessNotificationFlag);
+        Notification n = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            n = builder.build();
+        }else{
+            n=builder.getNotification();
+        }
+        n.contentIntent = intent;
+        manager.notify(notifyId, n);
+        startActivity(i);
+        if(mLoadListener!=null)
+            mLoadListener.onInstalled("","");
+        stopSelf();
+    }
+
+    private void error(){
+        if(mLoadListener!=null)
+            mLoadListener.onDownloadFailed(10,2,"","");
+        Intent i = webLauncher(downloadUrl);
+        PendingIntent intent = PendingIntent.getActivity(this, 0, i,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentText("下载失败(点击浏览器下载)");
+        builder.setContentIntent(intent);
+        builder.setProgress(0, 0, false);
+        builder.setDefaults(downloadErrorNotificationFlag);
+        Notification n = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            n = builder.build();
+        }else{
+            n=builder.getNotification();
+        }
+        n.contentIntent = intent;
+        manager.notify(notifyId, n);
+        stopSelf();
+    }
+
+    private static class DownloadApk extends AsyncTask<String, Integer, String> {
+
+        private WeakReference<DownLoadService> updateServiceWeakReference;
+
+        public DownloadApk(DownLoadService service){
+            updateServiceWeakReference = new WeakReference<>(service);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            DownLoadService service = updateServiceWeakReference.get();
+            if (service != null){
+                service.start();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            final String downloadUrl = params[0];
+
+            final File file = new File(DownLoadService.getDownloadDir(updateServiceWeakReference.get()),
+                    DownLoadService.getSaveFileName(downloadUrl));
+            if (DEBUG){
+                Log.d(TAG, "download url is " + downloadUrl);
+                Log.d(TAG, "download apk cache at " + file.getAbsolutePath());
+            }
+            File dir = file.getParentFile();
+            if (!dir.exists()){
+                dir.mkdirs();
+            }
+
+            HttpURLConnection httpConnection = null;
+            InputStream is = null;
+            FileOutputStream fos = null;
+            int updateTotalSize = 0;
+            java.net.URL url;
+            try {
+                url = new URL(downloadUrl);
+                httpConnection = (HttpURLConnection) url.openConnection();
+                httpConnection.setConnectTimeout(20000);
+                httpConnection.setReadTimeout(20000);
+
+                if (DEBUG){
+                    Log.d(TAG, "download status code: " + httpConnection.getResponseCode());
+                }
+
+                if (httpConnection.getResponseCode() != 200) {
+                    return null;
+                }
+
+                updateTotalSize = httpConnection.getContentLength();
+
+                if (file.exists()) {
+                    if (updateTotalSize == file.length()) {
+                        // 下载完成
+                        final int finalUpdateTotalSize = updateTotalSize;
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(mLoadListener!=null)
+                                    mLoadListener.onDownloadFinished(finalUpdateTotalSize,"","");
+                            }
+                        });
+                        return file.getAbsolutePath();
+                    } else {
+                        file.delete();
+                    }
+                }
+                file.createNewFile();
+                is = httpConnection.getInputStream();
+                fos = new FileOutputStream(file, false);
+                byte buffer[] = new byte[4096];
+
+                int readSize = 0;
+                int currentSize = 0;
+
+                while ((readSize = is.read(buffer)) > 0) {
+                    fos.write(buffer, 0, readSize);
+                    currentSize += readSize;
+                    publishProgress((currentSize * 100 / updateTotalSize));
+                }
+                // download success
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                if (httpConnection != null) {
+                    httpConnection.disconnect();
+                }
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return file.getAbsolutePath();
+        }
+
+        @Override
+        protected void onProgressUpdate(final Integer... values) {
+            super.onProgressUpdate(values);
+            if (DEBUG){
+                Log.d(TAG, "current progress is " + values[0]);
+            }
+            final DownLoadService service = updateServiceWeakReference.get();
+            if (service != null){
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.update(values[0]);
+                    }
+                });
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            DownLoadService service = updateServiceWeakReference.get();
+            if (service != null){
+                if (s != null){
+                    service.success(s);
+                }else {
+                    service.error();
+                }
+            }
+        }
+    }
+
+
+    /**
+     * setText builder class helper use UpdateService
+     */
+    public static class Builder{
+
+        private String downloadUrl;
+        private int icoResId = DEFAULT_RES_ID;             //default app ico
+        private int icoSmallResId = DEFAULT_RES_ID;
+        private int updateProgress = UPDATE_NUMBER_SIZE;   //update notification progress when it add number
+        private String storeDir;          //default sdcard/Android/package/update
+        private int downloadNotificationFlag;
+        private int downloadSuccessNotificationFlag;
+        private int downloadErrorNotificationFlag;
+
+        protected Builder(String downloadUrl){
+            this.downloadUrl = downloadUrl;
+        }
+
+        public static Builder create(String downloadUrl){
+            if (downloadUrl == null) {
+                throw new NullPointerException("downloadUrl == null");
+            }
+            return new Builder(downloadUrl);
+        }
+
+        public String getDownloadUrl() {
+            return downloadUrl;
+        }
+
+        public int getIcoResId() {
+            return icoResId;
+        }
+
+        public Builder setIcoResId(int icoResId) {
+            this.icoResId = icoResId;
+            return this;
+        }
+
+        public int getIcoSmallResId() {
+            return icoSmallResId;
+        }
+
+        public Builder setIcoSmallResId(int icoSmallResId) {
+            this.icoSmallResId = icoSmallResId;
+            return this;
+        }
+
+        public int getUpdateProgress() {
+            return updateProgress;
+        }
+
+        public Builder setUpdateProgress(int updateProgress) {
+            if (updateProgress < 1){
+                throw new IllegalArgumentException("updateProgress < 1");
+            }
+            this.updateProgress = updateProgress;
+            return this;
+        }
+
+        public String getStoreDir() {
+            return storeDir;
+        }
+
+        public Builder setStoreDir(String storeDir) {
+            this.storeDir = storeDir;
+            return this;
+        }
+
+        public int getDownloadNotificationFlag() {
+            return downloadNotificationFlag;
+        }
+
+        public Builder setDownloadNotificationFlag(int downloadNotificationFlag) {
+            this.downloadNotificationFlag = downloadNotificationFlag;
+            return this;
+        }
+
+        public int getDownloadSuccessNotificationFlag() {
+            return downloadSuccessNotificationFlag;
+        }
+
+        public Builder setDownloadSuccessNotificationFlag(int downloadSuccessNotificationFlag) {
+            this.downloadSuccessNotificationFlag = downloadSuccessNotificationFlag;
+            return this;
+        }
+
+        public int getDownloadErrorNotificationFlag() {
+            return downloadErrorNotificationFlag;
+        }
+
+        public Builder setDownloadErrorNotificationFlag(int downloadErrorNotificationFlag) {
+            this.downloadErrorNotificationFlag = downloadErrorNotificationFlag;
+            return this;
+        }
+
+        public Builder build(Context context){
+            if (context == null){
+                throw new NullPointerException("context == null");
+            }
+            Intent intent = new Intent();
+            intent.setClass(context, DownLoadService.class);
+            intent.putExtra(URL, downloadUrl);
+
+            if (icoResId == DEFAULT_RES_ID){
+                icoResId = getIcon(context);
+            }
+
+            if (icoSmallResId == DEFAULT_RES_ID){
+                icoSmallResId = icoResId;
+            }
+            intent.putExtra(ICO_RES_ID, icoResId);
+            intent.putExtra(STORE_DIR, storeDir);
+            intent.putExtra(ICO_SMALL_RES_ID, icoSmallResId);
+            intent.putExtra(UPDATE_PROGRESS, updateProgress);
+            intent.putExtra(DOWNLOAD_NOTIFICATION_FLAG, downloadNotificationFlag);
+            intent.putExtra(DOWNLOAD_SUCCESS_NOTIFICATION_FLAG, downloadSuccessNotificationFlag);
+            intent.putExtra(DOWNLOAD_ERROR_NOTIFICATION_FLAG, downloadErrorNotificationFlag);
+            context.startService(intent);
+
+            return this;
+        }
+
+        private int getIcon(Context context){
+
+            final PackageManager packageManager = context.getPackageManager();
+            ApplicationInfo appInfo = null;
+            try {
+                appInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (appInfo != null){
+                return appInfo.icon;
+            }
+            return 0;
+        }
+    }
+    private static DownLoadListener mLoadListener;
+    public static void setDownloadListener(DownLoadListener downloadListener){
+        mLoadListener=downloadListener;
+    }
+}
