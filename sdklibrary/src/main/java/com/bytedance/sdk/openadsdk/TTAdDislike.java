@@ -1,16 +1,16 @@
 package com.bytedance.sdk.openadsdk;
 
-public abstract interface TTAdDislike
+public  interface TTAdDislike
 {
-  public abstract void showDislikeDialog();
+    void showDislikeDialog();
   
-  public abstract void setDislikeInteractionCallback(DislikeInteractionCallback paramDislikeInteractionCallback);
+    void setDislikeInteractionCallback(DislikeInteractionCallback paramDislikeInteractionCallback);
   
-  public static abstract interface DislikeInteractionCallback
+  interface DislikeInteractionCallback
   {
-    public abstract void onSelected(int paramInt, String paramString);
+      void onSelected(int paramInt, String paramString);
     
-    public abstract void onCancel();
+      void onCancel();
   }
 }
 

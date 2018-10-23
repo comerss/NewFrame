@@ -149,7 +149,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */     
 /*     */ 
 /* 126 */     AdClickListerReal adClickListerReal = new AdClickListerReal(this.mContext, this.d, "splash_ad", 4);
-/* 127 */     adClickListerReal.a(this.mSplashLayout);
+/* 127 */     adClickListerReal.setView(this.mSplashLayout);
 /* 128 */     adClickListerReal.b(this.mSplashLayout.getDislikeView());
 /* 129 */     adClickListerReal.setDownLoadListener(this.mLoadListener);
 /* 130 */     adClickListerReal.setOnClickLister(new AdClickListenerImpl.OnClick()

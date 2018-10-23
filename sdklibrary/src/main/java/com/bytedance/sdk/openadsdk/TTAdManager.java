@@ -2,39 +2,39 @@ package com.bytedance.sdk.openadsdk;
 
 import android.content.Context;
 
-public abstract interface TTAdManager
+public  interface TTAdManager
 {
-  public abstract TTAdManager setAppId(String paramString);
+    TTAdManager setAppId(String paramString);
   
-  public abstract TTAdManager setName(String paramString);
+    TTAdManager setName(String paramString);
   
-  public abstract TTAdManager setPaid(boolean paramBoolean);
+    TTAdManager setPaid(boolean paramBoolean);
   
-  public abstract TTAdManager setGender(int paramInt);
+    TTAdManager setGender(int paramInt);
   
-  public abstract TTAdManager setAge(int paramInt);
+    TTAdManager setAge(int paramInt);
   
-  public abstract TTAdManager setKeywords(String paramString);
+    TTAdManager setKeywords(String paramString);
   
-  public abstract TTAdManager setData(String paramString);
+    TTAdManager setData(String paramString);
   
-  public abstract TTAdManager setTitleBarTheme(int paramInt);
+    TTAdManager setTitleBarTheme(int paramInt);
   
-  public abstract TTAdManager setAllowShowNotifiFromSDK(boolean paramBoolean);
+    TTAdManager setAllowShowNotifiFromSDK(boolean paramBoolean);
   
-  public abstract TTAdManager openDebugMode();
+    TTAdManager openDebugMode();
   
-  public abstract TTAdManager setAllowLandingPageShowWhenScreenLock(boolean paramBoolean);
+    TTAdManager setAllowLandingPageShowWhenScreenLock(boolean paramBoolean);
   
-  public abstract TTAdManager setGlobalAppDownloadListener(TTGlobalAppDownloadListener paramTTGlobalAppDownloadListener);
+    TTAdManager setGlobalAppDownloadListener(TTGlobalAppDownloadListener paramTTGlobalAppDownloadListener);
   
-  public abstract TTGlobalAppDownloadController getGlobalAppDownloadController(Context paramContext);
+    TTGlobalAppDownloadController getGlobalAppDownloadController(Context paramContext);
   
-  public abstract TTAdManager setDirectDownloadNetworkType(int... paramVarArgs);
+    TTAdManager setDirectDownloadNetworkType(int... paramVarArgs);
   
-  public abstract TTAdNative createAdNative(Context paramContext);
+    TTAdNative createAdNative(Context paramContext);
   
-  public abstract void requestPermissionIfNecessary(Context paramContext);
+    void requestPermissionIfNecessary(Context paramContext);
 }
 
 

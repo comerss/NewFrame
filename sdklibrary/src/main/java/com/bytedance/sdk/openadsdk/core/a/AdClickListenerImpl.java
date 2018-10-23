@@ -64,7 +64,7 @@ public class AdClickListenerImpl extends AdClickListener {
         this.mOnClick = parama;
     }
 
-    public void a(View paramView) {
+    public void setView(View paramView) {
         /*  67 */
         this.mWeakReference = new WeakReference(paramView);
     }

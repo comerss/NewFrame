@@ -9,10 +9,6 @@ import android.os.SystemClock
 import android.telephony.TelephonyManager
 import android.text.TextUtils
 import android.util.Base64
-import android.util.Log
-import com.bytedance.sdk.openadsdk.AdSlot
-import com.bytedance.sdk.openadsdk.TTAdNative
-import com.bytedance.sdk.openadsdk.TTSplashAd
 import com.comers.baselibrary.base.UpdateService
 import com.comers.baselibrary.http.HttpResult
 import com.comers.baselibrary.retrofit.RxBaseActivity
@@ -21,7 +17,6 @@ import com.donews.frame.sdk.Utils.c
 import io.reactivex.Single
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_sdk.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -75,39 +70,6 @@ class SdkActivity : RxBaseActivity() {
 
     private fun Download() {
 
-    }
-
-    private fun getDas() {// kai  801622501   xinxi  901622650
-        var mAdSlot = AdSlot.Builder().setCodeId("901622650")
-                .setSupportDeepLink(true)
-                .setImageAcceptedSize(200, 300)
-                .build()
-        DoApplication.getManage().createAdNative(this).loadSplashAd(mAdSlot, object : TTAdNative.SplashAdListener {
-           /* override fun onError(paramInt: Int, paramString: String?) {
-                showToast(paramString)
-            }
-
-            override fun onFeedAdLoad(paramList: MutableList<TTFeedAd>) {
-                showToast("成功了" + paramList[0].imageList.toString())
-            }*/
-             override fun onError(paramInt: Int, paramString: String?) {
-                 showToast(paramString)
-                 Log.i("SDK--->", "失败了---》$paramString")
-             }
-
-             override fun onTimeout() {
-                 showToast("超时了")
-                 Log.i("SDK--->", "超时了---》")
-             }
-
-             override fun onSplashAdLoad(paramTTSplashAd: TTSplashAd?) {
-                 showToast("成功饿了")
-                 Log.i("SDK--->", "成功饿了---》")
-
-                 this@SdkActivity.mRootView.addView(paramTTSplashAd?.splashView)
-             }
-
-         },50000)
     }
 
     private fun downLoad() {

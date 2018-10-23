@@ -21,9 +21,9 @@ public class SplashManager extends View {
     private boolean needCheckShow;
     private SplashListener mSplashListener;
     private View splshView;
-    private List<View> f;
+    private List<View> clickViews;
     @Nullable
-    private List<View> g;
+    private List<View> crativeViews;
     private boolean isAttach;
     private int i;
     protected final Handler mHandler = new Handler(Looper.getMainLooper()) {
@@ -92,16 +92,16 @@ public class SplashManager extends View {
 
 
     public void setRefClickViews(List<View> paramList) {
-        this.f = paramList;
+        this.clickViews = paramList;
     }
 
     public void setRefCreativeViews(@Nullable List<View> paramList) {
-        this.g = paramList;
+        this.crativeViews = paramList;
     }
 
     public void noClick() {
-        onClick(this.f, null);
-        onClick(this.g, null);
+        onClick(this.clickViews, null);
+        onClick(this.crativeViews, null);
     }
 
     public void onClick(List<View> paramList, AdClickListener paramd) {
@@ -147,7 +147,7 @@ public class SplashManager extends View {
         this.i = paramInt;
     }
 
-    public static abstract interface SplashListener {
+    public  interface SplashListener {
         public abstract void onWindowFocusChanged(boolean paramBoolean);
 
         public abstract void onAttachedToWindow();

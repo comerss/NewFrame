@@ -5,5 +5,4 @@ package com.comers.baselibrary.rx;
  * 描述：
  */
 public class RetrofitManager {
-
 }

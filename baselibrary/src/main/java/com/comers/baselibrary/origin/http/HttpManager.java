@@ -3,12 +3,12 @@ package com.comers.baselibrary.origin.http;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.donews.sdk.base.JsonParseHelper;
-import com.donews.sdk.origin.service.DoRequest;
-import com.donews.sdk.origin.service.ICallBack;
-import com.donews.sdk.origin.service.WorkStation;
-import com.donews.sdk.origin.service.WrapperResponse;
-import com.donews.sdk.origin.service.convert.Convert;
+import com.comers.baselibrary.http.JsonParseHelper;
+import com.comers.baselibrary.origin.service.DoRequest;
+import com.comers.baselibrary.origin.service.ICallBack;
+import com.comers.baselibrary.origin.service.WorkStation;
+import com.comers.baselibrary.origin.service.WrapperResponse;
+import com.comers.baselibrary.origin.service.convert.Convert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,9 +44,9 @@ public enum HttpManager {
         doRequest(url, new HashMap<String, Object>(), HttpMethod.GET, ICallBack);
     }
 
-    private  <T> void doRequest(String url, Map<String, Object> params, HttpMethod method, ICallBack<T> ICallBack) {
+    private  <T> void doRequest(String url, Map<String, Object> params, HttpMethod method, ICallBack<T> iCallBack) {
         DoRequest request = new DoRequest();
-        WrapperResponse wrapperResponse = new WrapperResponse(ICallBack, sConverts);
+        WrapperResponse wrapperResponse = new WrapperResponse(iCallBack, sConverts);
         request.setUrl(url);
         if (method == HttpMethod.GET) {
             request.setUrl(getUrl(url, params));

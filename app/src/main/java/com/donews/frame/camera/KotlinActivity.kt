@@ -8,7 +8,7 @@ import com.donews.frame.R
  * 描述：
  */
 
-class KotlinActivity :BaseActivity() {
+class KotlinActivity : BaseActivity() {
     override fun getLayoutId(): Int {
         return R.layout.activity_camera
     }
@@ -18,11 +18,10 @@ class KotlinActivity :BaseActivity() {
     }
 
     override fun initListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

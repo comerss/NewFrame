@@ -7,10 +7,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.LinearLayout
-import com.comers.baselibrary.imooc.http.HttpManager
-import com.comers.baselibrary.imooc.service.MoocRequest
-import com.comers.baselibrary.imooc.service.MoocResponse
-import com.comers.baselibrary.imooc.service.WorkStation
+import com.comers.baselibrary.origin.http.HttpManager
+import com.comers.baselibrary.origin.service.DoRequest
+import com.comers.baselibrary.origin.service.ICallBack
+import com.comers.baselibrary.origin.service.WorkStation
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.donews.frame.R
 import kotlinx.android.synthetic.main.activity_recycler.*
@@ -55,8 +55,8 @@ class RecyclerActivity : RxBaseActivity() {
         map["username"] = "comers"
         map["password"] = "123456"
         map["repassword"]="123456"
-        HttpManager.INSTANCE.doPost("http://www.wanandroid.com/user/register",map, object : MoocResponse<String>() {
-            override fun success(request: MoocRequest?, data: String?) {
+        HttpManager.INSTANCE.doPost("http://www.wanandroid.com/user/register",map, object : ICallBack<String>() {
+            override fun success(request: DoRequest?, data: String?) {
                 Log.i("info", data)
             }
 

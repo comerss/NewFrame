@@ -1,18 +1,18 @@
 package com.bytedance.sdk.openadsdk;
 
-public abstract interface TTAppDownloadListener
+public  interface TTAppDownloadListener
 {
-  public abstract void onIdle();
+    void onIdle();
   
-  public abstract void onDownloadActive(long paramLong1, long paramLong2, String paramString1, String paramString2);
+    void onDownloadActive(long paramLong1, long paramLong2, String paramString1, String paramString2);
   
-  public abstract void onDownloadPaused(long paramLong1, long paramLong2, String paramString1, String paramString2);
+    void onDownloadPaused(long paramLong1, long paramLong2, String paramString1, String paramString2);
   
-  public abstract void onDownloadFailed(long paramLong1, long paramLong2, String paramString1, String paramString2);
+    void onDownloadFailed(long paramLong1, long paramLong2, String paramString1, String paramString2);
   
-  public abstract void onDownloadFinished(long paramLong, String paramString1, String paramString2);
+    void onDownloadFinished(long paramLong, String paramString1, String paramString2);
   
-  public abstract void onInstalled(String paramString1, String paramString2);
+    void onInstalled(String paramString1, String paramString2);
 }
 
 

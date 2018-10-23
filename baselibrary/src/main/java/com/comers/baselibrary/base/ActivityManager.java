@@ -2,8 +2,8 @@ package com.comers.baselibrary.base;
 
 import android.app.Activity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * Activity的管理
@@ -16,7 +16,7 @@ public final class ActivityManager {
     /**
      * 保存在栈里的所有Activity
      */
-    private Set<Activity> mActivities = new HashSet<Activity>();
+    private Deque<Activity> mActivities = new ArrayDeque<Activity>();
     /**
      * 当前显示的Activity
      */
@@ -129,7 +129,7 @@ public final class ActivityManager {
      *
      * @return Activities
      */
-    public Set<Activity> getActivities() {
+    public Deque<Activity> getActivities() {
         return mActivities;
     }
 }

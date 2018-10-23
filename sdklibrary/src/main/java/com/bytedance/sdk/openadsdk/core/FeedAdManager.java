@@ -89,7 +89,7 @@ class FeedAdManager {
         /*  80 */
         AdClickListenerImpl adClickListener = new AdClickListenerImpl(this.mContext, this.mAdData, "embeded_ad", 1);
         /*  81 */
-        adClickListener.a(paramViewGroup);
+        adClickListener.setView(paramViewGroup);
         /*  82 */
         adClickListener.setTTFeedAd(this.mTTFeedAd);
         /*  83 */
@@ -108,7 +108,7 @@ class FeedAdManager {
         /*  93 */
         AdClickListerReal locala = new AdClickListerReal(this.mContext, this.mAdData, "embeded_ad", 1);
         /*  94 */
-        locala.a(paramViewGroup);
+        locala.setView(paramViewGroup);
         /*  95 */
         locala.setDownLoadListener(this.mDownLoadListener);
         /*  96 */

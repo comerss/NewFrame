@@ -1,10 +1,10 @@
 package com.bytedance.sdk.openadsdk;
 
-public abstract interface DownloadStatusController
+public  interface DownloadStatusController
 {
-  public abstract void changeDownloadStatus();
+  void changeDownloadStatus();
   
-  public abstract void cancelDownload();
+  void cancelDownload();
 }
 
 

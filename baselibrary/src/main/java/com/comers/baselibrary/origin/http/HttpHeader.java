@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * @author nate
  */
-public class HttpHeader implements KeyValueMap<String, String> {
+public class HttpHeader implements NameValueMap<String, String> {
 
     public final static String ACCEPT = "Accept";
     public final static String PRAGMA = "Pragma";

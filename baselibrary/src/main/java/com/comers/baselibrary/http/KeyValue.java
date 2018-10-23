@@ -4,7 +4,7 @@ package com.comers.baselibrary.http;
  * Created by Comers on 2017/10/28.
  */
 
-public class KeyValue {
+public class  KeyValue {
     public final String key;
     public final Object value;
 

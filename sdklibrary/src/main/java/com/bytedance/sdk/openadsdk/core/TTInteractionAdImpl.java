@@ -141,7 +141,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   private void b()
 /*     */   {
 /* 113 */     AdClickListerReal locala = new AdClickListerReal(this.a, this.b, "interaction", 3);
-/* 114 */     locala.a(this.h);
+/* 114 */     locala.setView(this.h);
 /* 115 */     locala.b(this.g);
 /* 116 */     locala.setDownLoadListener(this.e);
 /* 117 */     locala.setOnClickLister(new AdClickListenerImpl.OnClick()
