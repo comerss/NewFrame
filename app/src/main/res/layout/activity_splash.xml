@@ -18,4 +18,10 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="我是一个开屏界面"/>
+    <WebView
+        android:layout_width="match_parent"
+        android:id="@+id/webview"
+        android:layout_height="match_parent">
+
+    </WebView>
 </LinearLayout>
