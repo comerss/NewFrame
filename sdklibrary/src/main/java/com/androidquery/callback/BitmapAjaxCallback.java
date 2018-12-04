@@ -211,7 +211,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	 * 
 	 * Value of 1 implies show top end of the image, 0 implies at the center, -1 implies show at the bottom.
 	 * 
-	 * A special value AQuery.ANCHOR_DYNAMIC will adjust the anchor base. 
+	 * appName special value AQuery.ANCHOR_DYNAMIC will adjust the anchor base.
 	 * This setting will add up from 0 to 0.5 bias and it'ViewWather suitable for portraits and common photos.
 	 * 
 	 * Default value is ANCHOR_DYNAMIC.

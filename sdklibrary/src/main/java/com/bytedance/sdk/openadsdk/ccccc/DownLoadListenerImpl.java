@@ -1,5 +1,5 @@
 /*     */ package com.bytedance.sdk.openadsdk.ccccc;
-/*     */ 
+/*     */
 /*     */
 
 import android.annotation.SuppressLint;
@@ -62,32 +62,32 @@ import java.util.HashMap;
 /*     */
 /*     */
 /*     */
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ public class DownLoadListenerImpl
 /*     */   implements DownLoadListener, MineHandler.OnResult
 /*     */ {
-/*     */   private Context a;
+/*     */   private Context mContext;
 /*     */   private final com.bytedance.sdk.openadsdk.core.nibuguan.b b;
-/*     */   private final NativeAdData c;
+/*     */   private final NativeAdData mNativeAdData;
 /*     */   private boolean d;
-/*     */   private y e;
+/*     */   private DownLoadData e;
 /*     */   private long f;
 /*     */   private c g;
 /*     */   private b h;
@@ -97,21 +97,21 @@ import java.util.HashMap;
 /*     */
 /*     */   private static HashMap<String, a> sHashMap;
 /*     */
-/*     */   private DownLoadInfo m;
+/*     */   private DownLoadInfo mLoadInfo;
 /*     */
 /*  71 */   private boolean n = false;
 /*     */   private String o;
 /*     */
 /*     */   public DownLoadListenerImpl(@NonNull Context paramContext, @NonNull NativeAdData paramh, @NonNull String paramString)
 /*     */   {
-/*  76 */     this.a = paramContext;
-/*  77 */     this.c = paramh;
+/*  76 */     this.mContext = paramContext;
+/*  77 */     this.mNativeAdData = paramh;
 /*  78 */     this.b = paramh.m();
 /*  79 */     this.o = paramString;
 /*  80 */     if (this.b == null) {
 /*  81 */       throw new RuntimeException("not SslHepler App type Ad !");
 /*     */     }
-/*  83 */     this.m = new DownLoadInfo(paramh, paramString);
+/*  83 */     this.mLoadInfo = new DownLoadInfo(paramh, paramString);
 /*  84 */     e();
 /*     */   }
 /*     */
@@ -123,26 +123,26 @@ import java.util.HashMap;
 /*     */
 /*     */   public void a(@NonNull Activity paramActivity)
 /*     */   {
-/*  95 */     this.a = paramActivity;
+/*  95 */     this.mContext = paramActivity;
 /*     */   }
 /*     */
 /*     */
 /*     */
 /*     */   public void b()
 /*     */   {
-/* 102 */     if ((this.a == null) || (this.b == null)) {
+/* 102 */     if ((this.mContext == null) || (this.b == null)) {
 /* 103 */       return;
 /*     */     }
 /* 105 */     if ((this.e != null) && (this.e.a > 0L)) {
-/* 106 */       AppAdViewHolder.aaaaaa(this.a, this.e.b, this.e.a, this.b.c());
+/* 106 */       AppAdViewHolder.aaaaaa(this.mContext, this.e.b, this.e.a, this.b.c());
 /* 107 */       if ((this.e != null) && (this.e.a >= 0L)) {
-            DownloadNotifier.getDefault(this.a).a(Long.valueOf(this.e.a), this, this.m);
+            DownloadNotifier.getDefault(this.mContext).a(Long.valueOf(this.e.a), this, this.mLoadInfo);
 /*     */       }
 /*     */     }
 /*     */   }
 /*     */
 /*     */   public void c() {
-/* 114 */     if ((this.a == null) || (this.b == null)) {
+/* 114 */     if ((this.mContext == null) || (this.b == null)) {
 /* 115 */       return;
 /*     */     }
 /*     */
@@ -159,9 +159,9 @@ import java.util.HashMap;
 /* 128 */       return;
 /*     */     }
 /* 130 */     if ((this.e == null) || (this.e.a < 0L)) {
-/* 131 */       NetUtils.a locala = NetUtils.b(this.a);
+/* 131 */       NetUtils.a locala = NetUtils.b(this.mContext);
 /* 132 */       if (locala == NetUtils.a.a) {
-/* 133 */         Toast.makeText(this.a, R.string.tt_no_network, Toast.LENGTH_SHORT).show();
+/* 133 */         Toast.makeText(this.mContext, R.string.tt_no_network, Toast.LENGTH_SHORT).show();
 /* 134 */       } else if (com.bytedance.sdk.openadsdk.core.h.a().d(locala.a())) {
 /* 135 */         l();
 /*     */       } else {
@@ -198,7 +198,7 @@ import java.util.HashMap;
 /*     */
 /*     */
 /*     */
-/*     */   public static void a(String url, int paramInt)
+/*     */   public static void download(String url, int paramInt)
 /*     */   {
 /* 171 */     if ((sHashMap != null) && (sHashMap.containsKey(url))) {
 /* 172 */       a locala = (a) sHashMap.get(url);
@@ -214,16 +214,16 @@ import java.util.HashMap;
 /*     */   }
 /*     */
 /*     */   private void h() {
-/* 185 */     if (!(this.a instanceof Activity)) {
+/* 185 */     if (!(this.mContext instanceof Activity)) {
 /* 186 */       i();
 /* 187 */       return;
 /*     */     }
-/* 189 */     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.a, R.style.Theme_Dialog_TTDownload);
+/* 189 */     AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.mContext, R.style.Theme_Dialog_TTDownload);
 /*     */     String str;
 /* 191 */     if ((this.b != null) && (!StringUtils.isEmpty(this.b.b()))) {
-/* 192 */       str = String.format(this.a.getString(R.string.tt_confirm_download_have_app_name), new Object[] { this.b.b() });
+/* 192 */       str = String.format(this.mContext.getString(R.string.tt_confirm_download_have_app_name), new Object[] { this.b.b() });
 /*     */     } else {
-/* 194 */       str = this.a.getString(R.string.tt_confirm_download);
+/* 194 */       str = this.mContext.getString(R.string.tt_confirm_download);
 /*     */     }
 /*     */
 /*     */
@@ -240,7 +240,7 @@ import java.util.HashMap;
 /*     */
 /*     */
 /*     */
-/* 211 */     localBuilder.setTitle(this.a.getString(R.string.tt_tip)).setMessage(str).setPositiveButton(this.a.getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
+/* 211 */     localBuilder.setTitle(this.mContext.getString(R.string.tt_tip)).setMessage(str).setPositiveButton(this.mContext.getString(R.string.tt_label_ok), new DialogInterface.OnClickListener()
 /*     */     {
 /*     */       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
 /*     */       {
@@ -254,7 +254,7 @@ import java.util.HashMap;
 /*     */
 /*     */
 /*     */
-/* 211 */       ).setNegativeButton(this.a.getString(R.string.tt_label_cancel), new DialogInterface.OnClickListener() { public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {} })
+/* 211 */       ).setNegativeButton(this.mContext.getString(R.string.tt_label_cancel), new DialogInterface.OnClickListener() { public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {} })
 /*     */
 /*     */
 /*     */
@@ -301,13 +301,13 @@ private void i()
 /* 242 */     };
 /* 243 */     sHashMap.put(this.b.a(), local4);
 /*     */     try {
-/* 245 */       Intent localIntent = new Intent(this.a, TTDelegateActivity.class);
+/* 245 */       Intent localIntent = new Intent(this.mContext, TTDelegateActivity.class);
 /* 246 */       localIntent.addFlags(268435456);
 /* 247 */       localIntent.putExtra("app_download_url", this.b.a());
 /* 248 */       localIntent.putExtra("type", 1);
 /* 249 */       localIntent.putExtra("app_name", this.b.b());
-/* 250 */       if (this.a != null) {
-/* 251 */         this.a.startActivity(localIntent);
+/* 250 */       if (this.mContext != null) {
+/* 251 */         this.mContext.startActivity(localIntent);
 /*     */       }
 /*     */     }
 /*     */     catch (Exception localException) {
@@ -320,13 +320,13 @@ private void i()
 /* 261 */       return false;
 /*     */     }
 /* 263 */     String str = this.b.c();
-/* 264 */     if ((!StringUtils.isEmpty(str)) && (ToolUtils.b(this.a, str))) {
-/* 265 */       Intent localIntent = ToolUtils.a(this.a, str);
+/* 264 */     if ((!StringUtils.isEmpty(str)) && (ToolUtils.b(this.mContext, str))) {
+/* 265 */       Intent localIntent = ToolUtils.a(this.mContext, str);
 /* 266 */       if (localIntent == null) {
 /* 267 */         return false;
 /*     */       }
 /* 269 */       localIntent.putExtra("START_ONLY_FOR_ANDROID", true);
-/* 270 */       this.a.startActivity(localIntent);
+/* 270 */       this.mContext.startActivity(localIntent);
 /* 271 */       return true;
 /*     */     }
 /* 273 */     return false;
@@ -340,23 +340,23 @@ private void i()
 /*     */   @SuppressLint("WrongConstant")
 private boolean k()
 /*     */   {
-/* 283 */     if (this.c.n() != null) {
-/* 284 */       String str = this.c.n().a();
+/* 283 */     if (this.mNativeAdData.n() != null) {
+/* 284 */       String str = this.mNativeAdData.n().a();
 /* 285 */       if (!StringUtils.isEmpty(str)) {
 /* 286 */         Uri localUri = Uri.parse(str);
 /* 287 */         Intent localIntent = new Intent("android.intent.action.VIEW");
 /* 288 */         localIntent.setData(localUri);
 /*     */
-/* 290 */         if (ToolUtils.a(this.a, localIntent)) {
-/* 291 */           if (!(this.a instanceof Activity)) {
+/* 290 */         if (ToolUtils.a(this.mContext, localIntent)) {
+/* 291 */           if (!(this.mContext instanceof Activity)) {
 /* 292 */             localIntent.addFlags(268435456);
 /*     */           }
-/* 294 */           this.a.startActivity(localIntent);
-/* 295 */           AdEvent.h(this.a, this.c, this.o, "open_url_app");
+/* 294 */           this.mContext.startActivity(localIntent);
+/* 295 */           AdEvent.h(this.mContext, this.mNativeAdData, this.o, "open_url_app");
 /* 296 */           return true;
 /*     */         }
 /*     */       }
-/* 299 */       AdEvent.h(this.a, this.c, this.o, "open_fallback_url");
+/* 299 */       AdEvent.h(this.mContext, this.mNativeAdData, this.o, "open_fallback_url");
 /*     */     }
 /* 301 */     return false;
 /*     */   }
@@ -404,14 +404,14 @@ private boolean k()
 /*     */   }
 /*     */
 /*     */   private void m() {
-/* 347 */     String str = this.c.d() == null ? null : this.c.d().a();
-/* 348 */     long l1 = MyDownloadManager.a(this.a, this.b.a(), this.b.b(), str);
+/* 347 */     String str = this.mNativeAdData.d() == null ? null : this.mNativeAdData.d().a();
+/* 348 */     long l1 = MyDownloadManager.a(this.mContext, this.b.a(), this.b.b(), str);
 /* 349 */     if (l1 >= 0L) {
 /* 350 */       if (this.h != null) {
 /* 351 */         this.h.a();
 /*     */       }
-/* 353 */        DownloadNotifier.getDefault(this.a).a(Long.valueOf(l1), this, this.m);
-/* 354 */       y localy = new y();
+/* 353 */        DownloadNotifier.getDefault(this.mContext).a(Long.valueOf(l1), this, this.mLoadInfo);
+/* 354 */       DownLoadData localy = new DownLoadData();
 /* 355 */       localy.b = -1;
 /* 356 */       sendMsg(localy, 0, -1, 2);
 /* 357 */     } else if (l1 < 0L) {
@@ -440,7 +440,7 @@ private boolean k()
 /*     */
 /*     */
 /*     */
-/*     */   public void progress(y paramy, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+/*     */   public void progress(DownLoadData paramy, int paramInt, long paramLong1, long paramLong2, long paramLong3)
 /*     */   {
 /* 385 */     if ((paramy == null) || (paramy.a != this.f))
 /*     */     {
@@ -462,12 +462,12 @@ private boolean k()
 /*     */
 /*     */   private void n()
 /*     */   {
-/* 405 */     y localy = new y();
+/* 405 */     DownLoadData localy = new DownLoadData();
 /* 406 */     localy.b = 16;
 /* 407 */     sendMsg(localy, 0, 3, 2);
 /*     */   }
 /*     */
-/*     */   private void sendMsg(y paramy, int paramInt1, int paramInt2, int paramInt3) {
+/*     */   private void sendMsg(DownLoadData paramy, int paramInt1, int paramInt2, int paramInt3) {
 /* 411 */     Message localMessage = Message.obtain();
 /* 412 */     localMessage.what = paramInt3;
 /* 413 */     localMessage.arg1 = paramInt2;
@@ -494,7 +494,7 @@ private boolean k()
 /*     */   {
 /* 435 */     this.d = false;
 /* 436 */     if (this.e != null) {
-/* 437 */        DownloadNotifier.getDefault(this.a).a(Long.valueOf(this.e.a), this);
+/* 437 */        DownloadNotifier.getDefault(this.mContext).addListener(Long.valueOf(this.e.a), this);
 /*     */     }
 /* 439 */     if ((this.g != null) && (this.g.getStatus() != AsyncTask.Status.FINISHED)) {
 /* 440 */       this.g.cancel(true);
@@ -506,13 +506,13 @@ private boolean k()
 /*     */
 /*     */   public void g()
 /*     */   {
-/* 449 */     if ((this.a == null) || (this.e == null) || (this.e.a < 0L) || (this.e.b == 8))
+/* 449 */     if ((this.mContext == null) || (this.e == null) || (this.e.a < 0L) || (this.e.b == 8))
 /*     */     {
 /* 451 */       return;
 /*     */     }
 /* 453 */     Uri localUri = ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, this.e.a);
-/* 454 */     Intent localIntent = new Intent("android.ss.intent.action.DOWNLOAD_DELETE", localUri, this.a, TTDownloadHandlerService.class);
-/* 455 */     this.a.startService(localIntent);
+/* 454 */     Intent localIntent = new Intent("android.ss.intent.action.DOWNLOAD_DELETE", localUri, this.mContext, TTDownloadHandlerService.class);
+/* 455 */     this.mContext.startService(localIntent);
 /*     */   }
 /*     */
 /*     */   public void doResult(Message paramMessage)
@@ -522,7 +522,7 @@ private boolean k()
 /*     */     }
 /* 463 */     int i1 = paramMessage.arg1;
 /* 464 */     int i2 = paramMessage.arg2;
-/* 465 */     y localy = (y)paramMessage.obj;
+/* 465 */     DownLoadData localy = (DownLoadData)paramMessage.obj;
 /*     */
 /* 467 */     String str = this.b.b();
 /* 468 */     switch (paramMessage.what) {
@@ -540,7 +540,7 @@ private boolean k()
 /* 480 */         } else if (localy.b == 32) {
 /* 481 */           this.mDownloadListener.onInstalled(localy.e, str);
 /* 482 */         } else if (localy.b == 8) {
-/* 483 */           if (ToolUtils.b(this.a, this.b.c())) {
+/* 483 */           if (ToolUtils.b(this.mContext, this.b.c())) {
 /* 484 */             this.mDownloadListener.onInstalled(localy.e, str);
 /*     */           } else {
 /* 486 */             this.mDownloadListener.onDownloadFinished(localy.c, localy.e, str);
@@ -572,31 +572,31 @@ private boolean k()
 /*     */     }
 /*     */   }
 /*     */
-/*     */private class c extends AsyncTask<String, Void, y> {
+/*     */private class c extends AsyncTask<String, Void, DownLoadData> {
             private c() {
             }
 
     @Override
-    protected y doInBackground(String... var1) {
-        if (var1 != null && (var1.length < 1 || !TextUtils.isEmpty(var1[0])) && DownLoadListenerImpl.this.a != null) {
+    protected DownLoadData doInBackground(String... var1) {
+        if (var1 != null && (var1.length < 1 || !TextUtils.isEmpty(var1[0])) && DownLoadListenerImpl.this.mContext != null) {
             String var2 = var1[0];
-            AppAdViewHolder var3 = AppAdViewHolder.getInstance(a);
+            AppAdViewHolder var3 = AppAdViewHolder.getInstance(mContext);
             return var3.aaaaaa(var2);
         } else {
             return null;
         }
     }
 
-    protected void a(y var1) {
+    protected void a(DownLoadData var1) {
         super.onPostExecute(var1);
         if (!this.isCancelled()) {
             try {
-                if (var1 == null || var1.a <= -1L || AppAdViewHolder.getInstance(a).aaaaaa(var1) && !ToolUtils.b(DownLoadListenerImpl.this.a, DownLoadListenerImpl.this.b.c())) {
-                    if (ToolUtils.b(DownLoadListenerImpl.this.a, DownLoadListenerImpl.this.b.c())) {
+                if (var1 == null || var1.a <= -1L || AppAdViewHolder.getInstance(mContext).aaaaaa(var1) && !ToolUtils.b(DownLoadListenerImpl.this.mContext, DownLoadListenerImpl.this.b.c())) {
+                    if (ToolUtils.b(DownLoadListenerImpl.this.mContext, DownLoadListenerImpl.this.b.c())) {
                         if (DownLoadListenerImpl.this.e != null) {
                             DownLoadListenerImpl.this.a(DownLoadListenerImpl.this.e);
                         } else {
-                            DownLoadListenerImpl.this.e = new y();
+                            DownLoadListenerImpl.this.e = new DownLoadData();
                             DownLoadListenerImpl.this.e.b = 8;
                             DownLoadListenerImpl.this.a(DownLoadListenerImpl.this.e);
                         }
@@ -612,7 +612,7 @@ private boolean k()
                         DownLoadListenerImpl.this.e = null;
                     } else {
                         DownLoadListenerImpl.this.e = var1;
-                        DownloadNotifier.getDefault(DownLoadListenerImpl.this.a).a(DownLoadListenerImpl.this.e.a, DownLoadListenerImpl.this, DownLoadListenerImpl.this.m);
+                        DownloadNotifier.getDefault(DownLoadListenerImpl.this.mContext).a(DownLoadListenerImpl.this.e.a, DownLoadListenerImpl.this, DownLoadListenerImpl.this.mLoadInfo);
                     }
 
                     DownLoadListenerImpl.this.a(var1);
@@ -625,7 +625,7 @@ private boolean k()
     }
 }
 /*     */
-/*     */   private void a(y paramy) {
+/*     */   private void a(DownLoadData paramy) {
 /* 570 */     if (this.mDownloadListener == null) {
 /* 571 */       return;
 /*     */     }
@@ -661,7 +661,7 @@ private boolean k()
 /* 602 */       this.mDownloadListener.onDownloadActive(paramy.c, paramy.d, paramy.e, str);
 /* 603 */       break;
 /*     */     case 8:
-/* 605 */       if (ToolUtils.b(this.a, this.b.c())) {
+/* 605 */       if (ToolUtils.b(this.mContext, this.b.c())) {
 /* 606 */         this.mDownloadListener.onInstalled(paramy.e, str);
 /*     */       } else {
 /* 608 */         this.mDownloadListener.onDownloadFinished(paramy.c, paramy.e, str);

@@ -26,12 +26,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 /*     */
-/*     */ public class d {
-    public long a;
+/*     */ public class DownLoadDatas {
+    public long id;
     public String b;
     public boolean c;
     public String d;
-    public String e;
+    public String fileName;
     public String f;
     public int g;
     public int h;
@@ -45,15 +45,15 @@ import java.util.concurrent.Future;
     public String p;
     public String q;
     public String r;
-    public long s;
-    public long t;
+    public long totalBytes;
+    public long currBytes;
     public String u;
     public int v;
     public boolean w;
     public String x;
     public int y;
     public boolean z;
-    public String A;
+    public String appName;
     public String B;
     public String C;
     public int D;
@@ -67,7 +67,7 @@ import java.util.concurrent.Future;
     private final v L;
     private final DownloadNotifier M;
 
-    private d(Context var1, w var2, v var3, DownloadNotifier var4) {
+    private DownLoadDatas(Context var1, w var2, v var3, DownloadNotifier var4) {
         this.F = new ArrayList();
         this.I = var1;
         this.J = (NotificationManager)this.I.getSystemService("notification");
@@ -87,9 +87,9 @@ import java.util.concurrent.Future;
             Intent var2 = new Intent("android.ss.intent.action.DOWNLOAD_COMPLETE");
 
             try {
-                if (this.e != null) {
+                if (this.fileName != null) {
                     PackageManager var3 = this.I.getPackageManager();
-                    PackageInfo var4 = var3.getPackageArchiveInfo(this.e, PackageManager.GET_ACTIVITIES);
+                    PackageInfo var4 = var3.getPackageArchiveInfo(this.fileName, PackageManager.GET_ACTIVITIES);
                     String var5 = var4 == null ? null : var4.packageName;
                     if (var5 != null) {
                         var2.putExtra("extra_app_package", var5);
@@ -100,7 +100,7 @@ import java.util.concurrent.Future;
             }
 
             var2.setPackage(this.n);
-            var2.putExtra("extra_download_id", this.a);
+            var2.putExtra("extra_download_id", this.id);
             var2.putExtra("extra_download_visibility", this.h);
             var2.putExtra("status", var1);
             this.K.a(var2);
@@ -176,18 +176,18 @@ import java.util.concurrent.Future;
     }
 
     private aenumse d(int var1) {
-        if (this.s <= 0L) {
+        if (this.totalBytes <= 0L) {
             return aenumse.a;
         } else if (var1 == 1) {
             return aenumse.a;
         } else {
             Long var2 = this.K.d();
-            if (var2 != null && this.s > var2) {
+            if (var2 != null && this.totalBytes > var2) {
                 return aenumse.c;
             } else {
                 if (this.D == 0) {
                     Long var3 = this.K.e();
-                    if (var3 != null && this.s > var3) {
+                    if (var3 != null && this.totalBytes > var3) {
                         return aenumse.d;
                     }
                 }
@@ -229,8 +229,8 @@ import java.util.concurrent.Future;
     }
 
     public void c() {
-        String var1 = this.e;
-        if (this.e != null) {
+        String var1 = this.fileName;
+        if (this.fileName != null) {
             File var2 = new File(var1);
             if (this.j == 200 && !var2.exists()) {
                 String var3 = DownloadNotifier.a(this);
@@ -242,13 +242,13 @@ import java.util.concurrent.Future;
     }
 
     public Uri d() {
-        return ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, this.a);
+        return ContentUris.withAppendedId(com.bytedance.sdk.openadsdk.ccccc.m.a.a, this.id);
     }
 
     public void a(p var1) {
         var1.println("DownloadInfo:");
         var1.a();
-        var1.a("mId", this.a);
+        var1.a("mId", this.id);
         var1.a("mLastMod", this.m);
         var1.a("mPackage", this.n);
         var1.println();
@@ -259,12 +259,12 @@ import java.util.concurrent.Future;
         var1.a("mReferer", this.r != null ? "yes" : "no");
         var1.a("mUserAgent", this.q);
         var1.println();
-        var1.a("mFileName", this.e);
+        var1.a("mFileName", this.fileName);
         var1.a("mDestination", this.g);
         var1.println();
         var1.a("mStatus", com.bytedance.sdk.openadsdk.ccccc.m.a.getMsg(this.j));
-        var1.a("mCurrentBytes", this.t);
-        var1.a("mTotalBytes", this.s);
+        var1.a("mCurrentBytes", this.currBytes);
+        var1.a("mTotalBytes", this.totalBytes);
         var1.println();
         var1.a("mNumFailed", this.k);
         var1.a("mRetryAfter", this.l);
@@ -337,19 +337,19 @@ import java.util.concurrent.Future;
             this.b = var2;
         }
 
-        public d a(Context var1, w var2, v var3, DownloadNotifier var4) {
-            d var5 = new d(var1, var2, var3, var4);
+        public DownLoadDatas a(Context var1, w var2, v var3, DownloadNotifier var4) {
+            DownLoadDatas var5 = new DownLoadDatas(var1, var2, var3, var4);
             this.a(var5);
             this.b(var5);
             return var5;
         }
 
-        public void a(d var1) {
-            var1.a = this.c("_id");
+        public void a(DownLoadDatas var1) {
+            var1.id = this.c("_id");
             var1.b = this.a("uri");
             var1.c = this.b("no_integrity") == 1;
             var1.d = this.a("hint");
-            var1.e = this.a("_data");
+            var1.fileName = this.a("_data");
             var1.f = this.a("mimetype");
             var1.g = this.b("destination");
             var1.h = this.b("visibility");
@@ -363,15 +363,15 @@ import java.util.concurrent.Future;
             var1.p = this.a("cookiedata");
             var1.q = this.a("useragent");
             var1.r = this.a("referer");
-            var1.s = this.c("total_bytes");
-            var1.t = this.c("current_bytes");
+            var1.totalBytes = this.c("total_bytes");
+            var1.currBytes = this.c("current_bytes");
             var1.u = this.a("etag");
             var1.v = this.b("scanned");
             var1.w = this.b("deleted") == 1;
             var1.x = this.a("mediaprovider_uri");
             var1.y = this.b("allowed_network_types");
             var1.z = this.b("allow_roaming") != 0;
-            var1.A = this.a("title");
+            var1.appName = this.a("title");
             var1.B = this.a("description");
             var1.C = this.a("icon_url");
             var1.D = this.b("bypass_recommended_size_limit");
@@ -380,7 +380,7 @@ import java.util.concurrent.Future;
             }
         }
 
-        private void b(d var1) {
+        private void b(DownLoadDatas var1) {
             var1.F.clear();
             Uri var2 = Uri.withAppendedPath(var1.d(), "headers");
             Cursor var3 = this.a.a(var2, (String[])null, (String)null, (String[])null, (String)null);
@@ -418,7 +418,7 @@ import java.util.concurrent.Future;
         }
 
         @TargetApi(5)
-        private void a(d var1, String var2, String var3) {
+        private void a(DownLoadDatas var1, String var2, String var3) {
             var1.F.add(Pair.create(var2, var3));
         }
 

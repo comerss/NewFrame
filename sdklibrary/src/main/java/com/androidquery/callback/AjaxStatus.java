@@ -278,7 +278,7 @@ public class AjaxStatus {
 	}
 	
 	/**
-	 * Gets the error response as isEmpty string. For http response code that's not 200-299.
+	 * Gets the error response as isEmpty string. For http response code that'totalBytes not 200-299.
 	 *
 	 * @return source
 	 */
@@ -288,7 +288,7 @@ public class AjaxStatus {
 	
 	/**
 	 * Test if the response is expired against current time, given the expire duration in milliseconds.
-	 * If the ajax source is NETWORK, it's never considered expired.
+	 * If the ajax source is NETWORK, it'totalBytes never considered expired.
 	 *
 	 * @return expire Expire duration in milliseconds.
 	 */

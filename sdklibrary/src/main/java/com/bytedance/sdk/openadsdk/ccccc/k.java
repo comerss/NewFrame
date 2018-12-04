@@ -80,13 +80,13 @@ import java.net.URLConnection;
 /*     */   implements Runnable
 /*     */ {
 /*     */   private final Context a;
-/*     */   private final d b;
+/*     */   private final DownLoadDatas b;
 /*     */   private final w c;
 /*     */   private final v d;
 /*     */   private final DownloadNotifier e;
 /*     */   private volatile boolean f;
 /*     */   
-/*     */   public k(Context paramContext, w paramw, d paramd, v paramv, DownloadNotifier paramg)
+/*     */   public k(Context paramContext, w paramw, DownLoadDatas paramd, v paramv, DownloadNotifier paramg)
 /*     */   {
 /*  64 */     this.a = paramContext;
 /*  65 */     this.c = paramw;
@@ -177,13 +177,13 @@ import java.net.URLConnection;
 /*     */     public int s;
 /*     */     public URL t;
 /*     */     
-/*     */     public NetHackDbg(d paramd)
+/*     */     public NetHackDbg(DownLoadDatas paramd)
 /*     */     {
 /* 114 */       this.b = paramd.f;
 /* 115 */       this.e = paramd.b;
-/* 116 */       this.a = paramd.e;
-/* 117 */       this.f = paramd.s;
-/* 118 */       this.g = paramd.t;
+/* 116 */       this.a = paramd.fileName;
+/* 117 */       this.f = paramd.totalBytes;
+/* 118 */       this.g = paramd.currBytes;
 /*     */     }
 /*     */     
 /*     */     public void a()
@@ -208,9 +208,9 @@ import java.net.URLConnection;
 /*     */ 
 /*     */   private void b()
 /*     */   {
-/* 143 */     if (com.bytedance.sdk.openadsdk.ccccc.d.a(i.a(this.a), this.b.a) == 200)
+/* 143 */     if (DownLoadDatas.a(i.a(this.a), this.b.id) == 200)
 /*     */     {
-/* 145 */       Log.d("SsAndroidDownloadManager", "Download " + this.b.a + " already finished; skipping");
+/* 145 */       Log.d("SsAndroidDownloadManager", "Download " + this.b.id + " already finished; skipping");
 /* 146 */       return;
 /*     */     }
 /*     */     
@@ -226,7 +226,7 @@ import java.net.URLConnection;
 /*     */ 
 /*     */     try
 /*     */     {
-/* 161 */       Log.i("SsAndroidDownloadManager", "Download " + this.b.a + " starting");
+/* 161 */       Log.i("SsAndroidDownloadManager", "Download " + this.b.id + " starting");
 /*     */       
 /*     */ 
 /*     */ 
@@ -286,7 +286,7 @@ import java.net.URLConnection;
 /*     */     catch (Throwable localThrowable)
 /*     */     {
 /* 220 */       str1 = localThrowable.getMessage();
-/* 221 */       String str2 = "Exception for id " + this.b.a + ": " + str1;
+/* 221 */       String str2 = "Exception for id " + this.b.id + ": " + str1;
 /* 222 */       Log.w("SsAndroidDownloadManager", str2, localThrowable);
 /* 223 */       i = 491;
 /*     */     }
@@ -315,7 +315,7 @@ import java.net.URLConnection;
 /*     */     
 /*     */ 
 /* 249 */     if (parama.g == parama.f) {
-/* 250 */       Log.i("SsAndroidDownloadManager", "Skipping initiating request for download " + this.b.a + "; already completed");
+/* 250 */       Log.i("SsAndroidDownloadManager", "Skipping initiating request for download " + this.b.id + "; already completed");
 /*     */     }
 /*     */     else
 /*     */     {
@@ -508,7 +508,7 @@ import java.net.URLConnection;
 /*     */   {
 /* 380 */     this.f = false;
 /*     */     
-/* 382 */     com.bytedance.sdk.openadsdk.ccccc.d.aenumse locala = this.b.b();
+/* 382 */     DownLoadDatas.aenumse locala = this.b.b();
 /* 383 */     /*if (locala != LocationUtils.OnClick.OnClick) {
 *//* 384 *//*       throw new u(195, locala.name());
 *//*     *//*     }*/
@@ -643,7 +643,7 @@ import java.net.URLConnection;
 /*     */       
 /*     */ 
 /* 516 */       if (parama.n != 0L) {
-/* 517 */         this.e.a(this.b.a, parama.m);
+/* 517 */         this.e.a(this.b.id, parama.m);
 /*     */       }
 /*     */       
 /* 520 */       parama.n = l1;
@@ -786,7 +786,7 @@ import java.net.URLConnection;
 /* 657 */     if (parama.b != null) {
 /* 658 */       localContentValues.put("mimetype", parama.b);
 /*     */     }
-/* 660 */     localContentValues.put("total_bytes", Long.valueOf(this.b.s));
+/* 660 */     localContentValues.put("total_bytes", Long.valueOf(this.b.totalBytes));
 /* 661 */     i.a(this.a).a(this.b.d(), localContentValues, null, null);
 /*     */   }
 /*     */   
@@ -813,7 +813,7 @@ import java.net.URLConnection;
 /*     */     }
 /*     */     
 /* 686 */     parama.f = parama.p;
-/* 687 */     this.b.s = parama.p;
+/* 687 */     this.b.totalBytes = parama.p;
 /*     */     
 /*     */ 
 /* 690 */     int i = (parama.p == -1L) && ((str == null) || (!str.equalsIgnoreCase("chunked"))) ? 1 : 0;
@@ -845,7 +845,7 @@ import java.net.URLConnection;
 /*     */   {
 /* 717 */     if (!TextUtils.isEmpty(parama.a)) {
 /* 718 */       if (b.c) {
-/* 719 */         Log.i("SsAndroidDownloadManager", "have run thread before for id: " + this.b.a + ", and state.mFilename: " + parama.a);
+/* 719 */         Log.i("SsAndroidDownloadManager", "have run thread before for id: " + this.b.id + ", and state.mFilename: " + parama.a);
 /*     */       }
 /*     */       
 /* 722 */       if (!n.a(parama.a, this.d
@@ -858,7 +858,7 @@ import java.net.URLConnection;
 /* 729 */       File localFile = new File(parama.a);
 /* 730 */       if (localFile.exists()) {
 /* 731 */         if (b.c) {
-/* 732 */           Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", and state.mFilename: " + parama.a);
+/* 732 */           Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.id + ", and state.mFilename: " + parama.a);
 /*     */         }
 /*     */         
 /* 735 */         long l = localFile.length();
@@ -871,7 +871,7 @@ import java.net.URLConnection;
 /* 742 */           localFile.delete();
 /* 743 */           parama.a = null;
 /* 744 */           if (b.c) {
-/* 745 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", BUT starting from scratch again: ");
+/* 745 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.id + ", BUT starting from scratch again: ");
 /*     */           }
 /*     */         } else {
 /* 748 */           if ((this.b.u == null) && (!this.b.c))
@@ -886,17 +886,17 @@ import java.net.URLConnection;
 /*     */           
 /*     */ 
 /* 759 */           if (b.c) {
-/* 760 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", and starting with file of length: " + l);
+/* 760 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.id + ", and starting with file of length: " + l);
 /*     */           }
 /*     */           
 /* 763 */           parama.g = ((int)l);
-/* 764 */           if (this.b.s != -1L) {
-/* 765 */             parama.p = this.b.s;
+/* 764 */           if (this.b.totalBytes != -1L) {
+/* 765 */             parama.p = this.b.totalBytes;
 /*     */           }
 /* 767 */           parama.h = this.b.u;
 /* 768 */           parama.i = true;
 /* 769 */           if (b.c) {
-/* 770 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.a + ", state.mCurrentBytes: " + parama.g + ", and setting mContinuingDownload to true: ");
+/* 770 */             Log.i("SsAndroidDownloadManager", "resuming download for id: " + this.b.id + ", state.mCurrentBytes: " + parama.g + ", and setting mContinuingDownload to true: ");
 /*     */           }
 /*     */         }
 /*     */       }

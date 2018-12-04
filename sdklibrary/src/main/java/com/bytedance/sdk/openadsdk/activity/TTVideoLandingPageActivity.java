@@ -195,7 +195,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//* 179 *//*     this.DownLoadListenerImpl = ((TextView)findViewById(R.id.tt_video_btn_ad_image_tv));
 *//* 180 *//*     this.y = ((RoundImageView)findViewById(R.id.video_ad_logo_image));
 *//* 181 *//*     this.z = ((TextView)findViewById(R.id.tt_video_ad_name));
-*//* 182 *//*     this.A = ((TextView)findViewById(R.id.tt_video_ad_button));
+*//* 182 *//*     this.appName = ((TextView)findViewById(R.id.tt_video_ad_button));
 *//*     *//*
 *//* 184 *//*     VideoManager();
 *//*     *//*   }
@@ -256,7 +256,7 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*     }
 *//* 241 *//*     com.bytedance.sdk.openadsdk.ApiException.ViewWather.intera(this.z, 0);
 *//*     *//*
-*//* 243 *//*     com.bytedance.sdk.openadsdk.ApiException.ViewWather.intera(this.A, 0);
+*//* 243 *//*     com.bytedance.sdk.openadsdk.ApiException.ViewWather.intera(this.appName, 0);
 *//*     *//*   }
 *//*     *//*
 *//*     *//*   private void LocationUtils() {
@@ -268,8 +268,8 @@ import com.bytedance.sdk.openadsdk.core.widget.RoundImageView;
 *//*     *//*
 *//* 253 *//*     locala.intera(false);
 *//* 254 *//*     locala.intera(this.mR);
-*//* 255 *//*     this.A.setOnClickListener(locala);
-*//* 256 *//*     this.A.setOnTouchListener(locala);
+*//* 255 *//*     this.appName.setOnClickListener(locala);
+*//* 256 *//*     this.appName.setOnTouchListener(locala);
 *//* 257 *//*     locala.intera(this.B);
 *//* 258 *//*     this.B.intera(new DownLoadListenerImpl.TTAdDislikeImpl()
 *//*     *//*     {

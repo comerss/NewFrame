@@ -130,8 +130,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /*     */     }
 /* 106 */     paramJSONObject.put("appName", UIUtils.a());
 /* 107 */     paramJSONObject.put("innerAppName", UIUtils.e());
-/* 108 */     paramJSONObject.put("aid", UIUtils.b());
-/* 109 */     paramJSONObject.put("sdkEdition", UIUtils.c());
+/* 108 */     paramJSONObject.put("aid", UIUtils.getVersionCode());
+/* 109 */     paramJSONObject.put("sdkEdition", UIUtils.getVersionName());
 /* 110 */     paramJSONObject.put("appVersion", UIUtils.d());
 /* 111 */     paramJSONObject.put("netType", UIUtils.f());
 /* 112 */     paramJSONObject.put("supportList", localJSONArray);

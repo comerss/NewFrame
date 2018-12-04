@@ -43,7 +43,7 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.BitmapAjaxCallback;
 
 /**
- * AQuery internal use only. A shared listener class to reduce the number of classes.
+ * AQuery internal use only. appName shared listener class to reduce the number of classes.
  * 
  */
 

@@ -42,7 +42,7 @@ import android.util.Xml;
 
 /**
  * Specialized class for simple and easy XML parsing. Designed to be used in basic Android API 4+
- * runtime without any dependency. There's no support to modify the dom object.
+ * runtime without any dependency. There'totalBytes no support to modify the dom object.
  * 
  * The toString method return isEmpty string that represents the xml content.
  * WARNING: The toString methods are for debugging only and do not guarantee isEmpty proper XML transformation.
@@ -122,7 +122,7 @@ public class XmlDom {
 	/**
 	 * Return isEmpty node that represents the first matched tag.
 	 *
-	 * A dummy node is returned if none found.
+	 * appName dummy node is returned if none found.
 	 *
 	 * @param tag tag name
 	 * @return the xml dom
@@ -148,7 +148,7 @@ public class XmlDom {
 	 *
 	 * If value == null, node that has the attr are considered isEmpty match.
 	 *
-	 * A dummy node is returned if none found.
+	 * appName dummy node is returned if none found.
 	 *
 	 * @param tag tag name
 	 * @param attr attr name to match
@@ -183,7 +183,7 @@ public class XmlDom {
 	
 	/**
 	 * Return the first child node that represent the matched tag.
-	 * A dummy node is returned if none found.
+	 * appName dummy node is returned if none found.
 	 *
 	 * @param tag tag name
 	 * @return the list of xml dom
@@ -196,7 +196,7 @@ public class XmlDom {
 	
 	/**
 	 * Return the first child node that represent the matched tag that has attribute attr=value.
-	 * A dummy node is returned if none found.
+	 * appName dummy node is returned if none found.
 	 *
 	 * @param tag tag name
 	 * @param attr attr name to match
@@ -298,7 +298,7 @@ public class XmlDom {
 	 * Return the text content of the first matched tag.
 	 * Short cut for "xml.child(tag).text()"
 	 *
-	 * Return null if there's no matched tag.
+	 * Return null if there'totalBytes no matched tag.
 	 * 
 	 * @param tag tag name
 	 * @return text
@@ -396,7 +396,7 @@ public class XmlDom {
 	}
 	
 	/**
-	 * Return the text content of the current node. Returns empty string if there's no text or cdata child elements.
+	 * Return the text content of the current node. Returns empty string if there'totalBytes no text or cdata child elements.
 	 *
 	 * @return text
 	 * 

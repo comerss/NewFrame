@@ -2,7 +2,7 @@ package com.bytedance.sdk.openadsdk.ccccc;
 
 abstract interface DownLoadListener
 {
-  public abstract void progress(y paramy, int paramInt, long paramLong1, long paramLong2, long paramLong3);
+  public abstract void progress(DownLoadData paramy, int paramInt, long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void load(long paramLong);
 }

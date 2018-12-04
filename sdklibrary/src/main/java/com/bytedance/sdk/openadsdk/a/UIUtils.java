@@ -31,7 +31,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */   public static String b()
+/*    */   public static String getVersionCode()
 /*    */   {
 /* 36 */     return "34";
 /*    */   }
@@ -39,7 +39,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */   public static String c()
+/*    */   public static String getVersionName()
 /*    */   {
 /* 44 */     return "1.9.0";
 /*    */   }

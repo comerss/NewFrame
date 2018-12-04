@@ -5,7 +5,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ class y
+/*    */ class DownLoadData
 /*    */ {
 /* 10 */   public long a = -1L;
 /* 11 */   public int b = -1;
@@ -15,8 +15,8 @@
 /*    */   
 /*    */   public boolean equals(Object paramObject)
 /*    */   {
-/* 18 */     if ((paramObject != null) && ((paramObject instanceof y))) {
-/* 19 */       y localy = (y)paramObject;
+/* 18 */     if ((paramObject != null) && ((paramObject instanceof DownLoadData))) {
+/* 19 */       DownLoadData localy = (DownLoadData)paramObject;
 /* 20 */       int i = this.a == localy.a ? 1 : 0;
 /* 21 */       int j = this.b == localy.b ? 1 : 0;
 /* 22 */       int k = this.c == localy.c ? 1 : 0;
@@ -39,7 +39,7 @@
 /*    */ }
 
 
-/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\y.class
+/* Location:              C:\Users\79653\Desktop\back\open_ad_sdk\classes.jar!\com\bytedance\sdk\openadsdk\cdsss\DownLoadData.class
  * Java compiler version: 7 (51.0)
  * JD-Core Version:       0.7.1
  */

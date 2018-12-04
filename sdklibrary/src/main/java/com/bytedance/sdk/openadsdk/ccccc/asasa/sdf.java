@@ -49,7 +49,7 @@ import java.util.concurrent.Executors;
 /*     */ 
 /*     */   public void a(long paramLong, int paramInt, String paramString)
 /*     */   {
-/*  41 */     DownLoadInfo locale = DownloadNotifier.getDefault(this.a).a(paramLong);
+/*  41 */     DownLoadInfo locale = DownloadNotifier.getDefault(this.a).getDownloadInfo(paramLong);
 /*  42 */     if ((locale == null) || (!locale.c())) {
 /*  43 */       return;
 /*     */     }
