@@ -28,6 +28,7 @@ import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadInfo;
 import com.bytedance.sdk.openadsdk.TTGlobalAppDownloadListener;
 import com.bytedance.sdk.openadsdk.ccccc.asasa.b;
+import com.bytedance.sdk.openadsdk.core.nibuguan.DownLoadInfo;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
 import com.bytedance.sdk.openadsdk.ggg.StringUtils;
 import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
@@ -113,7 +114,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @SuppressLint({"UseSparseArrays"})
 public class DownloadNotifier {
     private Map<Long, WeakHashMap<DownLoadListener, Boolean>> mMap = new ConcurrentHashMap();
-    private Map<Long, com.bytedance.sdk.openadsdk.core.nibuguan.e> mLongeMap = new ConcurrentHashMap();
+    private Map<Long, DownLoadInfo> mLongeMap = new ConcurrentHashMap();
     private Map<Long, y> mHashMap = new ConcurrentHashMap();
     private AQuery2 mQuery2;
     private LruCache<String, Bitmap> mLruCache;
@@ -126,7 +127,7 @@ public class DownloadNotifier {
     private final q l = new q();
     private final q m = new q();
 
-    public void a(Long var1, DownLoadListener listener, com.bytedance.sdk.openadsdk.core.nibuguan.e var3) {
+    public void a(Long var1, DownLoadListener listener, DownLoadInfo var3) {
         WeakHashMap weakHashMap = (WeakHashMap)this.mMap.get(var1);
         if (weakHashMap == null) {
             weakHashMap = new WeakHashMap();
@@ -146,8 +147,8 @@ public class DownloadNotifier {
 
     }
 
-    public com.bytedance.sdk.openadsdk.core.nibuguan.e a(long var1) {
-        return this.mLongeMap != null ? (com.bytedance.sdk.openadsdk.core.nibuguan.e)this.mLongeMap.get(var1) : null;
+    public DownLoadInfo a(long var1) {
+        return this.mLongeMap != null ? (DownLoadInfo)this.mLongeMap.get(var1) : null;
     }
 
     public void remove(long var1) {

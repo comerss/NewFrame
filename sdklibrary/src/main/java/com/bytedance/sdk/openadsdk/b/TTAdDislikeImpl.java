@@ -104,7 +104,7 @@ import java.util.List;
 /*     */         
 /*     */ 
 /*  80 */         ((f)b.q().get(paramAnonymousInt)).a(true);
-///*  81 */         cc.cc(bee.bee(TTAdDislikeImpl.this));
+///*  81 */         VideoManager.VideoManager(bee.bee(TTAdDislikeImpl.this));
                 AdEvent.c(b);
 /*  82 */         if (e != null)
 /*     */         {

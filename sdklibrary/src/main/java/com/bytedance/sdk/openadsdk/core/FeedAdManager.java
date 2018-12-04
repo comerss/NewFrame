@@ -56,7 +56,7 @@ class FeedAdManager {
         }
     }
 
-    DownLoadListenerImpl a() {
+    DownLoadListenerImpl getDownloadListener() {
         /*  61 */
         return this.mDownLoadListener;
     }
@@ -68,7 +68,7 @@ class FeedAdManager {
             this.mDownLoadListener.e();
         }
         /*  69 */
-        AdEvent.a(this.mAdData);
+        AdEvent.addEventData(this.mAdData);
         /*  70 */
         SplashManager splashManager = getSplashManager(paramViewGroup);
         /*  71 */

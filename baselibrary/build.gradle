@@ -83,6 +83,8 @@ dependencies {
     api 'org.greenrobot:greendao-generator:3.2.2'
     api 'com.android.support:multidex:1.0.3'
 
+    api 'org.greenrobot:eventbus:3.1.1'
+
 }
 greendao {
     schemaVersion 1
@@ -90,14 +92,14 @@ greendao {
 repositories {
     mavenCentral()
 }
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
-publish {
-    userOrg = 'comerss' //bintray账户下某个组织id
-    groupId = 'com.comers' //maven仓库下库的包名，一般为模块包名
-    artifactId = 'BaseLibrary' //项目名称
-    publishVersion = '1.0.1' //版本号
-    desc = 'a utils for android develeper' //项目介绍，可以不写
-    website = '' //项目主页，可以不写
-}
+//publish {
+//    userOrg = 'comerss' //bintray账户下某个组织id
+//    groupId = 'com.comers' //maven仓库下库的包名，一般为模块包名
+//    artifactId = 'BaseLibrary' //项目名称
+//    publishVersion = '1.0.1' //版本号
+//    desc = 'a utils for android develeper' //项目介绍，可以不写
+//    website = '' //项目主页，可以不写
+//}
 ////上传命令  gradlew clean build bintrayUpload -PbintrayUser=comerss -PbintrayKey=f476eff258b0d52770xxxxxxxxxxxxx -PdryRun=false

@@ -21,7 +21,13 @@
     <WebView
         android:layout_width="match_parent"
         android:id="@+id/webview"
+        android:visibility="gone"
         android:layout_height="match_parent">
 
     </WebView>
+    <com.comers.shenwu.camera.CheckStatusView
+        android:layout_width="50dp"
+        android:id="@+id/tvShowCheck"
+        android:text="我是一个Check的view"
+        android:layout_height="50dp"/>
 </LinearLayout>

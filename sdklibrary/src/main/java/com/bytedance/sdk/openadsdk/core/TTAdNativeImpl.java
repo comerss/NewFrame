@@ -132,7 +132,7 @@ import com.bytedance.sdk.openadsdk.ggg.ObjectHelper;
 /* 130 */         if ((paramAnonymousa.b() != null) && (!paramAnonymousa.b().isEmpty())) {
 /* 131 */           NativeAdData localh = (NativeAdData)paramAnonymousa.b().get(0);
 /* 132 */           if (localh.v()) {
-/* 133 */             y localy = new y(b, localh, paramAdSlot, paramRewardVideoAdListener);
+/* 133 */             TTRewardVideoAdImpl localy = new TTRewardVideoAdImpl(b, localh, paramAdSlot, paramRewardVideoAdListener);
 /* 134 */             localy.a();
 /* 135 */             paramRewardVideoAdListener.onRewardVideoAdLoad(localy);
 /*     */           } else {

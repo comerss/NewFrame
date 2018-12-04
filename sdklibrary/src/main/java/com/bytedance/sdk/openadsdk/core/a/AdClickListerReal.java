@@ -38,7 +38,7 @@ public class AdClickListerReal extends AdClickListenerImpl {
                     }
 
                     aa.a(true);
-//                    boolean var9 = aa.OnClick(this.bee, this.cc, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl), this.mM);
+//                    boolean var9 = aa.OnClick(this.bee, this.VideoManager, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl), this.mM);
                     if (this.a) {
                         AdEvent.a(this.mContext, "click", this.mAdData, this.h, this.d, true);
                     }
@@ -57,8 +57,8 @@ public class AdClickListerReal extends AdClickListenerImpl {
                         AdEvent.a(this.mContext, "click_call", this.mAdData, this.h, var7, true);
 //                    }
 
-//                    boolean var8 = mR.TTBannerAdImpl(var1.getContext(), this.cc.ApiException());
-//                    com.bytedance.sdk.openadsdk.dddd.cc.OnClick(this.bee, "click", this.cc, this.ImageHelper, this.LocationUtils, var8);
+//                    boolean var8 = mR.TTBannerAdImpl(var1.getContext(), this.VideoManager.ApiException());
+//                    com.bytedance.sdk.openadsdk.dddd.VideoManager.OnClick(this.bee, "click", this.VideoManager, this.ImageHelper, this.LocationUtils, var8);
                     break;
                 default:
                     var6 = -1;

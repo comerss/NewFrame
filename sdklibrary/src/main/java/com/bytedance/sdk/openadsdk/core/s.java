@@ -28,9 +28,9 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */ {
 /*    */   private static s a;
 /*    */   private c b;
-/*    */   private NativeAdData c;
-/*    */   private TTRewardVideoAd.RewardAdInteractionListener d;
-/*    */   private DownLoadListenerImpl e;
+/*    */   private NativeAdData mAdData;
+/*    */   private TTRewardVideoAd.RewardAdInteractionListener mInteractionListener;
+/*    */   private DownLoadListenerImpl mLoadListener;
 /*    */   
 /*    */   @MainThread
 /*    */   public static s a()
@@ -52,34 +52,34 @@ import com.bytedance.sdk.openadsdk.core.video.a.c;
 /*    */   
 /*    */   @NonNull
 /*    */   public NativeAdData c() {
-/* 46 */     return this.c;
+/* 46 */     return this.mAdData;
 /*    */   }
 /*    */   
 /*    */   public void a(NativeAdData paramh) {
-/* 50 */     this.c = paramh;
+/* 50 */     this.mAdData = paramh;
 /*    */   }
 /*    */   
 /*    */   public TTRewardVideoAd.RewardAdInteractionListener d() {
-/* 54 */     return this.d;
+/* 54 */     return this.mInteractionListener;
 /*    */   }
 /*    */   
 /*    */   public void a(TTRewardVideoAd.RewardAdInteractionListener paramRewardAdInteractionListener) {
-/* 58 */     this.d = paramRewardAdInteractionListener;
+/* 58 */     this.mInteractionListener = paramRewardAdInteractionListener;
 /*    */   }
 /*    */   
 /*    */   public DownLoadListenerImpl e() {
-/* 62 */     return this.e;
+/* 62 */     return this.mLoadListener;
 /*    */   }
 /*    */   
 /*    */   public void a(DownLoadListenerImpl paramx) {
-/* 66 */     this.e = paramx;
+/* 66 */     this.mLoadListener = paramx;
 /*    */   }
 /*    */   
 /*    */   public void f() {
 /* 70 */     this.b = null;
-/* 71 */     this.c = null;
-/* 72 */     this.d = null;
-/* 73 */     this.e = null;
+/* 71 */     this.mAdData = null;
+/* 72 */     this.mInteractionListener = null;
+/* 73 */     this.mLoadListener = null;
 /*    */   }
 /*    */ }
 

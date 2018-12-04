@@ -25,23 +25,23 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, MineHandler.OnResult {
-    private cc a;
+public class SSMediaPlayeWrapper implements VideoManager.a, VideoManager.b, VideoManager.c, VideoManager.d, VideoManager.e, VideoManager.f, MineHandler.OnResult {
+    private VideoManager mVideoManager;
     private boolean b;
     private boolean c;
     private boolean d;
     private int e;
     private long f;
-    private Handler g;
-    private Handler h;
-    private ArrayList<Runnable> i;
+    private Handler mineHandler;
+    private Handler mHandler;
+    private ArrayList<Runnable> mRunnables;
     private int j;
     private int k;
     private static boolean l = false;
     private String m;
-    private static Map<Integer, Integer> n = new HashMap();
+    private static Map<Integer, Integer> sHashMap = new HashMap();
     private boolean o;
-    private final Set<SurfaceTexture> p;
+    private final Set<SurfaceTexture> mSurfaceTextures;
     private final Object q;
     private StringBuilder r;
     private boolean s;
@@ -54,14 +54,14 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     public SSMediaPlayeWrapper(Handler var1, int var2) {
-        this.a = null;
+        this.mVideoManager = null;
         this.b = false;
         this.c = false;
         this.e = 201;
         this.f = -1L;
         this.j = 0;
         this.m = "0";
-        this.p = new HashSet();
+        this.mSurfaceTextures = new HashSet();
         this.q = new Object();
         this.r = null;
         this.s = false;
@@ -69,26 +69,26 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
         this.u = 0L;
         this.v = false;
         this.j = 0;
-        this.h = var1;
+        this.mHandler = var1;
         HandlerThread var3 = new HandlerThread("VideoManager");
         var3.start();
-        this.g = new MineHandler(var3.getLooper(), this);
+        this.mineHandler = new MineHandler(var3.getLooper(), this);
         this.v = Build.VERSION.SDK_INT >= 17;
         this.q();
     }
 
     private void q() {
-        if (this.a == null) {
+        if (this.mVideoManager == null) {
             LogUtils.b("SSMediaPlayeWrapper", "SSMediaPlayerWrapper use System Mediaplayer");
-            this.a = new com.bytedance.sdk.openadsdk.core.video.c.b();
+            this.mVideoManager = new MediaPlayerManager();
             this.m = "0";
-            this.a.a((cc.a) this);
-            this.a.a((cc.b)this);
-            this.a.a((cc.c)this);
-            this.a.a((cc.d)this);
-            this.a.a((cc.e)this);
-            this.a.a((cc.f)this);
-            this.a.b(this.b);
+            this.mVideoManager.a((VideoManager.a) this);
+            this.mVideoManager.a((VideoManager.b)this);
+            this.mVideoManager.a((VideoManager.c)this);
+            this.mVideoManager.a((VideoManager.d)this);
+            this.mVideoManager.a((VideoManager.e)this);
+            this.mVideoManager.a((VideoManager.f)this);
+            this.mVideoManager.b(this.b);
             this.c = false;
         }
 
@@ -97,10 +97,10 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     public void a(boolean var1, long var2, boolean var4) {
         this.o = false;
         if (!var4) {
-            if (this.a != null) {
+            if (this.mVideoManager != null) {
                 this.a(true);
             }
-        } else if (this.a != null) {
+        } else if (this.mVideoManager != null) {
             this.a(false);
         }
 
@@ -109,13 +109,13 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
             this.f = var2;
         } else {
             this.s();
-            if (this.a != null) {
-                this.f = var2 > this.a.i() ? var2 : this.a.i();
+            if (this.mVideoManager != null) {
+                this.f = var2 > this.mVideoManager.i() ? var2 : this.mVideoManager.i();
             }
 
             this.a(new Runnable() {
                 public void run() {
-                    SSMediaPlayeWrapper.this.g.sendEmptyMessageDelayed(100, 0L);
+                    SSMediaPlayeWrapper.this.mineHandler.sendEmptyMessageDelayed(100, 0L);
                 }
             });
         }
@@ -123,23 +123,23 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     public void a() {
-        this.g.removeMessages(100);
+        this.mineHandler.removeMessages(100);
         this.o = true;
-        this.g.sendEmptyMessage(101);
+        this.mineHandler.sendEmptyMessage(101);
         this.t();
     }
 
     public void b() {
         this.e = 203;
         this.t();
-        if (this.a != null) {
+        if (this.mVideoManager != null) {
             this.r();
-            if (this.g != null) {
+            if (this.mineHandler != null) {
                 try {
                     this.b("release");
-                    this.g.removeCallbacksAndMessages((Object)null);
+                    this.mineHandler.removeCallbacksAndMessages((Object)null);
                     this.d = true;
-                    this.g.sendEmptyMessage(103);
+                    this.mineHandler.sendEmptyMessage(103);
                 } catch (Throwable var2) {
                     ;
                 }
@@ -151,8 +151,8 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     public void c() {
         this.a(new Runnable() {
             public void run() {
-                if (SSMediaPlayeWrapper.this.g != null) {
-                    SSMediaPlayeWrapper.this.g.sendEmptyMessage(104);
+                if (SSMediaPlayeWrapper.this.mineHandler != null) {
+                    SSMediaPlayeWrapper.this.mineHandler.sendEmptyMessage(104);
                 }
 
             }
@@ -164,8 +164,8 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
         if (this.e == 207 || this.e == 206 || this.e == 209) {
             this.a(new Runnable() {
                 public void run() {
-                    if (SSMediaPlayeWrapper.this.g != null) {
-                        SSMediaPlayeWrapper.this.g.obtainMessage(106, var1).sendToTarget();
+                    if (SSMediaPlayeWrapper.this.mineHandler != null) {
+                        SSMediaPlayeWrapper.this.mineHandler.obtainMessage(106, var1).sendToTarget();
                     }
 
                 }
@@ -175,9 +175,9 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     private boolean a(@NonNull SurfaceTexture var1) {
-        Set var2 = this.p;
-        synchronized(this.p) {
-            return this.p.contains(var1);
+        Set var2 = this.mSurfaceTextures;
+        synchronized(this.mSurfaceTextures) {
+            return this.mSurfaceTextures.contains(var1);
         }
     }
 
@@ -185,8 +185,8 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
         this.a(new Runnable() {
             public void run() {
                 SSMediaPlayeWrapper.this.q();
-                if (SSMediaPlayeWrapper.this.g != null) {
-                    SSMediaPlayeWrapper.this.g.obtainMessage(110, var1).sendToTarget();
+                if (SSMediaPlayeWrapper.this.mineHandler != null) {
+                    SSMediaPlayeWrapper.this.mineHandler.obtainMessage(110, var1).sendToTarget();
                 }
 
             }
@@ -194,15 +194,15 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     public void d() {
-        if (this.g != null) {
-            this.g.obtainMessage(108).sendToTarget();
+        if (this.mineHandler != null) {
+            this.mineHandler.obtainMessage(108).sendToTarget();
         }
 
     }
 
     public void e() {
-        if (this.g != null) {
-            this.g.obtainMessage(109).sendToTarget();
+        if (this.mineHandler != null) {
+            this.mineHandler.obtainMessage(109).sendToTarget();
         }
 
     }
@@ -211,8 +211,8 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
         this.a(new Runnable() {
             public void run() {
                 SSMediaPlayeWrapper.this.q();
-                if (SSMediaPlayeWrapper.this.g != null) {
-                    SSMediaPlayeWrapper.this.g.obtainMessage(107, var1).sendToTarget();
+                if (SSMediaPlayeWrapper.this.mineHandler != null) {
+                    SSMediaPlayeWrapper.this.mineHandler.obtainMessage(107, var1).sendToTarget();
                 }
 
             }
@@ -220,15 +220,15 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     public boolean f() {
-        return (this.e == 206 || this.g.hasMessages(100)) && !this.o;
+        return (this.e == 206 || this.mineHandler.hasMessages(100)) && !this.o;
     }
 
     public boolean g() {
-        return this.j() || this.f() || this.h();
+        return this.j() || this.f() || this.start();
     }
 
-    public boolean h() {
-        return (this.e == 207 || this.o) && !this.g.hasMessages(100);
+    public boolean start() {
+        return (this.e == 207 || this.o) && !this.mineHandler.hasMessages(100);
     }
 
     public boolean i() {
@@ -247,17 +247,17 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
         boolean var2 = false;
         int var3 = var1.what;
         Integer var4 = null;
-        if (this.a != null) {
+        if (this.mVideoManager != null) {
             switch(var1.what) {
                 case 100:
                     if (this.e != 205 && this.e != 206 && this.e != 207 && this.e != 209) {
                         var2 = true;
                     } else {
                         try {
-                            this.a.f();
+                            this.mVideoManager.start();
                             this.e = 206;
                             if (this.f > 0L) {
-                                this.a.a(this.f);
+                                this.mVideoManager.a(this.f);
                                 this.f = -1L;
                             }
                         } catch (Exception var19) {
@@ -270,7 +270,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                         var2 = true;
                     } else {
                         try {
-                            this.a.h();
+                            this.mVideoManager.pause();
                             this.e = 207;
                             this.o = false;
                         } catch (Exception var18) {
@@ -280,7 +280,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                     break;
                 case 102:
                     try {
-                        this.a.l();
+                        this.mVideoManager.l();
                         this.e = 201;
                     } catch (Exception var15) {
                         var4 = 1006;
@@ -288,7 +288,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                     break;
                 case 103:
                     try {
-                        this.a.k();
+                        this.mVideoManager.k();
                     } catch (Exception var16) {
                         var16.printStackTrace();
                         var4 = 1009;
@@ -297,14 +297,14 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                     this.d = false;
                     this.a(309, (Object)null);
                     this.e = 203;
-                    this.a = null;
+                    this.mVideoManager = null;
                     break;
                 case 104:
                     if (this.e != 202 && this.e != 208) {
                         var2 = true;
                     } else {
                         try {
-                            ((com.bytedance.sdk.openadsdk.core.video.c.b)this.a).e().prepareAsync();
+                            ((MediaPlayerManager)this.mVideoManager).getMediaPlayer().prepareAsync();
                         } catch (Exception var17) {
                             var17.printStackTrace();
                             var4 = 1003;
@@ -316,7 +316,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                         var2 = true;
                     } else {
                         try {
-                            this.a.g();
+                            this.mVideoManager.stop();
                             this.e = 208;
                         } catch (Exception var12) {
                             var4 = 1008;
@@ -328,7 +328,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                         var2 = true;
                     } else {
                         try {
-                            this.a.a((Long)var1.obj);
+                            this.mVideoManager.a((Long)var1.obj);
                         } catch (Exception var14) {
                             var4 = 1007;
                         }
@@ -341,10 +341,10 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                         try {
                             String var26 = (String)var1.obj;
                             if (var26 != null && var26.startsWith("/")) {
-                                this.a.a(var26);
+                                this.mVideoManager.setDataSource(var26);
                             } else {
                                 Uri var25 = Uri.parse(var26);
-                                this.a.a(var26);
+                                this.mVideoManager.setDataSource(var26);
                             }
 
                             this.e = 202;
@@ -358,7 +358,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                     long var24 = 0L;
                     if (this.e == 206 || this.e == 207) {
                         try {
-                            var24 = this.a.j();
+                            var24 = this.mVideoManager.j();
                         } catch (Exception var11) {
                             var4 = 1010;
                         }
@@ -370,7 +370,7 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                     long var7 = 0L;
                     if (this.e == 206 || this.e == 207) {
                         try {
-                            var7 = this.a.i();
+                            var7 = this.mVideoManager.i();
                         } catch (Exception var10) {
                             var10.printStackTrace();
                             var4 = 1011;
@@ -384,12 +384,12 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                 case 110:
                     try {
                         SurfaceHolder var23 = (SurfaceHolder)var1.obj;
-                        this.a.a(var23);
+                        this.mVideoManager.setSurfaceHolder(var23);
                         if (this.j == 2) {
-                            this.a.a(com.bytedance.sdk.openadsdk.core.n.a(), 10);
+                            this.mVideoManager.a(com.bytedance.sdk.openadsdk.core.n.a(), 10);
                         }
 
-                        this.a.a(true);
+                        this.mVideoManager.setScreenOnWhilePlaying(true);
                     } catch (Exception var13) {
                         var4 = 1002;
                         LogUtils.e("SSMediaPlayeWrapper", var13.getMessage());
@@ -398,15 +398,15 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                 case 111:
                     try {
                         SurfaceTexture var5 = (SurfaceTexture)var1.obj;
-                        Set var6 = this.p;
-                        synchronized(this.p) {
+                        Set var6 = this.mSurfaceTextures;
+                        synchronized(this.mSurfaceTextures) {
                             if (!this.a(var5)) {
-                                this.a.a(new Surface(var5));
+                                this.mVideoManager.setSurface(new Surface(var5));
                             }
                         }
 
-                        this.a.a(true);
-                        this.a.a(com.bytedance.sdk.openadsdk.core.n.a(), 10);
+                        this.mVideoManager.setScreenOnWhilePlaying(true);
+                        this.mVideoManager.a(com.bytedance.sdk.openadsdk.core.n.a(), 10);
                     } catch (Exception var21) {
                         var4 = 1002;
                         LogUtils.e("SSMediaPlayeWrapper", var21.getMessage());
@@ -434,58 +434,58 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
             this.o();
         }
 
-        if (this.h != null) {
-            this.h.obtainMessage(var1, var2).sendToTarget();
+        if (this.mHandler != null) {
+            this.mHandler.obtainMessage(var1, var2).sendToTarget();
         }
 
     }
 
-    public void a(cc var1, int var2) {
-        if (this.a == var1) {
-            if (this.h != null) {
-                this.h.obtainMessage(301, var2).sendToTarget();
+    public void a(VideoManager var1, int var2) {
+        if (this.mVideoManager == var1) {
+            if (this.mHandler != null) {
+                this.mHandler.obtainMessage(301, var2).sendToTarget();
             }
 
         }
     }
 
     public void l() {
-        Integer var1 = (Integer)n.get(this.j);
+        Integer var1 = (Integer) sHashMap.get(this.j);
         if (var1 == null) {
-            n.put(this.j, 1);
+            sHashMap.put(this.j, 1);
         } else {
-            n.put(this.j, var1 + 1);
+            sHashMap.put(this.j, var1 + 1);
         }
 
     }
 
-    public void a(cc var1) {
+    public void a(VideoManager var1) {
         this.e = !this.b ? 209 : 206;
-        n.remove(this.j);
-        if (this.h != null) {
-            this.h.obtainMessage(302).sendToTarget();
+        sHashMap.remove(this.j);
+        if (this.mHandler != null) {
+            this.mHandler.obtainMessage(302).sendToTarget();
         }
 
         this.b("completion");
         this.t();
     }
 
-    public boolean a(cc var1, int var2, int var3) {
+    public boolean a(VideoManager var1, int var2, int var3) {
         this.e = 200;
         this.l();
-        if (this.h != null) {
-            this.h.obtainMessage(303, var2, var3).sendToTarget();
+        if (this.mHandler != null) {
+            this.mHandler.obtainMessage(303, var2, var3).sendToTarget();
         }
 
         return true;
     }
 
-    public boolean b(cc var1, int var2, int var3) {
-        if (this.a != var1) {
+    public boolean b(VideoManager var1, int var2, int var3) {
+        if (this.mVideoManager != var1) {
             return false;
         } else {
-            if (this.h != null) {
-                this.h.obtainMessage(304, var2, var3).sendToTarget();
+            if (this.mHandler != null) {
+                this.mHandler.obtainMessage(304, var2, var3).sendToTarget();
             }
 
             this.a(var2, var3);
@@ -506,13 +506,13 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
 
     }
 
-    public void b(cc var1) {
+    public void b(VideoManager var1) {
         this.e = 205;
         if (this.o) {
-            this.g.post(new Runnable() {
+            this.mineHandler.post(new Runnable() {
                 public void run() {
                     try {
-                        SSMediaPlayeWrapper.this.a.h();
+                        SSMediaPlayeWrapper.this.mVideoManager.pause();
                         SSMediaPlayeWrapper.this.e = 207;
                         SSMediaPlayeWrapper.this.o = false;
                     } catch (Exception var2) {
@@ -522,12 +522,12 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
                 }
             });
         } else {
-            this.g.sendMessage(this.g.obtainMessage(100, -1, -1));
+            this.mineHandler.sendMessage(this.mineHandler.obtainMessage(100, -1, -1));
         }
 
-        n.remove(this.j);
-        if (this.h != null) {
-            this.h.sendEmptyMessage(305);
+        sHashMap.remove(this.j);
+        if (this.mHandler != null) {
+            this.mHandler.sendEmptyMessage(305);
         }
 
         this.m();
@@ -540,24 +540,24 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
 
     }
 
-    public void c(cc var1) {
-        if (this.h != null) {
-            this.h.sendEmptyMessage(306);
+    public void c(VideoManager var1) {
+        if (this.mHandler != null) {
+            this.mHandler.sendEmptyMessage(306);
         }
 
     }
 
     private void b(Runnable var1) {
-        if (this.i == null) {
-            this.i = new ArrayList();
+        if (this.mRunnables == null) {
+            this.mRunnables = new ArrayList();
         }
 
-        this.i.add(var1);
+        this.mRunnables.add(var1);
     }
 
     private void r() {
-        if (this.i != null && !this.i.isEmpty()) {
-            this.i.clear();
+        if (this.mRunnables != null && !this.mRunnables.isEmpty()) {
+            this.mRunnables.clear();
         }
     }
 
@@ -601,9 +601,9 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     public void a(boolean var1) {
         try {
             if (var1) {
-                this.a.a(0.0F, 0.0F);
+                this.mVideoManager.a(0.0F, 0.0F);
             } else {
-                this.a.a(1.0F, 1.0F);
+                this.mVideoManager.a(1.0F, 1.0F);
             }
         } catch (Throwable var3) {
             ;
@@ -612,8 +612,8 @@ public class SSMediaPlayeWrapper implements cc.a, cc.b, cc.c, cc.d, cc.e, cc.f, 
     }
 
     private void b(String var1) {
-        if (this.g != null) {
-            this.g.removeMessages(201);
+        if (this.mineHandler != null) {
+            this.mineHandler.removeMessages(201);
         }
 
         Object var2 = this.q;

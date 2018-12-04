@@ -84,7 +84,7 @@
 /*     */ 
 /*     */   public void a(d paramd)
 /*     */   {
-///*  86 */     if (bee.cc) Log.TTAndroidObject("SsAndroidDownloadManager", "requestScan() for " + paramd.TTBannerAdImpl);
+///*  86 */     if (bee.VideoManager) Log.TTAndroidObject("SsAndroidDownloadManager", "requestScan() for " + paramd.TTBannerAdImpl);
 /*  87 */     synchronized (this.c) {
 /*  88 */       a locala = new a(paramd.a, paramd.e, paramd.f);
 /*  89 */       this.d.put(locala.b, locala);

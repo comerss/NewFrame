@@ -87,7 +87,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   void a(@NonNull j paramj)
 /*     */   {
 /*  59 */     this.f = paramj;
-/*  60 */     AdEvent.a(this.b);
+/*  60 */     AdEvent.addEventData(this.b);
 /*  61 */     if (getInteractionType() == 4) {
 /*  62 */       this.e = new DownLoadListenerImpl(this.a, this.b, "interaction");
 /*     */     }

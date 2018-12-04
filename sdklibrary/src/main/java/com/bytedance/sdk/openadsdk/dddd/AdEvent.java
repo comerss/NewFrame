@@ -23,7 +23,7 @@ import java.util.WeakHashMap;
 /*     */ {
 /*  34 */   private static Map<NativeAdData, h> a = new WeakHashMap();
 /*     */   
-/*     */   public static void a(NativeAdData paramh) {
+/*     */   public static void addEventData(NativeAdData paramh) {
 /*  37 */     if (a.containsKey(paramh)) {
 /*  38 */       return;
 /*     */     }

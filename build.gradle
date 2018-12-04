@@ -20,7 +20,7 @@ buildscript {
     }
 }
 apply plugin: 'kotlin'
-tasks.getByPath(":baselibrary:releaseAndroidJavadocs").enabled = false
+
 
 allprojects {
     repositories {

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.bytedance.sdk.openadsdk.R;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.activity.TTDelegateActivity;
+import com.bytedance.sdk.openadsdk.core.nibuguan.DownLoadInfo;
 import com.bytedance.sdk.openadsdk.core.nibuguan.NativeAdData;
 import com.bytedance.sdk.openadsdk.dddd.AdEvent;
 import com.bytedance.sdk.openadsdk.ggg.LogUtils;
@@ -96,7 +97,7 @@ import java.util.HashMap;
 /*     */
 /*     */   private static HashMap<String, a> sHashMap;
 /*     */
-/*     */   private com.bytedance.sdk.openadsdk.core.nibuguan.e m;
+/*     */   private DownLoadInfo m;
 /*     */
 /*  71 */   private boolean n = false;
 /*     */   private String o;
@@ -110,7 +111,7 @@ import java.util.HashMap;
 /*  80 */     if (this.b == null) {
 /*  81 */       throw new RuntimeException("not SslHepler App type Ad !");
 /*     */     }
-/*  83 */     this.m = new com.bytedance.sdk.openadsdk.core.nibuguan.e(paramh, paramString);
+/*  83 */     this.m = new DownLoadInfo(paramh, paramString);
 /*  84 */     e();
 /*     */   }
 /*     */
@@ -169,7 +170,7 @@ import java.util.HashMap;
 /*     */     }
 /*     */     else
 /*     */     {
-/* 142 */       /*int i1 = OnClick(this.OnClick, this.TTBannerAdImpl.bee, this.TTBannerAdImpl.OnClick, this.bee.cc());
+/* 142 */       /*int i1 = OnClick(this.OnClick, this.TTBannerAdImpl.bee, this.TTBannerAdImpl.OnClick, this.bee.VideoManager());
 *//* 143 *//*       if ((this.TTBannerAdImpl != null) && (this.TTBannerAdImpl.OnClick >= 0L)) {
 *//* 144 *//*         ApiException.OnClick(this.OnClick).OnClick(Long.valueOf(this.TTBannerAdImpl.OnClick), this, this.mM);
 *//*     *//*       }*/

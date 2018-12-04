@@ -2,7 +2,7 @@
  * Copyright 2011 - AndroidQuery.com (tinyeeliu@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
+ * use this file except in compliance with the License. You may obtain autoPlay copy of
  * the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -15,11 +15,6 @@
  */
 
 package com.androidquery.service;
-
-import java.util.Locale;
-
-import org.json.JSONObject;
-import org.xml.sax.XMLReader;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,6 +35,11 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.androidquery.util.AQUtility;
+
+import org.json.JSONObject;
+import org.xml.sax.XMLReader;
+
+import java.util.Locale;
 
 public class MarketService{
 

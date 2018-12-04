@@ -27,7 +27,7 @@ android {
             signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
             signingConfig signingConfigs.config
         }
     }
@@ -47,9 +47,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation project(':baselibrary')
-//    implementation project(':sdklibrary')
-//    implementation project(':doaar')
-        implementation 'com.comers:BaseLibrary:1.0.0'
+    implementation project(':annotations')
+    //    implementation project(':sdklibrary')
+    //    implementation project(':doaar')
+    //        implementation 'com.comers:BaseLibrary:1.0.0'
     //    implementation (name:"BaseLibrary",ext:'aar')
-    //    implementation 'com.maoyan.android.business:movie:1.0.2.3'
 }

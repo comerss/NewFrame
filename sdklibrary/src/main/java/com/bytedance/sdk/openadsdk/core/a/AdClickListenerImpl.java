@@ -90,14 +90,14 @@ public class AdClickListenerImpl extends AdClickListener {
             /*  84 */
             this.mOnClick.onClick(paramView, -1);
         }
-///*  86 */     boolean bool = aa.OnClick(this.bee, this.cc, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl));
+///*  86 */     boolean bool = aa.OnClick(this.bee, this.VideoManager, this.TTBannerAdImpl, this.LogUtils, this.mTTFeedAd, mR.OnClick(this.TTBannerAdImpl));
         /*  87 */
         AdEvent.a(this.mContext, "click", this.mAdData, this.h, this.d, true);
     }
 
 
     protected com.bytedance.sdk.openadsdk.core.nibuguan.c a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, View paramView1, View paramView2) {
-///*  95 */           return (new com.bytedance.sdk.openadsdk.core.nibuguan.cc.asss()).LocationUtils(var1).cc(var2).bee(var3).asss(var4).bee(var5).asss(var7).bee(ViewWather.asss(var9)).asss(ViewWather.asss(var10)).cc(ViewWather.bee(var9)).LocationUtils(ViewWather.bee(var10)).asss();
+///*  95 */           return (new com.bytedance.sdk.openadsdk.core.nibuguan.VideoManager.asss()).LocationUtils(var1).VideoManager(var2).bee(var3).asss(var4).bee(var5).asss(var7).bee(ViewWather.asss(var9)).asss(ViewWather.asss(var10)).VideoManager(ViewWather.bee(var9)).LocationUtils(ViewWather.bee(var10)).asss();
         //
         return (new c.Builder()).d(paramInt1).c(paramInt2).b(paramInt3).a(paramInt4).b(paramLong1).a(paramLong2).b(ViewWather.getLocationOnScreen(paramView1)).a(ViewWather.getLocationOnScreen(paramView2)).c(ViewWather.getViewSize(paramView1)).d(ViewWather.getViewSize(paramView2)).a();
     }
