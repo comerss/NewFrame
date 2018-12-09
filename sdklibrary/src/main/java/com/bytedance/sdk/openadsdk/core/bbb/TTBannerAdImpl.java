@@ -266,7 +266,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /* 246 */     this.i = new TTAdDislikeImpl(this.c, this.f);
 /* 247 */     paramc.a(localh);
 /* 248 */     this.k = a(localh);
-/* 249 */     AdEvent.a(localh);
+/* 249 */     AdEvent.addEventData(localh);
 /* 250 */     SplashManager localf = a(paramc);
 /* 251 */     if (localf == null) {
 /* 252 */       localf = new SplashManager(this.c, paramc);

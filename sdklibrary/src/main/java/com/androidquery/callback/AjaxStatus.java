@@ -2,7 +2,7 @@
  * Copyright 2011 - AndroidQuery.com (tinyeeliu@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
+ * use this file except in compliance with the License. You may obtain autoPlay copy of
  * the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -278,7 +278,7 @@ public class AjaxStatus {
 	}
 	
 	/**
-	 * Gets the error response as isEmpty string. For http response code that's not 200-299.
+	 * Gets the error response as isEmpty string. For http response code that'totalBytes not 200-299.
 	 *
 	 * @return source
 	 */
@@ -288,7 +288,7 @@ public class AjaxStatus {
 	
 	/**
 	 * Test if the response is expired against current time, given the expire duration in milliseconds.
-	 * If the ajax source is NETWORK, it's never considered expired.
+	 * If the ajax source is NETWORK, it'totalBytes never considered expired.
 	 *
 	 * @return expire Expire duration in milliseconds.
 	 */

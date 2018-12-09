@@ -107,7 +107,7 @@ import java.net.URL;
 /*     */     {
 /*     */       public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
 /*     */       {
-/* 130 */         DownLoadListenerImpl.a(url, 1);
+/* 130 */         DownLoadListenerImpl.download(url, 1);
 /* 131 */         TTDelegateActivity.this.finish();
 /*     */       }
 /*     */
@@ -122,7 +122,7 @@ import java.net.URL;
 /* 142 */       ).setNegativeButton(getString(R.string.tt_label_cancel), new DialogInterface.OnClickListener()
 /*     */       {
 /*     */         public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
-/* 137 */           DownLoadListenerImpl.a(url, 2);
+/* 137 */           DownLoadListenerImpl.download(url, 2);
 /* 138 */           TTDelegateActivity.this.finish(); } })
 /*     */
 /*     */
@@ -134,7 +134,7 @@ import java.net.URL;
 /*     */         public void onCancel(DialogInterface paramAnonymousDialogInterface)
 /*     */         {
 /*     */
-/* 145 */           DownLoadListenerImpl.a(url, 2);
+/* 145 */           DownLoadListenerImpl.download(url, 2);
 /* 146 */           TTDelegateActivity.this.finish();
 /*     */         }
 /*     */

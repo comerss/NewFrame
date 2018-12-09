@@ -86,7 +86,7 @@ import com.bytedance.sdk.openadsdk.ggg.ToolUtils;
 /*     */   
 /*     */   void a() {
 /*  63 */     this.mSplashLayout = new SplashLayout(this.mContext);
-/*  64 */     AdEvent.a(this.d);
+/*  64 */     AdEvent.addEventData(this.d);
 /*     */     
 /*     */ 
 /*  67 */     if (this.d.s() <= 0) {

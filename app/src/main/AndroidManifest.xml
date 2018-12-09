@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.donews.frame"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.comers.shenwu"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -12,6 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -19,24 +22,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".sdk.DoApplication"
+        android:name="com.comers.shenwu.sdk.DoApplication"
         android:theme="@style/AppTheme">
         <meta-data android:name="BaiduMobAd_APP_ID" android:value="b792a33a" />
-        <activity android:name=".camera.SplashActivity">
+        <activity android:name="com.comers.shenwu.camera.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".camera.CameraActivity"/>
+        <activity android:name="com.comers.shenwu.camera.CameraActivity"/>
 
-        <activity android:name=".sdk.SdkActivity"/>
+        <activity android:name="com.comers.shenwu.sdk.SdkActivity"/>
         <!--<activity android:name=".camera.ClearActivity"/>-->
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.donews.frame.fileprovider"
+            android:authorities="com.comers.shenwu.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -47,7 +50,24 @@
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".sdk.FeedListActivity"/>
-        <service android:name=".sdk.DeadService"/>
+        <service android:name="com.comers.shenwu.sdk.DeadService"/>
+
+        <!--=================inmobi广告配置=====================-->
+        <activity
+            android:name="com.inmobi.rendering.InMobiAdActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize|screenLayout"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="false"
+            android:theme="@android:style/Theme.NoTitleBar"
+            tools:ignore="UnusedAttribute"/>
+        <service
+            android:name="com.inmobi.ads.ApkDownloader$ApkDownloadService"
+            android:enabled="true">
+        </service>
+        <activity android:name="com.comers.shenwu.camera.HomeActivity"/>
+
+
     </application>
+
 
 </manifest>

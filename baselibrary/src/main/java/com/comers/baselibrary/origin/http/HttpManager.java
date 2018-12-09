@@ -20,40 +20,46 @@ import java.util.Map;
  * Created by 79653 on 2018/8/29.
  * 描述：
  */
-public enum HttpManager {
-    INSTANCE;
+public class HttpManager {
+    private HttpManager() {
+    }
+
+    public static HttpManager INSTANCE = new HttpManager();
 
     private static WorkStation sWorkStation = new WorkStation();
 
     private static final List<Convert> sConverts = new ArrayList<>();
 
-    public <T> void doPost(String url, Map<String, Object> params, ICallBack<T> ICallBack) {
-        doRequest(url, params, HttpMethod.POST, ICallBack);
-    }
-    public <T> void doForm(String url, Map<String, Object> params, ICallBack<T> ICallBack) {
-        doRequest(url, params, HttpMethod.FORM, ICallBack);
-    }
-    public <T> void doPost(String url, ICallBack<T> ICallBack) {
-        doRequest(url, new HashMap<String, Object>(), HttpMethod.POST, ICallBack);
+    public <T> void doPost(String url, Map<String, Object> params, ICallBack<T> iCallBack) {
+        doRequest(url, params, HttpMethod.POST, iCallBack);
     }
 
-    public <T> void doGet(String url, Map<String, Object> params, ICallBack<T> ICallBack) {
-        doRequest(url, params, HttpMethod.GET, ICallBack);
-    }
-    public <T> void doGet(String url,  ICallBack<T> ICallBack) {
-        doRequest(url, new HashMap<String, Object>(), HttpMethod.GET, ICallBack);
+    public <T> void doForm(String url, Map<String, Object> params, ICallBack<T> iCallBack) {
+        doRequest(url, params, HttpMethod.FORM, iCallBack);
     }
 
-    private  <T> void doRequest(String url, Map<String, Object> params, HttpMethod method, ICallBack<T> iCallBack) {
+    public <T> void doPost(String url, ICallBack<T> iCallBack) {
+        doRequest(url, new HashMap<String, Object>(), HttpMethod.POST, iCallBack);
+    }
+
+    public <T> void doGet(String url, Map<String, Object> params, ICallBack<T> iCallBack) {
+        doRequest(url, params, HttpMethod.GET, iCallBack);
+    }
+
+    public <T> void doGet(String url, ICallBack<T> iCallBack) {
+        doRequest(url, new HashMap<String, Object>(), HttpMethod.GET, iCallBack);
+    }
+
+    private <T> void doRequest(String url, Map<String, Object> params, HttpMethod method, ICallBack<T> iCallBack) {
         DoRequest request = new DoRequest();
         WrapperResponse wrapperResponse = new WrapperResponse(iCallBack, sConverts);
         request.setUrl(url);
         if (method == HttpMethod.GET) {
             request.setUrl(getUrl(url, params));
-        } else if(method==HttpMethod.POST){
+        } else if (method == HttpMethod.POST) {
             request.setUrl(url);
             request.setData(JsonParseHelper.parse(params).getBytes());
-        }else if(method==HttpMethod.FORM){
+        } else if (method == HttpMethod.FORM) {
             request.setUrl(url);
             request.setData(getStringBuffer(params).toString().getBytes());
         }

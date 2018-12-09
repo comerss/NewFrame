@@ -23,7 +23,7 @@ import android.util.Log;
 
 import com.bytedance.sdk.openadsdk.ccccc.DownloadNotifier;
 import com.bytedance.sdk.openadsdk.ccccc.SsAndroidDownloadManager;
-import com.bytedance.sdk.openadsdk.ccccc.d;
+import com.bytedance.sdk.openadsdk.ccccc.DownLoadDatas;
 import com.bytedance.sdk.openadsdk.ccccc.i;
 import com.bytedance.sdk.openadsdk.ccccc.j;
 import com.bytedance.sdk.openadsdk.ccccc.p;
@@ -112,7 +112,7 @@ public class TTDownloadService extends Service {
     private TTDownloadService.a d;
     private DownloadNotifier e;
     @SuppressLint({"UseSparseArrays"})
-    private final Map<Long, d> f = new HashMap();
+    private final Map<Long, DownLoadDatas> f = new HashMap();
     private final ExecutorService g = a();
     private j h;
     private HandlerThread i;
@@ -213,7 +213,7 @@ public class TTDownloadService extends Service {
         this.j = new Handler(this.i.getLooper(), this.l);
         this.h = new j(this);
         this.e = DownloadNotifier.getDefault(this);
-        this.e.a();
+        this.e.removeAll();
         this.d = new TTDownloadService.a();
         this.getContentResolver().registerContentObserver(com.bytedance.sdk.openadsdk.ccccc.m.a.a, true, this.d);
     }
@@ -282,15 +282,15 @@ public class TTDownloadService extends Service {
         HashSet var7 = new HashSet(this.f.keySet());
         i var8 = com.bytedance.sdk.openadsdk.ccccc.i.a(this.getApplicationContext());
         Cursor var9 = var8.a(com.bytedance.sdk.openadsdk.ccccc.m.a.a, (String[])null, (String)null, (String[])null, (String)null);
-        d var10 = null;
+        DownLoadDatas var10 = null;
 
         try {
-            com.bytedance.sdk.openadsdk.ccccc.d.b var11 = new com.bytedance.sdk.openadsdk.ccccc.d.b(var8, var9);
+            DownLoadDatas.b var11 = new DownLoadDatas.b(var8, var9);
 
             for(int var12 = var9.getColumnIndexOrThrow("_id"); var9.moveToNext(); var5 = Math.min(var10.b(var2), var5)) {
                 long var13 = var9.getLong(var12);
                 var7.remove(var13);
-                var10 = (d)this.f.get(var13);
+                var10 = (DownLoadDatas)this.f.get(var13);
                 if (var10 != null) {
                     this.a(var11, var10, var2);
                 } else {
@@ -302,8 +302,8 @@ public class TTDownloadService extends Service {
                         this.getContentResolver().delete(Uri.parse(var10.x), (String)null, (String[])null);
                     }
 
-                    this.f.remove(var10.a);
-                    this.a(var10.e);
+                    this.f.remove(var10.id);
+                    this.a(var10.fileName);
                     var8.a(var10.d(), (String)null, (String[])null);
                     this.e.a(DownloadNotifier.a(var10));
                 } else {
@@ -316,8 +316,8 @@ public class TTDownloadService extends Service {
             }
         } catch (Exception var27) {
             if (var10 != null && var10.w) {
-                this.f.remove(var10.a);
-                this.a(var10.e);
+                this.f.remove(var10.id);
+                this.a(var10.fileName);
                 var8.a(var10.d(), (String)null, (String[])null);
                 this.e.a(DownloadNotifier.a(var10));
             }
@@ -361,40 +361,40 @@ public class TTDownloadService extends Service {
         return var4;
     }
 
-    private d a(com.bytedance.sdk.openadsdk.ccccc.d.b var1, long var2) {
-        d var4 = var1.a(this, this.a, this.c, this.e);
-        this.f.put(var4.a, var4);
+    private DownLoadDatas a(DownLoadDatas.b var1, long var2) {
+        DownLoadDatas var4 = var1.a(this, this.a, this.c, this.e);
+        this.f.put(var4.id, var4);
         if (SsAndroidDownloadManager.d) {
-            Log.v("SsAndroidDownloadManager", "processing inserted download " + var4.a);
+            Log.v("SsAndroidDownloadManager", "processing inserted download " + var4.id);
         }
 
         return var4;
     }
 
-    private void a(com.bytedance.sdk.openadsdk.ccccc.d.b var1, d var2, long var3) {
+    private void a(DownLoadDatas.b var1, DownLoadDatas var2, long var3) {
         var1.a(var2);
         if (SsAndroidDownloadManager.d) {
-            Log.v("SsAndroidDownloadManager", "processing updated download " + var2.a + ", status: " + var2.j);
+            Log.v("SsAndroidDownloadManager", "processing updated download " + var2.id + ", status: " + var2.j);
         }
 
     }
 
     private void a(long var1) {
-        d var3 = (d)this.f.get(var1);
+        DownLoadDatas var3 = (DownLoadDatas)this.f.get(var1);
         if (var3.j == 192) {
             var3.j = 490;
         }
 
-        if (var3.g != 0 && var3.e != null) {
+        if (var3.g != 0 && var3.fileName != null) {
             if (SsAndroidDownloadManager.d) {
-                Log.d("SsAndroidDownloadManager", "deleteDownloadLocked() deleting " + var3.e);
+                Log.d("SsAndroidDownloadManager", "deleteDownloadLocked() deleting " + var3.fileName);
             }
 
-            this.a(var3.e);
+            this.a(var3.fileName);
         }
 
         this.e.a(DownloadNotifier.a(var3));
-        this.f.remove(var3.a);
+        this.f.remove(var3.id);
     }
 
     private void a(String var1) {
@@ -421,7 +421,7 @@ public class TTDownloadService extends Service {
 
             while(var7.hasNext()) {
                 Long var8 = (Long)var7.next();
-                d var9 = (d)this.f.get(var8);
+                DownLoadDatas var9 = (DownLoadDatas)this.f.get(var8);
                 var9.a(var4);
             }
 

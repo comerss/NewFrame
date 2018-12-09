@@ -41,7 +41,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   private c c;
 /*     */   private ViewGroup mGroup;
 /*     */   private FrameLayout mFrameLayout;
-/*  27 */   private boolean f = true;
+/*  27 */   private boolean autoPlay = true;
 /*  28 */   private boolean g = false;
 /*  29 */   private boolean h = false;
 /*     */   
@@ -71,13 +71,13 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*  54 */     this.mImageView = ((ImageView)findViewById(R.id.native_video_img_id));
 /*  55 */     this.mQuery2 = new AQuery2(this.mContext);
 /*  56 */     ((AQuery)this.mQuery2.id(this.mImageView)).image(this.b.a().c());
-/*  57 */     this.c = new g(this.mContext, this.mFrameLayout, this.b);
+/*  57 */     this.c = new LiveViewLayout(this.mContext, this.mFrameLayout, this.b);
 /*     */   }
 /*     */   
 /*     */   public boolean a(long paramLong) {
 /*  61 */     this.mGroup.setVisibility(0);
 /*  62 */     if (this.c == null) {
-/*  63 */       this.c = new g(this.mContext, this.mFrameLayout, this.b);
+/*  63 */       this.c = new LiveViewLayout(this.mContext, this.mFrameLayout, this.b);
 /*     */     }
 /*  65 */     this.m = paramLong;
 /*     */     
@@ -137,7 +137,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   {
 /* 121 */     if ((this.b == null) || (this.c == null) || 
 /* 122 */       (this.c.h() == null) || 
-/* 123 */       (this.c.h().h())) {
+/* 123 */       (this.c.h().start())) {
 /* 124 */       return;
 /*     */     }
 /* 126 */     if ((paramBoolean) && (!this.c.g())) {
@@ -154,13 +154,13 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   public void onWindowFocusChanged(boolean paramBoolean)
 /*     */   {
 /* 139 */     super.onWindowFocusChanged(paramBoolean);
-/* 140 */     if ((c()) || (!a()) || (this.c == null) || (this.c.g())) {
+/* 140 */     if ((c()) || (!autoPlay()) || (this.c == null) || (this.c.g())) {
 /* 141 */       return;
 /*     */     }
 /*     */     
 /* 144 */     if (this.mHandler != null) {
 /* 145 */       if ((paramBoolean) && (this.c != null) && (this.c.h() != null) && 
-/* 146 */         (!this.c.h().h())) {
+/* 146 */         (!this.c.h().start())) {
 /* 147 */         this.mHandler.obtainMessage(1).sendToTarget();
 /*     */       } else {
 /* 149 */         this.mHandler.removeMessages(1);
@@ -172,7 +172,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */   protected void onWindowVisibilityChanged(int paramInt)
 /*     */   {
 /* 157 */     super.onWindowVisibilityChanged(paramInt);
-/* 158 */     if ((c()) || (!a()) || (this.c == null) || (this.c.g())) {
+/* 158 */     if ((c()) || (!autoPlay()) || (this.c == null) || (this.c.g())) {
 /* 159 */       return;
 /*     */     }
 /* 161 */     if (this.l) {
@@ -183,7 +183,7 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /*     */     }
 /* 167 */     if ((paramInt == 0) && 
 /* 168 */       (this.mHandler != null) && (this.c != null) && (this.c.h() != null) &&
-/* 169 */       (!this.c.h().h())) {
+/* 169 */       (!this.c.h().start())) {
 /* 170 */       this.mHandler.obtainMessage(1).sendToTarget();
 /*     */     }
 /*     */   }
@@ -197,12 +197,12 @@ import com.bytedance.sdk.openadsdk.ggg.ViewWather;
 /* 180 */     return this.c;
 /*     */   }
 /*     */   
-/*     */   public boolean a() {
-/* 184 */     return this.f;
+/*     */   public boolean autoPlay() {
+/* 184 */     return this.autoPlay;
 /*     */   }
 /*     */   
 /*     */   public void setIsAutoPlay(boolean paramBoolean) {
-/* 188 */     this.f = paramBoolean;
+/* 188 */     this.autoPlay = paramBoolean;
 /* 189 */     if (!paramBoolean) {
 /* 190 */       ViewWather.setVisible(this.mLayout, 0);
 /* 191 */       ((AQuery)this.mQuery2.id(this.mImageView)).image(this.b.a().c());

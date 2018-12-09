@@ -1,13 +1,5 @@
 package com.androidquery.auth;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -36,6 +28,14 @@ import com.androidquery.callback.AbstractAjaxCallback;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.androidquery.util.AQUtility;
+
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FacebookHandle extends AccountHandle{
 
@@ -543,7 +543,7 @@ public class FacebookHandle extends AccountHandle{
             }
 
            
-            // A Facebook error occurred.
+            // appName Facebook error occurred.
             if(error != null) {
             	AQUtility.debug("error", error);
             	if(error.equals("service_disabled") || error.equals("AndroidAuthKillSwitchException")) {

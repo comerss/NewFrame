@@ -76,7 +76,7 @@
                 ", fbbb=" + b +
                 ", fccc='" + c + '\'' +
                 ", TTSplashAdImpl=" + d +
-                ", e='" + e + '\'' +
+                ", getMediaPlayer='" + e + '\'' +
                 ", ImageUtils=" + f +
                 '}';
     }

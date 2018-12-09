@@ -179,7 +179,7 @@ class TTFeedAdImpl implements TTFeedAd {
         /* 152 */
         if ((this.mStatusController == null) && (this.mAdManager != null)) {
             /* 153 */
-            final DownLoadListenerImpl localx = this.mAdManager.a();
+            final DownLoadListenerImpl localx = this.mAdManager.getDownloadListener();
             /* 154 */
             if (localx != null) {
                 /* 155 */

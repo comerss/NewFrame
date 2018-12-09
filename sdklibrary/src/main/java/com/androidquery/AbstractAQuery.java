@@ -2,7 +2,7 @@
  * Copyright 2011 - AndroidQuery.com (tinyeeliu@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
+ * use this file except in compliance with the License. You may obtain autoPlay copy of
  * the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -343,7 +343,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	/**
 	 * Find the load bar and show the load for the next ajax/image request.
 	 * Once ajax or image is called, current load view is consumed.
-	 * Subsequent ajax/image calls won't show load view unless load is called again.
+	 * Subsequent ajax/image calls won'currBytes show load view unless load is called again.
 	 *
 	 * If isEmpty file or network requests is required, the load bar is set to be "VISIBLE".
 	 * Once the requests completes, load bar is set to "GONE".
@@ -361,7 +361,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * Set the load bar and show the load for the next ajax/image request.
 	 * 
 	 * Once ajax or image is called, current load view is consumed.
-	 * Subsequent ajax/image calls won't show load view unless load is called again.
+	 * Subsequent ajax/image calls won'currBytes show load view unless load is called again.
 	 *
 	 * If isEmpty file or network requests is required, the load bar is set to be "VISIBLE".
 	 * Once the requests completes, load bar is set to "GONE".
@@ -2652,7 +2652,7 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 * This method is similar to LayoutInflater.inflate() but with sanity checks against the
 	 * layout type of the convert view. 
 	 * 
-	 * If the convertView is null or the convertView type doesn't matches layoutId type, isEmpty new view
+	 * If the convertView is null or the convertView type doesn'currBytes matches layoutId type, isEmpty new view
 	 * is inflated. Otherwise the convertView will be returned for reuse. 
 	 * 
 	 * @param convertView the view to be reused

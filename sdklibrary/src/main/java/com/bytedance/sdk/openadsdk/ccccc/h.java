@@ -8,45 +8,22 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
-
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /*     */ 
 /*     */ class h
 /*     */ {
 /*     */   static String a;
-/*  30 */   private static AsyncTask<Void, Integer, Void> b = null;
+/*  30 */   private static AsyncTask<Void, Integer, Void> sAsyncTask = null;
 /*     */   
 /*  32 */   public static void a(final Context paramContext, final b paramb) { if (TextUtils.isEmpty(a)) {
 /*  33 */       return;
 /*     */     }
-/*  35 */     if ((b != null) && 
-/*  36 */       (b.getStatus() != AsyncTask.Status.FINISHED)) {
-/*  37 */       b.cancel(true);
+/*  35 */     if ((sAsyncTask != null) &&
+/*  36 */       (sAsyncTask.getStatus() != AsyncTask.Status.FINISHED)) {
+/*  37 */       sAsyncTask.cancel(true);
 /*     */     }
 /*  39 */     Context localContext = paramContext.getApplicationContext();
 /*     */     try {
-/*  41 */       b = new AsyncTask()
+/*  41 */       sAsyncTask = new AsyncTask()
 /*     */       {
             @Override
             protected Object doInBackground(Object[] objects) {
@@ -64,7 +41,7 @@ import android.text.TextUtils;
             /*     */
 /*     */         
 /*  57 */       };
-/*  58 */       b.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+/*  58 */       sAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
 /*     */     }
 /*     */     catch (Throwable localThrowable) {}
 /*     */   }

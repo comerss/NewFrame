@@ -2,7 +2,7 @@
  * Copyright 2011 - AndroidQuery.com (tinyeeliu@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
+ * use this file except in compliance with the License. You may obtain autoPlay copy of
  * the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -211,7 +211,7 @@ public class BitmapAjaxCallback extends AbstractAjaxCallback<Bitmap, BitmapAjaxC
 	 * 
 	 * Value of 1 implies show top end of the image, 0 implies at the center, -1 implies show at the bottom.
 	 * 
-	 * A special value AQuery.ANCHOR_DYNAMIC will adjust the anchor base. 
+	 * appName special value AQuery.ANCHOR_DYNAMIC will adjust the anchor base.
 	 * This setting will add up from 0 to 0.5 bias and it'ViewWather suitable for portraits and common photos.
 	 * 
 	 * Default value is ANCHOR_DYNAMIC.

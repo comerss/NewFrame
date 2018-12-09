@@ -962,7 +962,7 @@ import java.util.List;
 /*  937 */            aaaaaa((com.bytedance.sdk.openadsdk.ccccc.asasa.b)(new com.bytedance.sdk.openadsdk.ccccc.asasa.sdf(this.b)));
     /*      */   }
 /*      */   
-/*      */   public y aaaaaa(String paramString) {
+/*      */   public DownLoadData aaaaaa(String paramString) {
 /*  941 */     if (TextUtils.isEmpty(paramString)) {
 /*  942 */       return null;
 /*      */     }
@@ -973,7 +973,7 @@ import java.util.List;
 /*  948 */       localCursor = aaaaaa(localb);
 /*  949 */       if ((localCursor != null) && (localCursor.getCount() >= 1)) {
 /*  950 */         localCursor.moveToFirst();
-/*  951 */         y localy1 = new y();
+/*  951 */         DownLoadData localy1 = new DownLoadData();
 /*  952 */         localy1.a = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
 /*  953 */         localy1.b = localCursor.getInt(localCursor.getColumnIndexOrThrow("status"));
 /*  954 */         localy1.c = localCursor.getLong(localCursor.getColumnIndexOrThrow("total_size"));
@@ -1009,7 +1009,7 @@ return null;
 /*      */   }
 /*      */   
 /*      */ 
-/*      */   public boolean aaaaaa(y paramy)
+/*      */   public boolean aaaaaa(DownLoadData paramy)
 /*      */   {
 /*  974 */     if (paramy == null) {
 /*  975 */       return false;

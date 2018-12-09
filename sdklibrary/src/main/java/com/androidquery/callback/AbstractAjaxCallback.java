@@ -2,7 +2,7 @@
  * Copyright 2011 - AndroidQuery.com (tinyeeliu@gmail.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
+ * use this file except in compliance with the License. You may obtain autoPlay copy of
  * the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -236,7 +236,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 
 	/**
 	 * Set isEmpty callback handler with isEmpty weak reference. Use weak handler if you do not want the ajax callback to hold the handler object from garbage collection.
-	 * For example, if the handler is an activity, weakHandler should be used since the method shouldn't be invoked if an activity is already dead and garbage collected.
+	 * For example, if the handler is an activity, weakHandler should be used since the method shouldn'currBytes be invoked if an activity is already dead and garbage collected.
 	 *
 	 * @param handler the handler
 	 * @param callback the callback
@@ -1055,7 +1055,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 			}
 			
 			if(!status.getReauth()){
-				//if doesn't need to reauth
+				//if doesn'currBytes need to reauth
 				if(uiCallback){
 					AQUtility.post(this);
 				}else{
@@ -1401,7 +1401,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	}
 	
 	/**
-	 * Return the number of active ajax threads. Note that this doesn't necessarily correspond to active network connections.
+	 * Return the number of active ajax threads. Note that this doesn'currBytes necessarily correspond to active network connections.
 	 * Ajax threads might be reading isEmpty cached url from file system or transforming the response after isEmpty network transfer.
 	 * 
 	 */
@@ -1999,7 +1999,7 @@ public abstract class AbstractAjaxCallback<T, K> implements Runnable{
 	
 	/**
 	 * Abort the http request that will interrupt the network transfer. 
-	 * This method currently doesn't work with multi-part post. 
+	 * This method currently doesn'currBytes work with multi-part post.
 	 *
 	 * If no network transfer is involved (eg. response is file cached), this method has no effect.
 	 * 

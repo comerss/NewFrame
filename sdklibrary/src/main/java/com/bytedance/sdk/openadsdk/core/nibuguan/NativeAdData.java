@@ -163,7 +163,7 @@ import java.util.List;
                 ", fbbb=" + b +
                 ", fccc='" + c + '\'' +
                 ", TTSplashAdImpl=" + d +
-                ", e='" + e + '\'' +
+                ", getMediaPlayer='" + e + '\'' +
                 ", AppAdViewHolder=" + f +
                 ", DownloadNotifier=" + g +
                 ", ImageHelper='" + h + '\'' +
