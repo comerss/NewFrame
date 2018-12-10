@@ -22,9 +22,9 @@ import java.util.Map;
  */
 
 public class JsonParseHelper {
-    public static String parse(Map<String,Object> map){
+    public static String obj2Json(Map<String, Object> map) {
         if (map == null || map.isEmpty()) {
-            return "";
+            return "{}";
         }
         JSONObject Jsonobject = new JSONObject();
         List<KeyValue> paramList = new ArrayList<KeyValue>();
@@ -39,6 +39,22 @@ public class JsonParseHelper {
         }
         return String.valueOf(Jsonobject);
     }
+
+    public static String str2Json(Map<String, String> map) {
+        if (map == null || map.isEmpty()) {
+            return "{}";
+        }
+        JSONObject Jsonobject = new JSONObject();
+        try {
+            for (String key : map.keySet()) {
+                Jsonobject.put(key, map.get(key));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(Jsonobject);
+    }
+
     //生成JSONObject 对象
     private static void params2Json(final JSONObject jsonObject, final List<KeyValue> paramList) throws JSONException {
         HashSet<String> arraySet = new HashSet<String>(paramList.size());
@@ -74,19 +90,22 @@ public class JsonParseHelper {
             }
         }
     }
+
     private static final ClassLoader BOOT_CL = String.class.getClassLoader();
+
     public final static class ArrayItem extends KeyValue {
         public ArrayItem(String key, Object value) {
             super(key, value);
         }
     }
-     interface ParseKVListener {
+
+    interface ParseKVListener {
         void onParseKV(String name, Object value);
     }
 
     /*package*/
     static void parseKV(Object entity, Class<?> type, ParseKVListener listener) {
-        if (entity == null || type == null  || type == Object.class) {// || type == RequestParams.class
+        if (entity == null || type == null || type == Object.class) {// || type == RequestParams.class
             return;
         } else {
             ClassLoader cl = type.getClassLoader();
@@ -161,7 +180,7 @@ public class JsonParseHelper {
                             value = parseJSONObject(value);
                             jo.put(name, value);
                         } catch (JSONException ex) {
-                            throw new IllegalArgumentException("parse RequestParams to json failed", ex);
+                            throw new IllegalArgumentException("obj2Json RequestParams to json failed", ex);
                         }
                     }
                 });

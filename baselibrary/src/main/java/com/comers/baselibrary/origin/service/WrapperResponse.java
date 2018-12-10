@@ -6,7 +6,6 @@ import android.os.Looper;
 
 import com.comers.baselibrary.origin.service.convert.Convert;
 
-import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -47,7 +46,7 @@ public class WrapperResponse extends ICallBack<String> {
                                 mICallBack.success(request, object);
                             }
                         });
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     return;

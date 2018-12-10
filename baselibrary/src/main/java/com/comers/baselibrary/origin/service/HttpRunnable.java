@@ -27,8 +27,9 @@ public class HttpRunnable implements Runnable {
 
     @Override
     public void run() {
-        if (mHttpRequest == null)
+        if (mHttpRequest == null) {
             return;
+        }
         try {
             if (mRequest.getData() != null) {
                 mHttpRequest.getBody().write(mRequest.getData());

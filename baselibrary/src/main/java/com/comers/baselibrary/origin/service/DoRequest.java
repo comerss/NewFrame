@@ -12,6 +12,8 @@ public class DoRequest {
     private String mUrl;
 
     public HttpMethod mMethod;
+    //下载 文件保存地址
+    public String path;
 
     private byte[] mData;
 

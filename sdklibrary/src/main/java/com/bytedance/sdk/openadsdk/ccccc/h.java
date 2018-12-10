@@ -47,17 +47,17 @@ import android.text.TextUtils;
 /*     */   }
 /*     */   
 /*     */ 
-/*  64 */   private static AsyncTask<Void, Integer, Void> c = null;
+/*  64 */   private static AsyncTask<Void, Integer, Void> sTask = null;
 /*     */   
 /*  66 */   public static void a(final Context paramContext, final a parama) { if (TextUtils.isEmpty(a)) {
 /*  67 */       return;
 /*     */     }
-/*  69 */     if ((c != null) && 
-/*  70 */       (c.getStatus() != AsyncTask.Status.FINISHED)) {
-/*  71 */       c.cancel(true);
+/*  69 */     if ((sTask != null) &&
+/*  70 */       (sTask.getStatus() != AsyncTask.Status.FINISHED)) {
+/*  71 */       sTask.cancel(true);
 /*     */     }
 /*     */     try {
-/*  74 */       c = new AsyncTask()
+/*  74 */       sTask = new AsyncTask()
 /*     */       {
             @Override
             protected Object doInBackground(Object[] objects) {
@@ -72,7 +72,7 @@ import android.text.TextUtils;
             }
             /*     */
 /*  86 */       };
-/*  87 */       c.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+/*  87 */       sTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
 /*     */     }
 /*     */     catch (Throwable localThrowable) {}
 /*     */   }

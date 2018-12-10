@@ -35,8 +35,6 @@ public class OriginHttpRequest extends BufferHttpRequest {
         for (Map.Entry<String, String> entry : header.entrySet()) {
             mConnection.addRequestProperty(entry.getKey(), entry.getValue());
         }
-        mConnection.addRequestProperty("Connection", "Keep-Alive");
-        mConnection.setRequestProperty("Accept-Encoding", "identity");
         mConnection.setDoInput(true);
         mConnection.setInstanceFollowRedirects(true);//自动重定向
         mConnection.setRequestProperty("Charset", "UTF-8");

@@ -58,7 +58,7 @@ public class HttpManager {
             request.setUrl(getUrl(url, params));
         } else if (method == HttpMethod.POST) {
             request.setUrl(url);
-            request.setData(JsonParseHelper.parse(params).getBytes());
+            request.setData(JsonParseHelper.obj2Json(params).getBytes());
         } else if (method == HttpMethod.FORM) {
             request.setUrl(url);
             request.setData(getStringBuffer(params).toString().getBytes());

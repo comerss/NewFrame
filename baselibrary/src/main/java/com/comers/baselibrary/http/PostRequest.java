@@ -48,7 +48,7 @@ public class PostRequest extends BaseRequest<PostRequest> {
         }
         String json;
         if (!mObjectMaps.isEmpty()) {
-            json = JsonParseHelper.parse(mObjectMaps);
+            json = JsonParseHelper.obj2Json(mObjectMaps);
         } else {
             json = content;
         }
@@ -68,7 +68,7 @@ public class PostRequest extends BaseRequest<PostRequest> {
             //提示输入URL
             return;
         }
-        String json = JsonParseHelper.parse(mObjectMaps);
+        String json = JsonParseHelper.obj2Json(mObjectMaps);
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         final Request request = new Request.Builder()
                 .url(mURI)

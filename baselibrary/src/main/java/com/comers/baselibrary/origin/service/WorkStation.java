@@ -55,11 +55,7 @@ public class WorkStation {
 
 
     public void doHttpRequest(DoRequest request) {
-       /* String proxy = System.getProperty("http.proxyHost");
-        String port = System.getProperty("http.proxyPort");
-        if(proxy!=null||port!=null){
-            return;
-        }*/
+
         HttpRequest httpRequest = null;
         try {
             httpRequest = mRequestProvider.getHttpRequest(URI.create(request.getUrl()), request.getMethod());
