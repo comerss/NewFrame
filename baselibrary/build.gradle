@@ -33,10 +33,6 @@ android {
             dirs 'libs'   // aar目录
         }
     }
-    compileOptions {
-        targetCompatibility 1.7
-        sourceCompatibility 1.7
-    }
 }
 
 // 版本号想要统一管理的去主项目配置ext

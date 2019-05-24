@@ -7,8 +7,6 @@ dependencies {
     //javax.annotation.processing.Processor  内容是注解器的相对路径
     implementation 'com.google.auto.service:auto-service:1.0-rc4'
     //java文件生成工具
-    implementation 'com.squareup:javapoet:1.7.0'
+    implementation 'com.squareup:javapoet:1.11.1'
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"

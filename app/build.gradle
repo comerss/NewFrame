@@ -2,14 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    signingConfigs {
-        config {
-            keyAlias 'shenwu'
-            keyPassword '123456'
-            storeFile file('C:/Users/79653/Desktop/shenwu.jks')
-            storePassword '123456'
-        }
-    }
     compileSdkVersion 27
     buildToolsVersion("27.0.3")
     defaultConfig {
@@ -24,11 +16,11 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.config
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.config
+            
         }
     }
     repositories {
@@ -48,6 +40,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation project(':baselibrary')
     implementation project(':annotations')
+    implementation 'com.squareup:javapoet:1.11.1'
+
     //    implementation project(':sdklibrary')
     //    implementation project(':doaar')
     //        implementation 'com.comers:BaseLibrary:1.0.0'
