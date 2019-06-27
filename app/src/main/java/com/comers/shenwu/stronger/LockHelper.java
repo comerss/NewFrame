@@ -5,7 +5,7 @@ public class LockHelper {
     public  void doIt(){
         synchronized (integer){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             System.out.println(Thread.currentThread().getName()+"ooo00000000----"+System.currentTimeMillis());
         } catch (InterruptedException e) {
             e.printStackTrace();

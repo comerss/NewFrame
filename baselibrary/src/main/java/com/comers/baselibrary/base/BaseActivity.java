@@ -16,6 +16,8 @@ import com.comers.baselibrary.utils.ToastUtils;
 import com.comers.baselibrary.utils.UIUtils;
 import com.comers.baselibrary.widget.statusbar.StatusBarCompat;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public abstract class BaseActivity extends AppCompatActivity {
     public Context mContext;
 
