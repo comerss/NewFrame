@@ -61,6 +61,9 @@ public class WorkStation {
             httpRequest = mRequestProvider.getHttpRequest(URI.create(request.getUrl()), request.getMethod());
         } catch (Exception e) {
             e.printStackTrace();
+            if(request.getResponse()!=null){
+                request.getResponse().fail(1001,e.getMessage());
+            }
         }
         if(httpRequest!=null){
             sThreadPool.execute(new HttpRunnable(httpRequest, request, this));

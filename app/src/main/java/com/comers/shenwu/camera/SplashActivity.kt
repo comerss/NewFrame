@@ -11,6 +11,7 @@ import com.comers.baselibrary.base.LogUtils
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.comers.shenwu.R
 import kotlinx.android.synthetic.main.activity_splash.*
+import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.Modifier
 
 /**
@@ -33,6 +34,7 @@ class SplashActivity : RxBaseActivity() {
 
     override fun initView() {
 //        setWebParam()
+      var str=  "hahahha".plus("kofdfdfdffd")
         mHandler.postDelayed(task,1000)
         tvShowCheck.setOnClickListener {
             toActivity(HomeActivity::class.java)
@@ -40,7 +42,9 @@ class SplashActivity : RxBaseActivity() {
     }
 
     private fun checkVisible() {
+//        EventBus.getDefault().register(this)
         LogUtils.i("可见否",tvShowCheck.visibility.toString())
+//        EventBus.getDefault().post("hahahhahahhahah")
     }
 
     private fun setWebParam() {
@@ -80,6 +84,8 @@ class SplashActivity : RxBaseActivity() {
                 super.onGeolocationPermissionsShowPrompt(origin, callback)
             }
         }
+
+        var map:MutableMap<String,Reverse> = mutableMapOf()
     }
 
     override fun initListener() {
@@ -105,7 +111,7 @@ class SplashActivity : RxBaseActivity() {
                 }
             }
         }
-        toActivity(HomeActivity::class.java)
+        toActivity(CameraActivity::class.java)
     }
 
     @MainThread(isMainThread = true)

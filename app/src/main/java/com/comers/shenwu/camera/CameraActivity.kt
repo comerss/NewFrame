@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.comers.baselibrary.base.BaseActivity
 import com.comers.shenwu.R
 import com.tbruyelle.rxpermissions2.RxPermissions
+import dalvik.system.DexClassLoader
 import kotlinx.android.synthetic.main.activity_camera.*
 import java.io.File
 
@@ -19,6 +20,7 @@ class CameraActivity : BaseActivity() {
     }
 
     override fun initView() {
+
     }
 
     var cameraFile: File? = null
