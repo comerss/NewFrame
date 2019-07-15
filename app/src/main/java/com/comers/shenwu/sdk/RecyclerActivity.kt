@@ -14,6 +14,8 @@ import com.comers.baselibrary.origin.service.WorkStation
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.comers.shenwu.R
 import kotlinx.android.synthetic.main.activity_recycler.*
+import java.lang.ref.Reference
+import java.lang.ref.ReferenceQueue
 
 /**
  * Created by 79653 on 2018/7/31.
@@ -38,6 +40,7 @@ class RecyclerActivity : RxBaseActivity() {
 //        doRequest()
 //        DownLoadHelper.instance().download(this,"http://a.de0.cc/qyiqau")
         doHttp()
+
     }
 
     private fun doHttp() {

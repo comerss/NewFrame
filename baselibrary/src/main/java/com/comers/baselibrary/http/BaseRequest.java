@@ -79,26 +79,11 @@ public class BaseRequest<R extends BaseRequest> {
         return (R) this;
     }
 
-    //为了方便链式调用
-    public R connectTimeout(long connectTimeout) {
-        HttpHelper.getInstance().connectTimeout(connectTimeout);
-        return (R) this;
-    }
-
     public R path(String url) {
         mURI = url;
         return (R) this;
     }
 
-    public R writeTimeout(long writeTimeout) {
-        HttpHelper.getInstance().connectTimeout(writeTimeout);
-        return (R) this;
-    }
-
-    public R readTimeout(long readTimeout) {
-        HttpHelper.getInstance().connectTimeout(readTimeout);
-        return (R) this;
-    }
 
     public R tag(Object tag) {
         mObject = tag;
@@ -107,7 +92,7 @@ public class BaseRequest<R extends BaseRequest> {
 
     public <T> void perform(final Request request, final BaseCallBack<T> callBack) {
         show();
-        HttpHelper.getClient().newCall(request).enqueue(new Callback() {
+        ClientConfig.getClient().newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(final Call call, final IOException e) {
                 Platform.execute(new Runnable() {
@@ -139,7 +124,7 @@ public class BaseRequest<R extends BaseRequest> {
         show();
         Response response = null;
         try {
-            response = HttpHelper.getClient().newCall(request).execute();
+            response = ClientConfig.getClient().newCall(request).execute();
         } catch (Exception e) {
             dismiss();
             e.printStackTrace();
@@ -172,11 +157,6 @@ public class BaseRequest<R extends BaseRequest> {
         if (result != null) {
             //错误提示的统一处理！个别需要根据错误类型进行一些其他的操作，所以这里给了返回
             if (result.code != 0) {
-                if (!result.msg.contains("正在处理")) {
-                    ToastUtils.showToast(result.msg);
-                } else {//正在处理的提示过滤掉
-                    result.msg = "";
-                }
                 callBack.onSuccess(result, json);
             } else {
                 callBack.onSuccess(result, json);

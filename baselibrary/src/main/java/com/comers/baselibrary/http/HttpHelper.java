@@ -26,10 +26,8 @@ import okhttp3.ResponseBody;
 public class HttpHelper {
 
     private static HttpHelper mSingleton;
-    private static long CONNECT_TIME_OUT = 30;
-    private static long WRITE_TIME_OUT = 60;
-    private static long READ_TIME_OUT = 60;
-    private volatile static OkHttpClient mOkHttpClient;
+
+
     public static Activity mContext;
 
     public static HttpHelper getInstance() {
@@ -63,36 +61,7 @@ public class HttpHelper {
         HttpConfig.baseUrl = baseUrl;
     }
 
-    public static OkHttpClient getClient() {
-        if (mOkHttpClient == null) {
-            synchronized (HttpHelper.class) {
-                if (mOkHttpClient == null) {
-                    mOkHttpClient = new OkHttpClient.Builder()
-                            .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
-                            .writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
-                            .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
-                            .addInterceptor(new LoggingInterceptor())
-                            .build();
-                }
-            }
-        }
-        return mOkHttpClient;
-    }
 
-    public HttpHelper connectTimeout(long connectTimeout) {
-        CONNECT_TIME_OUT = connectTimeout;
-        return this;
-    }
-
-    public HttpHelper writeTimeout(long writeTimeout) {
-        WRITE_TIME_OUT = writeTimeout;
-        return this;
-    }
-
-    public HttpHelper readTimeout(long readTimeout) {
-        READ_TIME_OUT = readTimeout;
-        return this;
-    }
 
     public static void downLoad(String url, final String filePath, final ProgressResponseListener listener) {
         if (listener == null)
