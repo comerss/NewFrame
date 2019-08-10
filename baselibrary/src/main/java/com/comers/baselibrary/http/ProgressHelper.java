@@ -20,7 +20,7 @@ public class ProgressHelper {
      */
     public static OkHttpClient addProgressResponseListener( final ProgressResponseListener progressListener) {
         //克隆
-        OkHttpClient clone = HttpHelper.getClient();
+        OkHttpClient clone = ClientConfig.getClient();
         //增加拦截器
         clone.networkInterceptors().add(new Interceptor() {
             @Override

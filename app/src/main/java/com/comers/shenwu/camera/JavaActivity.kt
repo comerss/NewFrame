@@ -7,12 +7,16 @@ import android.support.v13.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.comers.baselibrary.base.CrashHelper
+import com.comers.baselibrary.http.ClientConfig
 import io.reactivex.Single
 import okhttp3.*
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.nio.charset.Charset
 import java.util.zip.GZIPOutputStream
 
@@ -27,6 +31,7 @@ class JavaActivity : AppCompatActivity() {
         CrashHelper.getDefault().init(this)
         initData()
     }
+
     @MainThread
     private fun initData() {
         //        sendReport();
@@ -124,6 +129,26 @@ class JavaActivity : AppCompatActivity() {
 
             return null
         }
+    }
+
+    fun okhttpGet() {
+        var request = Request.Builder().url("www.baidu.com")
+                .get().build()
+        var call = ClientConfig.getClient().newCall(request)
+//        call.execute()
+        call.enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+            }
+
+        })
+    }
+
+    fun glide(){
+        Glide.with(this).load("").into(ImageView(this))
     }
 
 }

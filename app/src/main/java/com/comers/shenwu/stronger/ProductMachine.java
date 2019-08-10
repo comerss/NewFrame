@@ -5,4 +5,9 @@ public class ProductMachine implements Machine {
     public void doSomeThing() {
         System.out.println("doSomeThing");
     }
+
+    @Override
+    public void carryOn() {
+        System.out.println("carryOn");
+    }
 }

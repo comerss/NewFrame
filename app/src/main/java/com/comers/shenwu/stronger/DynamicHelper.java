@@ -15,6 +15,7 @@ public class DynamicHelper {
         DynamicHandler handler = new DynamicHandler();
         Machine machine = (Machine) handler.bind(productMachine, new Class[]{Machine.class});
         machine.doSomeThing();
+        machine.carryOn();
 
     }
 
@@ -33,7 +34,7 @@ public class DynamicHelper {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            System.out.println("执行代理了");
+            System.out.println("执行代理了"+method.getName());
             return method.invoke(obj, args);
         }
     }
