@@ -55,9 +55,6 @@ public class PostRequest extends BaseRequest<PostRequest> {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         final Request request = new Request.Builder()
                 .url(mURI)
-                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .post(body)
                 .build();
         perform(request, callBack);
@@ -72,34 +69,8 @@ public class PostRequest extends BaseRequest<PostRequest> {
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
         final Request request = new Request.Builder()
                 .url(mURI)
-                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .post(body)
                 .build();
         performSync(request, callBack);
-    }
-
-    private String getFixUrl(String url, Map<String, Object> mObjectMaps) {
-        StringBuffer argument = new StringBuffer();
-        //最优选择是buffer
-        for (Map.Entry<String, Object> param : mObjectMaps.entrySet()) {
-            if (param.getKey() != null) {
-                if (TextUtils.isEmpty(argument)) {
-                    if (null != param.getValue() && !TextUtils.isEmpty(param.getValue().toString())) {
-                        argument.append(param.getKey() + "=" + param.getValue());
-                    } else {
-                        argument.append(param.getKey() + "=" + "");
-                    }
-                } else {
-                    if (null != param.getValue() && !TextUtils.isEmpty(param.getValue().toString())) {
-                        argument.append("&" + param.getKey() + "=" + param.getValue());
-                    } else {
-                        argument.append("&" + param.getKey() + "=" + "");
-                    }
-                }
-            }
-        }
-        return url + "?" + argument.toString();
     }
 }

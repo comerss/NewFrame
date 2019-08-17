@@ -21,9 +21,10 @@ import android.os.Looper;
 import java.util.concurrent.Executor;
 
 public class Platform {
+    static Executor executor = new MainThreadExecutor();
 
     public static void execute(Runnable runnable) {
-        new MainThreadExecutor().execute(runnable);
+        executor.execute(runnable);
     }
 
     static class MainThreadExecutor implements Executor {

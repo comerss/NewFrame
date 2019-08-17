@@ -38,9 +38,6 @@ public class GetRequest extends BaseRequest<GetRequest> {
         String url = getFixUrl(mURI);
         final Request request = new Request.Builder()
                 .url(url)
-//                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .build();
         perform(request, callBack);
         if (mShowFirstTime) {
@@ -56,9 +53,6 @@ public class GetRequest extends BaseRequest<GetRequest> {
         String url = getFixUrl(mURI);
         final Request request = new Request.Builder()
                 .url(url)
-//                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .build();
         performSync(request, callBack);
     }
