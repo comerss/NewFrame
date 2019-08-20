@@ -83,9 +83,6 @@ public class FormRequest extends BaseRequest<FormRequest> {
         if (initPost()) return;
         //因为本App 目前是这样，这样的设计拓展性不好，头可以抽取来
         final Request request = new Request.Builder()
-                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .url(mURI)
                 .post(mBuilder.build())
                 .build();
@@ -96,9 +93,6 @@ public class FormRequest extends BaseRequest<FormRequest> {
     public <T> void executeSync(BaseCallBack<T> callBack) {
         if (initPost()) return;
         final Request request = new Request.Builder()
-                .addHeader("Cookie", "token=" + SharedHelper.get(ConstantsPool.TOKEN, ""))
-                .addHeader("Cookie", "app=android")
-                .addHeader("Cookie", "version=" + UIUtils.getVersionCode())
                 .url(mURI)
                 .post(mBuilder.build())
                 .build();

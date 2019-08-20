@@ -8,7 +8,6 @@ import com.google.gson.Gson;
 import com.comers.baselibrary.base.LoadingDialog;
 import com.comers.baselibrary.utils.ConstantsPool;
 import com.comers.baselibrary.utils.SharedHelper;
-import com.comers.baselibrary.utils.ToastUtils;
 import com.comers.baselibrary.utils.UIUtils;
 
 import java.io.IOException;
@@ -135,13 +134,13 @@ public class BaseRequest<R extends BaseRequest> {
             try {
                 json = response.body().string();
             } catch (Exception e) {
-                callBack.onError(e.getMessage());
+                callBack.onError(response.code(),e.getMessage());
                 dismiss();
                 e.printStackTrace();
             }
             doResult(json, callBack);
         } else {
-            callBack.onError("请求失败，请稍后重试！");
+            callBack.onError(1001, "请求失败，请稍后重试！");
         }
         dismiss();
     }
@@ -151,7 +150,7 @@ public class BaseRequest<R extends BaseRequest> {
         try {
             result = (HttpResult<T>) mGson.fromJson(json, callBack.getType());
         } catch (Exception e) {
-            callBack.onError("数据解析异常！");
+            callBack.onError(1001, "数据解析异常！");
             e.printStackTrace();
         }
         if (result != null) {
@@ -162,7 +161,7 @@ public class BaseRequest<R extends BaseRequest> {
                 callBack.onSuccess(result, json);
             }
         } else {
-            callBack.onError("请求失败，请稍后重试！");
+            callBack.onError(1001, "请求失败，请稍后重试！");
         }
         dismiss();
     }
@@ -193,15 +192,15 @@ public class BaseRequest<R extends BaseRequest> {
     private <T> void doError(BaseCallBack<T> callBack, Exception e) {
         dismiss();
         if (e instanceof SocketTimeoutException) {
-            callBack.onError("网络连接超时,请检查网络！");
+            callBack.onError(1001, "网络连接超时,请检查网络！");
         } else if (e instanceof SocketException) {
             if (e instanceof ConnectException) {
-                callBack.onError("网络未连接，请检查网络！");
+                callBack.onError(1001, "网络未连接，请检查网络！");
             } else {
-                callBack.onError("网络错误，请检查网络！");
+                callBack.onError(1001, "网络错误，请检查网络！");
             }
         } else {
-            callBack.onError("服务器无响应，请稍后重试！");
+            callBack.onError(1001, "服务器无响应，请稍后重试！");
         }
     }
 

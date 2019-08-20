@@ -8,7 +8,7 @@ import com.comers.baselibrary.utils.ToastUtils;
 
 public abstract class ICallBack<T> extends BaseCallBack<T> {
     @Override
-    public void onError(String msg) {
+    public void onError(int i, String msg) {
         ToastUtils.showToast(msg);
     }
 }
