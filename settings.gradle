@@ -1,1 +1,1 @@
-include ':app', ':annotations', ':processor', ':ffmpeg','baselibrary'
+include ':app', ':annotations', ':processor', ':ffmpeg', ':buildSrc','baselibrary'

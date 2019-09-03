@@ -1,0 +1,37 @@
+import com.android.build.api.transform.QualifiedContent
+import com.android.build.api.transform.Transform
+import com.android.build.gradle.internal.pipeline.TransformManager
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+public class JavassitPlugin extends Transform implements Plugin<Project>{
+
+    @Override
+    String getName() {
+        return "JavassitPlugin"
+    }
+
+
+    @Override
+    Set<QualifiedContent.ContentType> getInputTypes() {
+        //插件作用时机
+        return TransformManager.CONTENT_CLASS
+    }
+
+    @Override
+    Set<? super QualifiedContent.Scope> getScopes() {
+        //插件作用范围
+        return TransformManager.SCOPE_FULL_PROJECT
+    }
+
+    @Override
+    boolean isIncremental() {
+        return false
+    }
+
+    @Override
+    void apply(Project project) {
+        def android = project.extensions.getByType(AppExtension)
+        android.registerTransform(this)
+    }
+}

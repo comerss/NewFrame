@@ -7,14 +7,15 @@ import com.squareup.javapoet.TypeSpec;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 
 import javax.lang.model.element.Modifier;
 
 public class ClassProducter {
     public static void main(String[] args) {
-       /* //构建类
-        TypeSpec.Builder classBuild=TypeSpec.classBuilder("HomeActivity")
+     /*   //构建类
+        TypeSpec.Builder classBuild=TypeSpec.classBuilder("ProcessorActivity")
                 .addModifiers(Modifier.PUBLIC)
                 .superclass(ClassName.get("android.app","Activity"));
         //构建方法
@@ -29,13 +30,30 @@ public class ClassProducter {
         JavaFile javaFile= JavaFile.builder("com.comers.processor",classBuild.addMethod(onCreate).build()).build();
         //写文件
         try {
-            javaFile.writeTo(new File("/Volumes/world/works/NewFrame/app/src/main/java/com/comers/shenwu/kotlin"));
+            javaFile.writeTo(new File("/Volumes/Work/works/NewFrame/app/src/main/java/com/comers/shenwu/camera/"));
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        int[] nums = new int[]{6, 3, 7, 4, 2, 8};
-        segment(nums, 0, nums.length-1);
-        System.out.println(Arrays.toString(nums));
+
+        TypeSpec.Builder classBuilder = TypeSpec.classBuilder("ProcessorHelper")
+                .addModifiers(Modifier.PUBLIC);
+
+        MethodSpec constructer = MethodSpec.methodBuilder("ProcessorHelper")
+                .addModifiers(Modifier.PUBLIC)
+                .build();
+
+        JavaFile javaFile = JavaFile.builder("com.comers.processor", classBuilder.addMethod(constructer).build()).build();
+
+        try {
+            javaFile.writeTo(new File("/Volumes/Work/works/NewFrame/processor/src/main/java/com/comers/processor"));
+        } catch (Exception e) {
+
+        }
+
+
+//        int[] nums = new int[]{6, 3, 7, 4, 2, 8};
+//        segment(nums, 0, nums.length - 1);
+//        System.out.println(Arrays.toString(nums));
 
     }
 
@@ -78,17 +96,14 @@ public class ClassProducter {
 //            }
 
 
-
-
-
         //用来临时存入有序的arrary
         int[] tempArray = new int[right - left + 1];
         int leftIndex = left;
         int rightIndex = center + 1;
         int tempIndex = 0;
         //将左右两边小数放到tempArray里面
-        while (leftIndex <= center && rightIndex <=right) {
-            if (nums[leftIndex] <=nums[rightIndex]) {
+        while (leftIndex <= center && rightIndex <= right) {
+            if (nums[leftIndex] <= nums[rightIndex]) {
                 tempArray[tempIndex++] = nums[leftIndex++];
             } else {
                 tempArray[tempIndex++] = nums[rightIndex++];

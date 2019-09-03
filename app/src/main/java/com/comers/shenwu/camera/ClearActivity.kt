@@ -27,6 +27,7 @@ class ClearActivity :BaseActivity() {
         var dpid= PhoneInfoUtils.getAndroidID(this)
         var url="http://182.92.203.215:9001/v1/xingyou/app/resetOpenFre?dpid=${dpid}"
         HttpHelper.doPost(url)
+                .add("iij",this)
                 .execute(object :ICallBack<String>(){
                     override fun onSuccess(sResult: HttpResult<String>?, json: String?) {
 
