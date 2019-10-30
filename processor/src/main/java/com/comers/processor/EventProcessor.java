@@ -1,11 +1,8 @@
 package com.comers.processor;
 
-import com.comers.annotation.MainThread;
-import com.comers.annotation.OnEvent;
-import com.comers.annotation.Swordsman;
+import com.comers.annotation.annotation.OnEvent;
 import com.google.auto.service.AutoService;
 
-import java.lang.annotation.Annotation;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,9 +13,7 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.TypeElement;
-import javax.tools.Diagnostic;
 
 @AutoService(EventProcessor.class)
 public class EventProcessor extends AbstractProcessor {

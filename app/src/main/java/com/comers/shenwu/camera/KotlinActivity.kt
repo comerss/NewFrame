@@ -27,6 +27,9 @@ class KotlinActivity : BaseActivity() {
             }
         }
 
+        list.forEach(){
+        }
+
     }
 
     override fun initListener() {

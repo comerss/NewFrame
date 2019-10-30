@@ -6,12 +6,12 @@ import android.net.Uri
 import android.os.Handler
 import android.util.Log
 import android.webkit.*
-import com.comers.annotation.MainThread
+import com.comers.annotation.annotation.EventReceiver
+import com.comers.annotation.annotation.MainThread
 import com.comers.baselibrary.base.LogUtils
 import com.comers.baselibrary.retrofit.RxBaseActivity
 import com.comers.shenwu.R
 import kotlinx.android.synthetic.main.activity_splash.*
-import org.greenrobot.eventbus.EventBus
 import java.lang.reflect.Modifier
 
 /**
@@ -22,7 +22,6 @@ class SplashActivity : RxBaseActivity() {
     var mHandler = Handler()
     var task = object : Runnable {
         override fun run() {
-            checkVisible()
             mHandler.postDelayed(this, 1000)
         }
     }
@@ -41,11 +40,6 @@ class SplashActivity : RxBaseActivity() {
         }
     }
 
-    private fun checkVisible() {
-//        EventBus.getDefault().register(this)
-        LogUtils.i("可见否",tvShowCheck.visibility.toString())
-//        EventBus.getDefault().post("hahahhahahhahah")
-    }
 
     private fun setWebParam() {
 
@@ -111,7 +105,8 @@ class SplashActivity : RxBaseActivity() {
                 }
             }
         }
-        toActivity(CameraActivity::class.java)
+        toActivity(HomeActivity::class.java)
+        finish()
     }
 
     @MainThread(isMainThread = true)

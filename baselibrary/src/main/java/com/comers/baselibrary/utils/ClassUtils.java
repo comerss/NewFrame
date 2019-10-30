@@ -30,12 +30,6 @@ import java.util.List;
 
 import okhttp3.RequestBody;
 
-/**
- * <p>描述：工具类</p>
- * 作者： zhouyou<br>
- * 日期： 2016/12/20 10:33<br>
- * 版本： v2.0<br>
- */
 public class ClassUtils {
     public static <T> T checkNotNull(T t, String message) {
         if (t == null) {

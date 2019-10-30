@@ -91,7 +91,7 @@ dependencies {
 
     //lakcanary
     api 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    api 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+//    api 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 
     //协程
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'

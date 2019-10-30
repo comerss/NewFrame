@@ -8,5 +8,8 @@ dependencies {
     implementation 'com.google.auto.service:auto-service:1.0-rc4'
     //java文件生成工具
     implementation 'com.squareup:javapoet:1.11.1'
+
+    implementation 'de.greenrobot:java-common:2.3.1'
+
 }
 
